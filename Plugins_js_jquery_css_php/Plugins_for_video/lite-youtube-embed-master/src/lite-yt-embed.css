@@ -1,0 +1,174 @@
+lite-youtube {
+  background-color: #000;
+
+  display: block;
+
+  contain: content;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  border: 1px dotted rgb(50, 50, 50);
+}
+
+lite-youtube::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==);
+  background-position: top;
+  background-repeat: repeat-x;
+
+  width: 100%;
+  transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+lite-youtube::after {
+  content: "";
+  display: block;
+}
+
+lite-youtube > iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  border: 0;
+}
+
+lite-youtube > .lty-playbtn2 {
+  color: rgb(255, 233, 255);
+  text-shadow:
+    2px 2px 4px rgb(0, 0, 0),
+    0 0 1em rgb(125, 0, 112),
+    0 0 0.22em blue;
+  display: block;
+  width: 90%;
+  opacity: 1;
+
+  position: absolute;
+
+  bottom: 5%;
+  left: 5%;
+  text-align: center;
+  cursor: help;
+
+  background-color: rgba(90, 90, 90, 0.502);
+  transition: filter 0.1s cubic-bezier(0, 0, 0.2, 1);
+
+  border-radius: 60%;
+}
+
+lite-youtube > .lty-playbtn {
+  display: block;
+  width: 68px;
+  height: 48px;
+  position: absolute;
+  cursor: pointer;
+
+  top: 40%;
+  left: 45%;
+  z-index: 9000;
+  background-color: transparent;
+
+  background-image: url("../../../../Images/Images_for_videos/youtube3.svg");
+
+  transition: filter 0.1s cubic-bezier(0, 0, 0.2, 1);
+  border: none;
+}
+
+lite-youtube:hover > .lty-playbtn,
+lite-youtube .lty-playbtn:focus {
+  filter: none;
+}
+lite-youtube:hover > .lty-playbtn2,
+lite-youtube .lty-playbtn2:focus {
+  filter: none;
+  opacity: 1;
+}
+
+lite-youtube.lyt-activated {
+  cursor: unset;
+}
+
+lite-youtube.lyt-activated::before,
+lite-youtube.lyt-activated > .lty-playbtn {
+  opacity: 0;
+  pointer-events: none;
+}
+lite-youtube.lyt-activated::before,
+lite-youtube.lyt-activated > .lty-playbtn2 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.lyt-visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+lite-youtube > .lty_text {
+  width: 80%;
+  height: 48px;
+
+  position: top left;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  top: 60%;
+
+  text-align: center;
+  z-index: 100;
+  background-color: transparent;
+
+  text-shadow: 1px 1px 2px pink;
+}
+lite-youtube > .lty_text2 {
+  color: red !important;
+  width: 10%;
+  height: 10px;
+  position: top left;
+
+  cursor: pointer;
+  top: 10px;
+  text-align: left;
+  z-index: 40000;
+
+  text-shadow:
+    2px 2px 4px rgb(231, 59, 59),
+    0 0 10em rgb(255, 0, 230),
+    0 0 2em blue;
+}
+
+lite-youtube:hover > .lty_text,
+lite-youtube .lty_text:focus {
+  filter: none;
+}
+lite-youtube:hover > .lty_text2,
+lite-youtube .lty_text2:focus {
+  filter: none;
+}
+
+lite-youtube.lyt-activated {
+  cursor: unset;
+  border: 0px dotted grey;
+}
+
+lite-youtube.lyt-activated::before,
+lite-youtube.lyt-activated > .lty_text {
+  opacity: 0;
+  pointer-events: none;
+}
+lite-youtube.lyt-activated > .lty_text2 {
+  opacity: 0;
+  pointer-events: none;
+}

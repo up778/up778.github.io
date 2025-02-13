@@ -1,0 +1,39 @@
+.btn-file-home {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.file-icon {
+  position: relative;
+  width: 50px;
+  height: 65px;
+
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
+}
+
+.file-icon .fa-file {
+  font-size: 40px;
+  color: rgb(0, 91, 144);
+  z-index: 1;
+}
+
+.file-icon .fa-home {
+  position: absolute;
+  font-size: 20px;
+  color: rgb(170, 0, 0);
+  z-index: 2;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}

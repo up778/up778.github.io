@@ -1,0 +1,72 @@
+html,
+body,
+.h1_background_class_horizontal_heading,
+.h2_background_class_horizontal_heading,
+.h3_background_class_horizontal_heading,
+.h4_background_class_horizontal_heading,
+.liste_tous_titres_class {
+  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/wreath-8619347 - Copie.avif");
+  background-position: left;
+  background-repeat: repeat;
+  background-attachment: fixed !important;
+  background-position-y: 0rem;
+
+  background-size: 100%;
+}
+
+#breadcrumb > ul {
+  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/wreath-8619347 - Copie.avif");
+  background-position: left;
+  background-repeat: repeat;
+  background-attachment: fixed !important;
+  background-position-y: 0rem;
+
+  background-size: 100%;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #5f00c7;
+}
+
+audio::-webkit-media-controls-mute-button {
+  background-color: #010203;
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+  background-color: rgba(2, 5, 7, 0.7);
+}
+
+audio::-webkit-media-controls-timeline {
+  border-radius: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+audio::-webkit-media-controls-timeline {
+}
+
+.grey_background {
+}
+
+.grey_background_h2_1 > li {
+  background-color: rgba(154, 0, 0, 0.333) !important;
+}
+
+.grey_background_h2_2 > li {
+  background-color: rgba(0, 98, 154, 0.333) !important;
+}
+.progress_bar_p {
+  height: 5px;
+  background-color: #3f3f3f;
+  cursor: pointer;
+}
+
+.progress_bar_fill_p {
+  position: absolute;
+  height: 100%;
+  background-color: #6c6c6c;
+}
+button:hover {
+  color: #6c6c6c;
+}

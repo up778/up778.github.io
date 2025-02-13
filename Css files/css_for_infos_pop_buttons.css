@@ -1,0 +1,118 @@
+.popover {
+  font-size: 100%;
+
+  border: 1px dashed #dcff5c;
+  border-radius: 10px;
+
+  z-index: 99000 !important;
+
+  background-color: #212122;
+}
+
+.popover-header {
+  color: white;
+  font-weight: bold;
+  display: none;
+  z-index: 99000 !important;
+}
+
+.popover-body {
+  border: 1px dotted #2c2c2c !important;
+  border-radius: 10px;
+  z-index: 9900 !important;
+  min-height: 30px;
+}
+.btn_custom_2 {
+  color: white;
+  background-color: #7e0000 !important;
+}
+.pop_button {
+  min-height: 16px;
+}
+.btn_custom_bread_pop {
+  color: #9d00ff;
+  border-right: 0px solid black !important;
+}
+.btn_custom_pop_menu_droite {
+  color: #ff0000;
+  border-right: 0px solid black !important;
+}
+.btn_custom_source {
+  color: #ffffff;
+  background-color: #4e668a;
+  border-right: 0px solid black !important;
+}
+.btn_custom_pop_messagerie {
+  color: #8788dd;
+  background-color: #274632;
+  border-right: 0px solid black !important;
+}
+.btn_custom_pop_tous_titres {
+  color: #8452cf;
+}
+.btn_custom_volet_histo_pop {
+  background-color: #4c1c20;
+  border-right: 0px solid black !important;
+}
+
+.btn_custom_tableau_pop {
+  background-color: #a14800;
+  color: yellow;
+}
+
+.btn_custom_bordures_pop {
+  border-left: 0px solid black !important;
+  translate: 0 30px 0;
+}
+
+.pink_ii {
+  color: plum !important;
+}
+.pink_iii {
+  color: #8452cf !important;
+}
+
+@property --bg-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+.btn_custom_background_pop {
+  animation: spin 2.5s infinite linear paused;
+
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.1 0.2 240 / 0.95),
+        oklch(0.1 0.2 240 / 0.95)
+      )
+      padding-box,
+    conic-gradient(
+        from var(--bg-angle) in oklch longer hue,
+        oklch(0.85 0.37 0) 0 0
+      )
+      border-box;
+
+  border: 2px solid transparent;
+
+  &:hover {
+    animation-play-state: running;
+  }
+}
+@keyframes spin {
+  to {
+    --bg-angle: 360deg;
+  }
+}
+
+.btn_custom_background_pop {
+  border-radius: 1rem;
+  box-shadow: 0.125rem 0.25rem 0.25rem 0.5rem oklch(0.1 0.37 315 / 0.25);
+  color: white;
+}
+
+.btn_infos_g_site {
+  background-color: #00006c;
+  color: white;
+}
