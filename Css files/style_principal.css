@@ -1118,6 +1118,8 @@ colgroup {
 }
 
 .margin_as_p_removed {
+  margin-top: 12px !important;
+  margin-bottom: 12px !important;
 }
 
 audio::-webkit-media-controls-panel {
