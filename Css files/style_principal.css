@@ -2218,6 +2218,10 @@ table tr:has(td:contains("2025")) > * {
 .conserve_fonctios,
 .conserve_amelios {
   border: 1px dotted grey;
+
+  position: sticky;
+  top: 0px;
+  background-color: red;
 }
 
 figcaption:not(.image > figcaption) {
