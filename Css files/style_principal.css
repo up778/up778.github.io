@@ -2209,21 +2209,6 @@ table tr:has(td:contains("2025")) > * {
   opacity: 1;
 }
 
-.conserve_actus,
-.conserve_parties_ev_à_venir,
-.conserve_projets,
-.conserve_probs_tab,
-.conserve_ideas,
-.conserve_infos_tab,
-.conserve_fonctios,
-.conserve_amelios {
-  border: 1px dotted grey;
-
-  position: sticky;
-  top: 0px;
-  background-color: red;
-}
-
 figcaption:not(.image > figcaption) {
   color: rgb(0, 255, 217);
 }
@@ -2239,7 +2224,17 @@ figcaption:not(.image > figcaption) {
 .tab-content:has(.tab-pane) p:nth-of-type(2n + 1):not(:empty):not(section p) {
   background-color: #ffffff00 !important;
 }
-.conserve_actus {
+
+.conserve_actus,
+.conserve_parties_ev_à_venir,
+.conserve_projets,
+.conserve_probs_tab,
+.conserve_ideas,
+.conserve_infos_tab,
+.conserve_fonctios,
+.conserve_amelios {
+  border: 1px dotted grey;
+
   position: sticky;
   top: 0px;
   background-color: red;
