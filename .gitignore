@@ -35,6 +35,8 @@ Audio_s
 Posters_for_images
 !/Scss/
 !/Scss/**
+!/Pdfs/
+!/Pdfs/**
 # !Créatures_sujets_à_l_étude.html
 
 # !gauche_et_droite.html
