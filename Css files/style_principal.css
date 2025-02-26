@@ -2221,3 +2221,9 @@ figcaption:not(.image > figcaption) {
   max-height: 51vh;
   overflow: clip;
 }
+.un_conserve_top_l_case {
+  background-color: black;
+  position: sticky;
+  top: 0px;
+  z-index: 10000;
+}
