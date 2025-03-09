@@ -7,19 +7,19 @@ body,
 .h4_background_class_horizontal_heading,
 .liste_tous_titres_class {
   background: url("Images/Images_for_backgrounds/Avif_images/polar-lights-7016856.avif") !important;
-  /* background-position: left; */
+
   background-repeat: repeat;
   background-attachment: fixed !important;
-  /* background-position-y: 0rem; */
+
   background-size: 100%;
 }
 
 #breadcrumb > ul {
   background: url("Images/Images_for_backgrounds/Avif_images/polar-lights-7016856.avif") !important;
-  /* background-position: left; */
+
   background-repeat: repeat;
   background-attachment: fixed !important;
-  /* background-position-y: 0rem; */
+
   background-size: 100%;
 }
 
@@ -37,63 +37,43 @@ audio::-webkit-media-controls-play-button:hover {
 }
 
 audio::-webkit-media-controls-timeline {
-  /* background-color: #b1d4e0; */
   border-radius: 25px;
   margin-left: 10px;
   margin-right: 10px;
-  /* color: #ff0000; */
 }
 
-/* ------------------------------------------------------------ */
-
-/* width */
 div::-webkit-scrollbar {
   width: 12px;
 }
 
-/* button */
 div::-webkit-scrollbar-button {
   background: rgb(14, 13, 8);
-  /* background: rgb(217, 182, 10); */
 }
 
-/* Handle */
 div::-webkit-scrollbar-thumb {
   background: #035c00;
   border-radius: 10px;
 }
 
-/* Handle on hover */
 div::-webkit-scrollbar-thumb:hover {
-  /* background: rgb(102, 111, 175); */
   background: #047800;
 }
 
-/* Track */
 div::-webkit-scrollbar-track {
   background: rgb(1, 1, 1);
   border-radius: 10px;
 }
 
-/* The track NOT covered by the handle.
-::-webkit-scrollbar-track-piece {
-    background: #000;
-}
-
-/* Corner */
 div::-webkit-scrollbar-corner {
   background: #121;
 }
 
-/* Resizer */
 div::-webkit-resizer {
   background: rgb(57, 161, 68);
 }
-/* pour savoir la couleur avec invert et son pourcentage --> https://codepen.io/thebabydino/pen/LYvNWm */
 
-/* ------------------------------------------------------------ */
 .progress_bar_p {
-  height: 5px; /* Hauteur de la barre de progression */
+  height: 5px;
   background-color: #034e00;
   cursor: pointer;
 }
