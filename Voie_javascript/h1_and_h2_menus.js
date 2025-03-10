@@ -1182,10 +1182,10 @@ $(document).ready(function () {
   $(document).on("click", ".btn_new_3", function () {
     var filename = $(this).attr("trois_week_attrib");
 
-    filename = "Pages_pour_historique_site/Parties_added_3_last_weeks/added_3_last_weeks_" +
-      filename +
-      "";
-    // ?t=" + new Date().getTime()
+    var ffilename_sans_ext_ = filename.replace(".html", "");
+    filename = "Pages_pour_historique_site/Parties_added_3_last_weeks/" +
+      ffilename_sans_ext_ +
+      "_added_3_last_weeks.html";
 
     var where_to_seach;
 
@@ -1197,7 +1197,6 @@ $(document).ready(function () {
 
     $.ajax({
       url: "" + filename + "",
-      // url: "Pages_pour_historique_site/Parties_added_3_last_weeks/test.html",
       dataType: "html",
       cache: false,
     })
@@ -1213,15 +1212,13 @@ $(document).ready(function () {
   $(document).on("click", ".btn_modif_3", function () {
     var filename = $(this).attr("trois_week_attrib");
 
-    filename = "Pages_pour_historique_site/Parties_modifs_3_last_weeks/modifs_3_last_weeks_" +
-      filename +
-      "";
-    console.log(filename, `filename`);
-    // var where_to_seach = "." + $(this).next().children().attr("class");
+    var ffilename_sans_ext_ = filename.replace(".html", "");
+    filename = "Pages_pour_historique_site/Parties_modifs_3_last_weeks/" +
+      ffilename_sans_ext_ +
+      "_modifs_3_last_weeks.html";
 
     $.ajax({
       url: "" + filename + "",
-      // url: "Pages_pour_historique_site/Parties_added_3_last_weeks/test.html",
       dataType: "html",
       cache: false,
     })
