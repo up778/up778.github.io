@@ -1460,6 +1460,7 @@ article,
 
   border-right: 2px dotted grey;
   background-color: grey;
+  font-weight: bold;
 }
 
 .first_paragraph_news_parts {
@@ -1469,6 +1470,7 @@ article,
 
   border-right: 2px dotted grey;
   background-color: rgb(80, 146, 0);
+  font-weight: bold;
 }
 
 .h_citation {
@@ -2235,7 +2237,7 @@ figcaption:not(.image > figcaption) {
 }
 
 .tab-content:has(.tab-pane) p:nth-of-type(2n):not(:empty):not(section p) {
-  background-color: #ffffff3e !important;
+  background-color: #0001023e !important;
 }
 
 .tab-content:has(.tab-pane) p:nth-of-type(2n + 1):not(:empty):not(section p) {
