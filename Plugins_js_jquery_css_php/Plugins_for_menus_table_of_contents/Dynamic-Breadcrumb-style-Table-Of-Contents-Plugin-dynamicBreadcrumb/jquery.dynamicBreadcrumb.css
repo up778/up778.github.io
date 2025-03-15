@@ -28,10 +28,7 @@
 
 #breadcrumb .tocLinkBreadcrumb {
   color: #7070ff;
-  font:
-    0.8em Helvetica,
-    Arial,
-    Sans-Serif;
+  font: 0.8em Helvetica, Arial, Sans-Serif;
   font-style: italic;
   float: right;
   margin-right: 20px;
@@ -41,10 +38,7 @@
 .breadcrumb {
   list-style: none;
 
-  font:
-    0.8em Helvetica,
-    Arial,
-    Sans-Serif;
+  font: 0.8em Helvetica, Arial, Sans-Serif;
   padding-left: 0;
 }
 
@@ -267,7 +261,7 @@
 #breadcrumb > ul > li:nth-child(n) > a {
   max-width: 100vw;
 
-  overflow-block: hidden;
+  overflow-block: visible;
 
   white-space: nowrap;
 }
