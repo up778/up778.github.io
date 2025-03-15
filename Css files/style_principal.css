@@ -2263,3 +2263,10 @@ figcaption:not(.image > figcaption) {
   max-height: 51vh;
   overflow: clip;
 }
+
+.vertical-text {
+  position: absolute;
+
+  white-space: nowrap;
+  text-align: left;
+}
