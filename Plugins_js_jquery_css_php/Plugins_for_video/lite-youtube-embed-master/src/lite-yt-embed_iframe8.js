@@ -359,7 +359,7 @@ function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING) {
     document
       .querySelector(".class_btn_play_pause_youtube_video")
-      .style.setProperty("background-color", "#00000000");
+      .style.setProperty("background-color", "#44444480");
 
     if (last_played_video != 0) {
     }
