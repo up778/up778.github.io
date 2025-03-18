@@ -1,7 +1,7 @@
 var nombre_de_h1 = $("h1").length;
 var index_pour_sections_entre_h2 = 10;
 var index_pour_menu_h2 = 12;
-var bordures_pour_h2_et_h3_ont_elles_été_activées;
+var bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
 
 var div_pour_les_videos_de_background;
 var bb;
@@ -179,7 +179,7 @@ position: relative;text-align:center !important;"
 
 function h3() {
   if ($("h3").length > 0) {
-    $("h3").each(function (index, elem) {
+    $("h3").each(function (index) {
       var index_corrected = index + 1;
       $(this).wrap(
         `<div id="tube_des_h3_${index_corrected}" 
@@ -702,7 +702,7 @@ function add_ytmb(
       setTimeout(() => {
         jQuery("#myPlayerID").YTPPlay();
       }, 1500);
-      $(".bcLevel2").each(function (index, element) {
+      $(".bcLevel2").each(function () {
         $(this).attr("style", "background-color: #00000000 !important");
         $(".breadcrumb").attr("style", "background: transparent !important");
       });
@@ -726,49 +726,33 @@ function add_button_for_background_video(
 }
 
 function stop_video_background() {
-  // console.log("hhhhhh");
+  $(
+    "#myPlayerID, .inserted_ytmb, #controlBar_myPlayerID, #wrapper_myPlayerID, #www-widgetapi-script, #YTAPI",
+  ).remove();
 
-  jQuery("#myPlayerID").YTPPlayerDestroy();
-  $(".inserted_ytmb").remove();
-  $("#controlBar_myPlayerID").remove();
-  $("#wrapper_myPlayerID").remove();
-  $("#www-widgetapi-script").remove();
-  $("#YTAPI").remove();
-
-  $("#myPlayerID").each(function (index, element) {
-    $(this).remove();
-  });
   setTimeout(() => {
-    $("html").attr(
-      "style",
-      "background: " + window.background_html_and_body_image + " !important",
-    );
-    $("body").attr(
-      "style",
-      "background: " + window.background_html_and_body_image + " !important",
+    $("html, body").css(
+      "background",
+      window.background_html_and_body_image + " !important",
     );
   }, 300);
 }
 
 function toggle_sections_2_and_3_borders() {
-  if ($(".bcLevel2").css("border-top").indexOf("dotted") > -1) {
-    $(".bcLevel2").each(function () {
-      $(this).css("border-top", "#00000000");
-      $(this).css("border-left", "#00000000");
-    });
-    $(".bcLevel3").each(function () {
-      $(this).css("border-top", "#00000000");
-      $(this).css("border-left", "#00000000");
+  if (bordures_pour_h2_et_h3_ont_elles_été_activées) {
+    $(".bcLevel2, .bcLevel3").css({
+      "border-top": "transparent",
+      "border-left": "transparent",
     });
     bordures_pour_h2_et_h3_ont_elles_été_activées = 0;
   } else {
-    $(".bcLevel2").each(function () {
-      $(this).css("border-top", "1px dotted #ff009d");
-      $(this).css("border-left", "1px solid #ff009d");
+    $(".bcLevel2").css({
+      "border-top": "1px dotted #ff009d",
+      "border-left": "1px solid #ff009d",
     });
-    $(".bcLevel3").each(function () {
-      $(this).css("border-top", "1px dotted #cf3eff");
-      $(this).css("border-left", "1px solid #cf3eff");
+    $(".bcLevel3").css({
+      "border-top": "1px dotted #cf3eff",
+      "border-left": "1px solid #cf3eff",
     });
     bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
   }
@@ -780,7 +764,7 @@ $(document).ready(function () {
   var filename_histo = decodeURI(filename);
 
   setTimeout(() => {
-    $(".icon_on_top").each(function (index, element) {
+    $(".icon_on_top").each(function () {
       if ($(this)[0].outerHTML.indexOf(filename_histo) > 0) {
         $(this).css("border", "1px solid #ff00f0");
 
@@ -855,14 +839,14 @@ $("body").on("show.bs.modal", ".footermod3", function () {
 });
 $("body").on("hide.bs.modal", ".footermod3", function () {
   var closest_article = $(this).closest("article");
-  $("article").each(function (index, element) {});
+  $("article").each(function () {});
   closest_article.css("content-visibility", "visible");
   $(this).find(".avoid_iframe_pour_iframe_wiki_etc").find("iframe").remove();
 });
 
 $(document).ready(function () {
   var previous_tag_number = 0;
-  $(":header").each(function (index, element) {
+  $(":header").each(function () {
     var tag_name_number = $(this).prop("tagName").substring(1, 2);
 
     var aio = "";
@@ -1023,7 +1007,7 @@ const onClickOutside = (e) => {
       !e.target.className.includes("zoomist-wrapper")
     ) {
       // console.log("fffffggsss");
-      $(".img_zoomed").each(function (index, element) {
+      $(".img_zoomed").each(function () {
         $(this).removeClass("img_zoomed");
         $(this).unwrap(".zoomist-image");
         $(this).unwrap(".zoomist-wrapper");
@@ -1034,7 +1018,7 @@ const onClickOutside = (e) => {
         // zoomist.destroy();
         // zoomist.destroyModules();
       });
-      $(".zoomist-slider, .zoomist-zoomer").each(function (index, element) {
+      $(".zoomist-slider, .zoomist-zoomer").each(function () {
         $(this).remove();
         window.removeEventListener("click", onClickOutside);
       });
@@ -1047,14 +1031,23 @@ const onClickOutside = (e) => {
 // new Zoomist('#zoomist')
 
 $(document).ready(function () {
-  var background_coquille_image;
-  $(document).ready(function () {
-    const body = document.body;
+  let background_coquille_image;
 
-    const computedStyle = getComputedStyle(body);
+  const body = document.body;
+  const computedStyle = getComputedStyle(body);
+  background_coquille_image = computedStyle.backgroundImage;
 
-    background_coquille_image = computedStyle.backgroundImage;
-  });
+  function applyBackgroundImage(selector) {
+    $(selector).css({
+      "background-image": background_coquille_image,
+      "background-size": "100%",
+    });
+  }
+
+  function handleError(message) {
+    console.error(message);
+  }
+
   $(document).on("click", ".bouton_haut_droit", function () {
     $.ajax({
       url: "Additional_html/coquille2_top.html",
@@ -1063,19 +1056,13 @@ $(document).ready(function () {
     })
       .done(function (html) {
         $(".deuxieme_coquille_top_button").replaceWith(html);
-
-        $(".deuxieme_coquille_top_button").css(
-          "background-image",
-          background_coquille_image,
-        );
-        $(".deuxieme_coquille_top_button").css("background-size", "100%");
+        applyBackgroundImage(".deuxieme_coquille_top_button");
       })
       .fail(function () {
-        console.error(
-          "Erreur lors du chargement de 'horizontal_heading.html'.",
-        );
+        handleError("Erreur lors du chargement de 'coquille2_top.html'.");
       });
   });
+
   $(document).on("click", ".bouton_haut_gche", function () {
     $.ajax({
       url: "Additional_html/coquille4_top_l.html",
@@ -1084,58 +1071,50 @@ $(document).ready(function () {
     })
       .done(function (html) {
         $(".quatrieme_coquille_top_button").replaceWith(html);
-        $(".quatrieme_coquille_top_button").css(
-          "background-image",
-          background_coquille_image,
-        );
-        $(".quatrieme_coquille_top_button").css("background-size", "100%");
+        applyBackgroundImage(".quatrieme_coquille_top_button");
       })
       .fail(function () {
-        console.error(
-          "Erreur lors du chargement de 'horizontal_heading.html'.",
-        );
+        handleError("Erreur lors du chargement de 'coquille4_top_l.html'.");
       });
   });
-  $(document).on("click", ".btn_new_3", function () {
-    var filename = $(this).attr("trois_week_attrib");
 
-    var ffilename_sans_ext_ = filename.replace(".html", "");
-    filename = "Pages_pour_historique_site/Parties_added_3_last_weeks/" +
+  $(document).on("click", ".btn_new_3", function () {
+    let filename = $(this).attr("trois_week_attrib");
+    let ffilename_sans_ext_ = filename.replace(".html", "");
+    filename =
+      "Pages_pour_historique_site/Parties_added_3_last_weeks/" +
       ffilename_sans_ext_ +
       "_added_3_last_weeks.html";
 
-    var where_to_seach;
-
-    if ($(this).parent().find(".to_replace_btn_btn2")) {
-      where_to_seach = "." + $(this).next().children().attr("class");
-    } else {
-      where_to_seach = ".trois_last_news_weeks";
-    }
+    let where_to_search = $(this).parent().find(".to_replace_btn_btn2")
+      ? "." + $(this).next().children().attr("class")
+      : ".trois_last_news_weeks";
 
     $.ajax({
-      url: "" + filename + "",
+      url: filename,
       dataType: "html",
       cache: false,
     })
       .done(function (html) {
-        $(where_to_seach).replaceWith(html);
+        $(where_to_search).replaceWith(html);
       })
       .fail(function () {
-        console.error(
-          "Erreur lors du chargement de 'horizontal_heading.html'.",
+        handleError(
+          "Erreur lors du chargement du fichier 'Parties_added_3_last_weeks'.",
         );
       });
   });
-  $(document).on("click", ".btn_modif_3", function () {
-    var filename = $(this).attr("trois_week_attrib");
 
-    var ffilename_sans_ext_ = filename.replace(".html", "");
-    filename = "Pages_pour_historique_site/Parties_modifs_3_last_weeks/" +
+  $(document).on("click", ".btn_modif_3", function () {
+    let filename = $(this).attr("trois_week_attrib");
+    let ffilename_sans_ext_ = filename.replace(".html", "");
+    filename =
+      "Pages_pour_historique_site/Parties_modifs_3_last_weeks/" +
       ffilename_sans_ext_ +
       "_modifs_3_last_weeks.html";
 
     $.ajax({
-      url: "" + filename + "",
+      url: filename,
       dataType: "html",
       cache: false,
     })
@@ -1143,8 +1122,8 @@ $(document).ready(function () {
         $(".to_replace_btn_btn3").replaceWith(html);
       })
       .fail(function () {
-        console.error(
-          "Erreur lors du chargement de 'horizontal_heading.html'.",
+        handleError(
+          "Erreur lors du chargement du fichier 'Parties_modifs_3_last_weeks'.",
         );
       });
   });
