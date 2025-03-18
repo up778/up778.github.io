@@ -2270,3 +2270,8 @@ figcaption:not(.image > figcaption) {
   white-space: nowrap;
   text-align: left;
 }
+.sticky-mode {
+  position: sticky !important;
+  width: 80% !important;
+  top: 0px !important;
+}

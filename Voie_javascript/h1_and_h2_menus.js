@@ -61,14 +61,8 @@ if (
 
           <button
           class="btn btn_video_background flex-column btn_special_9"
-            style="
-  "btn btn_video_background
-  color: #000000;
-  font-size: 14px;
-  cursor: pointer;
-
-
-"  onclick="jQuery('#myPlayerID').YTPPlayPrev()"
+            style="color: #000000; font-size: 14px; cursor: pointer;"
+              onclick="jQuery('#myPlayerID').YTPPlayPrev()"
           >⏮️</button>
           <button
           class="btn btn_video_background"
@@ -184,18 +178,18 @@ position: relative;text-align:center !important;"
 }
 
 function h3() {
-  $("h3").each(function (index, elem) {
-    var index_corrected = index + 1;
-    $(this).wrap(
-      '<div id="tube_des_h3_' +
-        index_corrected +
-        '" class="tube_d_un_h3_' +
-        index_corrected +
-        ' tube_h3" style="z-index: 10' +
-        index_pour_menu_h2 +
-        ' ;position:sticky;top:110px;background:black;margin: 0px 0px 0px 0px !important;max-width:50%;"></div>',
-    );
-  });
+  if ($("h3").length > 0) {
+    $("h3").each(function (index, elem) {
+      var index_corrected = index + 1;
+      $(this).wrap(
+        `<div id="tube_des_h3_${index_corrected}" 
+          class="tube_d_un_h3_${index_corrected} tube_h3" 
+          style="z-index: 10${index_pour_menu_h2};position:sticky;
+          top:110px;background:black;margin: 0px !important;max-width:50%;">
+        </div>`,
+      );
+    });
+  }
 }
 
 function background_de_certains_h2() {}
@@ -293,75 +287,48 @@ $(document).ready(function () {
 });
 
 window.value_of_scroll_to_offset = 0;
-function show_or_hide_barres_menu_h2(params) {
-  $(".class_menu_just_next_h1").each(function () {
-    $(this).toggle();
-  });
+function show_or_hide_barres_menu_h2() {
+  $(".class_menu_just_next_h1").toggle();
 }
-function show_or_hide_barres_menu_h1(params) {
-  $(".class_around_h1").each(function () {
-    if ($(this).css("position") == "sticky") {
-      $(this).css({
-        position: "",
-        width: "80%",
-      });
-      window.value_of_scroll_to_offset = 0;
-      $(".class_menu_just_next_h1").each(function () {
-        $(this).css({
-          top: "0px",
-        });
-      });
-    } else {
-      $(this).css({
-        position: "sticky",
-        width: "80%",
-        top: "0px",
-      });
-      window.value_of_scroll_to_offset = -60;
-      $(".class_menu_just_next_h1").each(function () {
-        $(this).css({
-          top: "35px",
-        });
-      });
-    }
-  });
+
+function show_or_hide_barres_menu_h1() {
+  $(".class_around_h1").toggleClass("sticky-mode");
+
+  window.value_of_scroll_to_offset = $(".class_around_h1").hasClass(
+    "sticky-mode",
+  )
+    ? -60
+    : 0;
+
+  $(".class_menu_just_next_h1").css(
+    "top",
+    $(".class_around_h1").hasClass("sticky-mode") ? "35px" : "0px",
+  );
 }
 
 function show_or_not_breadcrumb_removed_already_in_html() {
   if ($(".breadcrumb").is(":visible")) {
     $("#breadcrumb").empty();
-
-    $("h2").attr("style", "z-index: 0 !important");
-    $("h3").attr("style", "z-index: 0 !important");
+    $("h2, h3").css("z-index", "0 !important");
   } else {
-    $(function () {
-      var breadcrumb = $("#breadcrumb").initBreadcrumb({});
-      $(window).scroll(breadcrumb.refresh);
-      breadcrumb.refresh();
-    });
+    var breadcrumb = $("#breadcrumb").initBreadcrumb({});
+    $(window).on("scroll", breadcrumb.refresh);
+    breadcrumb.refresh();
   }
 }
 
 function show_or_not_right_menu_déjà_dans_le_html() {
-  if ($(".dynamicContentMenu__header").is(":visible")) {
-    $("#dinamicMenu").hide();
-    $("body").css("width", "96vw");
-    $(".boutons_background_video").css("width", "4vw");
-    $(".bg_for_youtube_button").css("right", "1vw");
-    $(".table_outside_a_table_and_outside_card").css("max-width", "");
-    $(".table_outside_a_table_and_outside_card").css("width", "96%");
-    $(".titre").hide();
-  } else {
-    $("#dinamicMenu").show();
-    $("body").css("width", "84vw");
-    $(".boutons_background_video").css("width", "");
-    $(".bg_for_youtube_button").css("right", "13vw");
-    $(".table_outside_a_table_and_outside_card").css(
-      "max-width",
-      "82vw !important",
-    );
-    $(".titre").show();
-  }
+  let isVisible = $(".dynamicContentMenu__header").is(":visible");
+
+  $("#dinamicMenu").toggle(!isVisible);
+  $("body").css("width", isVisible ? "96vw" : "84vw");
+  $(".boutons_background_video").css("width", isVisible ? "4vw" : "");
+  $(".bg_for_youtube_button").css("right", isVisible ? "1vw" : "13vw");
+  $(".table_outside_a_table_and_outside_card").css({
+    "max-width": isVisible ? "" : "82vw !important",
+    width: isVisible ? "96%" : "",
+  });
+  $(".titre").toggle(!isVisible);
 }
 
 function offsetAnchor(test) {
@@ -371,76 +338,31 @@ function offsetAnchor(test) {
 }
 
 function changer_éventuellement_avif_en_png_ou_jpg() {
-  $(".capsule_dun_h2").each(function (index, elem) {
-    var background_image = $(this)[0].style["background-image"];
+  $(".capsule_dun_h2, .capsule1, lite-youtube").css(
+    "background-image",
+    function (_, bg) {
+      return bg
+        .replace(/Images_for_backgrounds_avif\//g, "")
+        .replace(/avif/g, "jpg");
+    },
+  );
 
-    if (background_image.indexOf("Images_for_backgrounds_avif") > 0) {
-      background_image = background_image.replace(
-        "Images_for_backgrounds_avif/",
-        "",
+  $("html, body").css({
+    background: function (_, bg) {
+      return (
+        bg
+          .replace(/Images_for_backgrounds_avif\//g, "")
+          .replace(/avif/g, "jpg") + " !important"
       );
-      background_image = background_image.replace(/avif/gm, "jpg");
-      $(this).css("background-image", background_image);
-
-      check_if_file_Loaded_for_titres_backgrounds(background_image, $(this));
-    }
-  });
-
-  $(".capsule1").each(function (index, elem) {
-    var background_image = $(this)[0].style["background-image"];
-
-    if (background_image != "url(' ')") {
-      if (background_image.indexOf("Images_for_backgrounds_avif") > 0) {
-        background_image = background_image.replace(
-          /Images_for_backgrounds_avif\//gm,
-          "",
-        );
-        background_image = background_image.replace(/avif/gm, "jpg");
-        $(this).css("background-image", background_image);
-        check_if_file_Loaded_for_titres_backgrounds(background_image, $(this));
-      }
-    }
-  });
-
-  $("lite-youtube").each(function (index, elem) {
-    var background_image = $(this)[0].style["background-image"];
-
-    background_image = background_image.replace(/avif/gm, "jpg");
-    $(this).css("background-image", background_image);
-  });
-
-  var background_image_body = $("html").css("background");
-
-  background_image_body = background_image_body.replace(
-    /.*(url.*"\)).*/gm,
-    "$1",
-  );
-
-  background_image_body = background_image_body.replace(
-    /https.*Images\//gm,
-    "Images/",
-  );
-
-  background_image_body = background_image_body.replace(
-    /Images_for_backgrounds_avif\//gm,
-    "",
-  );
-  background_image_body = background_image_body.replace(/avif/gm, "jpg");
-
-  var styles = {
-    background: background_image_body + "!important",
+    },
     "background-position": "center",
     "background-repeat": "repeat",
     "background-attachment": "fixed !important",
-    "background-position-y": "top 0% left 0%;",
-    "background-size": "100%" + "!important",
-  };
-
-  $("html").css(styles);
-  $("body").css(styles);
+    "background-size": "100% !important",
+  });
 
   check_if_file_Loaded_for_titres_backgrounds(
-    background_image_body,
+    $("html").css("background"),
     $(this),
     1,
   );
@@ -563,80 +485,75 @@ function animate_background_title_jquery_ui(ajkl, border_width_solid_color) {
 }
 
 $("body").on("click", "p[class^='p_de_modif']", function (e) {
-  var clicked_link = $(this).find("a").attr("href");
+  e.preventDefault();
 
-  if ($(clicked_link).prop("tagName") == "H1") {
-    animate_element_titre(clicked_link, "flash");
-  } else if ($(clicked_link).prop("tagName") == "H2") {
-    animate_element_titre(clicked_link, "flash", "h2");
-  } else if ($(clicked_link).prop("tagName") == "H3") {
-    animate_element_titre(clicked_link, "flash");
-  } else if ($(clicked_link).prop("tagName") == "H4") {
-    animate_element_titre(clicked_link, "flash");
-  } else if ($(clicked_link).prop("tagName") == "H5") {
-    animate_element_titre(clicked_link, "flash");
-  } else if ($(clicked_link).prop("tagName") == "H6") {
-    animate_element_titre(clicked_link, "flash");
-  } else if ($(clicked_link).prop("tagName") == "IMG") {
-    animate_element(clicked_link, "pulse");
-  } else if ($(clicked_link).prop("tagName") == "SECTION") {
-    animate_element_titre(clicked_link, "pulse", "section");
-    if ($(clicked_link).hasClass("bcLevel2")) {
-      setTimeout(() => {
-        if (bordures_pour_h2_et_h3_ont_elles_été_activées == 0) {
-        } else {
-          $(clicked_link).css("border-top", "1px dotted #ff009d");
-          $(clicked_link).css("border-left", "1px solid #ff009d");
-        }
-      }, 6000);
-    }
-    if ($(clicked_link).hasClass("bcLevel3")) {
-      setTimeout(() => {
-        if (bordures_pour_h2_et_h3_ont_elles_été_activées == 0) {
-        } else {
-          $(clicked_link).css("border-top", "1px dotted #cf3eff");
-          $(clicked_link).css("border-left", "1px solid #cf3eff");
-        }
-      }, 6000);
-    }
-  } else if ($(clicked_link).hasClass("h_citation")) {
-    animate_element_titre(clicked_link, "pulse");
-  } else if ($(clicked_link).hasClass("h_nouvelle_vidéo")) {
-    animate_element_titre(clicked_link, "pulse");
-  } else if ($(clicked_link).prop("tagName") == "TABLE") {
-    animate_element(clicked_link, "pulse");
-  } else if ($(clicked_link).hasClass("div_around_iframe")) {
-    $(clicked_link)
-      .closest("table")
-      .removeClass("animate__animated animate__shakeX");
+  var $clicked_link = $(this).find("a").first();
+  var target = $($clicked_link.attr("href"));
+
+  if (!target.length) return;
+
+  var tag = target.prop("tagName");
+  var classList = target.attr("class") || "";
+
+  const animations = {
+    H1: "flash",
+    H2: "flash",
+    H3: "flash",
+    H4: "flash",
+    H5: "flash",
+    H6: "flash",
+    IMG: "pulse",
+    TABLE: "pulse",
+    SECTION: "pulse",
+  };
+
+  if (animations[tag]) {
+    animate_element_titre(target, animations[tag], tag.toLowerCase());
+  } else if (
+    classList.includes("h_citation") ||
+    classList.includes("h_nouvelle_vidéo")
+  ) {
+    animate_element_titre(target, "pulse");
+  } else if (classList.includes("div_around_iframe")) {
+    target.closest("table").removeClass("animate__animated animate__shakeX");
     setTimeout(() => {
-      $(clicked_link)
-        .closest("table")
-        .addClass("animate__animated animate__shakeX");
+      target.closest("table").addClass("animate__animated animate__shakeX");
     }, 500);
+  }
+
+  if (
+    tag === "SECTION" &&
+    (classList.includes("bcLevel2") || classList.includes("bcLevel3"))
+  ) {
+    const borderColor = classList.includes("bcLevel2") ? "#ff009d" : "#cf3eff";
+
+    setTimeout(() => {
+      if (bordures_pour_h2_et_h3_ont_elles_été_activées) {
+        target.css({
+          "border-top": "1px dotted " + borderColor,
+          "border-left": "1px solid " + borderColor,
+        });
+      }
+    }, 6000);
   }
 });
 
 function animate_element(clicked_link, effect) {
-  $(clicked_link).removeClass("animate__animated animate__" + effect + "");
+  $(clicked_link).removeClass(`animate__animated animate__${effect}`);
   setTimeout(() => {
-    // console.log(`777777777`);
-    $(clicked_link).addClass("animate__animated animate__" + effect + "");
+    $(clicked_link).addClass(`animate__animated animate__${effect}`);
   }, 500);
 }
 function animate_element_titre(clicked_link, effect, element) {
-  // console.log("animate_element_titre");
   $(clicked_link)
     .find(":header")
     .first()
-    .removeClass("animate__animated animate__" + effect + "");
+    .removeClass(`animate__animated animate__${effect}`);
   setTimeout(() => {
-    // console.log(`objectfffffffffff`);
     $(clicked_link)
       .find(":header")
       .first()
-      .addClass("animate__animated animate__" + effect + "");
-    // if (element == "section") {
+      .addClass(`animate__animated animate__${effect}`);
   }, 500);
 }
 
