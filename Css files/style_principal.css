@@ -1176,7 +1176,7 @@ audio::-webkit-media-controls-timeline {
 }
 
 .background_class_horizontal_heading {
-  overflow-block: hidden !important;
+  overflow: visible !important;
   white-space: nowrap !important;
 
   position: fixed;

@@ -28,7 +28,10 @@
 
 #breadcrumb .tocLinkBreadcrumb {
   color: #7070ff;
-  font: 0.8em Helvetica, Arial, Sans-Serif;
+  font:
+    0.8em Helvetica,
+    Arial,
+    Sans-Serif;
   font-style: italic;
   float: right;
   margin-right: 20px;
@@ -38,7 +41,10 @@
 .breadcrumb {
   list-style: none;
 
-  font: 0.8em Helvetica, Arial, Sans-Serif;
+  font:
+    0.8em Helvetica,
+    Arial,
+    Sans-Serif;
   padding-left: 0;
 }
 
@@ -183,7 +189,8 @@
   color: var(--titre1-breadcrumb);
   font-size: 18px;
   vertical-align: bottom !important;
-  padding-top: -4px !important;
+
+  margin-top: -4px !important;
   font-size: var(--font-size-list-liens-niveau-2-new);
 }
 

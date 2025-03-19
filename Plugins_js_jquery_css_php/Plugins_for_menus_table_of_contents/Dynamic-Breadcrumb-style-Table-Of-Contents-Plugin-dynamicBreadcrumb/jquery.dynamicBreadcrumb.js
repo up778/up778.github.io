@@ -97,7 +97,7 @@
                     $(this).css("border", "");
                     $(this).attr(
                       "style",
-                      "border: 1px dashed #00c400 !important",
+                      "border: 2px dashed #00c400 !important",
                     );
                   } else {
                     $(this).css("border", "");
@@ -114,7 +114,7 @@
 
                   $(this).attr(
                     "style",
-                    "border: 1px dashed #00c400 !important",
+                    "border: 2px dashed #00c400 !important",
                   );
                 } else {
                   $(this).css("border", "");
@@ -180,7 +180,7 @@
 
           if (level > 0) {
             if (siblings.length > 0) {
-              var subMenu = $('<ul class=" ">').appendTo(
+              var subMenu = $('<ul class="yyyy">').appendTo(
                 $("<div>").appendTo(childLi),
               );
               siblings.each(function () {
