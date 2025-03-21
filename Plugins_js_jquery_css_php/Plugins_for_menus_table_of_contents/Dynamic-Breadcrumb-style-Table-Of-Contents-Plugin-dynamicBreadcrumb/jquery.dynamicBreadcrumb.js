@@ -1,3 +1,10 @@
+const predo_color_of_page_recup =
+  typeof predo_color_of_page !== "undefined" ? predo_color_of_page : "#00c400";
+
+const trans_predo_color_of_page_recup = predo_color_of_page_recup
+  ? predo_color_of_page_recup + "60 !important;"
+  : "#ffff0050";
+
 (function ($) {
   /**
    * jQuery Dynamic Breadcrumb Plugin.
@@ -97,7 +104,9 @@
                     $(this).css("border", "");
                     $(this).attr(
                       "style",
-                      "border: 2px dashed #00c400 !important",
+                      "border: 2px dashed " +
+                        predo_color_of_page_recup +
+                        " !important",
                     );
                   } else {
                     $(this).css("border", "");
@@ -114,7 +123,9 @@
 
                   $(this).attr(
                     "style",
-                    "border: 2px dashed #00c400 !important",
+                    "border: 2px dashed " +
+                      predo_color_of_page_recup +
+                      " !important",
                   );
                 } else {
                   $(this).css("border", "");
@@ -195,7 +206,9 @@
                     .text()
                 ) {
                   subMenu.append(
-                    '<li class=" "><a style="border:1px dotted yellow;background-color:#ffff0050" class="Jacques2" href="#' +
+                    '<li class=" "><a style="border:1px dotted yellow; background-color:' +
+                      trans_predo_color_of_page_recup +
+                      ' class="Jacques2" href="#' +
                       $(this).attr("id") +
                       '">' +
                       $(this)
