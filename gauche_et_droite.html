@@ -243,7 +243,7 @@ class="image_autumn n5"
                   ],
 
         "datePublished": "2024-09-28",
-                  "dateModified": "2025-03-22",
+                  "dateModified": "2025-03-23",
                   "author": [
                     {
 
@@ -4820,6 +4820,24 @@ window.addEventListener('load', () => {
       createAnimation(this);
     });
   }, 2000);
+</script>
+<script>
+  document.addEventListener("show.bs.modal", function () {
+    if (typeof predo_color_of_page !== "") {
+      let backdrop = document.querySelector(".modal-backdrop");
+      if (backdrop) {
+        backdrop.style.setProperty("--bs-backdrop-bg", predo_color_of_page);
+      }
+      const observer = new MutationObserver((mutations, obs) => {
+        backdrop = document.querySelector(".modal-backdrop");
+        if (backdrop) {
+          backdrop.style.setProperty("--bs-backdrop-bg", predo_color_of_page);
+          obs.disconnect();
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
+    }
+  });
 </script>
 
 <!-- <?php include "../../Additional_html/horizontal_heading.html" ?> --> <!-- <?php include

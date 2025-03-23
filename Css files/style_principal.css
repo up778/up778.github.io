@@ -1581,13 +1581,31 @@ article {
   margin-left: 4vw;
 }
 
+.bcLevel2 {
+  position: relative;
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 1px solid var(--titre-de-niveau-2);
+  border-top-left-radius: 10px;
+  padding-top: 5px;
+}
+
+.bcLevel2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 8vw;
+  height: 0.5px;
+  background-color: var(--titre-de-niveau-2);
+}
+
 .bcLevel2,
 .bcLevel3 {
   padding-left: 4px;
 }
 
 .bcLevel2 {
-  border-top: 1px dotted var(--titre-de-niveau-2);
   border-left: 1px solid var(--titre-de-niveau-2);
 }
 
@@ -1617,8 +1635,9 @@ article {
   content: "";
   position: absolute;
   top: 0;
-  left: 8px;
-  width: 86%;
+
+  left: 14px;
+  width: 7vw;
   height: 0.5px;
   background-color: var(--titre-de-niveau-3);
 }
