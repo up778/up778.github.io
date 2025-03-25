@@ -192,7 +192,7 @@ function h3() {
   }
 }
 
-function background_de_certains_h2() {}
+function background_de_certains_h2() { }
 
 function know_if_avif_supported() {
   var avif = document.createElement("img");
@@ -267,7 +267,7 @@ $(document).ready(function () {
           }
         }
       }
-    } catch (ex) {}
+    } catch (ex) { }
   }
 });
 
@@ -401,20 +401,29 @@ function show_or_not_background_image_disabled() {
   }
 }
 
-var dieze_perma_id_last_p_de_modif_clicked;
+var dieze_perma_id_last_p_de_modif_clicked = $();
+const currentPage = window.location.pathname.split("/").pop();
+
 $("body").on("click", "p[class^='p_de_modif']", function () {
   var ajkl = $(this).find("a").attr("href");
 
   $(dieze_perma_id_last_p_de_modif_clicked).stop(true, true);
 
-  setTimeout(() => {
-    $([document.documentElement, document.body]).animate(
-      {
-        scrollTop: $(ajkl).offset().top - 141,
-      },
-      0,
-    );
-  }, 10);
+  var ajklParts = ajkl.split("#");
+  if (ajklParts[0] === currentPage || ajklParts[0] === "") {
+    // 🔹 On est déjà sur la bonne page → On scroll
+    var anchor = "#" + ajklParts[1];
+    var target = $(anchor);
+
+    if (target.length) {
+      console.log("Élément trouvé:", target);
+      $("html, body").animate({ scrollTop: target.offset().top - 141 }, 0);
+    } else {
+      console.warn("Aucun élément trouvé pour l'ancre:", anchor);
+    }
+  } else {
+    window.location.href = ajkl;
+  }
 
   if ($(ajkl).prop("tagName") == "H1") {
     animate_background_jquery_ui(ajkl, "2px dotted yellow");
@@ -613,8 +622,8 @@ function add_ytmb(
       let videos = [
         {
           videoURL: "` +
-        video_background_youtube11_url_1 +
-        `",
+      video_background_youtube11_url_1 +
+      `",
           containment: "body",
           autoPlay: false,
           mute: false,
@@ -630,8 +639,8 @@ function add_ytmb(
         },
         {
           videoURL: "` +
-        video_background_youtube11_url_2 +
-        `",
+      video_background_youtube11_url_2 +
+      `",
           containment: "body",
           autoPlay: true,
           mute: false,
@@ -646,8 +655,8 @@ function add_ytmb(
         },
         {
           videoURL: "` +
-        video_background_youtube11_url_3 +
-        `",
+      video_background_youtube11_url_3 +
+      `",
           containment: "body",
           autoPlay: true,
           mute: false,
@@ -796,8 +805,8 @@ $("body").on(
         .find(".avoid_iframe_pour_iframe_wiki_etc")
         .append(
           '<iframe width="" height="" style="height: 90vh; width: 98%;" src="' +
-            src_from +
-            '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
+          src_from +
+          '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
         );
     } else {
     }
@@ -833,13 +842,13 @@ $("body").on("show.bs.modal", ".footermod3", function () {
     .find(".avoid_iframe_pour_iframe_wiki_etc")
     .append(
       '<iframe width="" height="" style="height: 90vh; width: 98%;" src="' +
-        src_from_footer +
-        '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
+      src_from_footer +
+      '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
     );
 });
 $("body").on("hide.bs.modal", ".footermod3", function () {
   var closest_article = $(this).closest("article");
-  $("article").each(function () {});
+  $("article").each(function () { });
   closest_article.css("content-visibility", "visible");
   $(this).find(".avoid_iframe_pour_iframe_wiki_etc").find("iframe").remove();
 });
@@ -860,16 +869,16 @@ $(document).ready(function () {
     var tag_name_number_special = 3 - tag_name_number;
     $(".liste_tous_titres_class").append(
       '<li class="on_hover_lien_all_titles tytyu"><a class="' +
-        aio +
-        " dropdown-item lien_all_title_" +
-        tag_name_number +
-        ' lien_de_titre" style="font-size:1' +
-        tag_name_number_special +
-        '0%" href="#' +
-        id +
-        '">' +
-        text +
-        "</a></li>",
+      aio +
+      " dropdown-item lien_all_title_" +
+      tag_name_number +
+      ' lien_de_titre" style="font-size:1' +
+      tag_name_number_special +
+      '0%" href="#' +
+      id +
+      '">' +
+      text +
+      "</a></li>",
     );
   });
 
@@ -936,24 +945,24 @@ $("body").on("dblclick", "img", function () {
       if (ttt.css("float") == "left" || ttt.css("float") == "right") {
         ttt.wrap(
           '<div class="zoomist-container" id="' +
-            tintini +
-            '" style="max-width:' +
-            pourcentage_enventualy_agrandi +
-            ";float:" +
-            ttt.css("float") +
-            ";" +
-            height_pour_svg +
-            '"></div>',
+          tintini +
+          '" style="max-width:' +
+          pourcentage_enventualy_agrandi +
+          ";float:" +
+          ttt.css("float") +
+          ";" +
+          height_pour_svg +
+          '"></div>',
         );
       } else {
         ttt.wrap(
           '<div class="zoomist-container" id="' +
-            tintini +
-            '" style="max-width:' +
-            pourcentage_enventualy_agrandi +
-            ";" +
-            height_pour_svg +
-            '"></div>',
+          tintini +
+          '" style="max-width:' +
+          pourcentage_enventualy_agrandi +
+          ";" +
+          height_pour_svg +
+          '"></div>',
         );
       }
 
@@ -1157,7 +1166,7 @@ function toggle_falling_leaves(param) {
     $(".image_autumn").css("display", "none");
   }
 }
-setTimeout(() => {}, 100);
+setTimeout(() => { }, 100);
 
 let currentAudio = null;
 
