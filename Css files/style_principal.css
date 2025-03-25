@@ -27,6 +27,7 @@
   margin-top: 40px;
   font-size: var(--titre-de-niveau-1);
 }
+
 .lien_all_title_2 {
   color: var(--titre-de-niveau-2);
 
@@ -34,39 +35,48 @@
   margin-top: 20px;
   font-size: var(--titre-de-niveau-2);
 }
+
 .titii {
   margin-top: 0px;
 }
+
 .lien_all_title_3 {
   color: var(--titre-de-niveau-3);
 
   margin-left: 30px;
   font-size: var(--titre-de-niveau-3);
 }
+
 .lien_all_title_4 {
   color: var(--titre-de-niveau-4);
 
   margin-left: 20px;
   font-size: var(--titre-de-niveau-4);
 }
+
 .lien_all_title_5 {
   color: var(--titre-de-niveau-5);
 
   margin-left: 10px;
   font-size: var(--titre-de-niveau-5);
 }
+
 .lien_all_title_6 {
   color: var(--titre-de-niveau-6);
 }
+
 .on_hover_lien_all_titles:hover {
 }
+
 .tytyu {
   line-height: 100%;
   padding-right: 50px;
 }
+
 .liste_tous_titres_class {
   border: 2px solid grey;
 }
+
 .first_paragraph_of_tous_les_titres {
   margin-top: -10px;
 }
@@ -594,7 +604,7 @@ div > ul > li {
   margin: 0px 0px 0px 0px !important;
 }
 
-*/ .d-grid,
+.d-grid,
 .row {
   max-width: 96%;
 }
