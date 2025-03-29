@@ -1576,8 +1576,6 @@ article,
 
   margin-bottom: 20px;
 
-  background-color: #00193160;
-
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
@@ -2270,7 +2268,7 @@ figcaption:not(.image > figcaption) {
 }
 
 .tab-content:has(.tab-pane) p:nth-of-type(2n + 1):not(:empty):not(section p) {
-  background-color: #000102a5 !important;
+  background-color: #00010275 !important;
 }
 
 .conserve_actus,
