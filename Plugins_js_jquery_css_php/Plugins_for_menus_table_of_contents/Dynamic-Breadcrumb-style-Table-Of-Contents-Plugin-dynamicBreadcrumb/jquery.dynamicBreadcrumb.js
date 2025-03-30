@@ -89,9 +89,13 @@ const trans_predo_color_of_page_recup = predo_color_of_page_recup
               "currentContainer:" +
               currentContainer.closest("article").attr("id");
 
-            let lastCharacter = etttttt.match(/[a-zA-Z0-9](?!.*[a-zA-Z0-9])/);
+            let match6 = etttttt.match(/(\d?[a-zA-Z0-9])$/);
 
-            let lastItem = lastCharacter ? lastCharacter[0] : null;
+            let lastItem = match6 ? match6[0] : null;
+
+            if (lastItem && lastItem.length === 2 && lastItem[0] === "0") {
+              lastItem = lastItem[1];
+            }
 
             let lastItem2 = lastItem - 1;
 
