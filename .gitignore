@@ -77,3 +77,6 @@ Voie_javascript/check_which_browser.js
 Creaturae/Certaines ''puissances''
 !/Animation_s/
 !/Animation_s/**
+
+!/node_modules/
+!/node_modules/**
