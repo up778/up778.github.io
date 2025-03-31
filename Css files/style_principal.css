@@ -617,7 +617,7 @@ figure.image figcaption {
 }
 
 figure:where([style*="float: left"]) {
-  margin-right: 20px !important;
+  margin-right: 40px !important;
 }
 figure:where([style*="float: right"]) {
   margin-left: 20px !important;
@@ -630,8 +630,9 @@ figure.image.align-right {
 
 figure.align-right > figcaption,
 figure.image.align-right > figcaption {
-  margin-left: 30px;
+  margin-left: 25px;
   font-size: 90%;
+  margin-right: -15px;
 }
 
 figure.align-left,
@@ -2039,9 +2040,6 @@ h6 + .div_with_table_outside_a_table_and_outside_card + p::before {
 
 .dynamicContentMenu__header:nth-child(2n + 1) {
   background-color: rgba(158, 158, 158, 0.154) !important;
-}
-.dynamicContentMenu__header:nth-child(2n + 2) {
-  background-color: rgba(0, 0, 220, 0.454) !important;
 }
 
 .zoomist-wrapper {

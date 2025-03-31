@@ -251,7 +251,7 @@ class="image_autumn n5"
                   ],
 
         "datePublished": "2024-07-26",
-                  "dateModified": "2025-03-29",
+                  "dateModified": "2025-03-30",
                   "author": [
                     {
 
@@ -3310,7 +3310,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     </script>
   <script>
 function replace_by_date_of_last_modification() {
- var date_of_last_modification = "samedi 29 mars 2025" 
+ var date_of_last_modification = "dimanche 30 mars 2025" 
  $(".demo").replaceWith(date_of_last_modification);
       }  
     </script>
@@ -4801,7 +4801,28 @@ window.addEventListener('load', () => {
     }
   });
 </script>
-
+<script>
+  $(document).ready(function () {
+    let predo_color_of_page_trans2 = predo_color_of_page + "50";
+    document
+      .querySelectorAll(".dynamicContentMenu__header:nth-child(2n+2)")
+      .forEach((element) => {
+        element.style.setProperty(
+          "background-color",
+          predo_color_of_page_trans2,
+          "important",
+        );
+      });
+    document.styleSheets[0].insertRule(
+      `
+  .dynamicContentMenu__item:hover::before {
+    background-color: ${predo_color_of_page} !important;
+  }
+`,
+      document.styleSheets[0].cssRules.length,
+    );
+  });
+</script>
 <!-- <?php include "../../Additional_html/horizontal_heading.html" ?> --> <!-- <?php include
 "../../Additional_html/footer.html" ?> -->
 <!-- <div w3-include-html="Additional_html/horizontal_heading.html"></div>

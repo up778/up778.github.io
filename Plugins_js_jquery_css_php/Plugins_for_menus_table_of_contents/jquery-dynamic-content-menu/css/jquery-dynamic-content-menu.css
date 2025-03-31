@@ -195,7 +195,7 @@
   left: 0;
   height: 100%;
   width: 2px;
-  background-color: #7434d4;
+
   border-radius: var(--mainBorderRadius, --scodDefaultBorderRadius);
 }
 .dynamicContentMenu__item {

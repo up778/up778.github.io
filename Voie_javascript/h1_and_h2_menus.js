@@ -5,176 +5,184 @@ var bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
 
 var div_pour_les_videos_de_background;
 var bb;
-if (
-  typeof video_background_youtube11_url_1 != "undefined" &&
-  typeof video_background_youtube11_url_2 != "undefined" &&
-  typeof video_background_youtube11_url_3 != "undefined"
+
+function return_button_for_backrgound_video(
+  video_background_youtube11_url_1,
+  video_background_youtube11_url_2,
+  video_background_youtube11_url_3,
 ) {
-  var concatenated =
-    '"' +
-    video_background_youtube11_url_1 +
-    '","' +
-    video_background_youtube11_url_2 +
-    '","' +
-    video_background_youtube11_url_3 +
-    '"';
-  div_pour_les_videos_de_background =
-    `<div
-    class="d-flex dropup justify-content-center"
-    style="background-color: transparent;position:fixed;left:0px;bottom:100px"
-    id="button_for_video_background"
-  >
-    <button
-      class="flex-column me-1 mt-1 btn dropdown-toggle bi-film justify-content-center pop_button"
-      type="button"
-      role="button"
-      data-bs-toggle="dropdown"
-       data-bs-auto-close="false"
-      aria-expanded="false"
-      style="color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
-      title="btn pour film en arrière plan de la page (fonction expérimentale)"
-      data-popover-title="Titre pour Bouton"
-    data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
-    ></button>
-    <ul class="dropdown-menu class_for_append_test flex-column" style="background-color:transparent">
-      <li>
-        <div
-          id="youtube_mb_buttons"
-          class="btn boutons_background_video btn-group-vertical container btn_video_background"
-          style=" position: fixed;
-  bottom: 8vh;
-  left: 0vw;
-  max-width: 3vw;
-  max-height:50vh;
+  if (
+    typeof video_background_youtube11_url_1 != "undefined" &&
+    typeof video_background_youtube11_url_2 != "undefined" &&
+    typeof video_background_youtube11_url_3 != "undefined"
+  ) {
+    var concatenated =
+      '"' +
+      video_background_youtube11_url_1 +
+      '","' +
+      video_background_youtube11_url_2 +
+      '","' +
+      video_background_youtube11_url_3 +
+      '"';
+    div_pour_les_videos_de_background =
+      `<div
+        class="d-flex dropup justify-content-center"
+        style="background-color: transparent;position:fixed;left:0px;bottom:100px"
+        id="button_for_video_background"
+      >
+        <button
+          class="flex-column me-1 mt-1 btn dropdown-toggle bi-film justify-content-center pop_button"
+          type="button"
+          role="button"
+          data-bs-toggle="dropdown"
+           data-bs-auto-close="false"
+          aria-expanded="false"
+          style="color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
+          title="btn pour film en arrière plan de la page (fonction expérimentale)"
+          data-popover-title="Titre pour Bouton"
+        data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
+        ></button>
+        <ul class="dropdown-menu class_for_append_test flex-column" style="background-color:transparent">
+          <li>
+            <div
+              id="youtube_mb_buttons"
+              class="btn boutons_background_video btn-group-vertical container btn_video_background"
+              style=" position: fixed;
+      bottom: 8vh;
+      left: 0vw;
+      max-width: 3vw;
+      max-height:50vh;
+    
+      z-index: 400;
+      border: dashed #444 1px;
+      color: #ccc;
+      background-color: #00000060;"
+            >
+              <div style="font-size:14px; display:none">
+                boutons pour vidéo de fond <br />attention, fonction
+                expérimentale.<br />
+                normalement, commencer à lire une vidéo devrait ajouter une barre de
+                lecture en bas de la fenêtre.(Barre transparente sauf si curseur de souris au dessus).
+              </div>
+    
+              <button
+              class="btn btn_video_background flex-column btn_special_9"
+                style="color: #000000; font-size: 14px; cursor: pointer;"
+                  onclick="jQuery('#myPlayerID').YTPPlayPrev()"
+              >⏮️</button>
+              <button
+              class="btn btn_video_background"
+                style="
+    
+      "btn btn_video_background
+      color: #000000;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 4000;
+      position: relative;
+    
+    "
+                onclick='add_ytmb(` +
+      concatenated +
+      `);'
+              >
+                <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();" -->
+                ▶️
+              </button>
+              <button
+             class="btn btn_video_background"
+                style="
+    
+    
+      "btn btn_video_background
+      color: #000000;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 4000;
+      position: relative;
+    
+    "
+                onclick="jQuery('#myPlayerID').YTPPause();"
+              >
+                ⏸️
+              </button>
+              <button
+               class="btn btn_video_background"
+                style=" contain:contain;  "btn btn_video_background
+      color: #fff;  font-size: 14px;  cursor: pointer; z-index: 4000; position: relative;"
+                onclick="jQuery('#myPlayerID').YTPPlayNext();jQuery('#myPlayerID').YTPMute();testyy()" >
+                ⏭️
+              </button>
+    
+              <button
+               class="btn bi-arrows-fullscreen btn_video_background"
+                style="
+    
+                contain:contain;
+      "btn btn_video_background
+      color: #fff !important;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 4000;
+      position: relative;"
+    
+                onclick="jQuery('#myPlayerID').YTPFullscreen()"
+              ></button>
+    
+              <button
+               class="btn btn_video_background"
+                style="
+      "btn btn_video_background
+      color: #000000;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 4000;
+      position: relative;
+    
+    "
+                onclick="jQuery('#myPlayerID').YTPUnmute()"
+              >
+                🔊
+              </button>
+              <button
+               class="btn btn_video_background"
+                style="
+      "btn btn_video_background
+      color: #000000;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 4000;
+      position: relative;
+    
+    "
+                onclick="jQuery('#myPlayerID').YTPMute()"
+              >
+                🔇
+              </button>
+              <button
+               class="btn btn_video_background"
+                style=" "btn btn_video_background
+    color: #000000;    font-size: 14px;
+    cursor: pointer;    z-index: 4000;
+    position: relative;text-align:center !important;"
+    
+                onclick="stop_video_background()"
+              >
+                <!-- onclick="jQuery('#myPlayerID').YTPStop()" -->
+                <!-- fonctionna pas -->
+                ⏹️
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>`;
 
-  z-index: 400;
-  border: dashed #444 1px;
-  color: #ccc;
-  background-color: #00000060;"
-        >
-          <div style="font-size:14px; display:none">
-            boutons pour vidéo de fond <br />attention, fonction
-            expérimentale.<br />
-            normalement, commencer à lire une vidéo devrait ajouter une barre de
-            lecture en bas de la fenêtre.(Barre transparente sauf si curseur de souris au dessus).
-          </div>
-
-          <button
-          class="btn btn_video_background flex-column btn_special_9"
-            style="color: #000000; font-size: 14px; cursor: pointer;"
-              onclick="jQuery('#myPlayerID').YTPPlayPrev()"
-          >⏮️</button>
-          <button
-          class="btn btn_video_background"
-            style="
-
-  "btn btn_video_background
-  color: #000000;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 4000;
-  position: relative;
-
-"
-            onclick='add_ytmb(` +
-    concatenated +
-    `);'
-          >
-            <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();" -->
-            ▶️
-          </button>
-          <button
-         class="btn btn_video_background"
-            style="
-
-
-  "btn btn_video_background
-  color: #000000;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 4000;
-  position: relative;
-
-"
-            onclick="jQuery('#myPlayerID').YTPPause();"
-          >
-            ⏸️
-          </button>
-          <button
-           class="btn btn_video_background"
-            style=" contain:contain;  "btn btn_video_background
-  color: #fff;  font-size: 14px;  cursor: pointer; z-index: 4000; position: relative;"
-            onclick="jQuery('#myPlayerID').YTPPlayNext();jQuery('#myPlayerID').YTPMute();testyy()" >
-            ⏭️
-          </button>
-
-          <button
-           class="btn bi-arrows-fullscreen btn_video_background"
-            style="
-
-            contain:contain;
-  "btn btn_video_background
-  color: #fff !important;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 4000;
-  position: relative;"
-
-            onclick="jQuery('#myPlayerID').YTPFullscreen()"
-          ></button>
-
-          <button
-           class="btn btn_video_background"
-            style="
-  "btn btn_video_background
-  color: #000000;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 4000;
-  position: relative;
-
-"
-            onclick="jQuery('#myPlayerID').YTPUnmute()"
-          >
-            🔊
-          </button>
-          <button
-           class="btn btn_video_background"
-            style="
-  "btn btn_video_background
-  color: #000000;
-  font-size: 14px;
-  cursor: pointer;
-  z-index: 4000;
-  position: relative;
-
-"
-            onclick="jQuery('#myPlayerID').YTPMute()"
-          >
-            🔇
-          </button>
-          <button
-           class="btn btn_video_background"
-            style=" "btn btn_video_background
-color: #000000;    font-size: 14px;
-cursor: pointer;    z-index: 4000;
-position: relative;text-align:center !important;"
-
-            onclick="stop_video_background()"
-          >
-            <!-- onclick="jQuery('#myPlayerID').YTPStop()" -->
-            <!-- fonctionna pas -->
-            ⏹️
-          </button>
-        </div>
-      </li>
-    </ul>
-  </div>`;
-
-  bb =
-    `<div id="myPlayerID" class="player mb_YTPlayer isMuted" data-property="{videoURL:'http://youtu.be/` +
-    video_background_youtube11_url_1 +
-    `',containment:'#oiseau',startAt:0,mute:true,autoPlay:false,loop:20000,opacity:0.2}" style="display: none"></div>`;
+    bb =
+      `<div id="myPlayerID" class="player mb_YTPlayer isMuted" data-property="{videoURL:'http://youtu.be/` +
+      video_background_youtube11_url_1 +
+      `',containment:'#oiseau',startAt:0,mute:true,autoPlay:false,loop:20000,opacity:0.2}" style="display: none"></div>`;
+    return div_pour_les_videos_de_background;
+  }
 }
 
 function h3() {
@@ -729,7 +737,15 @@ function add_button_for_background_video(
   video_background_youtube11_url_3,
 ) {
   setTimeout(() => {
-    $("body").append("" + div_pour_les_videos_de_background + "");
+    $("body").append(
+      "" +
+        return_button_for_backrgound_video(
+          video_background_youtube11_url_1,
+          video_background_youtube11_url_2,
+          video_background_youtube11_url_3,
+        ) +
+        "",
+    );
     // }
   }, 1000);
 }

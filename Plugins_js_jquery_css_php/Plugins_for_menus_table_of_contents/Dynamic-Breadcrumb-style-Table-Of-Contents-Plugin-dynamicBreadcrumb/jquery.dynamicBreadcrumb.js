@@ -5,6 +5,11 @@ const trans_predo_color_of_page_recup = predo_color_of_page_recup
   ? predo_color_of_page_recup + "60 !important;"
   : "#ffff0050";
 
+var customBg =
+  "background-color: " + trans_predo_color_of_page_recup + " !important;";
+var styleTag = $("<style>.customStyle { " + customBg + " }</style>");
+$("head").append(styleTag);
+
 (function ($) {
   /**
    * jQuery Dynamic Breadcrumb Plugin.
@@ -106,12 +111,19 @@ const trans_predo_color_of_page_recup = predo_color_of_page_recup
                 $dynamicContentMenuHeaders.each(function (index, element) {
                   if ($(this).attr("id") == ff) {
                     $(this).css("border", "");
-                    $(this).attr(
-                      "style",
-                      "border: 2px dashed " +
+                    // $(this).attr(
+                    //   "style",
+
+                    $(this).attr("style", function (i, s) {
+                      return (
+                        (s || "") +
+                        "; border: 2px dashed " +
                         predo_color_of_page_recup +
-                        " !important",
-                    );
+                        " !important;"
+                      );
+                    });
+                    // $(this).css({
+                    //   "border": "2px dashed " + predo_color_of_page_recup + " !important",
                   } else {
                     $(this).css("border", "");
                     // $(this).css(
@@ -125,12 +137,19 @@ const trans_predo_color_of_page_recup = predo_color_of_page_recup
                 if ($(this).attr("id") == ff) {
                   $(this).css("border", "");
 
-                  $(this).attr(
-                    "style",
-                    "border: 2px dashed " +
+                  // $(this).attr(
+                  //   "style",
+
+                  $(this).attr("style", function (i, s) {
+                    return (
+                      (s || "") +
+                      "; border: 2px dashed " +
                       predo_color_of_page_recup +
-                      " !important",
-                  );
+                      " !important;"
+                    );
+                  });
+                  // $(this).css({
+                  //   "border": "2px dashed " + predo_color_of_page_recup + " !important",
                 } else {
                   $(this).css("border", "");
                   // $(this).css(
