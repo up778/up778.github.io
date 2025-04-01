@@ -108,7 +108,6 @@
 }
 
 .breadcrumb > li > a:hover {
-  background: rgba(114, 103, 0, 0.566);
   border-radius: 10%;
 }
 .breadcrumb > li a:hover:after {
