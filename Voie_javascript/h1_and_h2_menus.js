@@ -1247,3 +1247,15 @@ function testyy() {
     }, 2000);
   }, 2000);
 }
+
+$(document).ready(function () {
+  let predo_color_of_page_trans3 = predo_color_of_page + "50";
+  document.styleSheets[0].insertRule(
+    `
+.breadcrumb > li > a:hover {
+  background-color: ${predo_color_of_page_trans3} !important;
+}
+`,
+    document.styleSheets[0].cssRules.length,
+  );
+});
