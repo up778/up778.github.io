@@ -2003,39 +2003,22 @@ tbody:before {
   border: 1px solid #ccc;
   margin-bottom: 20px;
 }
-h1 + p::before,
-h2 + p::before,
-h3 + p::before,
-h4 + p::before,
-h5 + p::before,
-h6 + p::before,
-h1 + figure + p::before,
-h2 + figure + p::before,
-h3 + figure + p::before,
-h4 + figure + p::before,
-h5 + figure + p::before,
-h6 + figure + p::before,
-h1 + .table_float_end + p::before,
-h2 + .table_float_end + p::before,
-h3 + .table_float_end + p::before,
-h4 + .table_float_end + p::before,
-h5 + .table_float_end + p::before,
-h6 + .table_float_end + p::before,
-h1 + .table_float_start + p::before,
-h2 + .table_float_start + p::before,
-h3 + .table_float_start + p::before,
-h4 + .table_float_start + p::before,
-h5 + .table_float_start + p::before,
-h6 + .table_float_start + p::before,
-h1 + .div_with_table_outside_a_table_and_outside_card + p::before,
-h2 + .div_with_table_outside_a_table_and_outside_card + p::before,
-h3 + .div_with_table_outside_a_table_and_outside_card + p::before,
-h4 + .div_with_table_outside_a_table_and_outside_card + p::before,
-h5 + .div_with_table_outside_a_table_and_outside_card + p::before,
-h6 + .div_with_table_outside_a_table_and_outside_card + p::before {
-  content: "";
-  display: inline-block;
-  width: 30px;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  + p::before,
+  + figure + p::before,
+  + .table_float_end + p::before,
+  + .table_float_start + p::before,
+  + .div_with_table_outside_a_table_and_outside_card + p::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+  }
 }
 
 .dynamicContentMenu__header:nth-child(2n + 1) {
@@ -2266,7 +2249,7 @@ figcaption:not(.image > figcaption) {
 }
 
 .tab-content:has(.tab-pane) p:nth-of-type(2n + 1):not(:empty):not(section p) {
-  background-color: #00010275 !important;
+  background-color: #71717175 !important;
 }
 
 .conserve_actus,

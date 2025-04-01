@@ -10,7 +10,7 @@
 
   --titre5-breadcrumb: rgb(255, 124, 53);
   --titre6-breadcrumb: rgb(0, 209, 66);
-  --surlignage_lien-breadcrumb: rgb(73, 73, 255);
+  --surlignage_lien-breadcrumb: #4949ff;
 
   --font-size-list-liens-niveau-1: 22px;
   --font-size-list-liens-niveau-1-new: 24px;
@@ -161,7 +161,6 @@
 }
 
 #breadcrumb > ul > li:nth-child(3) > div > ul > li:nth-child(n) > a:hover {
-  color: var(--surlignage_lien-breadcrumb);
   font-size: var(--font-size-list-liens-niveau-3);
 }
 #breadcrumb > ul > li:nth-child(4) > div > ul > li:nth-child(n) > a {
@@ -223,7 +222,6 @@
 }
 
 #breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(n) > a:hover {
-  color: var(--surlignage_lien-breadcrumb);
   border-radius: 10px;
 }
 #breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(n) {

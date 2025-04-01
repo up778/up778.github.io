@@ -1249,13 +1249,54 @@ function testyy() {
 }
 
 $(document).ready(function () {
-  let predo_color_of_page_trans3 = predo_color_of_page + "50";
+  let predo_color_of_page_trans3 = predo_color_of_page + "60";
+  let plus_20_percent_predo_color = increaseColor(predo_color_of_page, 50);
   document.styleSheets[0].insertRule(
     `
-.breadcrumb > li > a:hover {
-  background-color: ${predo_color_of_page_trans3} !important;
-}
-`,
+    #breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(n) > a:hover {
+      color: ${plus_20_percent_predo_color}; 
+      border-radius: 10px;
+    }
+    `,
+    document.styleSheets[0].cssRules.length,
+  );
+
+  document.styleSheets[0].insertRule(
+    `
+    .breadcrumb > li > a:hover {
+      background-color: ${predo_color_of_page_trans3} !important;
+    }
+    `,
+    document.styleSheets[0].cssRules.length,
+  );
+  document.styleSheets[0].insertRule(
+    `
+    #breadcrumb > ul > li:nth-child(3) > div > ul > li:nth-child(n) > a:hover {
+      color: ${plus_20_percent_predo_color};
+    }
+    `,
+    document.styleSheets[0].cssRules.length,
+  );
+  document.styleSheets[0].insertRule(
+    `
+    .dynamicContentMenu__item:hover {
+      color: ${plus_20_percent_predo_color} !important;
+    }
+    `,
     document.styleSheets[0].cssRules.length,
   );
 });
+
+function increaseColor(hex, percent) {
+  let r = parseInt(hex.substring(1, 3), 16);
+  let g = parseInt(hex.substring(3, 5), 16);
+  let b = parseInt(hex.substring(5, 7), 16);
+
+  r = Math.min(255, Math.round(r * (1 + percent / 100)));
+  g = Math.min(255, Math.round(g * (1 + percent / 100)));
+  b = Math.min(255, Math.round(b * (1 + percent / 100)));
+
+  let newHex = `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+
+  return newHex;
+}
