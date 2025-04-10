@@ -35,28 +35,19 @@ function return_button_for_backrgound_video(
           type="button"
           role="button"
           data-bs-toggle="dropdown"
-           data-bs-auto-close="false"
+          data-bs-auto-close="false"
           aria-expanded="false"
           style="color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
           title="btn pour film en arrière plan de la page (fonction expérimentale)"
           data-popover-title="Titre pour Bouton"
-        data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
+          data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
         ></button>
         <ul class="dropdown-menu class_for_append_test flex-column" style="background-color:transparent">
           <li>
             <div
               id="youtube_mb_buttons"
               class="btn boutons_background_video btn-group-vertical container btn_video_background"
-              style=" position: fixed;
-      bottom: 8vh;
-      left: 0vw;
-      max-width: 3vw;
-      max-height:50vh;
-    
-      z-index: 400;
-      border: dashed #444 1px;
-      color: #ccc;
-      background-color: #00000060;"
+              style="position: fixed; bottom: 8vh; left: 0vw; max-width: 3vw; max-height: 50vh; z-index: 400; border: dashed #444 1px; color: #ccc; background-color: #00000060;"
             >
               <div style="font-size:14px; display:none">
                 boutons pour vidéo de fond <br />attention, fonction
@@ -66,12 +57,12 @@ function return_button_for_backrgound_video(
               </div>
     
               <button
-              class="btn btn_video_background flex-column btn_special_9"
+                class="btn btn_video_background flex-column btn_special_9"
                 style="color: #000000; font-size: 14px; cursor: pointer;"
-                  onclick="jQuery('#myPlayerID').YTPPlayPrev()"
+                onclick="jQuery('#myPlayerID').YTPPlayPrev()"
               >⏮️</button>
               <button
-              class="btn btn_video_background"
+                class="btn btn_video_background"
                 style="
     
       "btn btn_video_background
@@ -89,25 +80,9 @@ function return_button_for_backrgound_video(
                 <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();" -->
                 ▶️
               </button>
+        
               <button
-             class="btn btn_video_background"
-                style="
-    
-    
-      "btn btn_video_background
-      color: #000000;
-      font-size: 14px;
-      cursor: pointer;
-      z-index: 4000;
-      position: relative;
-    
-    "
-                onclick="jQuery('#myPlayerID').YTPPause();"
-              >
-                ⏸️
-              </button>
-              <button
-               class="btn btn_video_background"
+                class="btn btn_video_background"
                 style=" contain:contain;  "btn btn_video_background
       color: #fff;  font-size: 14px;  cursor: pointer; z-index: 4000; position: relative;"
                 onclick="jQuery('#myPlayerID').YTPPlayNext();jQuery('#myPlayerID').YTPMute();testyy()" >
@@ -115,7 +90,7 @@ function return_button_for_backrgound_video(
               </button>
     
               <button
-               class="btn bi-arrows-fullscreen btn_video_background"
+                class="btn bi-arrows-fullscreen btn_video_background"
                 style="
     
                 contain:contain;
@@ -130,42 +105,16 @@ function return_button_for_backrgound_video(
               ></button>
     
               <button
-               class="btn btn_video_background"
-                style="
-      "btn btn_video_background
-      color: #000000;
-      font-size: 14px;
-      cursor: pointer;
-      z-index: 4000;
-      position: relative;
-    
-    "
-                onclick="jQuery('#myPlayerID').YTPUnmute()"
-              >
-                🔊
-              </button>
-              <button
-               class="btn btn_video_background"
-                style="
-      "btn btn_video_background
-      color: #000000;
-      font-size: 14px;
-      cursor: pointer;
-      z-index: 4000;
-      position: relative;
-    
-    "
-                onclick="jQuery('#myPlayerID').YTPMute()"
+                class="btn btn_video_background"
+                style="color: #000000; font-size: 14px; cursor: pointer;"
+                id="mute_button"
+                onclick="toggleMute()"
               >
                 🔇
               </button>
               <button
-               class="btn btn_video_background"
-                style=" "btn btn_video_background
-    color: #000000;    font-size: 14px;
-    cursor: pointer;    z-index: 4000;
-    position: relative;text-align:center !important;"
-    
+                class="btn btn_video_background"
+                style="color: #000000; font-size: 14px; cursor: pointer;"
                 onclick="stop_video_background()"
               >
                 <!-- onclick="jQuery('#myPlayerID').YTPStop()" -->
@@ -182,6 +131,50 @@ function return_button_for_backrgound_video(
       video_background_youtube11_url_1 +
       `',containment:'#oiseau',startAt:0,mute:true,autoPlay:false,loop:20000,opacity:0.2}" style="display: none"></div>`;
     return div_pour_les_videos_de_background;
+  }
+}
+
+function togglePlayPause() {
+  var player = jQuery("#myPlayerID");
+  var playPauseButton = jQuery("#playPauseButton");
+
+  if (player.hasClass("isPlaying")) {
+    player.YTPPause();
+    playPauseButton.html("▶️");
+    player.removeClass("isPlaying");
+  } else {
+    player.YTPPlay();
+    playPauseButton.html("⏸️");
+    player.addClass("isPlaying");
+  }
+}
+
+jQuery("#playPauseButton").click(function () {
+  togglePlayPause();
+});
+
+jQuery("#myPlayerID").on("YTPPlay", function () {
+  jQuery("#playPauseButton").html("⏸️");
+  jQuery("#myPlayerID").addClass("isPlaying");
+});
+
+jQuery("#myPlayerID").on("YTPPause", function () {
+  jQuery("#playPauseButton").html("▶️");
+  jQuery("#myPlayerID").removeClass("isPlaying");
+});
+
+function toggleMute() {
+  var player = jQuery("#myPlayerID");
+  var muteButton = jQuery("#mute_button");
+
+  if (player.hasClass("isMuted")) {
+    player.YTPUnmute();
+    muteButton.html("🔇");
+    player.removeClass("isMuted");
+  } else {
+    player.YTPMute();
+    muteButton.html("🔊");
+    player.addClass("isMuted");
   }
 }
 
