@@ -1189,7 +1189,6 @@ function select_audio(audio) {
 }
 
 function fct_toggle_audio() {
-  const toggleButton = document.getElementById("toggle_audio");
   if (currentAudio) {
     if (currentAudio.paused) {
       currentAudio.play();
