@@ -1270,6 +1270,9 @@ $(document).ready(function () {
     `lite-youtube > .lty-playbtn2 {
       background-color: ${predo_trans} !important;
     }`,
+    `button:hover {
+      color: ${plus_50} !important;
+    }`,
   ];
 
   rules.forEach(insert);
