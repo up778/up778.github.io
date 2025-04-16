@@ -3234,7 +3234,7 @@ $(document).ready(function includeHTML() {
 }
 );
 // includeHTML();
-replace_by_date_of_last_modification();
+// replace_by_date_of_last_modification();
 
 document.addEventListener("DOMContentLoaded", () => {
   const audioElements = document.querySelectorAll("audio");
@@ -4454,11 +4454,6 @@ $(document).ready(function () {
     $(".svg_pan_zoom").removeClass("svg_pan_zoom ezoom");
     // remove all the :hover stylesheets
   } else {
-    if (typeof ezoom === "function") {
-      // ezoom.onInit($(".ezoom"), {
-      //   // options here
-      // });
-    }
   }
 });
 function detectMobileOrientation() {

@@ -1241,60 +1241,38 @@ function testyy() {
 }
 
 $(document).ready(function () {
-  let predo_color_of_page_trans3 = predo_color_of_page + "60";
-  let plus_20_percent_predo_color = increaseColor(predo_color_of_page, 50);
-  let moins_some_percents_predo_color = decreaseColor(predo_color_of_page, 70);
+  const predo_trans = predo_color_of_page + "60";
+  const plus_50 = increaseColor(predo_color_of_page, 50);
+  const minus_70 = decreaseColor(predo_color_of_page, 70);
+  const sheet = document.styleSheets[0];
+  const insert = (rule) => sheet.insertRule(rule, sheet.cssRules.length);
 
-  document.styleSheets[0].insertRule(
-    `
-    #breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(n) > a:hover {
-      color: ${plus_20_percent_predo_color}; 
+  const rules = [
+    `#breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(n) > a:hover {
+      color: ${plus_50}; 
       border-radius: 10px;
-    }
-    `,
-    document.styleSheets[0].cssRules.length,
-  );
+    }`,
+    `.breadcrumb > li > a:hover {
+      background-color: ${predo_trans} !important;
+    }`,
+    `#breadcrumb > ul > li:nth-child(3) > div > ul > li:nth-child(n) > a:hover {
+      color: ${plus_50};
+    }`,
+    `.dynamicContentMenu__item:hover {
+      color: ${plus_50} !important;
+    }`,
+    `.zoomist-image {
+      background-color: ${minus_70} !important;
+    }`,
+    `.zoomist-wrapper {
+      background-color: ${minus_70} !important;
+    }`,
+    `lite-youtube > .lty-playbtn2 {
+      background-color: ${predo_trans} !important;
+    }`,
+  ];
 
-  document.styleSheets[0].insertRule(
-    `
-    .breadcrumb > li > a:hover {
-      background-color: ${predo_color_of_page_trans3} !important;
-    }
-    `,
-    document.styleSheets[0].cssRules.length,
-  );
-  document.styleSheets[0].insertRule(
-    `
-    #breadcrumb > ul > li:nth-child(3) > div > ul > li:nth-child(n) > a:hover {
-      color: ${plus_20_percent_predo_color};
-    }
-    `,
-    document.styleSheets[0].cssRules.length,
-  );
-  document.styleSheets[0].insertRule(
-    `
-    .dynamicContentMenu__item:hover {
-      color: ${plus_20_percent_predo_color} !important;
-    }
-    `,
-    document.styleSheets[0].cssRules.length,
-  );
-  document.styleSheets[0].insertRule(
-    `
-    .zoomist-image {
-      background-color: ${moins_some_percents_predo_color} !important;
-    }
-    `,
-    document.styleSheets[0].cssRules.length,
-  );
-  document.styleSheets[0].insertRule(
-    `
-    .zoomist-wrapper {
-      background-color: ${moins_some_percents_predo_color} !important;
-    }
-    `,
-    document.styleSheets[0].cssRules.length,
-  );
+  rules.forEach(insert);
 });
 
 function increaseColor(hex, percent) {
