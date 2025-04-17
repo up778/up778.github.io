@@ -1273,6 +1273,9 @@ $(document).ready(function () {
     `button:hover {
       color: ${plus_50} !important;
     }`,
+    `.boutons_ezoom {
+      background-color: ${minus_70} !important;
+    }`,
   ];
 
   rules.forEach(insert);
