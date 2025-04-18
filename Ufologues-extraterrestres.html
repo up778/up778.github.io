@@ -312,7 +312,6 @@ class="image_autumn n5"
   </div>
 </div>
 <!-- <div style="position: fixed; z-index: 501; top: 38px; left: 0px"> -->
-
 <!-- <img
 style="height: 20px; width: 20px"
 src="Images/sheep-5427870_'jaune'.jpg"
@@ -384,14 +383,12 @@ src="Images/sheep-5427870_'jaune'.jpg"
 <div class="remove_me h2_background_class_horizontal_heading"></div>
 <div class="remove_me h3_background_class_horizontal_heading"></div>
 <div class="remove_me h4_background_class_horizontal_heading"></div> -->
-
 <script>
   if (location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
     var script = document.createElement("script");
     script.src = "https://scripts.simpleanalyticscdn.com/latest.js";
     script.async = true;
     document.head.appendChild(script);
-
     var script2 = document.createElement("script");
     script2.src = "https://gc.zgo.at/count.js";
     script2.async = true;
@@ -399,7 +396,6 @@ src="Images/sheep-5427870_'jaune'.jpg"
     document.head.appendChild(script2);
   }
 </script>
- 
 </head>
 <div class="titre z-1" onclick="window.scrollTo(0, 0);"></div>
 <div class="col-md-4 right_dynamic_menu">
@@ -2626,7 +2622,6 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
   //place your code here, the scripts are all loaded
  });
  </script> 
-  
 <script>
 $("body").on("click", `a[href^="#"]`, function (event) {
   // console.log("object");
@@ -2639,35 +2634,27 @@ $("body").on("click", `a[href^="#"]`, function (event) {
     }, 70);
   }
 });
-
 // choose_image_format_according_to_browser();
-
 function choose_image_format_according_to_browser() {
   var img = new Image();
   img.src =
     "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=";
-
   img.onload = function () {
     if (this.width != 468 && this.height != 60) {
       console.log("image pas chargée");
       return true;
     }
   };
-
   img.onerror = function () {
     changer_éventuellement_avif_en_png_ou_jpg();
-
     return false;
   };
-
   return true;
 }
-
 function changer_éventuellement_avif_en_png_ou_jpg() {
   // $(".capsule_dun_h2").each(function (index, elem) {
   $(".bcLevel2").each(function (index, elem) {
     var background_image = $(this)[0].style["background-image"];
-
     if (background_image.indexOf("Images_for_backgrounds_avif") > 0) {
       background_image = background_image.replace(
         "Images_for_backgrounds_avif/",
@@ -2675,14 +2662,11 @@ function changer_éventuellement_avif_en_png_ou_jpg() {
       );
       background_image = background_image.replace(/avif/gm, "jpg");
       $(this).css("background-image", background_image);
-
       check_if_file_Loaded_for_titres_backgrounds(background_image, $(this));
     }
   });
-
   $(".capsule1").each(function (index, elem) {
     var background_image = $(this)[0].style["background-image"];
-
     if (background_image != "url(' ')") {
       if (background_image.indexOf("Images_for_backgrounds_avif") > 0) {
         background_image = background_image.replace(
@@ -2695,32 +2679,25 @@ function changer_éventuellement_avif_en_png_ou_jpg() {
       }
     }
   });
-
   $("lite-youtube").each(function (index, elem) {
     var background_image = $(this)[0].style["background-image"];
-
     background_image = background_image.replace(/avif/gm, "jpg");
     $(this).css("background-image", background_image);
   });
-
   var background_image_body = $("html").css("background");
-
   background_image_body = background_image_body.replace(
     /.*(url.*"\)).*/gm,
     "$1",
   );
-
   background_image_body = background_image_body.replace(
     /https.*Images\//gm,
     "Images/",
   );
-
   background_image_body = background_image_body.replace(
     /Images_for_backgrounds_avif\//gm,
     "",
   );
   background_image_body = background_image_body.replace(/avif/gm, "jpg");
-
   var styles = {
     background: background_image_body + "!important",
     "background-position": "center",
@@ -2729,23 +2706,18 @@ function changer_éventuellement_avif_en_png_ou_jpg() {
     "background-position-y": "top 0% left 0%;",
     "background-size": "100%" + "!important",
   };
-
   $("html").css(styles);
   $("body").css(styles);
-
   check_if_file_Loaded_for_titres_backgrounds(
     background_image_body,
     $(this),
     1,
   );
 }
-
 function check_if_file_Loaded_for_titres_backgrounds(fileName, object, body) {
   fileName = fileName.substring(5, fileName.length - 2);
-
   $.ajax({
     type: "HEAD",
-
     async: true,
     url: fileName,
   })
@@ -2753,17 +2725,14 @@ function check_if_file_Loaded_for_titres_backgrounds(fileName, object, body) {
       if (body == 1) {
         fileName = fileName.replace(/\.avif/gm, ".jpg");
         fileName = "url('" + fileName + "')";
-
         $("html")[0].style["background"] = fileName;
         $("body")[0].style["background"] = fileName;
       }
     })
-
     .fail(function () {
       if (body == 1) {
         fileName = fileName.replace(/\.jpg/gm, ".png");
         fileName = "url('" + fileName + "')";
-
         var styles = {
           background: fileName,
           "background-position": "center",
@@ -2775,19 +2744,15 @@ function check_if_file_Loaded_for_titres_backgrounds(fileName, object, body) {
       } else {
         fileName = fileName.replace(/\.jpg/gm, ".png");
         fileName = "url('" + fileName + "')";
-
         object.css("background-image", fileName);
         console.log("fail");
       }
     });
 }
-
 $(document).ready(function () {
   background_html_and_body_image = $("body").css("background");
 });
 function show_or_not_background_image() {
-
-
   if ($("body").css("background").indexOf('url("")') > -1 || $("body").css("background").indexOf('#000001') > -1 || $("body").css("background").indexOf('rgb(0, 0, 1)') > -1) {
     // console.log("background pas trouvé");
     $("html").attr(
@@ -2799,12 +2764,10 @@ function show_or_not_background_image() {
       "background: " + background_html_and_body_image + " !important",
     );
   } else {
-
     $("html").attr("style", 'background: #000001 !important');
     $("body").attr("style", 'background: #000001 !important');
   }
 }
-
 {
   /* <script> */
 }
@@ -2827,7 +2790,6 @@ if ($("#audio_svg_3_id").length > 0) {
 if ($("#audio_svg_4_id").length > 0) {
   $("#audio_svg_4_id").inlineSvg();
 }
-
 //<script>
 var filename = location.pathname.match(/[^\/]+$/)[0];
 var filename0 = filename;
@@ -2843,7 +2805,6 @@ $(document).ready(function includeHTML() {
     elmnt = z[i];
     /*search for elements with a certain attribute:*/
     file = elmnt.getAttribute("w3-include-html");
-
     if (file) {
       /*make an HTTP request using the attribute value as the file name:*/
       // console.log(file,"file");
@@ -2851,7 +2812,6 @@ $(document).ready(function includeHTML() {
         file ==
         "../../Pages_pour_historique_site/nom_de_fichier_to_replace.html"
       ) {
-
         // file = "../../Pages_pour_historique_site/accueil_historique_site.html"
         file = "../../Pages_pour_historique_site/" + filename_histo;
       }
@@ -2881,18 +2841,15 @@ $(document).ready(function includeHTML() {
 );
 // includeHTML();
 // replace_by_date_of_last_modification();
-
 document.addEventListener("DOMContentLoaded", () => {
   const audioElements = document.querySelectorAll("audio");
   let customPlayerVisible = true;
   let lastPlayedAudio = null;
-
   // Créer un bouton pour basculer entre les deux vues
   document.getElementById("bouton_pour_basculer_style_audios").addEventListener("click", () => {
     customPlayerVisible = !customPlayerVisible;
     audioElements.forEach((audio, index) => {
       const playerContainer = audio.parentElement.querySelector(".custom_audio_player_p");
-
       if (customPlayerVisible) {
         audio.style.display = "none"; // Masquer le lecteur natif
         playerContainer.style.display = "block"; // Afficher le lecteur personnalisé
@@ -2902,14 +2859,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-
   audioElements.forEach((audio, index) => {
     audio.style.display = "none"; // Masquer le lecteur natif
-
     const playerContainer = document.createElement("div");
     playerContainer.className = "custom_audio_player_p";
     playerContainer.style.width = getComputedStyle(audio).width; // Conserver la largeur de l'audio original
-
     // Créer les éléments du lecteur
     const reloadButton = document.createElement("button");
     reloadButton.innerHTML = '<i class="bi-arrow-clockwise"></i>';
@@ -2917,27 +2871,22 @@ document.addEventListener("DOMContentLoaded", () => {
     reloadButton.className = "reload_audio_player_p";
     reloadButton.style.position = "absolute";
     reloadButton.style.left = "0px";
-
     const playPauseButton = document.createElement("button");
     playPauseButton.innerHTML = '<i class="bi-play"></i>';
     playPauseButton.title = "Lecture/Pause";
     playPauseButton.className = "play_pause_p_p";
-
     const progressBar = document.createElement("div");
     progressBar.className = "progress_bar_p";
     const progressBarFill = document.createElement("div");
     progressBarFill.className = "progress_bar_fill_p";
     progressBar.appendChild(progressBarFill);
-
     const timeDisplay = document.createElement("span");
     timeDisplay.className = "time_display_p";
     timeDisplay.textContent = "00:00 / 00:00"; // Afficher 00:00 initialement
-
     const muteButton = document.createElement("button");
     muteButton.innerHTML = '<i class="bi-volume-up"></i>';
     muteButton.className = "btn_mute_p";
     muteButton.title = "Muet";
-
     const volumeSlider = document.createElement("input");
     volumeSlider.type = "range";
     volumeSlider.min = "0";
@@ -2947,82 +2896,65 @@ document.addEventListener("DOMContentLoaded", () => {
     volumeSlider.style.width = "40px"; // Largeur du slider définie à 40px
     volumeSlider.style.height = "100px"; // Hauteur du slider verticale
     volumeSlider.style.transform = "rotate(-90deg)"; // Rotation pour rendre le slider vertical
-
     const repeatButton = document.createElement("button");
     repeatButton.className = "audio_repeat_button_p";
     repeatButton.innerHTML = '<i class="bi-arrow-repeat"></i>';
     repeatButton.title = "Répéter : Désactivé";
     repeatButton.style.color = "#dd0000dd";
-
     // Remplacer le bouton des trois points par un bouton avec un signe "+"
     const optionsMenuButton = document.createElement("button");
     optionsMenuButton.innerHTML = '<i class="bi-speedometer2"></i>';
     optionsMenuButton.title = "Options";
     optionsMenuButton.className = "btn_options_menu_p"; // Classe pour le style
-
     const optionsMenu = document.createElement("div");
     optionsMenu.className = "options_menu_p";
     optionsMenu.style.display = "none";
-
     const downloadOption = document.createElement("button");
     downloadOption.innerHTML = "Télécharger";
     downloadOption.onclick = () => downloadAudio(audio);
-
     const speedOption = document.createElement("button");
     speedOption.innerHTML = "Vitesse de lecture";
     speedOption.onclick = () => toggleSpeedMenu();
-
     optionsMenu.appendChild(downloadOption);
     optionsMenu.appendChild(speedOption);
-
     // Ajouter des éléments au conteneur
     const controlsGroup = document.createElement("div");
     controlsGroup.className = "control_group_p";
     controlsGroup.appendChild(muteButton);
     controlsGroup.appendChild(repeatButton);
     controlsGroup.appendChild(optionsMenuButton);
-
     playerContainer.appendChild(reloadButton);
     playerContainer.appendChild(playPauseButton);
     playerContainer.appendChild(progressBar);
     playerContainer.appendChild(timeDisplay);
-
     // Placer le slider de volume juste à droite du muteButton
     const volumeContainer = document.createElement("div");
     volumeContainer.className = "volume_container_p";  // Créer un conteneur pour le muteButton et le volumeSlider
     volumeContainer.appendChild(muteButton);
     volumeContainer.appendChild(volumeSlider);  // Placer le slider après le bouton mute
-
     playerContainer.appendChild(volumeContainer);
     playerContainer.appendChild(controlsGroup);
     playerContainer.appendChild(optionsMenu);
-
     // Insérer le lecteur personnalisé avant l'audio
     audio.parentNode.insertBefore(playerContainer, audio);
-
     // Mettre à jour la hauteur du volumeSlider pour correspondre à la hauteur de l'audio
     const updateSliderHeight = () => {
       const audioHeight = audio.offsetHeight; // Récupérer la hauteur de l'élément audio
       volumeSlider.style.height = `${audioHeight}px`; // Appliquer cette hauteur au slider
     };
-
     // Appeler la fonction pour définir la hauteur au chargement
     updateSliderHeight();
-
     // Réagir aux changements de taille de l'élément audio
     window.addEventListener("resize", updateSliderHeight);
-
     // Initialiser l'état de boucle
     if (audio.loop) {
       //   repeatButton.style.backgroundColor = "#444544";
       repeatButton.classList.add("active_repeat_button");
     }
-
     // Écouter l'événement loadedmetadata pour récupérer la durée
     audio.addEventListener("loadedmetadata", () => {
       timeDisplay.textContent = `00:00 / ${formatTime(audio.duration)}`;
     });
-
     // Synchronisation des événements pour le contrôle
     playPauseButton.addEventListener("click", () => {
       if (audio.paused) {
@@ -3036,7 +2968,6 @@ document.addEventListener("DOMContentLoaded", () => {
         playPauseButton.classList.remove("playing");
       }
     });
-
     reloadButton.addEventListener("click", () => {
       audio.load();
       playPauseButton.innerHTML = '<i class="bi-play"></i>';
@@ -3044,26 +2975,22 @@ document.addEventListener("DOMContentLoaded", () => {
       progressBarFill.style.width = "0%";
       timeDisplay.textContent = "00:00 / 00:00";
     });
-
     muteButton.addEventListener("click", () => {
       audio.muted = !audio.muted;
       muteButton.innerHTML = audio.muted
         ? '<i class="bi-volume-mute"></i>'
         : '<i class="bi-volume-up"></i>';
-
       if (audio.muted) {
         volumeSlider.value = 0;
       } else {
         volumeSlider.value = audio.volume * 100;
       }
     });
-
     volumeSlider.addEventListener("input", () => {
       if (!audio.muted) {
         audio.volume = volumeSlider.value / 100;
       }
     });
-
     repeatButton.addEventListener("click", () => {
       audio.loop = !audio.loop;
       repeatButton.title = audio.loop
@@ -3073,82 +3000,65 @@ document.addEventListener("DOMContentLoaded", () => {
       //   repeatButton.style.backgroundColor = audio.loop ? "#444" : "#000"; // Change le fond en fonction de l'état
       repeatButton.style.color = audio.loop ? "#dd0000dd" : "#777877"; // Change le fond en fonction de l'état
     });
-
     optionsMenuButton.addEventListener("click", (e) => {
       e.stopPropagation(); // Empêche la propagation du clic
       optionsMenu.style.display = optionsMenu.style.display === "none" ? "block" : "none";
       toggleSpeedMenu(); // Afficher directement le menu des vitesses de lecture
     });
-
     document.addEventListener("click", (e) => {
       if (!optionsMenuButton.contains(e.target)) {
         optionsMenu.style.display = "none"; // Fermer le menu lorsque l'on clique ailleurs
       }
     });
-
     audio.addEventListener("timeupdate", () => {
       const currentTime = audio.currentTime;
       const duration = audio.duration;
       progressBarFill.style.width = `${(currentTime / duration) * 100}%`;
       timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
     });
-
     progressBar.addEventListener("click", (e) => {
       const percent = (e.offsetX / progressBar.offsetWidth) * 100;
       const newTime = (percent / 100) * audio.duration;
       audio.currentTime = newTime;
     });
-
     // Fonction de formatage du temps
     function formatTime(time) {
       const minutes = Math.floor(time / 60);
       const seconds = Math.floor(time % 60);
       return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
     }
-
     function downloadAudio(audio) {
       // Récupérer l'élément <source> qui contient le src de l'audio
       const sourceElement = audio.querySelector("source");
-
       // Vérifier si l'élément <source> existe
       if (!sourceElement) {
         console.error("Aucun fichier source audio trouvé !");
         return;
       }
-
       // Construire l'URL absolue du fichier audio
       const audioUrl = new URL(sourceElement.src, window.location.href).href;
-
       // Créer un objet de téléchargement
       const link = document.createElement("a");
-
       // Créer un Blob pour télécharger le fichier audio
       fetch(audioUrl)
         .then(response => response.blob())
         .then(blob => {
           // Créer un objet URL pour le Blob
           const audioBlobUrl = URL.createObjectURL(blob);
-
           // Définir l'URL du lien de téléchargement
           link.href = audioBlobUrl;
-
           // Extraire le nom du fichier depuis le chemin de l'URL et décoder les éventuels caractères encodés
           let filename = audioUrl.split("/").pop();
-
           // Décoder les caractères spéciaux dans le nom du fichier
           filename = decodeURIComponent(filename);
-
           // Vérifier si l'extension est présente, sinon ajouter ".mp3"
           if (!filename.includes(".")) {
             filename += ".mp3";
           }
-
           // Définir le nom du fichier pour le téléchargement
           link.download = filename;
-
           // Simuler le clic pour démarrer le téléchargement
           link.click();
-
           // Libérer l'URL du Blob pour éviter les fuites de mémoire
           URL.revokeObjectURL(audioBlobUrl);
         })
@@ -3156,7 +3066,6 @@ document.addEventListener("DOMContentLoaded", () => {
           console.error("Erreur lors du téléchargement de l'audio:", error);
         });
     }
-
     function toggleSpeedMenu() {
       const speedMenu = document.createElement("div");
       speedMenu.className = "speed_menu_p";
@@ -3171,7 +3080,6 @@ document.addEventListener("DOMContentLoaded", () => {
       speedMenu.style.display = "block";
     }
   });
-
   // Fonction pour faire défiler la page jusqu'à l'élément audio joué
   function scrollToLastPlayedAudio() {
     if (lastPlayedAudio) {
@@ -3180,41 +3088,32 @@ document.addEventListener("DOMContentLoaded", () => {
       const audioRect = audioContainer.getBoundingClientRect();
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       // animate_background_title_jquery_ui(audioContainer, "2px dotted yellow");
-
       if (audioRect.top + scrollTop > window.innerHeight) {
         window.scrollTo({
           top: audioRect.top + scrollTop - window.innerHeight + audioRect.height + 200,
           behavior: "auto",
         });
       }
-
       //   setTimeout(() => {
-
       // }, 1000);
       if (audioContainer.classList.contains("animate__animated") && audioContainer.classList.contains("animate__bounce")) {
-
         // console.log("L'élément a les deux classes.");
         audioContainer.classList.remove('animate__animated', 'animate__bounce');
         setTimeout(() => {
           // console.log("ggg");
           audioContainer.classList.add('animate__animated', 'animate__bounce');
         }, 100);
-
-
       } else {
         audioContainer.classList.add('animate__animated', 'animate__bounce');
         // console.log("L'élément n'a pas les deux classes.");
       }
     }
   }
-
   // Ajouter un gestionnaire d'événements pour déplacer la page
   document.getElementById("bouton_pour_rejoindre_audio").addEventListener("click", () => {
     scrollToLastPlayedAudio();
   });
 });
-
-
 function imageExists(url) {
   return new Promise(resolve => {
     const img = new Image();
@@ -3223,33 +3122,26 @@ function imageExists(url) {
     img.src = url;
   });
 }
-
 function isGithubPages() {
   const hostname = window.location.hostname;
   return hostname.endsWith('github.io');
 }
-
 async function checkAndReplaceImages() {
   const pictures = document.querySelectorAll('picture');
-
   for (let picture of pictures) {
     let sources = picture.querySelectorAll('source');
     let img = picture.querySelector('img');
     if (!img) continue;
-
     let originalSrc = img.getAttribute('src');
-
     // Générer les chemins des différentes versions pour .avif, .png, .jpg
     let avifSrc = originalSrc.replace(/\.(jpg|jpeg|png)$/i, '.avif');
     let pngSrc = originalSrc.replace(/\.(jpg|jpeg|avif)$/i, '.png');
     let jpgSrc = originalSrc.replace(/\.(png|avif)$/i, '.jpg');
     // console.log(avifSrc, `avifSrc`);
-
     // Mettre à jour les chemins en fonction de l'emplacement des images
     avifSrc = avifSrc.replace(/Images/, 'Images/Avif_images');
     pngSrc = pngSrc.replace(/Images/, 'Images');
     jpgSrc = jpgSrc.replace(/Images/, 'Images');
-
     // Vérifier si AVIF existe
     if (await imageExists(avifSrc)) {
       sources.forEach(source => source.srcset = avifSrc);
@@ -3265,12 +3157,10 @@ async function checkAndReplaceImages() {
       sources.forEach(source => source.srcset = jpgSrc);
       img.src = jpgSrc;
     }
-
     // Forcer le rechargement de l’image
     img.src += '?v=' + Date.now();
   }
 }
-
 window.addEventListener('load', () => {
   if (isGithubPages()) {
     setTimeout(checkAndReplaceImages, 500);
