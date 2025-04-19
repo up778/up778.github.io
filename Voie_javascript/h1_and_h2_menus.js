@@ -80,7 +80,23 @@ function return_button_for_backrgound_video(
                 <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();" -->
                 ▶️
               </button>
-        
+              <button
+             class="btn btn_video_background"
+                style="
+    
+    
+      "btn btn_video_background
+      color: #000000;
+      font-size: 14px;
+      cursor: pointer;
+      z-index: 4000;
+      position: relative;
+    
+    "
+                onclick="jQuery('#myPlayerID').YTPPause();"
+              >
+                ⏸️
+              </button>
               <button
                 class="btn btn_video_background"
                 style=" contain:contain;  "btn btn_video_background
