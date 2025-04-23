@@ -73,7 +73,7 @@ Voie_javascript/check_which_browser.js
 # /Pages_pour_historique_site/0_accueil_historique_t2.html
 # /Pages_pour_historique_site/html_test_plus_historique_t2.html
 
-0_*.html
+
 *.ffs*
 /Accueil/Brouillons
 Creaturae/Certaines ''puissances''
@@ -82,3 +82,4 @@ Creaturae/Certaines ''puissances''
 
 !/node_modules/
 !/node_modules/**
+0_*.html
