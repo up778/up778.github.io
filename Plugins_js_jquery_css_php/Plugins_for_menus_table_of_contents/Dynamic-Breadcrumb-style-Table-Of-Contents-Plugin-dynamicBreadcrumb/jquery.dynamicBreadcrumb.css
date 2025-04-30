@@ -1,17 +1,12 @@
 :root {
   --links_color_beadcrumb: rgb(73, 73, 255);
   --titre1-breadcrumb: red;
-
   --titre2-breadcrumb: #ff009d;
-
   --titre3-breadcrumb: #cf3eff;
-
   --titre4-breadcrumb: rgb(158, 94, 255);
-
   --titre5-breadcrumb: rgb(255, 124, 53);
   --titre6-breadcrumb: rgb(0, 209, 66);
   --surlignage_lien-breadcrumb: #4949ff;
-
   --font-size-list-liens-niveau-1: 22px;
   --font-size-list-liens-niveau-1-new: 24px;
   --font-size-list-liens-niveau-2: 26px;
@@ -28,10 +23,7 @@
 
 #breadcrumb .tocLinkBreadcrumb {
   color: #7070ff;
-  font:
-    0.8em Helvetica,
-    Arial,
-    Sans-Serif;
+  font: 0.8em Helvetica, Arial, Sans-Serif;
   font-style: italic;
   float: right;
   margin-right: 20px;
@@ -41,10 +33,7 @@
 .breadcrumb {
   list-style: none;
 
-  font:
-    0.8em Helvetica,
-    Arial,
-    Sans-Serif;
+  font: 0.8em Helvetica, Arial, Sans-Serif;
   padding-left: 0;
 }
 
