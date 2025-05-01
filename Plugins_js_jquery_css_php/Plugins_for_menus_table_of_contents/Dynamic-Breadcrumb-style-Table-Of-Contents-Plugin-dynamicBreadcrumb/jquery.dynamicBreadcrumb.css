@@ -1,12 +1,17 @@
 :root {
   --links_color_beadcrumb: rgb(73, 73, 255);
   --titre1-breadcrumb: red;
+
   --titre2-breadcrumb: #ff009d;
+
   --titre3-breadcrumb: #cf3eff;
+
   --titre4-breadcrumb: rgb(158, 94, 255);
+
   --titre5-breadcrumb: rgb(255, 124, 53);
   --titre6-breadcrumb: rgb(0, 209, 66);
   --surlignage_lien-breadcrumb: #4949ff;
+
   --font-size-list-liens-niveau-1: 22px;
   --font-size-list-liens-niveau-1-new: 24px;
   --font-size-list-liens-niveau-2: 26px;
@@ -23,7 +28,10 @@
 
 #breadcrumb .tocLinkBreadcrumb {
   color: #7070ff;
-  font: 0.8em Helvetica, Arial, Sans-Serif;
+  font:
+    0.8em Helvetica,
+    Arial,
+    Sans-Serif;
   font-style: italic;
   float: right;
   margin-right: 20px;
@@ -33,7 +41,10 @@
 .breadcrumb {
   list-style: none;
 
-  font: 0.8em Helvetica, Arial, Sans-Serif;
+  font:
+    0.8em Helvetica,
+    Arial,
+    Sans-Serif;
   padding-left: 0;
 }
 
@@ -52,40 +63,36 @@
   float: left;
 }
 
-.breadcrumb > li > a:after {
-  content: " ";
-
-  width: 0;
-  height: 0;
-
-  border-top: 5px solid transparent;
-
-  border-bottom: 5px solid transparent;
-
-  border-left: 30px solid #010302;
+.breadcrumb > li:nth-child(2) > a:after {
+  content: "\00A0\00A0\00A0↵";
   position: absolute;
   top: 50%;
-
-  margin-top: -5px;
   left: 100%;
+
+  transform: rotate(-90deg);
+  font-size: 18px;
+  color: var(--titre1-breadcrumb);
   z-index: 2;
 }
-
-.breadcrumb > li > a:before {
-  content: " ";
-
-  width: 0;
-  height: 0;
-  border-top: 5px solid transparent;
-  border-bottom: 5px solid transparent;
-  border-left: 30px solid white;
+.breadcrumb > li:nth-child(3) > a:after {
+  content: "\00A0\00A0\00A0↵";
   position: absolute;
   top: 50%;
-
-  margin-top: -5px;
-  margin-left: 2px;
   left: 100%;
-  z-index: 1;
+  transform: rotate(-90deg);
+  font-size: 18px;
+  color: var(--titre2-breadcrumb);
+  z-index: 2;
+}
+.breadcrumb > li:nth-child(4) > a:after {
+  content: "\00A0\00A0\00A0↵";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: rotate(-90deg);
+  font-size: 18px;
+  color: var(--titre3-breadcrumb);
+  z-index: 2;
 }
 
 .breadcrumb {
