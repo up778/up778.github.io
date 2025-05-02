@@ -11,12 +11,12 @@
   color-scheme: dark;
 
   --titre-de-niveau-1: red;
-  --titre-de-niveau-2: #ff009d;
-  --titre-de-niveau-3: #cf3eff;
-  --titre-de-niveau-4: #9e5eff;
-  --titre-de-niveau-5: #3f62ff;
+  --titre-de-niveau-2: orange;
+  --titre-de-niveau-3: #ff009d;
+  --titre-de-niveau-4: #cf3eff;
+  --titre-de-niveau-5: #9e5eff;
 
-  --titre-de-niveau-6: rgb(255, 89, 0);
+  --titre-de-niveau-6: #8a9fff;
 }
 
 .lien_all_title_1,
@@ -75,6 +75,8 @@
 
 .liste_tous_titres_class {
   border: 2px solid grey;
+
+  z-index: 10000;
 }
 
 .first_paragraph_of_tous_les_titres {
@@ -1110,7 +1112,8 @@ thead > tr > td {
   top: 110px;
   padding-bottom: 40px !important;
   margin-bottom: 40px !important;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
 
   z-index: 10;
 }
@@ -2282,4 +2285,12 @@ figcaption:not(.image > figcaption) {
   position: sticky !important;
   width: 80% !important;
   top: 0px !important;
+}
+
+table.dotted_between_rows tbody tr:not(:last-child) {
+  border-bottom: 1px dashed #aab;
+}
+
+table.dotted_between_rows td {
+  border: none !important;
 }
