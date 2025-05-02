@@ -1292,6 +1292,9 @@ $(document).ready(function () {
     `.boutons_ezoom {
       background-color: ${minus_70} !important;
     }`,
+    `.div_for_modal_for_link_outside_modal > a {
+      background-color: ${predo_trans} !important;
+    }`,
   ];
 
   rules.forEach(insert);
