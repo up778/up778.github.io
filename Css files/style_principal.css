@@ -1112,7 +1112,7 @@ thead > tr > td {
   top: 110px;
   padding-bottom: 40px !important;
   margin-bottom: 40px !important;
-  font-size: 18px;
+  font-size: 17px;
 
   font-weight: 600;
 
@@ -1350,6 +1350,7 @@ article,
   color: inherit;
 
   border-radius: 10%;
+  background-color: rgba(128, 128, 128, 0.548);
 }
 
 .bi-x-lg {
