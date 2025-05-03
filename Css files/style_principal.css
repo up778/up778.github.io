@@ -1238,7 +1238,7 @@ audio::-webkit-media-controls-timeline {
 .image_outside_td_and_float_left {
   margin: 20px;
   margin-bottom: 0px;
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 .breadcrumb {
