@@ -4,6 +4,7 @@ name: Keep alive each 5 mins
 on:
   schedule:
     - cron: '*/5 * * * *'  # Exécution toutes les 5 minutes
+  workflow_dispatch:   # Ajoute l'option pour un déclenchement manuel
 
 jobs:
   ping:
