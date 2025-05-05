@@ -4,7 +4,7 @@ name: Keep alive each 2 mins
 on:
   schedule:
     - cron: '*/2 * * * *'  # Exécution toutes les 2 minutes
-  workflow_dispatch:   # Ajoute l'option pour un déclenchement manuel
+  workflow_dispatch:       # Ajoute l'option pour un déclenchement manuel
 
 jobs:
   ping:
