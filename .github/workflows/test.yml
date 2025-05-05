@@ -1,0 +1,13 @@
+name: Simple Test
+
+on:
+  schedule:
+    - cron: '*/2 * * * *'  # Exécution toutes les 2 minutes
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test cron job
+        run: |
+          echo "Cron job is running!" >> cron_test.log
