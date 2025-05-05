@@ -1,9 +1,9 @@
-name: Keep alive each 5 mins
+name: Keep alive each 3 mins
 
-# Planification de l'exécution (toutes les 5 minutes)
+# Planification de l'exécution (toutes les 3 minutes)
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Exécution toutes les 5 minutes
+    - cron: '*/3 * * * *'  # Exécution toutes les 3 minutes
   workflow_dispatch:   # Ajoute l'option pour un déclenchement manuel
 
 jobs:
