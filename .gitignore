@@ -37,7 +37,7 @@
 # Film_s/*v3*
 # Audio_s/*v3*
 # AAA/**/*uuu*
-Posters_for_images
+# Posters_for_images
 !/Scss/
 !/Scss/**
 !/Pdfs/
