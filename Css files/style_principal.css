@@ -2249,7 +2249,7 @@ figcaption:not(.image > figcaption) {
 }
 
 .tab-content:has(.tab-pane) p:nth-of-type(2n):not(:empty):not(section p) {
-  background-color: #ffffff48 !important;
+  background-color: #ffffff24 !important;
 }
 
 .tab-content:has(.tab-pane) p:nth-of-type(2n + 1):not(:empty):not(section p) {
