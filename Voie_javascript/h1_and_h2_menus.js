@@ -803,6 +803,7 @@ $(document).ready(function () {
         $(this).css("border", "1px solid #ff00f0");
 
         $(this).css("border-radius", "10%");
+        $(this).addClass("selected_border");
       }
     });
   }, 2000);

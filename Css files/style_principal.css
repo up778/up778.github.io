@@ -1,13 +1,15 @@
 @font-face {
   font-family: "Cormorant";
 
-  src: url("../Fonts/Cormorant/Cormorant-VariableFont_wght.ttf") format("truetype");
+  src: url("../Fonts/Cormorant/Cormorant-VariableFont_wght.ttf")
+    format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
   color-scheme: dark;
+
   --titre-de-niveau-1: red;
   --titre-de-niveau-2: orange;
   --titre-de-niveau-3: #ff009d;
@@ -153,7 +155,9 @@ nav-item.dropup {
 }
 
 .list-group {
-  --darkreader-border--bs-list-group-active-border-color: var(--titre-de-niveau-3);
+  --darkreader-border--bs-list-group-active-border-color: var(
+    --titre-de-niveau-3
+  );
 }
 
 div › table › tbody › tr › td {
@@ -418,7 +422,8 @@ p + h3 {
   font-size: 121%;
   font-weight: normal !important;
   text-align: left;
-  font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial, serif;
+  font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
+    serif;
   margin: 0px 0px 0px 8%;
   color: var(--titre-de-niveau-3);
 }
@@ -427,7 +432,8 @@ h2 + div + h3 {
   font-size: 121%;
   font-weight: normal !important;
   text-align: left;
-  font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial, serif;
+  font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
+    serif;
   margin: 0px 0px -0px 8%;
   color: var(--titre-de-niveau-3);
 }
@@ -461,7 +467,8 @@ h3 + div + h4 {
   font-size: 111%;
   font-weight: normal !important;
   text-align: left;
-  font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial, serif;
+  font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
+    serif;
   margin: 0px 0px 0px 6%;
   color: var(--titre-de-niveau-4) !important;
 }
@@ -768,7 +775,16 @@ figure:has(.image_outside_td_and_float_right) {
   height: 30px;
 }
 
-[id^="bs_collapse_button"] > div > div.table1 > table > tbody > tr > td > p:nth-child(n) > span > audio {
+[id^="bs_collapse_button"]
+  > div
+  > div.table1
+  > table
+  > tbody
+  > tr
+  > td
+  > p:nth-child(n)
+  > span
+  > audio {
   max-width: 60vw !important;
 }
 
@@ -927,7 +943,8 @@ div.tox-editor-container > * {
   height: 104%;
   font-size: 0px;
   line-height: 0px;
-  background: url(http://www.legacycitychurch.com/media/cover_art/Play%20Button%20Overlay/playbutton.png) center center no-repeat;
+  background: url(http://www.legacycitychurch.com/media/cover_art/Play%20Button%20Overlay/playbutton.png)
+    center center no-repeat;
   background-size: 120px auto;
 }
 
@@ -1233,7 +1250,11 @@ audio::-webkit-media-controls-timeline {
 }
 
 #breadcrumb {
-  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.12) 10%, transparent 10%);
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.12) 10%,
+    transparent 10%
+  );
   background-size: 25px 25px;
   display: block;
 
@@ -1500,7 +1521,8 @@ article,
 }
 
 .h_table {
-  background-image: linear-gradient(to right, #7d7d7d 1px, transparent 1px), linear-gradient(to bottom, #7d7d7d 1px, transparent 1px);
+  background-image: linear-gradient(to right, #7d7d7d 1px, transparent 1px),
+    linear-gradient(to bottom, #7d7d7d 1px, transparent 1px);
   background-size: 50px 20px;
 }
 
@@ -1692,7 +1714,9 @@ article {
   max-width: 12vw;
 }
 
-#movie_player > div.ytp-chrome-top.ytp-show-cards-title > div.ytp-title-channel {
+#movie_player
+  > div.ytp-chrome-top.ytp-show-cards-title
+  > div.ytp-title-channel {
   display: none !important;
 }
 #teaser {
@@ -2272,4 +2296,21 @@ table.dotted_between_rows tbody tr:not(:last-child) {
 
 table.dotted_between_rows td {
   border: none !important;
+}
+
+.selected_border {
+  position: relative;
+}
+
+.selected_border::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid #ff00f0;
 }
