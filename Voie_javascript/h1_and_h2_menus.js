@@ -800,7 +800,7 @@ $(document).ready(function () {
   setTimeout(() => {
     $(".icon_on_top").each(function () {
       if ($(this)[0].outerHTML.indexOf(filename_histo) > 0) {
-        $(this).css("border", "1px solid #ff00f0");
+        $(this).css("border", "1px solid #ff006a");
 
         $(this).css("border-radius", "10%");
         $(this).addClass("selected_border");
