@@ -1615,6 +1615,13 @@ article {
   background-color: var(--titre-de-niveau-2);
 }
 
+.bcLevel2.bordures-cachees::before {
+  background-color: transparent;
+}
+.bcLevel3.bordures-cachees::before {
+  background-color: transparent;
+}
+
 .bcLevel2,
 .bcLevel3 {
   padding-left: 4px;

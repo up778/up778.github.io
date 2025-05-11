@@ -774,20 +774,28 @@ function stop_video_background() {
 
 function toggle_sections_2_and_3_borders() {
   if (bordures_pour_h2_et_h3_ont_elles_été_activées) {
-    $(".bcLevel2, .bcLevel3").css({
-      "border-top": "transparent",
-      "border-left": "transparent",
-    });
+    $(".bcLevel2, .bcLevel3")
+      .css({
+        "border-top": "transparent",
+        "border-left": "transparent",
+      })
+      .addClass("bordures-cachees");
     bordures_pour_h2_et_h3_ont_elles_été_activées = 0;
   } else {
-    $(".bcLevel2").css({
-      "border-top": "1px dotted #ff009d",
-      "border-left": "1px solid #ff009d",
-    });
-    $(".bcLevel3").css({
-      "border-top": "1px dotted #cf3eff",
-      "border-left": "1px solid #cf3eff",
-    });
+    $(".bcLevel2")
+      .css({
+        "border-top": "1px dotted orange",
+
+        "border-left": "1px solid orange",
+      })
+      .removeClass("bordures-cachees");
+    $(".bcLevel3")
+      .css({
+        "border-top": "1px dotted #ff009d",
+
+        "border-left": "1px solid #ff009d",
+      })
+      .removeClass("bordures-cachees");
     bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
   }
 }
