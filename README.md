@@ -27,7 +27,7 @@
       <li>une page avec diverses considérations sur les Orientaux et les Occidentaux 🗺️,</li>
       <li>une page sur les Gens du livre / la religion 🦢,</li>
       <li>une page sur les Ufologues et les Extra-terrestres 🛸,</li>
-      <li>une page sur la droite et la gauche, et enfin 🔴,</li>
+      <li>une page sur la droite et la gauche 🔴, et enfin,</li>
       <li>une page Musiciens/musique 🎶</li>
     </ul>
       <img class="rounded" style="width:20%;border-radius: 20%; max-width: 200px;float:right" src="https://up778.github.io/Images/3-October-2024-48-28-rand269A74A.jpg" alt="Image"/>
