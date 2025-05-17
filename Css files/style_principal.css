@@ -1468,31 +1468,12 @@ article,
   margin-left: 20px;
 }
 
-.first_paragraph_modified_parts {
-  color: rgb(255, 255, 255);
-  text-align: center;
-  border-top: 2px dotted grey;
-
-  border-right: 2px dotted grey;
-  background-color: grey;
-  font-weight: bold;
-}
-
-.first_paragraph_news_parts {
-  color: rgb(255, 255, 255);
-  text-align: center;
-  border-top: 2px dotted rgb(128, 128, 128);
-
-  border-right: 2px dotted grey;
-  background-color: rgb(80, 146, 0);
-  font-weight: bold;
-}
-
 .h_citation {
   color: rgb(0, 201, 0) !important;
 }
 .h_nouvelle_image_svg {
   color: rgb(255, 106, 0) !important;
+  text-shadow: 0 0 4px rgb(0, 0, 0);
 }
 .h_image_svg {
   color: rgb(255, 106, 0) !important;
@@ -1500,6 +1481,7 @@ article,
 
 .nouvelle_image_svg_ {
   line-height: 10% !important;
+  text-shadow: 0 0 4px rgb(0, 0, 0);
 }
 
 .h_partie {
@@ -2262,7 +2244,56 @@ figcaption:not(.image > figcaption) {
 }
 
 .tab-content:has(.tab-pane) p:nth-of-type(2n + 1):not(:empty):not(section p) {
-  background-color: #18181889 !important;
+  background-color: #18181889;
+}
+
+* > div:nth-of-type(2n) > .first_paragraph_news_parts {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-top: 2px dotted rgb(128, 128, 128);
+
+  border-right: 2px dotted grey;
+
+  background-color: #4a8f00 !important;
+
+  position: sticky;
+  top: -20px;
+}
+* > div:nth-of-type(2n + 1) > .first_paragraph_news_parts {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-top: 2px dotted rgb(128, 128, 128);
+
+  border-right: 2px dotted grey;
+  background-color: #006563 !important;
+
+  position: sticky;
+  top: -20px;
+}
+
+* > div:nth-of-type(2n) > .first_paragraph_modified_parts {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-top: 2px dotted grey;
+
+  border-right: 2px dotted grey;
+
+  background-color: #4a8f00 !important;
+
+  position: sticky;
+  top: -20px;
+}
+* > div:nth-of-type(2n + 1) > .first_paragraph_modified_parts {
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-top: 2px dotted grey;
+
+  border-right: 2px dotted grey;
+
+  background-color: #006563 !important;
+
+  position: sticky;
+  top: -20px;
 }
 
 .conserve_actus,
