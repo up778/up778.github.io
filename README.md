@@ -20,15 +20,15 @@
 <p> Ce site internet "tourne"🔃 surtout sur la théologie mais aussi sur la psychologie, la philosophie.
 (Pas trop un site de mathématiques🧮 ou physique.)</p>
 <p>Le site internet à l'adresse https://up778.github.io a des extraits musicaux, audios, vidéos.</p>
-<p>Voici une description sommaire des 7 pages du site :</p>
+<p>Voici une description sommaire des 7 pages du site https://up778.github.io :</p>
     <ul style="width:70%;list-style-type: none; padding: 0;">
-      <li>une page d'accueil,</li>
-      <li>une page avec certains sujets,</li>
-      <li>une page avec diverses considérations<br> sur les Orientaux et les Occidentaux,</li>
-      <li>une page sur la religion,</li>
-      <li>une page sur les Ufologues et les Extra-terrestres,</li>
-      <li>une page sur la droite et la gauche et enfin,</li>
-      <li>une page Musiciens/musique</li>
+      <li>une page d'accueil 🏠,</li>
+      <li>une page études de certains sujets ou "Créatures" 🔎,</li>
+      <li>une page avec diverses considérations sur les Orientaux et les Occidentaux 🗺️,</li>
+      <li>une page sur les Gens du livre / la religion 🦢,</li>
+      <li>une page sur les Ufologues et les Extra-terrestres 🛸,</li>
+      <li>une page sur la droite et la gauche, et enfin 🔴,</li>
+      <li>une page Musiciens/musique 🎶</li>
     </ul>
       <img class="rounded" style="width:20%;border-radius: 20%; max-width: 200px;float:right" src="https://up778.github.io/Images/3-October-2024-48-28-rand269A74A.jpg" alt="Image"/>
 

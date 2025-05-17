@@ -72,7 +72,7 @@ class LiteYTEmbed extends HTMLElement {
           "../../Images/V0_Backgrounds/abbey-1160492_1920.jpg";
       }
 
-      var background_image = 'url("' + img_src_iframe_8;
+      var background_image = 'url("' + i2mg_src_iframe_8;
 
       if (this.getAttribute("plac") == 0) {
         this.style.backgroundImage = background_image || poster_plus;
