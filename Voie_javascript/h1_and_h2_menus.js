@@ -1267,8 +1267,9 @@ function testyy() {
 
 $(document).ready(function () {
   const predo_trans = predo_color_of_page + "60";
-  const plus_50 = increaseColor(predo_color_of_page, 50);
+  const minus_60 = decreaseColor(predo_color_of_page, 60);
   const minus_70 = decreaseColor(predo_color_of_page, 70);
+  const plus_50 = increaseColor(predo_color_of_page, 50);
   const sheet = document.styleSheets[0];
   const insert = (rule) => sheet.insertRule(rule, sheet.cssRules.length);
 
@@ -1300,6 +1301,10 @@ $(document).ready(function () {
     }`,
     `.boutons_ezoom {
       background-color: ${minus_70} !important;
+    }`,
+
+    `.cadre_pour_infos_pour_boutons_svg {
+      background-color: ${minus_60} !important;
     }`,
   ];
 
