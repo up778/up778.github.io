@@ -1312,6 +1312,9 @@ $(document).ready(function () {
     `.liste_tous_titres_class {
     border: 2px solid ${minus_30} !important;
     }`,
+    `#breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(2n + 1) {
+     background-color: ${minus_70} !important;
+    }`,
   ];
 
   rules.forEach(insert);

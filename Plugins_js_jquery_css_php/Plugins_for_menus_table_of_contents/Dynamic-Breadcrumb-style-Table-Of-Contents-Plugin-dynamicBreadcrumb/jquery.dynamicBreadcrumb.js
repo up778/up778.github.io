@@ -2,7 +2,7 @@ const predo_color_of_page_recup =
   typeof predo_color_of_page !== "undefined" ? predo_color_of_page : "#00c400";
 
 const trans_predo_color_of_page_recup = predo_color_of_page_recup
-  ? predo_color_of_page_recup + "60 !important;"
+  ? predo_color_of_page_recup + "77 !important;"
   : "#ffff0050";
 
 var customBg =
@@ -229,7 +229,7 @@ $("head").append(styleTag);
                     .text()
                 ) {
                   subMenu.append(
-                    '<li class=" "><a style="border:1px dotted yellow; background-color:' +
+                    '<li class=" "><a style="border-radius: 10px;border:1px dotted yellow; background-color:' +
                       trans_predo_color_of_page_recup +
                       ' class="Jacques2" href="#' +
                       $(this).attr("id") +
