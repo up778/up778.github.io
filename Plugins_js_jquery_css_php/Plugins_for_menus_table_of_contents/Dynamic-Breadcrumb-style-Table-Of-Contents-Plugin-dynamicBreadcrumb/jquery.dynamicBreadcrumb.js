@@ -4,6 +4,9 @@ const predo_color_of_page_recup =
 const trans_predo_color_of_page_recup = predo_color_of_page_recup
   ? predo_color_of_page_recup + "77 !important;"
   : "#ffff0050";
+const t2rans_predo_color_of_page_recup = predo_color_of_page_recup
+  ? predo_color_of_page_recup + "cc !important;"
+  : "#ffff00bb";
 
 var customBg =
   "background-color: " + trans_predo_color_of_page_recup + " !important;";
@@ -229,9 +232,9 @@ $("head").append(styleTag);
                     .text()
                 ) {
                   subMenu.append(
-                    '<li class=" "><a style="border-radius: 10px;border:1px dotted yellow; background-color:' +
-                      trans_predo_color_of_page_recup +
-                      ' class="Jacques2" href="#' +
+                    '<li class=" "><a style="border-radius: 10px;border:2px dotted ' +
+                      t2rans_predo_color_of_page_recup +
+                      ';  class="Jacques2" href="#' +
                       $(this).attr("id") +
                       '">' +
                       $(this)
