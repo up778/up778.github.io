@@ -1267,7 +1267,10 @@ function testyy() {
 
 $(document).ready(function () {
   const predo_trans = predo_color_of_page + "60";
+  const p2redo_trans = predo_color_of_page + "aa";
   const minus_30 = decreaseColor(predo_color_of_page, 30);
+  const trans_minus_60 = decreaseColor(predo_color_of_page, 60) + "cc";
+
   const minus_60 = decreaseColor(predo_color_of_page, 60);
   const minus_70 = decreaseColor(predo_color_of_page, 70);
   const plus_50 = increaseColor(predo_color_of_page, 50);
@@ -1301,7 +1304,7 @@ $(document).ready(function () {
       color: ${plus_50} !important;
     }`,
     `.boutons_ezoom {
-      background-color: ${minus_70} !important;
+      background-color: ${trans_minus_60} !important;
     }`,
     `.cadre_pour_infos_pour_boutons_svg {
       background-color: ${minus_60} !important;
@@ -1314,6 +1317,10 @@ $(document).ready(function () {
     }`,
     `#breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(2n + 1) {
      background-color: ${minus_70} !important;
+    }`,
+    ,
+    `.modal-backdrop {
+     z-index:9 !important;
     }`,
   ];
 
