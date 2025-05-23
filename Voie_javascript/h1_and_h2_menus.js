@@ -1267,13 +1267,14 @@ function testyy() {
 
 $(document).ready(function () {
   const predo_trans = predo_color_of_page + "60";
-  const p2redo_trans = predo_color_of_page + "aa";
+
   const minus_30 = decreaseColor(predo_color_of_page, 30);
   const trans_minus_60 = decreaseColor(predo_color_of_page, 60) + "cc";
 
   const minus_60 = decreaseColor(predo_color_of_page, 60);
   const minus_70 = decreaseColor(predo_color_of_page, 70);
   const plus_50 = increaseColor(predo_color_of_page, 50);
+
   const sheet = document.styleSheets[0];
   const insert = (rule) => sheet.insertRule(rule, sheet.cssRules.length);
 
@@ -1321,6 +1322,9 @@ $(document).ready(function () {
     ,
     `.modal-backdrop {
      z-index:9 !important;
+    }`,
+    `.dropdown-menu {
+    border:1px solid ${predo_color_of_page} !important;
     }`,
   ];
 
