@@ -1116,7 +1116,7 @@ thead > tr > td {
 
   font-weight: 550;
 
-  z-index: 10;
+  z-index: 40;
 }
 
 * > thead > th:first-child {
