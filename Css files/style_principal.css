@@ -959,21 +959,29 @@ div.tox-editor-container > * {
   font-size: 20px;
   text-align: center;
 
-  max-width: 15vw;
+  max-width: 12vw;
   position: fixed;
-  top: 150px;
+  top: 110px;
 
-  right: 80px;
+  right: 40px;
 
   max-height: 40vh;
 }
 
 #dinamicMenu {
-  top: 120px;
+  top: 100px;
   max-height: 80vh !important;
   display: block;
   position: fixed;
-  right: 20px;
+  right: 50px;
+}
+
+.dynamicContentMenu {
+  width: 10vw;
+  max-height: 80%;
+  overflow-y: auto;
+
+  position: fixed;
 }
 
 a {

@@ -42,12 +42,6 @@
 }
 
 .dynamicContentMenu {
-  width: 12%;
-  max-height: 80%;
-  overflow-y: auto;
-
-  position: fixed;
-
   box-shadow: var(--mainBoxShadow, --scodDefaultBoxShadow);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
