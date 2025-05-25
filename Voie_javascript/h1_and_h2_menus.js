@@ -1329,6 +1329,9 @@ $(document).ready(function () {
     `.un_conserve_top_l_case {
     background-color: ${minus_30} !important;
     }`,
+    `.grand_titre {
+     text-shadow: 0 0 15px ${plus_50}, 0 0 35px ${plus_50} !important;
+    }`,
   ];
 
   rules.forEach(insert);
