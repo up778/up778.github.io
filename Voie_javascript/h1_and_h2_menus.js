@@ -1326,6 +1326,9 @@ $(document).ready(function () {
     `.dropdown-menu {
     border:1px solid ${predo_color_of_page} !important;
     }`,
+    `.un_conserve_top_l_case {
+    background-color: ${minus_30} !important;
+    }`,
   ];
 
   rules.forEach(insert);
