@@ -17,6 +17,10 @@
   --titre-de-niveau-5: #9e5eff;
 
   --titre-de-niveau-6: #8a9fff;
+
+  --h1-font-size: 181%;
+  --h2-font-size: 141%;
+  --h3-font-size: 121%;
 }
 
 .lien_all_title_1,
@@ -320,7 +324,7 @@ a {
 }
 
 h1 {
-  font-size: 141%;
+  font-size: var(--h1-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
   font-family: "Times New Roman", calibri, Times, serif !important;
@@ -348,7 +352,7 @@ h1 > a {
 }
 
 h2 {
-  font-size: 131%;
+  font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
   margin: 0px 0px 0px 10%;
@@ -358,7 +362,7 @@ h2 {
 }
 
 h2 > a {
-  font-size: 131%;
+  font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
   padding-bottom: 0px;
@@ -368,7 +372,7 @@ h2 > a {
 }
 
 h1 + h2 {
-  font-size: 131%;
+  font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
   margin: 0px 0px 0px 10%;
@@ -378,7 +382,7 @@ h1 + h2 {
 }
 
 *:not(h1) + h2 {
-  font-size: 131%;
+  font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
   margin: 0px 0px 0px 10%;
@@ -392,7 +396,7 @@ h1 + h2 {
 }
 
 h3 {
-  font-size: 121%;
+  font-size: var(--h3-font-size);
   font-weight: normal !important;
   text-align: left;
   font-family: "Times New Roman", calibri, Abelone, Arial, serif;
@@ -401,7 +405,7 @@ h3 {
 }
 
 *:not(h2) + h3 {
-  font-size: 121%;
+  font-size: var(--h3-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
   margin: 40px 0px 0px 9% !important;
@@ -409,7 +413,7 @@ h3 {
 }
 
 h2 + h3 {
-  font-size: 121%;
+  font-size: var(--h3-font-size);
   font-weight: normal !important;
   text-align: left;
   font-family: "Times New Roman", calibri, Abelone, Arial, serif;
@@ -419,7 +423,7 @@ h2 + h3 {
 
 p + div + h3,
 p + h3 {
-  font-size: 121%;
+  font-size: var(--h3-font-size);
   font-weight: normal !important;
   text-align: left;
   font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
@@ -429,7 +433,7 @@ p + h3 {
 }
 
 h2 + div + h3 {
-  font-size: 121%;
+  font-size: var(--h3-font-size);
   font-weight: normal !important;
   text-align: left;
   font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
