@@ -1297,6 +1297,9 @@ audio::-webkit-media-controls-timeline {
   border-left: 4px solid rgb(85, 255, 85) !important;
   font-style: italic;
 }
+* > .probable_non_citation_de_Dieu > p > span {
+  color: rgb(40, 217, 0);
+}
 
 .probable_citation_de_Dieu {
   border-left: 4px solid #fbff00 !important;
@@ -1308,6 +1311,11 @@ audio::-webkit-media-controls-timeline {
   font-style: italic;
 }
 
+* > .probable_citation_de_Dieu > p > span {
+  color: #fbff00;
+  font-style: italic;
+}
+
 .probable_citation_de_Dieu > * {
   font-style: italic;
   color: #fbff00;
@@ -1316,17 +1324,30 @@ audio::-webkit-media-controls-timeline {
   font-size: 17px !important;
 }
 
+.probable_citation_du_Père {
+  border-left: 4px solid red !important;
+  font-style: italic;
+  color: red;
+}
+
+.probable_citation_du_Père > p > * {
+  font-style: italic;
+}
+
+* > .probable_citation_du_Père > p > span {
+  color: red;
+  font-style: italic;
+}
+
+.probable_citation_du_Père > * {
+  font-style: italic;
+  color: red;
+  font-family: "times new roman", cursive !important;
+  font-size: 17px !important;
+}
+
 * > p > span {
   color: white;
-}
-
-* > .probable_non_citation_de_Dieu > p > span {
-  color: rgb(40, 217, 0);
-}
-
-* > .probable_citation_de_Dieu > p > span {
-  color: #fbff00;
-  font-style: italic;
 }
 
 article,
