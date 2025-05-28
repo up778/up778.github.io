@@ -1332,6 +1332,33 @@ $(document).ready(function () {
     `.grand_titre {
      text-shadow: 0 0 15px ${plus_50}, 0 0 35px ${plus_50} !important;
     }`,
+
+    `.border_for_video {
+  position: relative;
+  border-radius: 10%;
+  background: black;
+  z-index: 0;
+}`,
+
+    `.border_for_video::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -2px;
+  bottom: -1px;
+  border-radius: 10px;
+  z-index: -1;
+  background:
+    repeating-linear-gradient(to right, ${predo_color_of_page} 0 1px, transparent 1px 1vw) top
+      center / 100% 1px no-repeat,
+    repeating-linear-gradient(to right, ${predo_color_of_page} 0 1px, transparent 1px 1vw) bottom
+      center / 100% 1px no-repeat,
+    repeating-linear-gradient(to bottom, ${predo_color_of_page} 0 1px, transparent 1px 1vw) left
+      center / 1px 100% no-repeat,
+    repeating-linear-gradient(to bottom, ${predo_color_of_page} 0 1px, transparent 1px 1vw) right
+      center / 1px 100% no-repeat;
+}`,
   ];
 
   rules.forEach(insert);
