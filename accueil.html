@@ -249,7 +249,7 @@ class="image_autumn n5"
                   "url": "https://twitter.com/account7541"
                 },
                 "datePublished": "2024-02-26",
-              "dateModified": "2025-05-21"
+              "dateModified": "2025-05-30"
               }
             },
             {
@@ -3492,32 +3492,95 @@ window.addEventListener('load', () => {
 </script> -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Créer une Map pour stocker les popovers
     const popovers = new Map();
-    // Fonction pour initialiser un popover sur un bouton
+    let activeSinglePopover = null; // Pour popover unique des nouveaux boutons
+    // Initialisation d'un popover sur un bouton (désactivé par défaut)
     function initializePopover(button) {
       const title = button.getAttribute("data-popover-title");
       const content = button.getAttribute("data-popover-content");
       const placement = button.getAttribute("data-placement") || "auto";
-      const customClass = button.getAttribute("data-popover-class");
-      // Créer un popover avec les options personnalisées
+      const customClass = button.getAttribute("data-popover-class") || "";
       const popover = new bootstrap.Popover(button, {
         trigger: "manual",
         placement: placement,
         title: title,
         content: content,
         container: "body",
-        customClass: customClass || "",
+        customClass: customClass,
         html: true,
       });
-      // Ajouter le popover à la Map
       popovers.set(button, popover);
-      // Désactiver le popover dès l'initialisation sur les boutons .pop_button
       popover.disable();
     }
-    // Initialiser les popovers pour tous les boutons existants
+    // Initialiser tous les popovers déjà existants (anciens boutons)
     document.querySelectorAll(".pop_button").forEach(initializePopover);
-    // MutationObserver pour détecter les nouveaux boutons ajoutés au DOM
+    // Bouton pour afficher tous les anciens popovers en même temps
+    const showAllPopoversButton = document.getElementById("trigger_popovers");
+    if (showAllPopoversButton) {
+      showAllPopoversButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        popovers.forEach((popover, btn) => {
+          if (!popover._element.classList.contains("disabled")) {
+            popover.enable();
+            popover.show();
+          }
+        });
+      });
+    }
+    // Gestion des nouveaux boutons (ex. créés dynamiquement dans TinyMCE)
+    // On cible par exemple la classe "popover_editable" (ou une autre classe spécifique)
+    document.body.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target.classList.contains("popover_editable")) {
+        e.stopPropagation();
+        // Si popover unique déjà actif sur un autre bouton, on le cache
+        if (activeSinglePopover && activeSinglePopover.btn !== target) {
+          activeSinglePopover.popover.hide();
+          activeSinglePopover.popover.dispose();
+          activeSinglePopover = null;
+        }
+        if (!activeSinglePopover || activeSinglePopover.btn !== target) {
+          // Créer et afficher un nouveau popover pour ce bouton cliqué
+          const title =
+            target.getAttribute("title") ||
+            target.getAttribute("data-popover-title") ||
+            "";
+          // Récupérer le contenu caché à côté dans le DOM, par exemple dans un sibling avec .popover_content
+          let content = "";
+          const wrapper = target.closest(".popover_wrapper");
+          if (wrapper) {
+            const contentDiv = wrapper.querySelector(".popover_content");
+            if (contentDiv) content = contentDiv.innerHTML;
+          }
+          // Créer popover Bootstrap
+          const popover = new bootstrap.Popover(target, {
+            trigger: "manual",
+            placement: "auto",
+            title: title,
+            content: content,
+            container: "body",
+            html: true,
+          });
+          popover.show();
+          activeSinglePopover = { btn: target, popover: popover };
+        } else {
+          // Si on reclique sur le même bouton, on cache le popover
+          activeSinglePopover.popover.hide();
+          activeSinglePopover.popover.dispose();
+          activeSinglePopover = null;
+        }
+      } else {
+        // Clic en dehors : cacher le popover unique
+        if (activeSinglePopover) {
+          activeSinglePopover.popover.hide();
+          activeSinglePopover.popover.dispose();
+          activeSinglePopover = null;
+        }
+        // Cacher tous les popovers des anciens boutons aussi
+        popovers.forEach((popover) => popover.hide());
+      }
+    });
+    // MutationObserver pour détecter les nouveaux boutons pop_button (anciens style)
     const observer = new MutationObserver(() => {
       document.querySelectorAll(".pop_button").forEach((button) => {
         if (!popovers.has(button)) {
@@ -3526,45 +3589,6 @@ window.addEventListener('load', () => {
       });
     });
     observer.observe(document.body, { childList: true, subtree: true });
-    // Cacher les popovers en cliquant en dehors
-    document.addEventListener("click", () => {
-      popovers.forEach((popover) => popover.hide());
-    });
-    // Empêcher la fermeture si on clique à l'intérieur d'un popover
-    document.body.addEventListener("click", (event) => {
-      if (event.target.closest(".popover")) {
-        event.stopPropagation(); // Empêche la fermeture du popover
-      }
-    });
-    // Boutons pour activer les popovers
-    const showAllPopoversButton = document.getElementById("trigger_popovers");
-    const showAllPopoversButton2 = document.getElementById("bouton2_pour_pops");
-    const showAllPopoversButton3 = document.getElementById("bouton3_pour_pops");
-    const showAllPopoversButton4 = document.getElementById("bouton4_pour_pops");
-    // Fonction pour activer les popovers
-    const enablePopovers = (event) => {
-      event.stopPropagation(); // Empêche la propagation de l'événement
-      popovers.forEach((popover) => {
-        // Activer les popovers uniquement pour les boutons .pop_button
-        if (!popover._element.classList.contains("disabled")) {
-          popover.enable();
-          popover.show(); // Afficher immédiatement le popover
-        }
-      });
-    };
-    // Gestion des clics pour les boutons spécifiques
-    if (showAllPopoversButton) {
-      showAllPopoversButton.addEventListener("click", enablePopovers);
-    }
-    if (showAllPopoversButton2) {
-      showAllPopoversButton2.addEventListener("click", enablePopovers);
-    }
-    if (showAllPopoversButton3) {
-      showAllPopoversButton3.addEventListener("click", enablePopovers);
-    }
-    if (showAllPopoversButton4) {
-      showAllPopoversButton4.addEventListener("click", enablePopovers);
-    }
   });
 </script>
 <!-- <script>
