@@ -1,0 +1,85 @@
+*
+!.gitattributes
+!/Creaturae/
+!/Creaturae/**
+
+# !/Creaturae/Religion
+# !/Creaturae/Religion/**
+# !/Droite_gauche
+# !/Droite_gauche/**
+# !/Creaturae/Droite_gauche
+# !/Creaturae/Droite_gauche/**
+
+!/Accueil/
+!/Accueil/**
+!/Art-Artistes/
+!/Art-Artistes/**
+!/Assets
+!/Assets/**
+!/Additional_html/
+!/Additional_html/**
+!/Images
+!/Images/**
+!Voie_javascript/
+!Voie_javascript/**
+
+!/Perspectives/Perspectives
+!/Perspectives/Perspectives/** */
+
+!/Plugins_js_jquery_css_php/
+!/Plugins_js_jquery_css_php/**
+!/Voie_javascript/
+!/Voie_javascript/**
+# Film_s
+# Audio_s
+**/Film_s/**/*__*
+**/Audio_s/**/*__*
+# Film_s/*v3*
+# Audio_s/*v3*
+# AAA/**/*uuu*
+# Posters_for_images
+!/Scss/
+!/Scss/**
+!/Pdfs/
+!/Pdfs/**
+# !Créatures_sujets_à_l_étude.html
+
+# !gauche_et_droite.html
+# !Orientaux__Occidentaux.html
+# !Artistes-Comoedica-Musiciens.html
+# !ufologues-extraterrestres.html
+# !Créatures_du_livre__religions.html
+# !Cr%C3%A9atures_du_livre__religions.html
+!style_principal.css
+!css_for_new_audio_player.css
+!favicon.ico
+!/Css files/
+!/Css files/**
+!/bootstrap-5.3.3-dist/
+!/bootstrap-5.3.3-dist/**
+!/bootstrap-5.3.4-dist/
+!/bootstrap-5.3.4-dist/**
+Voie_javascript/check_which_browser.js
+
+# !/Pages_pour_historique_site/
+# !/Pages_pour_historique_site/**
+# !/Pages_pour_historique_site/accueil_historique_t2.html
+# !/Pages_pour_historique_site/0historique_des_modifications_pour_toutes_les_pages.html
+# !/Pages_pour_historique_site/0info_tab_histo.html
+# !/Pages_pour_historique_site/Orientaux__Occidentaux_historique_t2.html
+
+# /Pages_pour_historique_site/test_volet_historique_historique_t2.html
+/.gitignore
+# /Pages_pour_historique_site/0_accueil_historique_t2.html
+# /Pages_pour_historique_site/html_test_plus_historique_t2.html
+
+*.ffs*
+/Accueil/Brouillons
+Creaturae/Certaines ''puissances''
+!/Animation_s/
+!/Animation_s/**
+
+!/node_modules/
+!/node_modules/**
+0_*.html
+/Additional_html/horizontal_heading_avant_boutons_doubles.html

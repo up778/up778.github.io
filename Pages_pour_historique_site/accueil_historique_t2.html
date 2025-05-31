@@ -1,0 +1,741 @@
+<div class="className offcanvas offcanvas-end volet_historique_tiny_class" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" data-bs-scroll="true" style="background-image: url('Images/dune_v2.jpg'); z-index: 8007; border: 1px solid grey; background-color: #222222ff !important; background-position: center; background-size: 100%;" aria-controls="offcanvasScrolling" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left=""><!-- aria-controls="offcanvasScrolling"  Offcanvas · Bootstrap v5.3 https://getbootstrap.com/docs/5.3/components/offcanvas/#body-scrolling-and-backdrop -->
+<div class="offcanvas-header my_editable_div mce-content-body" style="background-color: rgba(25, 25, 25, 0.725); position: relative; font-size: 100% !important;" id="mce_34" data-darkreader-inline-bgcolor="" ><button type="button" class="btn bi bi-x-lg" style="background-color: rgba(78, 0, 0, 0.725);" data-bs-dismiss="offcanvas" aria-label="Close" data-darkreader-inline-bgcolor=""></button> <button type="button" role="button" class="btn bi2-x-lg bg-primary-darkblue-colled" style="background-color: rgba(52, 209, 0, 0); font-size: 80%; max-width: 60px;" data-bs-dismiss="" aria-label="" data-darkreader-inline-bgcolor="" onclick="reduce_body_size_from_offcanva()"> réduire la<br>largeur<br>de la page<br>principale </button>
+<div id="offcanvasNavbarLabel" class="offcanvas-title stop" style="font-size: 100% !important; text-align: center;"><br>⏳ Volet pour l'historique ⏳. <br>Page accueil.html <br><br>
+<ul id="pills-tab" class="nav nav-pills mb-3 gap-1" role="tablist">
+<li class="nav-item" role="presentation"><button class="nav-link btn bg_primary_darkblue_colled_historique1 active" id="nouvelles_parties_pills-tab" data-bs-toggle="pill" data-bs-target="#nouvelles_parties_pills" type="button" role="tab" aria-controls="nouvelles_parties_pills" aria-selected="true" style="font-size: 80% !important;"> &nbsp;Nouvelles parties<br>pour cette page </button></li>
+<li class="nav-item" role="presentation"><button class="nav-link btn bg_primary_darkblue_colled_historique2" id="modified_parts_pills-tab" data-bs-toggle="pill" data-bs-target="#modified_parts_pills" type="button" role="tab" aria-controls="modified_parts_pills" aria-selected="false" style="font-size: 80% !important;" tabindex="-1"> &nbsp;Parties modifiées<br>pour cette page </button></li>
+<li class="nav-item" role="presentation"><button class="nav-link btn bg_primary_darkblue_colled_historique3" id="all_pages_changes_pills-tab" data-bs-toggle="pill" data-bs-target="#all_pages_changes_pills" type="button" role="tab" aria-controls="all_pages_changes_pills" aria-selected="false" style="font-size: 80% !important;" tabindex="-1"> Changements<br>communs à toutes les pages </button></li>
+<li class="nav-item" role="presentation"><button class="nav-link btn bg_primary_darkblue_colled_historique4" id="info_pills_tab" data-bs-toggle="pill" data-bs-target="#info_pills_tab_id" type="button" role="tab" aria-controls="info_pills" aria-selected="false" style="font-size: 80% !important;" tabindex="-1"> Infos sur l'historique<br></button> <button class="nav-link btn bg_primary_darkblue_colled_historique5" id="this_page_pills_tab_id" data-bs-toggle="pill" data-bs-target="#this_page_pills_tab" type="button" role="tab" aria-controls="this_page_pills" aria-selected="false" style="font-size: 80% !important;" tabindex="-1"> Modifs pour cette page<br></button></li>
+</ul>
+</div>
+</div>
+
+<div class="offcanvas-body my_editable_div mce-content-body" id="mce_35"  style="font-size: 100% !important; position: relative;">
+<div class="tab-content" id="pills-tabContent" style="font-size: 80% !important;">
+<div class="tab-pane fade show active" id="nouvelles_parties_pills" role="tabpanel" aria-labelledby="nouvelles_parties_pills-tab" style="background-color: rgba(43, 255, 0, 0.235) !important;" data-darkreader-inline-bgcolor="" tabindex="0">
+<div class="div_news_parts_histo_for_this_page d-grid gap-0">
+<div class="news_parts_21_2025_div">
+<p class="titre_de_p_21_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 19 mai 2025</p>
+<p class="p_de_modif_21_2025 h_nouvelle_vidéo">Nouvelle vidéo "I'm Not a Hero" ajoutée. <a href="#accueil_iframe_video_id_dn_dimanche_25_mai_2025_12_501">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Quelques hypothèses sur ce que signifierai, en réalité, cette notion d'égalité🆕" ajoutée. <a href="#accueil_titre_perma_id_dn_mardi_2mai_2025_47_146">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "André de Biase / Pascal Tréffainguy. André de Biase : serait-ce lui le Grand Monarque?🆕" ajoutée. <a href="#accueil_titre_perma_id_dn_mardi_2mai_2025_27_611">lien</a></p>
+</div>
+<div class="news_parts_20_2025_div">
+<p class="titre_de_p_20_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 12 mai 2025</p>
+<p class="p_de_modif_20_2025 h_nouvelle_vidéo">&nbsp;Nouvelle vidéo "Mahdi 1438" ajoutée. <a href="#accueil_iframe_video_id_dn_samedi_17_mai_2025_8_183">lien</a></p>
+<p class="p_de_modif_20_2025 h_nouvelle_vidéo">Nouvelle vidéo "The Mahdi Wants Peace Between Israel &amp; Palestine - المهدي يريد السلام بين إسرائيل وفلسطين" ajoutée. <a href="#accueil_iframe_video_id_dn_samedi_17_mai_2025_32_232">lien</a></p>
+</div>
+<div class="news_parts_16_2025_div">
+<p class="titre_de_p_16_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 14 avril 2025</p>
+<p class="p_de_modif_16_2025 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_lundi_14_avril_2025_9_19">lien</a></p>
+</div>
+<div class="news_parts_15_2025_div">
+<p class="titre_de_p_15_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 7 avril 2025</p>
+<p class="p_de_modif_15_2025 h_nouvelle_image_svg">Nouvelle image svg "obstination à alimenter certains systèmes comparée à qualité de ces sytèmes" ajoutée. <a href="#accueil_svg_perma_id_dn_vendredi_11_avril_2025_41_348">lien</a></p>
+</div>
+<div class="news_parts_13_2025_div">
+<p class="titre_de_p_13_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 24 mars 2025</p>
+<p class="p_de_modif_13_2025 h_nouvelle_image_svg">Nouvelle image svg "Divers_systèmes_sociétaux.Sensation.Solitude_ou_non" ajoutée. <a href="#accueil_svg_perma_id_dn_jeudi_27_mars_2025_0_565">lien</a></p>
+</div>
+<div class="news_parts_9_2025_div">
+<p class="titre_de_p_9_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 24 février 2025</p>
+<p class="p_de_modif_9_2025 h_citation">Citation " on peut être adulte dans mon âge tout en étant des..." ajoutée. <a href="#accueil_blockquote_perma_id_dn_vendredi_28_février_2025_0_336">lien</a></p>
+</div>
+<div class="news_parts_8_2025_div">
+<p class="titre_de_p_8_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 17 février 2025</p>
+<p class="p_de_modif_8_2025 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_dimanche_23_février_2025_6_918">lien</a></p>
+</div>
+<div class="news_parts_6_2025_div">
+<p class="titre_de_p_6_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 3 février 2025</p>
+<p class="p_de_modif_6_2025 h_nouvelle_vidéo">Nouveau schéma animé film, Trinitisation <a href="#containers_pour_lottie">lien</a></p>
+</div>
+<div class="news_parts_4_2025_div">
+<p class="titre_de_p_4_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 20 janvier 2025</p>
+<p class="p_de_modif_4_2025 h_nouvelle_vidéo">Nouvelle vidéo "Alerte ! Israël en guerre ! Début de la guerre en Orient annoncée par les prophéties ?" ajoutée. <a href="#accueil_iframe_video_id_dn_mardi_21_janvier_2025_55_795">lien</a></p>
+</div>
+<div class="news_parts_2_2025_div">
+<p class="titre_de_p_2_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 6 janvier 2025</p>
+<p class="p_de_modif_2_2025 h_nouvelle_image_svg">Nouvelle image svg "Schéma récapitulatif de mes sensations, comparées à mes connaissances, avec le temps" ajoutée. <a href="#accueil_svg_perma_id_dn_lundi_6_janvier_2025_48_450">lien</a></p>
+<p class="p_de_modif_2_2025 h_partie">Partie "Préambule / sensation générale sur le monde, ou du moins, la société qui m'entoura/qui m'entoure" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_6_janvier_2025_11_575">lien</a></p>
+</div>
+<div class="news_parts_1_2025_div">
+<p class="titre_de_p_1_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi -1 janvier 2025</p>
+<p class="p_de_modif_1_2025 h_audio">Audio "Stephan Eicher - des hauts, des bas, extrait.wav" ajoutée. <a href="#accueil_fig_audio_perma_id_dn_jeudi_2_janvier_2025_48_322">lien</a></p>
+</div>
+<div class="news_parts_52_2024_div">
+<p class="titre_de_p_52_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 23 décembre 2024</p>
+<p class="p_de_modif_52_2024 h_nouvelle_vidéo">Nouvel extrait vidéo "extrait de Queen one vision remastered [HD]" ajoutée.&nbsp;<a href="#accueil_iframe_video_id_dn_vendredi_27_décembre_2024_21_528">lien</a></p>
+<p class="p_de_modif_52_2024 h_nouvelle_vidéo">Nouvel extrait vidéo "extrait Banlieue nord (Remasterisé en 2009)" ajoutée.&nbsp;<a href="#accueil_iframe_video_id_dn_vendredi_27_décembre_2024_45_992">lien</a></p>
+<p class="p_de_modif_52_2024 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_vendredi_27_décembre_2024_44_935">lien</a></p>
+</div>
+<div class="news_parts_51_2024_div">
+<p class="titre_de_p_51_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 16 décembre 2024</p>
+<p class="p_de_modif_51_2024 h_nouvelle_vidéo">Nouvelle playlist vidéo "Sylvain Durif, Le Grand Monarque, le Christ cosmique" ajoutée. <a href="#accueil_iframe_video_id_dn_samedi_21_décembre_2024_11_469">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Ma sensation sur le Bouhddisme/tantrisme, depuis plusieurs années" ajoutée. <a href="#accueil_titre_perma_id_dn_samedi_21_décembre_2024_55_803">lien</a></p>
+<p class="p_de_modif_51_2024 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_samedi_21_décembre_2024_29_462">lien</a></p>
+</div>
+<div class="news_parts_50_2024_div">
+<p class="titre_de_p_50_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 9 décembre 2024</p>
+<p class="p_de_modif_50_2024 h_audio">Audio "Audio_s/une sensation - téléphone - JL Aubert.wav" ajoutée. <a href="#accueil_audio_perma_id_dn_dimanche_15_décembre_2024_40_288">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Le Bouddhisme / le tantrisme / l'Hindouisme, par rapport à l'islam" ajoutée. <a href="#accueil_titre_perma_id_dn_samedi_14_décembre_2024_57_675">lien</a></p>
+</div>
+<div class="news_parts_49_2024_div">
+<p class="titre_de_p_49_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 2 décembre 2024</p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Ma sensation sur l'hindouisme, le Bouddhisme, le tantrisme. Ma sensation Bouhdisme/tantrisme comparé à islamisme" ajoutée. <a href="#accueil_titre_perma_id_dn_vendredi_6_décembre_2024_34_818">lien</a></p>
+<p class="p_de_modif_49_2024 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_vendredi_6_décembre_2024_26_266">lien</a></p>
+</div>
+<div class="news_parts_46_2024_div">
+<p class="titre_de_p_46_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 11 novembre 2024</p>
+<p class="p_de_modif_46_2024 h_citation">Citation "20 octobre 1931, le livre" ajoutée. <a href="#accueil_blockquote_perma_id_dn_lundi_11_novembre_2024_45_925">lien</a></p>
+</div>
+<div class="news_parts_44_2024_div">
+<p class="titre_de_p_44_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 28 octobre 2024</p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Mon feeling, sur grand Monarque, par rapport à Mahdi - Machia'h" ajoutée. <a href="#accueil_titre_perma_id_dn_jeudi_31_octobre_2024_11_891">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Ma sensation / Mon à priori sur la chaine ''la fin des temps''" ajoutée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_180">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "La chaine la fin des temps et le Mahdi" ajoutée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_637">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Une crise économique?" ajoutée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_326">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+</div>
+<div class="news_parts_43_2024_div">
+<p class="titre_de_p_43_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 21 octobre 2024</p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" ajoutée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_43_2024 h_citation">Citation "L'humanité a été composée à..." ajoutée. <a href="#accueil_blockquote_perma_id_dn_vendredi_25_octobre_2024_27_100">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Sylvain Durif = ? le Grand Monarque" ajoutée. <a href="#accueil_titre_perma_id_dn_vendredi_25_octobre_2024_14_563">lien</a></p>
+</div>
+<div class="news_parts_42_2024_div">
+<p class="titre_de_p_42_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 14 octobre 2024</p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Une égalité dans les capacités de chacun?" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Enfance, adolescence, puis suite: mon ressenti sociétal à travers divers âges" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_30_727">lien</a></p>
+</div>
+<div class="news_parts_40_2024_div">
+<p class="titre_de_p_40_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 0 octobre 2024</p>
+<p class="p_de_modif_40_2024 h_partie">Partie "Mathieu B. / Claude : Serait-ce Mathieu B.&nbsp;le futur grand Monarque?" ajoutée.&nbsp;<a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_43_31">lien</a></p>
+<p class="p_de_modif_40_2024 h_partie">Partie "Préambule, le grand Monarque" ajoutée.&nbsp;<a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_42_104">lien</a></p>
+<p class="p_de_modif_40_2024 h_partie">Partie "La conception du vidéaste de la chaine ''la fin des temps'', sur le Mahdi, les Musulmans et divers événements, peut-être, à venir" ajoutée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_34_50">lien</a></p>
+</div>
+<div class="news_parts_38_2024_div">
+<p class="titre_de_p_38_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 16 septembre 2024</p>
+<p class="p_de_modif_38_2024 h_citation">Citation "Ma Fille, que nos œuvres" ajoutée. <a href="#accueil_blockquote_perma_id_dn_samedi_21_septembre_2024_14_423">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "Le même Dieu que du temps d'Abraham, de Moïse, d'Élie?" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_33_358">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "Différentes visions du monde" ajoutée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_6_903">lien</a></p>
+</div>
+<div class="news_parts_37_2024_div">
+<p class="titre_de_p_37_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 9 septembre 2024</p>
+<p class="p_de_modif_37_2024 h_partie">Partie "D'après le livre du Ciel, qui aurait véhiculé cette ''aura démoniaque'', qui l'aurait portée? Qui continuerait à prolonger les ténèbres sur le monde?" ajoutée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_539">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "D'où vint le malaise/ras-le-bol? ce ''brouillard''? d'après le livre du Ciel : de l'irrespect d'un Dieu" ajoutée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_990">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Le grand Monarque" ajoutée.&nbsp;<a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_19_353">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" ajoutée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Le Machia'h" ajoutée.&nbsp;<a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_20_478">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Délivrance finale / Mahdi. Une tentative d'invasion de la mecque? Par l'est?" ajoutée.&nbsp;<a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_3_355">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Quelques caractéristiques du Mahdi" ajoutée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_102">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Playlist vidéos au sujet du Mahdi" ajoutée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_877">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Le Mahdi" ajoutée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_45_447">lien</a></p>
+</div>
+<div class="news_parts_35_2024_div">
+<p class="titre_de_p_35_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 26 août 2024</p>
+<p class="p_de_modif_35_2024 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_mercredi_28_août_2024_20_276">lien</a></p>
+<p class="p_de_modif_35_2024 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_mercredi_28_août_2024_4_497">lien</a></p>
+</div>
+<div class="news_parts_33_2024_div">
+<p class="titre_de_p_33_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 12 août 2024</p>
+<p class="p_de_modif_33_2024 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_33_2024 h_partie">Partie "Tableau de diverses conceptions, diverses sensations/émotions, face au monde, et dans quelle catégorie, j'estime, ce site se situe" ajoutée. <a href="#accueil_titre_perma_id_dn_samedi_17_août_2024_50_991">lien</a></p>
+<p class="p_de_modif_33_2024 h_citation">Citation "30 octobre 1924 livre du" ajoutée. <a href="#accueil_blockquote_perma_id_dn_mercredi_14_août_2024_27_751">lien</a></p>
+<p class="p_de_modif_33_2024 h_citation">Citation "Ma Fille, regarde avec quel" ajoutée. <a href="#accueil_blockquote_perma_id_dn_lundi_12_août_2024_6_290">lien</a></p>
+<p class="p_de_modif_33_2024 h_table">Table "" ajoutée. <a href="#accueil_table_perma_id_dn_lundi_12_août_2024_57_517">lien</a></p>
+</div>
+<div class="news_parts_31_2024_div">
+<p class="titre_de_p_31_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 29 juillet 2024</p>
+<p class="p_de_modif_31_2024 h_nouvelle_image_svg">Nouvelle image svg "schéma de ma sensation, mon hypothèse, face à ce monde (début du XXième siècle)" ajoutée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_31_2024 h_partie">Partie "Qu'est-ce que c'est que ce site?" ajoutée. <a href="#accueil_titre_perma_id_dn_samedi_3_août_2024_6_948">lien</a></p>
+<p class="p_de_modif_31_2024 h_citation">Citation "Et toi, ma Fille, tu" ajoutée. <a href="#accueil_blockquote_perma_id_dn_mardi_30_juillet_2024_2_628">lien</a></p>
+<p class="p_de_modif_31_2024 h_citation">Citation "Dictée qui aurait été réalisée" ajoutée. <a href="#accueil_blockquote_perma_id_dn_mardi_30_juillet_2024_0_582">lien</a></p>
+<p class="p_de_modif_31_2024 h_partie">Partie "Un retour plus concret de la Trinité? Pour bientôt?" ajoutée. <a href="#accueil_titre_perma_id_dn_mardi_30_juillet_2024_0_526">lien</a></p>
+<p class="p_de_modif_31_2024 h_citation">Citation "8 octobre 1906 - «Ma" ajoutée. <a href="#accueil_blockquote_perma_id_dn_lundi_29_juillet_2024_15_467">lien</a></p>
+</div>
+<div class="news_parts_30_2024_div">
+<p class="titre_de_p_30_2024_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 22 juillet 2024</p>
+<p class="p_de_modif_30_2024 h_citation">Citation "Un extrait de ce livre" ajoutée. <a href="#accueil_blockquote_perma_id_dn_dimanche_28_juillet_2024_30_896">lien</a></p>
+</div>
+</div>
+<p>depuis le 9 mai 2024, et jusqu'au 23 juin 2024 :</p>
+<p>&nbsp; &nbsp; &nbsp;- ajout d'un extrait musical du compositeur Charles Gounod</p>
+</div>
+<div class="tab-pane fade" id="modified_parts_pills" role="tabpanel" aria-labelledby="modified_parts_pills-tab" style="background-color: rgba(78, 78, 78, 0.235) !important;" data-darkreader-inline-bgcolor="" tabindex="0">
+<div class="historique_des_modifs_pour_cette_page d-grid gap-0">
+<div class="modified_parts_22_2025_div">
+<p class="titre_de_p_22_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 26 mai 2025</p>
+<p class="p_de_modif_22_2025 h_partie">Partie "Délivrance finale / Mahdi. Une tentative d'invasion de la mecque? Par l'est?" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_3_355">lien</a></p>
+<p class="p_de_modif_22_2025 h_partie">Partie "Pourquoi d'abord l'apparition d'un Mahdi à la mecque plutôt que d'abord l'apparition d'un Machia'h en israël :" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_22_2025 h_image_svg">Image svg "Divers_systèmes_sociétaux.Sensation.Solitude_ou_non.svg" modifiée. <a href="#accueil_svg_perma_id_dn_jeudi_27_mars_2025_0_565">lien</a></p>
+<p class="p_de_modif_22_2025 h_partie">Partie "Préambule / sensation générale sur le monde, ou du moins, la société qui m'entoura/qui m'entoure" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_6_janvier_2025_11_575">lien</a></p>
+<p class="p_de_modif_22_2025 h_partie">Partie "Différents ressentis sur le monde. Préambule" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_25_563">lien</a></p>
+<p class="p_de_modif_22_2025 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+</div>
+<div class="modified_parts_21_2025_div">
+<p class="titre_de_p_21_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 19 mai 2025</p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_21_2025 h_titre">Titre "Hypothèses / Questionnements / Avenir" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Une nouvelle chahada?" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_11_857">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Quelques caractéristiques du Mahdi" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_102">lien</a></p>
+<p class="p_de_modif_21_2025 h_table">Table "Situation à venir? L'antiChrist,diverses puissances maléfiqueset ceux/celles suivront ce "camp" Le Mahdi? (reconnu à la mecque?)puis Le Machia'h? (reconnu en israël?)puis le grand Monarque?Puis le Fils?" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_23">lien</a></p>
+<p class="p_de_modif_21_2025 h_table">Table "Citation, prétendument, de Dieu quelques questions de ma part" modifiée. <a href="#accueil_table_perma_id_dn_vendredi_6_décembre_2024_26_266">lien</a></p>
+<p class="p_de_modif_21_2025 h_image_svg">Image svg "ma sensation sur les Judaïsants actuels.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_57">lien</a></p>
+<p class="p_de_modif_21_2025 h_image_svg">Image svg "Un monde joli mignon, ou, en réalité, sous aura démoniaque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_19_octobre_2024_22_995">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Sylvain Durif = ? le Grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_25_octobre_2024_14_563">lien</a></p>
+<p class="p_de_modif_21_2025 h_titre">Titre "Préambule" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_21_2025 h_titre">Titre "Playlist vidéos au sujet du Mahdi" changé. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_877">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Délivrance finale / Mahdi. Une tentative d'invasion de la mecque? Par l'est?" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_3_355">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Différents ressentis sur le monde. Préambule" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_25_563">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Quelques hypothèses sur ce que signifierai, en réalité, cette notion d'égalité🆕" modifiée. <a href="#accueil_titre_perma_id_dn_mardi_2mai_2025_47_146">lien</a></p>
+<p class="p_de_modif_21_2025 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_21_2025 h_titre">Titre "André de Biase / Pascal Tréffainguy. André de Biase : serait-ce lui le Grand Monarque?🆕" changé. <a href="#accueil_titre_perma_id_dn_mardi_2mai_2025_27_611">lien</a></p>
+<p class="p_de_modif_21_2025 h_titre">Titre "Mathieu B. / Claude : Serait-ce Mathieu B.&nbsp;le futur grand Monarque?" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_43_31">lien</a></p>
+<p class="p_de_modif_21_2025 h_table">Table "Une problématique de cette conception de la société, située à gauche, sur le schéma situé normalement juste plus haut et reproduit en miniature au centre de ce tableau Une citation concernant cette conception "soleil" 🔆, située au milieu, sur le schéma situé normalement juste plus hautet reproduit en miniature au centre de ce tableau" modifiée. <a href="#accueil_table_perma_id_dn_lundi_12_août_2024_57_517">lien</a></p>
+<p class="p_de_modif_21_2025 h_table">Table "Une problématique de cette conception de la société, située à gauche, sur le schéma situé normalement juste plus haut Une citation concernant cette conception "soleil" 🔆, située au milieu, sur le schéma situé normalement juste plus haut" modifiée. <a href="#accueil_table_perma_id_dn_lundi_12_août_2024_57_517">lien</a></p>
+</div>
+<div class="modified_parts_20_2025_div">
+<p class="titre_de_p_20_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 12 mai 2025</p>
+<p class="p_de_modif_20_2025 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_20_2025 h_image_svg">Image svg "3 religions et Mahdi Machiah grand monarque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_60">lien</a></p>
+<p class="p_de_modif_20_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_20_2025 h_partie">Partie "Préambule / sensation générale sur le monde, ou du moins, la société qui m'entoura/qui m'entoure" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_6_janvier_2025_11_575">lien</a></p>
+<p class="p_de_modif_20_2025 h_partie">Partie "Délivrance finale / Mahdi. Une tentative d'invasion de la mecque? Par l'est?" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_3_355">lien</a></p>
+<p class="p_de_modif_20_2025 h_partie">Partie "Une nouvelle chahada?" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_11_857">lien</a></p>
+<p class="p_de_modif_20_2025 h_partie">Partie "Quelques caractéristiques du Mahdi" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_102">lien</a></p>
+<p class="p_de_modif_20_2025 h_partie">Partie "Différents ressentis sur le monde. Préambule" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_25_563">lien</a></p>
+</div>
+<div class="modified_parts_19_2025_div">
+<p class="titre_de_p_19_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 5 mai 2025</p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Enfance : surtout des sensations" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_19_2025 h_titre">Titre "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "La manière de voir le monde d'après le Fils, à travers des dictées à divers(es) Mystiques" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_52_591">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_19_2025 h_table">Table "Citation, prétendument, de Dieu quelques questions de ma part" modifiée. <a href="#accueil_table_perma_id_dn_vendredi_6_décembre_2024_26_266">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Enfance : surtout des sensations" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Avec l'adolescence, la sensation d'une société de moins en moins estimable" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_609">lien</a></p>
+<p class="p_de_modif_19_2025 h_titre">Titre "Enfance : surtout des sensations" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Préambule / sensation générale sur le monde, ou du moins, la société qui m'entoura/qui m'entoure" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_6_janvier_2025_11_575">lien</a></p>
+<p class="p_de_modif_19_2025 h_titre">Titre "Ma sensation sur la société - Adolescence" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_765">lien</a></p>
+<p class="p_de_modif_19_2025 h_partie">Partie "Impopularité de l'œuvre de Luisa Piccarreta et de celle de Maria Valtorta" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+</div>
+<div class="modified_parts_18_2025_div">
+<p class="titre_de_p_18_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi -2 mai 2025</p>
+<p class="p_de_modif_18_2025 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_lundi_7_octobre_2024_1_383">lien</a></p>
+<p class="p_de_modif_18_2025 h_titre">Titre "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" changé. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_18_2025 h_partie">Partie "Le Bouddhisme / le tantrisme / l'Hindouisme, par rapport à l'islam" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_14_décembre_2024_57_675">lien</a></p>
+<p class="p_de_modif_18_2025 h_titre">Titre "La manière d'avoir existé de divers(es) Mystiques et la crédibilité que cette existence me sembla leur donner" changé. <a href="#accueil_titre_perma_id_dn_vendredi_20_septembre_2024_12_442">lien</a></p>
+<p class="p_de_modif_18_2025 h_partie">Partie "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_18_2025 h_titre">Titre "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" changé. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_18_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_18_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi🎈 Les Neutres(parfois appelés les Tièdes?) ⬅️Qui➡️ Les Philosophes,Sociologues, Psychologues Les Théologiens, les Croyants,Celles/Ceux en recherche Ceux/celles qui ne se posèrent pas, ou quasiment pas, de questions existentielles Ceux/Celles qui se pos(èr)ent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+</div>
+<div class="modified_parts_17_2025_div">
+<p class="titre_de_p_17_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 21 avril 2025</p>
+<p class="p_de_modif_17_2025 h_partie">Partie "Un unique monothéisme mondial? Par une Trinitisation?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_17_2025 h_partie">Partie "Le libro di Cielo (livre du Ciel) (Le Fils / Luisa Piccarreta)" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_17_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi🎈 Les Neutres(parfois appelés les Tièdes?) ⬅️Qui➡️ Les Philosophes Les Théologiens, les Croyants,Celles/Ceux en recherche Ceux/celles qui ne se posèrent pas, ou quasiment pas, de questions existentielles Ceux/Celles qui se pos(èr)ent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_17_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+</div>
+<div class="modified_parts_15_2025_div">
+<p class="titre_de_p_15_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 7 avril 2025</p>
+<p class="p_de_modif_15_2025 h_titre">Titre "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_15_2025 h_titre">Titre "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Avec l'adolescence, la sensation d'une société de moins en moins estimable" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_609">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Le libro di Cielo (livre du Ciel) (Le Fils / Luisa Piccarreta)" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_15_2025 h_titre">Titre "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" changé. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Le Bouddhisme / le tantrisme / l'Hindouisme, par rapport à l'islam" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_14_décembre_2024_57_675">lien</a></p>
+<p class="p_de_modif_15_2025 h_titre">Titre "Christianisme :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Catholiques, Protestants, Orthodoxes" changé. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_8">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Ma sensation sur les 3 grands monothéismes et sur d'autres religions" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_7">lien</a></p>
+<p class="p_de_modif_15_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi Les Neutres(parfois appelés les Tièdes?) Les Philosophes Les Théologiens, les Croyants, ou Celles/Ceux en recherche Ceux/celles qui ne se posent pas, ou quasiment pas, de questions existentielles Ceux/Celles qui se pos(èr)ent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Enfance : surtout des sensations" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_15_2025 h_partie">Partie "Qu'est-ce que c'est que ce site?" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_3_août_2024_6_948">lien</a></p>
+<p class="p_de_modif_15_2025 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_25">lien</a></p>
+</div>
+<div class="modified_parts_14_2025_div">
+<p class="titre_de_p_14_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 1 avril 2025</p>
+<p class="p_de_modif_14_2025 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_14_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi Les Neutres(parfois appelés les Tièdes?) Les Philosophes Les Théologiens, les Croyants, ou Celles/Ceux en recherche Ceux/celles qui ne se posent pas, ou quasiment pas, de questions existentielles Ceux/Celles qui se pos(èr)ent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_14_2025 h_table">Table "Situation à venir? L'antiChrist Le Mahdi? (reconnu à la mecque?)puis Le Machia'h? (reconnu en israël?)puis le grand Monarque?Puis le Fils?" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_23">lien</a></p>
+</div>
+<div class="modified_parts_13_2025_div">
+<p class="titre_de_p_13_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 24 mars 2025</p>
+<p class="p_de_modif_13_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi Les Neutres(parfois appelés les Tièdes?) Les Philosophes Les Théologiens, les Croyants, ou Ceux en recherche Ceux/celles qui ne se posent pas, ou quasiment pas, de questions existentielles Ceux/celles qui se pos(èr)ent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_13_2025 h_partie">Partie "Quelques caractéristiques du Mahdi" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_102">lien</a></p>
+<p class="p_de_modif_13_2025 h_partie">Partie "Enfance : surtout des sensations" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_13_2025 h_partie">Partie "Préambule / sensation générale sur le monde, ou du moins, la société qui m'entoura/qui m'entoure" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_6_janvier_2025_11_575">lien</a></p>
+</div>
+<div class="modified_parts_12_2025_div">
+<p class="titre_de_p_12_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 17 mars 2025</p>
+<p class="p_de_modif_12_2025 h_table">Table "Guerres Humaines/Humanoïdes, depuis des millénairesGénérauxMilitaires, soldats TrinitisationLe Fils et? un Mahdi et/ou? un Machia'h et/ou? un grand Monarque?Fidèles, communauté religieuse" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_27">lien</a></p>
+</div>
+<div class="modified_parts_11_2025_div">
+<p class="titre_de_p_11_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 10 mars 2025</p>
+<p class="p_de_modif_11_2025 h_image_svg">Image svg "3 religions et Mahdi Machiah grand monarque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_60">lien</a></p>
+<p class="p_de_modif_11_2025 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "Avec l'adolescence, la sensation d'une société de moins en moins estimable" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_609">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "Playlist vidéos grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_42_333">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_11_2025 h_partie">Partie "Playlist vidéos grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_42_333">lien</a></p>
+</div>
+<div class="modified_parts_10_2025_div">
+<p class="titre_de_p_10_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 3 mars 2025</p>
+<p class="p_de_modif_10_2025 h_partie">Partie "Ce qui me donnerait de la plausibilité à ce qu'il y ait un Mahdi et/ou un Machia'h et/ou un grand Monarque" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_10_2025 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_10_2025 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+</div>
+<div class="modified_parts_9_2025_div">
+<p class="titre_de_p_9_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 24 février 2025</p>
+<p class="p_de_modif_9_2025 h_titre">Titre "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_9_2025 h_titre">Titre "Avec l'adolescence, la sensation d'une société de moins en moins estimable" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_609">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Ma sensation sur la société - Adolescence" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_765">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Qu'est-ce que c'est que ce site?" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_3_août_2024_6_948">lien</a></p>
+<p class="p_de_modif_9_2025 h_titre">Titre "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" changé. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Enfance : surtout des sensations" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_9_2025 h_image_svg">Image svg "Schéma récapitulatif de mes sensations, comparées à mes connaissances, avec le temps.svg" modifiée. <a href="#accueil_svg_perma_id_dn_lundi_6_janvier_2025_48_450">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Préambule / sensation générale sur le monde, ou du moins, la société qui m'entoura/qui m'entoure" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_6_janvier_2025_11_575">lien</a></p>
+<p class="p_de_modif_9_2025 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_9_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi Les Neutres(parfois appelés les Tièdes?) Les Philosophes Les Théologiens, les croyants ou ceux en recherche Ceux/celles qui ne se posent pas, ou quasiment pas, de questions existentielles Ceux/celles qui se pos(èr)ent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_9_2025 h_partie">Partie "Tableau de diverses conceptions, diverses sensations/émotions, face au monde, et dans quelle catégorie, j'estime, ce site se situe" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_17_août_2024_50_991">lien</a></p>
+<p class="p_de_modif_9_2025 h_titre">Titre "Un unique monothéisme mondial? Par une Trinitisation?" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_9_2025 h_titre">Titre "Préambule - un seul monothéisme mondial" changé. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_54_944">lien</a></p>
+<p class="p_de_modif_9_2025 h_titre">Titre "Si un retour plus concret d'un Dieu : de quelle manière? / Un seul monothéisme mondial, mais comment?" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_9_2025 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+</div>
+<div class="modified_parts_8_2025_div">
+<p class="titre_de_p_8_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 17 février 2025</p>
+<p class="p_de_modif_8_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi Les Neutres(parfois appelés les tièdes?) Les Philosophes Les Théologiens Ceux/celles qui ne se posent pas, ou quasiment pas, de questions existentielles Ceux/celles qui se posent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_8_2025 h_partie">Partie "Qu'est-ce que c'est que ce site?" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_3_août_2024_6_948">lien</a></p>
+<p class="p_de_modif_8_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_8_2025 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+<p class="p_de_modif_8_2025 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_8_2025 h_partie">Partie "Un unique monothéisme mondial? Par une Trinitisation?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+</div>
+<div class="modified_parts_7_2025_div">
+<p class="titre_de_p_7_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 10 février 2025</p>
+<p class="p_de_modif_7_2025 h_table">Table "Le contenu de diverses pages de ce site de la théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_7_2025 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+<p class="p_de_modif_7_2025 h_partie">Partie "Délivrance finale / Mahdi. Une tentative d'invasion de la mecque? Par l'est?" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_3_355">lien</a></p>
+<p class="p_de_modif_7_2025 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_7_2025 h_partie">Partie "Un retour plus concret de la Trinité? Pour bientôt?" modifiée. <a href="#accueil_titre_perma_id_dn_mardi_30_juillet_2024_0_526">lien</a></p>
+<p class="p_de_modif_7_2025 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+<p class="p_de_modif_7_2025 h_partie">Partie "Un unique monothéisme mondial? Par une Trinitisation?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_7_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site up778.github.io La société c'est super, youpi Les Neutres(parfois appelés les tièdes?) Les Philosophes Les Théologiens Ceux/celles qui ne se posent pas, ou quasiment pas, de questions existentielles Ceux/celles qui se posent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_7_2025 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_vendredi_6_décembre_2024_26_266">lien</a></p>
+<p class="p_de_modif_7_2025 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_7_2025 h_image_svg">Image svg "Schéma récapitulatif de mes sensations, comparées à mes connaissances, avec le temps.svg" modifiée. <a href="#accueil_svg_perma_id_dn_lundi_6_janvier_2025_48_450">lien</a></p>
+</div>
+<div class="modified_parts_6_2025_div">
+<p class="titre_de_p_6_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 3 février 2025</p>
+<p class="p_de_modif_6_2025 h_image_svg">Image svg "Schéma récapitulatif de mes sensations, comparées à mes connaissances, avec le temps.svg" modifiée. <a href="#accueil_svg_perma_id_dn_lundi_6_janvier_2025_48_450">lien</a></p>
+<p class="p_de_modif_6_2025 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_6_2025 h_partie">Partie "Un unique monothéisme mondial? Par une Trinitisation?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_6_2025 h_titre">Titre "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" changé. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_6_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_6_2025 h_partie">Partie "Avec l'adolescence, la sensation d'une société de moins en moins estimable" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_609">lien</a></p>
+<p class="p_de_modif_6_2025 h_image_svg">Image svg "Perspective_Mahdi_Machia'h_Christ_grand_monarque_simplifiée.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_30">lien</a></p>
+<p class="p_de_modif_6_2025 h_partie">Partie "Le Bouddhisme / le tantrisme / l'Hindouisme, par rapport à l'islam" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_14_décembre_2024_57_675">lien</a></p>
+<p class="p_de_modif_6_2025 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+<p class="p_de_modif_6_2025 h_partie">Partie "Sylvain Durif = ? le Grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_25_octobre_2024_14_563">lien</a></p>
+</div>
+<div class="modified_parts_5_2025_div">
+<p class="titre_de_p_5_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 27 janvier 2025</p>
+<p class="p_de_modif_5_2025 h_image_svg">Image svg "Une véritable égalité ou plutôt un mensonge, une hypocrisie.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_19_octobre_2024_18_26">lien</a></p>
+<p class="p_de_modif_5_2025 h_image_svg">Image svg "3 religions et Mahdi Machiah grand monarque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_60">lien</a></p>
+<p class="p_de_modif_5_2025 h_image_svg">Image svg "Perspective_Mahdi_Machia'h_Christ_grand_monarque_v2.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_34">lien</a></p>
+<p class="p_de_modif_5_2025 h_image_svg">Image svg "Schéma récapitulatif de mes sensations, comparées à mes connaissances, avec le temps.svg" modifiée. <a href="#accueil_svg_perma_id_dn_lundi_6_janvier_2025_48_450">lien</a></p>
+</div>
+<div class="modified_parts_4_2025_div">
+<p class="titre_de_p_4_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 20 janvier 2025</p>
+<p class="p_de_modif_4_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_4_2025 h_partie">Partie "Le libro di Cielo (livre du Ciel) (Le Fils / Luisa Piccarreta)" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_4_2025 h_partie">Partie "Ma sensation / Mon à priori sur la chaine ''la fin des temps''" modifiée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_180">lien</a></p>
+<p class="p_de_modif_4_2025 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_4_2025 h_image_svg">Image svg "Schéma récapitulatif de mes sensations, comparées à mes connaissances, avec le temps.svg" modifiée. <a href="#accueil_svg_perma_id_dn_lundi_6_janvier_2025_48_450">lien</a></p>
+</div>
+<div class="modified_parts_3_2025_div">
+<p class="titre_de_p_3_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 13 janvier 2025</p>
+<p class="p_de_modif_3_2025 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_3_2025 h_titre">Titre "Préambule" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_3_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_3_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site Agneau.link La société c'est super, youpi Les Neutres Les Philosophes Les Théologiens Ceux/celles qui ne se posent pas, ou quasiment pas, de questions existentielles Ceux/celles qui se posent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_3_2025 h_partie">Partie "La manière d'avoir existé de divers(es) Mystiques et la crédibilité que cette existence me sembla leur donner" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_20_septembre_2024_12_442">lien</a></p>
+<p class="p_de_modif_3_2025 h_table">Table "Suite, qu'est-ce que j'ai fait, jusqu'à actuellement (2024), sur ce site, et qu'est-ce que devraient contenir diverses pages de ce site de la théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_3_2025 h_partie">Partie "Qu'est-ce que c'est que ce site?" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_3_août_2024_6_948">lien</a></p>
+<p class="p_de_modif_3_2025 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_3_2025 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+</div>
+<div class="modified_parts_2_2025_div">
+<p class="titre_de_p_2_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 6 janvier 2025</p>
+<p class="p_de_modif_2_2025 h_image_svg">Image svg "Schéma récapitulatif de mes sensations, comparées à mes connaissances, avec le temps.svg" modifiée. <a href="#accueil_svg_perma_id_dn_lundi_6_janvier_2025_48_450">lien</a></p>
+<p class="p_de_modif_2_2025 h_partie">Partie "Préambule / sensation générale sur le monde, ou du moins, la société qui m'entoura/qui m'entoure" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_6_janvier_2025_11_575">lien</a></p>
+<p class="p_de_modif_2_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_2_2025 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site Agneau.linktableau pas forcément terminé, au mercredi 6 novembre 2024 La société c'est super, youpi Les Neutres Les Philosophes Les Théologiens Ceux/celles qui ne se posent pas, (ou quasiment pas) de questions existentielles Ceux/celles qui se posent des questions existentielles" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+</div>
+<div class="modified_parts_1_2025_div">
+<p class="titre_de_p_1_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 30 décembre 2024</p>
+<p class="p_de_modif_1_2025 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_1_2025 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_1_2025 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_1_2025 h_table">Table "Une problématique de cette conception de la société, située à gauche, sur ce schéma💨 Une citation concernant cette conception "soleil" 🔆, située au milieu, sur le schéma situé normalement juste plus haut" modifiée. <a href="#accueil_table_perma_id_dn_lundi_12_août_2024_57_517">lien</a></p>
+<p class="p_de_modif_1_2025 h_titre">Titre "Christianisme :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Catholiques, Protestants, Orthodoxes" changé. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_8">lien</a></p>
+<p class="p_de_modif_1_2025 h_partie">Partie "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+</div>
+<div class="modified_parts_52_2024_div">
+<p class="titre_de_p_52_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 23 décembre 2024</p>
+<p class="p_de_modif_52_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_vendredi_6_décembre_2024_26_266">lien</a></p>
+<p class="p_de_modif_52_2024 h_titre">Titre "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" changé. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_52_2024 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_52_2024 h_partie">Partie "Préambule, le grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_42_104">lien</a></p>
+<p class="p_de_modif_52_2024 h_image_svg">Image svg "Un monde joli mignon, ou, en réalité, sous aura démoniaque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_19_octobre_2024_22_995">lien</a></p>
+<p class="p_de_modif_52_2024 h_titre">Titre "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_52_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_25">lien</a></p>
+<p class="p_de_modif_52_2024 h_image_svg">Image svg "premières croisades et Trinitisation - carte.svg"<a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_41">lien</a></p>
+<p class="p_de_modif_52_2024 h_partie">Partie "Ma sensation sur le Bouhddisme/tantrisme, depuis plusieurs années" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_21_décembre_2024_55_803">lien</a></p>
+<p class="p_de_modif_52_2024 h_titre">Titre "Ma sensation sur le Bouhddisme/tantrisme, depuis plusieurs années" changé. <a href="#accueil_titre_perma_id_dn_samedi_21_décembre_2024_55_803">lien</a></p>
+<p class="p_de_modif_52_2024 h_titre">Titre "Ma sensation sur l'hindouisme, le Bouddhisme, le tantrisme. Ma sensation Bouhdisme/tantrisme comparé à islamisme" changé. <a href="#accueil_titre_perma_id_dn_vendredi_6_décembre_2024_34_818">lien</a></p>
+<p class="p_de_modif_52_2024 h_partie">Partie "Ma sensation sur l'islamisme" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_10">lien</a></p>
+<p class="p_de_modif_52_2024 h_partie">Partie "Ma sensation sur l'hindouisme, le Bouddhisme, le tantrisme. Ma sensation Bouhdisme/tantrisme comparé à islamisme" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_6_décembre_2024_34_818">lien</a></p>
+<p class="p_de_modif_52_2024 h_titre">Titre "Ma sensation sur l'hindouisme, le Bouddhisme, le tantrisme. Ma sensation Bouhdisme/tantrisme comparé à islamisme" changé. <a href="#accueil_titre_perma_id_dn_vendredi_6_décembre_2024_34_818">lien</a></p>
+<p class="p_de_modif_52_2024 h_partie">Partie "Ma sensation sur l'islamisme" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_10">lien</a></p>
+<p class="p_de_modif_52_2024 h_image_svg">Image svg "ma sensation sur les Judaïsants actuels.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_57">lien</a></p>
+<p class="p_de_modif_52_2024 h_image_svg">Image svg "qu'un seul qui se soit autant prétendu Dieu depuis des siècles.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_54">lien</a></p>
+<p class="p_de_modif_52_2024 h_partie">Partie "Pourquoi le catholicisme me semblerait porter un défi particulier par rapport à l'islam et au judaïsme" modifiée. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+</div>
+<div class="modified_parts_51_2024_div">
+<p class="titre_de_p_51_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 16 décembre 2024</p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Sylvain Durif = ? le Grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_25_octobre_2024_14_563">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Le Bouddhisme / le tantrisme / l'Hindouisme, par rapport à l'islam" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_14_décembre_2024_57_675">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Ma sensation sur le Bouhddisme/tantrisme, depuis plusieurs années" changé. <a href="#accueil_titre_perma_id_dn_samedi_21_décembre_2024_55_803">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Ma sensation sur l'hindouisme, le Bouddhisme, le tantrisme. Ma sensation Bouhdisme/tantrisme comparé à islamisme" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_6_décembre_2024_34_818">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Ma sensation / Mon à priori sur la chaine ''la fin des temps''" changé. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_180">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Préambule, le grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_42_104">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Ce qui me donnerait de la plausibilité à ce qu'il y ait un Mahdi et/ou un Machia'h et/ou un grand Monarque" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "La Trinitisation par rapport aux guerres des 2 premiers millénaires : une conscience différente pour le soldat" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_6">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Un retour plus concret de la Trinité? Pour bientôt?" changé. <a href="#accueil_titre_perma_id_dn_mardi_30_juillet_2024_0_526">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Le même Dieu que du temps d'Abraham, de Moïse, d'Élie?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_33_358">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Un unique monothéisme mondial? Par une Trinitisation?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Si un retour plus concret d'un Dieu : de quelle manière? / Un seul monothéisme mondial, mais comment?" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Le libro di Cielo (livre du Ciel) (Le Fils / Luisa Piccarreta)" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Avec l'adolescence, la sensation d'une société de moins en moins estimable" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_609">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Avec l'adolescence, la sensation d'une société de moins en moins estimable" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_609">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Enfance : surtout des sensations" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Enfance : surtout des sensations" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_57_84">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_51_2024 h_titre">Titre "Ma sensation sur la société - Adolescence" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_765">lien</a></p>
+<p class="p_de_modif_51_2024 h_partie">Partie "Ma sensation sur la société - Adolescence" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_décembre_2024_59_765">lien</a></p>
+<p class="p_de_modif_51_2024 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+</div>
+<div class="modified_parts_50_2024_div">
+<p class="titre_de_p_50_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 9 décembre 2024</p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Enfance, adolescence, puis suite: mon ressenti sociétal à travers divers âges" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_30_727">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_50_2024 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Ma sensation sur la société : parcours général" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_12_octobre_2024_14_331">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_50_2024 h_titre">Titre "Le Bouddhisme / le tantrisme / l'Hindouisme, par rapport à l'islam" changé. <a href="#accueil_titre_perma_id_dn_samedi_14_décembre_2024_57_675">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Ma sensation sur l'hindouisme, le Bouddhisme, le tantrisme. Ma sensation Bouhdisme/tantrisme comparé à islamisme" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_6_décembre_2024_34_818">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Ma sensation / Mon à priori sur la chaine ''la fin des temps''" modifiée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_180">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Ma sensation sur l'islamisme" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_10">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_50_2024 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_50_2024 h_titre">Titre "Impopularité de l'œuvre de Luisa Piccarreta et de celle de Maria Valtorta" changé. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_50_2024 h_image_svg">Image svg "schéma simplifié de la Trinitisation, nouvelle ''croisade''.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_38">lien</a></p>
+<p class="p_de_modif_50_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+</div>
+<div class="modified_parts_49_2024_div">
+<p class="titre_de_p_49_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 2 décembre 2024</p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Ma sensation sur l'hindouisme, le Bouddhisme, le tantrisme. Ma sensation Bouhdisme/tantrisme comparé à islamisme" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_6_décembre_2024_34_818">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Ma sensation sur l'islamisme" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_10">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_49_2024 h_titre">Titre "Ma sensation sur les 3 grands monothéismes et sur d'autres religions" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_7">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "D'après le livre du Ciel, qui aurait véhiculé cette ''aura démoniaque'', qui l'aurait portée? Qui continuerait à prolonger les ténèbres sur le monde?" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_539">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Pourquoi le catholicisme me semblerait porter un défi particulier par rapport à l'islam et au judaïsme" modifiée. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_49_2024 h_titre">Titre "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_49_2024 h_partie">Partie "Enfance, adolescence, puis suite: mon ressenti sociétal à travers divers âges" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_30_727">lien</a></p>
+</div>
+<div class="modified_parts_48_2024_div">
+<p class="titre_de_p_48_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 25 novembre 2024</p>
+</div>
+<div class="modified_parts_47_2024_div">
+<p class="titre_de_p_47_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 18 novembre 2024</p>
+<p class="p_de_modif_47_2024 h_partie">Partie "Un retour plus concret de la Trinité? Pour bientôt?" modifiée. <a href="#accueil_titre_perma_id_dn_mardi_30_juillet_2024_0_526">lien</a></p>
+</div>
+<div class="modified_parts_46_2024_div">
+<p class="titre_de_p_46_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 11 novembre 2024</p>
+<p class="p_de_modif_46_2024 h_titre">Titre "Quelques caractéristiques du Mahdi" changé. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_102">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Playlist vidéos au sujet du Mahdi" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_50_877">lien</a></p>
+<p class="p_de_modif_46_2024 h_table">Table "Situation à venir? L'antiChrist Le Mahdi? (reconnu à la mecque?)puis Le Machia'h? (reconnu en israël?)puis le grand monarque?Puis le Fils?" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_23">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "D'après le livre du Ciel, qui aurait véhiculé cette ''aura démoniaque'', qui l'aurait portée? Qui continuerait à prolonger les ténèbres sur le monde?" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_539">lien</a></p>
+<p class="p_de_modif_46_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+<p class="p_de_modif_46_2024 h_image_svg">Image svg "3 religions et Mahdi Machiah grand monarque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_60">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Mon feeling, sur grand Monarque, par rapport à Mahdi - Machia'h" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_31_octobre_2024_11_891">lien</a></p>
+<p class="p_de_modif_46_2024 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_46_2024 h_image_svg">Image svg "Une véritable égalité ou plutôt un mensonge, une hypocrisie.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_19_octobre_2024_18_26">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_46_2024 h_titre">Titre "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Enfance, adolescence, puis suite: mon ressenti sociétal à travers divers âges" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_30_727">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_46_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_dimanche_15_septembre_2024_9_412">lien</a></p>
+<p class="p_de_modif_46_2024 h_titre">Titre "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" changé. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_46_2024 h_table">Table "Qu'est-ce que j'ai fait, jusqu'à actuellement (2024), sur ce site, et qu'est-ce que devraient contenir diverses pages de ce site de la théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Pourquoi le catholicisme me semblerait porter un défi particulier par rapport à l'islam et au judaïsme" modifiée. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Sylvain Durif = ? le Grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_25_octobre_2024_14_563">lien</a></p>
+<p class="p_de_modif_46_2024 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+</div>
+<div class="modified_parts_45_2024_div">
+<p class="titre_de_p_45_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 4 novembre 2024</p>
+<p class="p_de_modif_45_2024 h_partie">Partie "Différents ressentis sur le monde. Préambule" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_25_563">lien</a></p>
+<p class="p_de_modif_45_2024 h_partie">Partie "Pourquoi d'abord l'apparition d'un Mahdi à la mecque plutôt que d'abord l'apparition d'un Machia'h en israël :" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_45_2024 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_45_2024 h_image_svg">Image svg "Un monde joli mignon, ou, en réalité, sous aura démoniaque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_19_octobre_2024_22_995">lien</a></p>
+<p class="p_de_modif_45_2024 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_45_2024 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site Agneau.linktableau pas forcément terminé, au mercredi 6 novembre 2024" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_45_2024 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_45_2024 h_partie">Partie "Une crise économique?" modifiée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_326">lien</a></p>
+<p class="p_de_modif_45_2024 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+<p class="p_de_modif_45_2024 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+</div>
+<div class="modified_parts_44_2024_div">
+<p class="titre_de_p_44_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 28 octobre 2024</p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Ma sensation / Mon à priori sur la chaine ''la fin des temps''" modifiée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_180">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Mon feeling, sur grand Monarque, par rapport à Mahdi - Machia'h" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_31_octobre_2024_11_891">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_44_2024 h_titre">Titre "La chaine la fin des temps et le Mahdi" changé. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_637">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Une crise économique?" modifiée. <a href="#accueil_titre_perma_id_dn_mercredi_30_octobre_2024_56_326">lien</a></p>
+<p class="p_de_modif_44_2024 h_titre">Titre "Mathieu B. / Claude : Serait-ce Mathieu B.&nbsp;le futur grand Monarque?" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_43_31">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "La sensation sur le monde, d'après certain(e)s, à travers quelques chansons, ou certains de leur questionnements" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_28_octobre_2024_18_613">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_44_2024 h_titre">Titre "Enfance, adolescence, puis suite: mon ressenti sociétal à travers divers âges" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_30_727">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "La conception du vidéaste de la chaine ''la fin des temps'', sur le Mahdi, les Musulmans et divers événements, peut-être, à venir" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_34_50">lien</a></p>
+<p class="p_de_modif_44_2024 h_partie">Partie "Ma sensation sur l'islamisme" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_10">lien</a></p>
+</div>
+<div class="modified_parts_43_2024_div">
+<p class="titre_de_p_43_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 21 octobre 2024</p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Une égalité? entre âmes, ou une âme au centre de la Création? : un extrait du livre du Ciel, et quelques considérations" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_27_octobre_2024_30_33">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_43_2024 h_image_svg">Image svg "premières croisades et Trinitisation - carte.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_41">lien</a></p>
+<p class="p_de_modif_43_2024 h_image_svg">Image svg "Perspective_Mahdi_Machia'h_Christ_grand_monarque_v2.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_34">lien</a></p>
+<p class="p_de_modif_43_2024 h_image_svg">Image svg "Perspective_Mahdi_Machia'h_Christ_grand_monarque_simplifiée.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_30">lien</a></p>
+<p class="p_de_modif_43_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Le libro di Cielo (livre du Ciel) (Le Fils / Luisa Piccarreta)" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">Titre "La manière d'avoir existé de divers(es) Mystiques et la crédibilité que cette existence me sembla leur donner" changé. <a href="#accueil_titre_perma_id_dn_vendredi_20_septembre_2024_12_442">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Sylvain Durif = ? le Grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_25_octobre_2024_14_563">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Mathieu B. / Claude : Serait-ce Mathieu B.&nbsp;le futur grand Monarque?" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_43_31">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "La conception du vidéaste de la chaine ''la fin des temps'', sur le Mahdi, les Musulmans et divers événements, peut-être, à venir" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_34_50">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Schéma hypothèse Mahdi, Machia'h, grand Monarque et communautés religieuses" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Pourquoi le catholicisme me semblerait porter un défi particulier par rapport à l'islam et au judaïsme" modifiée. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">Titre "Pourquoi ce livre du Ciel aurait-il une importance, du moins pour certain(e)s. Même par rapport à beaucoup d'autres ouvrages théologiques :" changé. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">Titre "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "La manière de voir le monde d'après le Fils, à travers des dictées à divers(es) Mystiques" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_52_591">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">Titre "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" changé. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">Titre "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_43_2024 h_partie">Partie "Enfance, adolescence, puis suite: mon ressenti sociétal à travers divers âges" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_30_727">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">Titre "Préambule" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_43_2024 h_image_svg">Image svg "Un monde joli mignon, ou, en réalité, sous aura démoniaque.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_19_octobre_2024_22_995">lien</a></p>
+</div>
+<div class="modified_parts_42_2024_div">
+<p class="titre_de_p_42_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 14 octobre 2024</p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Une égalité dans les capacités de chacun?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_47_117">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" changé. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_42_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "Vers 15/16ans, première confirmation littéraire d'ampleur à mon malaise : une partie de la philosophie : en particulier l'écrivain W. Friedrich Nietzsche" changé. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_479">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "D'où vint le malaise/ras-le-bol? ce ''brouillard''? d'après le livre du Ciel : de l'irrespect d'un Dieu" changé. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_990">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "La manière de voir le monde d'après le Fils, à travers des dictées à divers(es) Mystiques" changé. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_52_591">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Le même Dieu que du temps d'Abraham, de Moïse, d'Élie?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_33_358">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Deuxième confirmation littéraire/culturelle d'ampleur à mon ressenti que quelque chose cloche/clochait sociétalement : la Théologie" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_53_921">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Y aurait-il une égalité tout court? Une égalité en droit? Une égalité dans le monde judiciaire?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_46_2">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "Pourquoi le catholicisme me semblerait porter un défi particulier par rapport à l'islam et au judaïsme" changé. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "D'après le livre du Ciel, qui aurait véhiculé cette ''aura démoniaque'', qui l'aurait portée? Qui continuerait à prolonger les ténèbres sur le monde?" changé. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_539">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Enfance, adolescence, puis suite: mon ressenti sociétal à travers divers âges" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_14_octobre_2024_30_727">lien</a></p>
+<p class="p_de_modif_42_2024 h_partie">Partie "Ma sensation sur la société : parcours général" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_12_octobre_2024_14_331">lien</a></p>
+<p class="p_de_modif_42_2024 h_titre">Titre "Le libro di Cielo (livre du Ciel) (Le Fils / Luisa Piccarreta)" changé. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+</div>
+<div class="modified_parts_41_2024_div">
+<p class="titre_de_p_41_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 7 octobre 2024</p>
+<p class="p_de_modif_41_2024 h_partie">Partie "Mon ressenti sur la politique, ''l'égalité'', les valeurs républicaines'' / Un soi-disant ''État'' égal / dans l'égalité" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_13_octobre_2024_36_902">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Si un retour plus concret d'un Dieu : de quelle manière? / Un seul monothéisme mondial, mais comment?" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "Le même Dieu que du temps d'Abraham, de Moïse, d'Élie?" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_33_358">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "La manière de voir le monde d'après le Fils, à travers des dictées à divers(es) Mystiques" changé. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_52_591">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "Christianisme :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Catholiques, Protestants, Orthodoxes" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_8">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "Pourquoi le catholicisme me semblerait porter un défi particulier par rapport à l'islam et au judaïsme" modifiée. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "D'où vint le malaise/ras-le-bol? ce ''brouillard''? d'après le livre du Ciel : de l'irrespect d'un Dieu" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_990">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Ma sensation sur la société : parcours général" changé. <a href="#accueil_titre_perma_id_dn_samedi_12_octobre_2024_14_331">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "La manière d'avoir existé de divers(es) Mystiques et la crédibilité que cette existence me sembla leur donner" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_20_septembre_2024_12_442">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "Différentes visions du monde" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_6_903">lien</a></p>
+<p class="p_de_modif_41_2024 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "Différents ressentis sur le monde. Préambule" modifiée. <a href="#accueil_titre_perma_id_dn_vendredi_11_octobre_2024_25_563">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Hypothèses / Questionnements / Avenir" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_41_2024 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site agneau.linktableau encore en construction au vendredi 11 octobre 2024" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Ma sensation sur l'islamisme" changé. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_10">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Ma sensation sur le judaïsme" changé. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_9">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">Titre "Ma sensation sur les 3 grands monothéismes et sur d'autres religions" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_7">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "D'après le livre du Ciel, qui aurait véhiculé cette ''aura démoniaque'', qui l'aurait portée? Qui continuerait à prolonger les ténèbres sur le monde?" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_539">lien</a></p>
+<p class="p_de_modif_41_2024 h_partie">Partie "La conception du vidéaste de la chaine ''la fin des temps'', sur le Mahdi, les Musulmans et divers événements, peut-être, à venir" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_34_50">lien</a></p>
+<p class="p_de_modif_41_2024 h_image_svg">Image svg "Perspective_Mahdi_Machia'h_Christ_grand_monarque_simplifiée.svg" modifiée. <a href="#accueil_svg_perma_id_dn_samedi_17_août_2024_30">lien</a></p>
+</div>
+<div class="modified_parts_40_2024_div">
+<p class="titre_de_p_40_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 0 octobre 2024</p>
+<p class="p_de_modif_40_2024 h_partie">Partie "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_40_2024 h_partie">Partie "La conception du vidéaste de la chaine ''la fin des temps'', sur le Mahdi, les Musulmans et divers événements, peut-être, à venir" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_34_50">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">Titre "Hypothèses / Questionnements / Avenir" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_40_2024 h_partie">Partie "Le libro di Cielo (livre du Ciel) (Le Fils / Luisa Piccarreta)" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">Titre "Différentes manières de voir/ressentir le monde" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">Titre "La manière d'avoir existé de divers(es) Mystiques et la crédibilité que cette existence me sembla leur donner" changé. <a href="#accueil_titre_perma_id_dn_vendredi_20_septembre_2024_12_442">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">Titre "Mathieu B. / Claude : Serait-ce Mathieu B.&nbsp;le futur grand Monarque?" changé. <a href="#accueil_titre_perma_id_dn_samedi_5_octobre_2024_43_31">lien</a></p>
+<p class="p_de_modif_40_2024 h_partie">Partie "Le grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_19_353">lien</a></p>
+<p class="p_de_modif_40_2024 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">Titre "D'où vint le malaise/ras-le-bol? ce ''brouillard''? d'après le livre du Ciel : de l'irrespect d'un Dieu" changé. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_990">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">Titre "Différentes visions du monde" changé. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_6_903">lien</a></p>
+<p class="p_de_modif_40_2024 h_table">Table "Une problématique de cette conception de la société, située à gauche, sur ce schéma💨 Une citation concernant cette conception "soleil" 🔆, située au milieu, sur le schéma situé normalement juste plus haut" modifiée. <a href="#accueil_table_perma_id_dn_lundi_12_août_2024_57_517">lien</a></p>
+<p class="p_de_modif_40_2024 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site agneau.linktableau encore en construction au mercredi 2 octobre 2024." modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_40_2024 h_table">Table "Qu'est-ce que j'ai fait, jusqu'à actuellement (début août 2024), sur ce site, et qu'est-ce que devraient contenir diverses pages de ce site théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+</div>
+<div class="modified_parts_39_2024_div">
+<p class="titre_de_p_39_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 23 septembre 2024</p>
+<p class="p_de_modif_39_2024 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_39_2024 h_partie">Partie "D'où vint le malaise/ras-le-bol? ce ''brouillard''? d'après le livre du Ciel : de l'irrespect d'un Dieu" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_990">lien</a></p>
+<p class="p_de_modif_39_2024 h_partie">Partie "Préambule Machia'h, Mahdi, grand Monarque" modifiée. <a href="#accueil_titre_perma_id_dn_jeudi_12_septembre_2024_18_351">lien</a></p>
+<p class="p_de_modif_39_2024 h_titre">Titre "La Trinitisation par rapport aux guerres des 2 premiers millénaires : une conscience différente pour le soldat" changé. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_6">lien</a></p>
+</div>
+<div class="modified_parts_38_2024_div">
+<p class="titre_de_p_38_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 16 septembre 2024</p>
+<p class="p_de_modif_38_2024 h_titre">Titre "La manière d'avoir existé de divers(es) Mystiques et la crédibilité que cette existence me sembla leur donner" changé. <a href="#accueil_titre_perma_id_dn_vendredi_20_septembre_2024_12_442">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "Pour le Fils aussi, il me sembla qu'il eut un(e sensation de) ras-le-bol de beaucoup d'Humains/Humanoïdes" modifiée. <a href="#accueil_titre_perma_id_dn_lundi_16_septembre_2024_48_65">lien</a></p>
+<p class="p_de_modif_38_2024 h_titre">Titre "Pourquoi ce livre du Ciel aurait-il une importance, du moins pour certain(e)s. Même par rapport à beaucoup d'autres ouvrages théologiques :" changé. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "D'après le livre du Ciel, qui aurait véhiculé cette ''aura démoniaque'', qui l'aurait portée? Qui continuerait à prolonger les ténèbres sur le monde?" modifiée. <a href="#accueil_titre_perma_id_dn_dimanche_15_septembre_2024_10_539">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "Tableau de diverses conceptions, diverses sensations/émotions, face au monde, et dans quelle catégorie, j'estime, ce site se situe" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_17_août_2024_50_991">lien</a></p>
+<p class="p_de_modif_38_2024 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site agneau.linktableau encore en construction au dimanche 18 août 2024." modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_38_2024 h_partie">Partie "Qu'est-ce que c'est que ce site?" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_3_août_2024_6_948">lien</a></p>
+<p class="p_de_modif_38_2024 h_titre">Titre "Préambule" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_38_2024 h_titre">Titre "Hypothèses / Questionnements / Avenir" changé. <a href="#accueil_h1_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+</div>
+<div class="modified_parts_37_2024_div">
+<p class="titre_de_p_37_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 9 septembre 2024</p>
+<p class="p_de_modif_37_2024 h_table">Table "Tableau des diverses conceptions et ressentis face au monde et dans quelle catégorie je situe ce site agneau.linktableau encore en construction au dimanche 18 août 2024." modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_51_633">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Christianisme :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Catholiques, Protestants, Orthodoxes" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_8">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "L'apparition d'un Mahdi? et/ou d'un Machia'h? et/ou d'un grand Monarque?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_37_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_25">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Pourquoi d'abord l'apparition d'un Mahdi à la mecque plutôt que d'abord l'apparition d'un Machia'h en israël :" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_37_2024 h_partie">Partie "Un retour plus concret de la Trinité? Pour bientôt?" modifiée. <a href="#accueil_titre_perma_id_dn_mardi_30_juillet_2024_0_526">lien</a></p>
+<p class="p_de_modif_37_2024 h_table">Table "Qu'est-ce que j'ai fait, jusqu'à actuellement (début août 2024), sur ce site, et qu'est-ce que devraient contenir diverses pages de ce site théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_37_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+</div>
+<div class="modified_parts_36_2024_div">
+<p class="titre_de_p_36_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 2 septembre 2024</p>
+</div>
+<div class="modified_parts_35_2024_div">
+<p class="titre_de_p_35_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 26 août 2024</p>
+<p class="p_de_modif_35_2024 h_table">Table "Une problématique de cette société, située à gauche, sur ce schéma💨 Une citation concernant cette conception "soleil" 🔆, située à droite, sur le schéma" modifiée. <a href="#accueil_table_perma_id_dn_lundi_12_août_2024_57_517">lien</a></p>
+<p class="p_de_modif_35_2024 h_partie">Partie "Si un retour plus concret d'un Dieu : de quelle manière? / Un seul monothéisme mondial, mais comment?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_35_2024 h_partie">Partie "Tableau de diverses conceptions, diverses sensations/émotions, face au monde, et dans quelle catégorie, j'estime, ce site se situe" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_17_août_2024_50_991">lien</a></p>
+<p class="p_de_modif_35_2024 h_partie">Partie "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_35_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_25">lien</a></p>
+<p class="p_de_modif_35_2024 h_table">Table "Qu'est-ce que j'ai fait, jusqu'à actuellement (début août 2024), sur ce site, et qu'est-ce que devraient contenir diverses pages de ce site théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_35_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+</div>
+<div class="modified_parts_34_2024_div">
+<p class="titre_de_p_34_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 19 août 2024</p>
+<p class="p_de_modif_34_2024 h_partie">Partie "Un retour plus concret de la Trinité? Pour bientôt?" modifiée. <a href="#accueil_titre_perma_id_dn_mardi_30_juillet_2024_0_526">lien</a></p>
+<p class="p_de_modif_34_2024 h_partie">Partie "Christianisme :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Catholiques, Protestants, Orthodoxes" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_8">lien</a></p>
+<p class="p_de_modif_34_2024 h_table">Table "Qu'est-ce que j'ai fais, jusqu'à actuellement (début août 2024), sur ce site, et de quoi parlent diverses pages de ce site théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_34_2024 h_image_svg">Image svg "schéma - 3 manières de voir, ressentir, le monde.svg" modifiée. <a href="#accueil_svg_img_perma_id_dn_samedi_3_août_2024_17_575">lien</a></p>
+<p class="p_de_modif_34_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+<p class="p_de_modif_34_2024 h_partie">Partie "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+</div>
+<div class="modified_parts_33_2024_div">
+<p class="titre_de_p_33_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 12 août 2024</p>
+<p class="p_de_modif_33_2024 h_partie">Partie "Impopularité de l'œuvre de Luisa Piccarreta et de celle de Maria Valtorta" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_33_2024 h_partie">Partie "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_33_2024 h_partie">Partie "Qu'est-ce que c'est que ce site?" modifiée. <a href="#accueil_titre_perma_id_dn_samedi_3_août_2024_6_948">lien</a></p>
+<p class="p_de_modif_33_2024 h_table">Table "" modifiée. <a href="#accueil_table_perma_id_dn_samedi_17_août_2024_1">lien</a></p>
+<p class="p_de_modif_33_2024 h_partie">Partie "Pourquoi ce livre du Ciel aurait-il une importance, du moins pour certain(e)s. Même par rapport à beaucoup d'autres ouvrages théologiques :" modifiée. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+</div>
+<div class="modified_parts_32_2024_div">
+<p class="titre_de_p_32_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 5 août 2024</p>
+<p class="p_de_modif_32_2024 h_table">Table "Qu'est-ce que j'ai fais, jusqu'à actuellement (début août 2024), sur ce site, et de quoi parlent diverses pages de ce site théologie" modifiée.&nbsp;<a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_32_2024 h_titre">Titre "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+</div>
+<div class="modified_parts_31_2024_div">
+<p class="titre_de_p_31_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 29 juillet 2024</p>
+<p class="p_de_modif_31_2024 h_partie">Partie "Dans un tel monde , l'hypothèse du retour plus concret d'une superpuissance (certains diraient Dieu)" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_2">lien</a></p>
+<p class="p_de_modif_31_2024 h_partie">Partie "L'apparition d'un Mahdi? et/ou d'un Machia'h? et/ou d'un grand Monarque?" modifiée. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_4">lien</a></p>
+<p class="p_de_modif_31_2024 h_titre">Titre "Si un retour plus concret d'un Dieu : de quelle manière? / Un seul monothéisme mondial, mais comment?" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+</div>
+<div class="modified_parts_30_2024_div">
+<p class="titre_de_p_30_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 22 juillet 2024</p>
+<p class="p_de_modif_30_2024 h_table">Table "Qu'est-ce que j'ai fais, jusqu'à actuellement (début juillet 2024), sur ce site, et de quoi devraient "parler" diverses futures pages de ce site théologie" modifiée. <a href="#accueil_table_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_30_2024 h_partie">Partie "Pourquoi ce livre du Ciel aurait-il une importance, du moins pour certain(e)s. Même par rapport à beaucoup d'autres ouvrages théologiques :" modifiée. <a href="#accueil_h4_perma_id_dn_lundi_22_juillet_2024_3">lien</a></p>
+<p class="p_de_modif_30_2024 h_titre">Titre "Un unique monothéisme mondial? Par une Trinitisation?" changé. <a href="#accueil_h2_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_30_2024 h_partie">Partie "Schéma-hypothèse comparatif premières croisades / Trinitisation" modifiée.&nbsp;<a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_5">lien</a></p>
+<p class="p_de_modif_30_2024 h_partie">Partie "Christianisme :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Catholiques, Protestants, Orthodoxes" modifiée. <a href="#accueil_h3_perma_id_dn_lundi_22_juillet_2024_8">lien</a></p>
+</div>
+</div>
+<p>17 juillet 2024 : correction du chemin, pour diverses images au format avif.</p>
+<p>depuis le 9 mai 2024, et jusqu'au 23 juin 2024 :</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp;- réécriture/corrections de plusieurs parties de cette page d'accueil</p>
+<p>Le 2 juillet 2024</p>
+<p>Modification de l'image schéma simplifié Mahdi, Machia'h, grand monarque</p>
+</div>
+<div class="tab-pane fade" id="all_pages_changes_pills" role="tabpanel" aria-labelledby="all_pages_changes_pills-tab" style="background-color: rgba(255, 255, 0, 0.396) !important;" data-darkreader-inline-bgcolor="" tabindex="0">
+<div class="sylvestre" w3-include-html=          "Pages_pour_historique_site/0historique_des_modifications_pour_toutes_les_pages.html" > </div>
+</div>
+<div class="tab-pane fade show" id="info_pills_tab_id" role="tabpanel" aria-labelledby="info_pills_tab_label" style="background-color: rgba(0, 131, 161, 0.467) !important;" data-darkreader-inline-bgcolor="" tabindex="0">
+<div class="nifo_tab_histo"w3-include-html= "Pages_pour_historique_site/0info_tab_histo.html" ></div>
+</div>
+<div class="tab-pane fade active show" id="this_page_pills_tab" role="tabpanel" aria-labelledby="this_page_pills_tab_id" style="background-color: rgba(92, 34, 0, 0.467) !important;" data-darkreader-inline-bgcolor="" tabindex="0">
+<p class="p_this_page">dimanche 13 octobre 2024 et quelques jours précédants ce dimanche 13 octobre 2024 :<br>&nbsp;changements importants du plan de cette page d'accueil. Changement d'intitulé de nombreux titres, déplacements de telle et telle partie ici ou là.<br>Une page d'accueil pas encore bien rédigée, remise en ordre, après ce "chamboulement" du plan. Mais je publie en ce dimanche 13 octobre 2024 tout de même cette page ainsi. À priori, dans les jours à venir, je devrais essayer corriger ceci.</p>
+<p class="p_this_page">samedi 5 octobre 2024 :<br>Réorganisation de la page : 4 titres de niveau 1, au lieu de 3.</p>
+<p class="p_this_page">vendredi 20 septembre 2024<br>Partie historique sommaire du site déplacée dans le volet-historique</p>
+<p class="p_this_page">Semaine du 9 septembre 2024<br>jeudi 12 septembre 2024<br>Réorganisation assez importante du plan de cette page d'accueil</p>
+<p class="p_this_page">Semaine du 2 septembre 2024 :<br>Réorganisation de la page.<br>Changement de position de diverses parties</p>
+</div>
+</div>
+<br>
+<p style="font-size: 80% !important;">&nbsp;</p>
+</div>
+</div>
