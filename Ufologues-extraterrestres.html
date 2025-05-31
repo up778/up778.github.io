@@ -518,7 +518,7 @@ alt="Images/arrows-collapse.png"
     onclick="show_or_not_breadcrumb()"
     data-darkreader-inline-bgcolor=""
     class="btn button_h1 bi-menu-button pop_button"
-    style="color:#9d00ff;width : 40px;height:40px;background-color: #333334;right:0px;top:80px;"
+    style="color:#9d00ff;width : 40px;height:40px;background-color: #333334;right:0px;top:110px;"
     title="button for show or not breadcrumb"
     data-popover-title="button for show or not breadcrumb"
     data-popover-content='Bouton pour montrer ou non le menu déroulant du haut (parfois appelé "breadcrumb")  &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
@@ -530,7 +530,7 @@ alt="Images/arrows-collapse.png"
     onclick="show_or_not_background_image()"
     data-darkreader-inline-bgcolor=""
     class="btn button_h2 bi-image pop_button"
-    style="background-color:#333335;color:rgb(0, 255, 255);width : 40px;height:40px;top:125px;right:0px;"
+    style="background-color:#333335;color:rgb(0, 255, 255);width : 40px;height:40px;top:155px;right:0px;"
     title="button for show or not background image 🖼️"
     data-popover-title="button for show or not background image 🖼️"
     data-popover-content='Bouton pour afficher/masquer l image de fond 🖼️ de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
@@ -542,7 +542,7 @@ alt="Images/arrows-collapse.png"
     onclick="show_or_not_right_menu()"
     data-darkreader-inline-bgcolor=""
     class="btn button_h2 bi-list pop_button"
-    style="background-color:#333336;color:red;width : 40px;height:40px;top:175px;right:0px"
+    style="background-color:#333336;color:red;width : 40px;height:40px;top:205px;right:0px"
     title="button for show or not right menu"
     data-popover-title="button for show show_or_not_right_menu"
     data-popover-content='Bouton pour montrer ou non le menu vertical (situé à droite) &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
@@ -3574,32 +3574,92 @@ window.addEventListener('load', () => {
 </script> -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    // Créer une Map pour stocker les popovers
     const popovers = new Map();
-    // Fonction pour initialiser un popover sur un bouton
+    let activeSinglePopover = null; // Pour popover unique des nouveaux boutons
     function initializePopover(button) {
       const title = button.getAttribute("data-popover-title");
       const content = button.getAttribute("data-popover-content");
       const placement = button.getAttribute("data-placement") || "auto";
-      const customClass = button.getAttribute("data-popover-class");
-      // Créer un popover avec les options personnalisées
+      const customClass = button.getAttribute("data-popover-class") || "";
       const popover = new bootstrap.Popover(button, {
         trigger: "manual",
         placement: placement,
         title: title,
         content: content,
         container: "body",
-        customClass: customClass || "",
+        customClass: customClass,
         html: true,
       });
-      // Ajouter le popover à la Map
       popovers.set(button, popover);
-      // Désactiver le popover dès l'initialisation sur les boutons .pop_button
       popover.disable();
     }
-    // Initialiser les popovers pour tous les boutons existants
     document.querySelectorAll(".pop_button").forEach(initializePopover);
-    // MutationObserver pour détecter les nouveaux boutons ajoutés au DOM
+    const showAllPopoversButton = document.getElementById("trigger_popovers");
+    if (showAllPopoversButton) {
+      showAllPopoversButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        popovers.forEach((popover, btn) => {
+          if (!popover._element.classList.contains("disabled")) {
+            popover.enable();
+            popover.show();
+          }
+        });
+      });
+    }
+    document.body.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target.classList.contains("popover_editable")) {
+        e.stopPropagation();
+        if (activeSinglePopover && activeSinglePopover.btn !== target) {
+          activeSinglePopover.popover.hide();
+          // Ne pas dispose ici pour réutilisation possible
+          activeSinglePopover = null;
+        }
+        if (!activeSinglePopover || activeSinglePopover.btn !== target) {
+          const title =
+            target.getAttribute("title") ||
+            target.getAttribute("data-popover-title") ||
+            "";
+          let content = document.createElement("div");
+          const wrapper = target.closest(".popover_wrapper");
+          if (wrapper) {
+            const contentDiv = wrapper.querySelector(".popover_content");
+            if (contentDiv) {
+              const clonedContent = contentDiv.cloneNode(true);
+              clonedContent.style.display = "block"; // Forcer affichage
+              content.appendChild(clonedContent);
+            }
+          }
+          const popover = new bootstrap.Popover(target, {
+            trigger: "manual",
+            placement: "auto",
+            title: title,
+            content: content.innerHTML,
+            container: "body",
+            html: true,
+            sanitize: false,
+          });
+          popover.show();
+          activeSinglePopover = { btn: target, popover: popover };
+        } else {
+          activeSinglePopover.popover.hide();
+          activeSinglePopover = null;
+        }
+      } else {
+        if (activeSinglePopover) {
+          const popoverElement = document.querySelector(".popover.show");
+          // Vérifier si clic à l'intérieur du popover : ne rien faire
+          if (popoverElement && popoverElement.contains(e.target)) {
+            return;
+          }
+          // Clic en dehors du bouton ET du popover : fermer le popover actif
+          activeSinglePopover.popover.hide();
+          activeSinglePopover = null;
+        }
+        // Cacher tous les popovers "anciens"
+        popovers.forEach((popover) => popover.hide());
+      }
+    });
     const observer = new MutationObserver(() => {
       document.querySelectorAll(".pop_button").forEach((button) => {
         if (!popovers.has(button)) {
@@ -3608,45 +3668,6 @@ window.addEventListener('load', () => {
       });
     });
     observer.observe(document.body, { childList: true, subtree: true });
-    // Cacher les popovers en cliquant en dehors
-    document.addEventListener("click", () => {
-      popovers.forEach((popover) => popover.hide());
-    });
-    // Empêcher la fermeture si on clique à l'intérieur d'un popover
-    document.body.addEventListener("click", (event) => {
-      if (event.target.closest(".popover")) {
-        event.stopPropagation(); // Empêche la fermeture du popover
-      }
-    });
-    // Boutons pour activer les popovers
-    const showAllPopoversButton = document.getElementById("trigger_popovers");
-    const showAllPopoversButton2 = document.getElementById("bouton2_pour_pops");
-    const showAllPopoversButton3 = document.getElementById("bouton3_pour_pops");
-    const showAllPopoversButton4 = document.getElementById("bouton4_pour_pops");
-    // Fonction pour activer les popovers
-    const enablePopovers = (event) => {
-      event.stopPropagation(); // Empêche la propagation de l'événement
-      popovers.forEach((popover) => {
-        // Activer les popovers uniquement pour les boutons .pop_button
-        if (!popover._element.classList.contains("disabled")) {
-          popover.enable();
-          popover.show(); // Afficher immédiatement le popover
-        }
-      });
-    };
-    // Gestion des clics pour les boutons spécifiques
-    if (showAllPopoversButton) {
-      showAllPopoversButton.addEventListener("click", enablePopovers);
-    }
-    if (showAllPopoversButton2) {
-      showAllPopoversButton2.addEventListener("click", enablePopovers);
-    }
-    if (showAllPopoversButton3) {
-      showAllPopoversButton3.addEventListener("click", enablePopovers);
-    }
-    if (showAllPopoversButton4) {
-      showAllPopoversButton4.addEventListener("click", enablePopovers);
-    }
   });
 </script>
 <!-- <script>

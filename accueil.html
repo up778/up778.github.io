@@ -663,7 +663,7 @@ alt="Images/arrows-collapse.png"
     onclick="show_or_not_breadcrumb()"
     data-darkreader-inline-bgcolor=""
     class="btn button_h1 bi-menu-button pop_button"
-    style="color:#9d00ff;width : 40px;height:40px;background-color: #333334;right:0px;top:80px;"
+    style="color:#9d00ff;width : 40px;height:40px;background-color: #333334;right:0px;top:110px;"
     title="button for show or not breadcrumb"
     data-popover-title="button for show or not breadcrumb"
     data-popover-content='Bouton pour montrer ou non le menu déroulant du haut (parfois appelé "breadcrumb")  &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
@@ -675,7 +675,7 @@ alt="Images/arrows-collapse.png"
     onclick="show_or_not_background_image()"
     data-darkreader-inline-bgcolor=""
     class="btn button_h2 bi-image pop_button"
-    style="background-color:#333335;color:rgb(0, 255, 255);width : 40px;height:40px;top:125px;right:0px;"
+    style="background-color:#333335;color:rgb(0, 255, 255);width : 40px;height:40px;top:155px;right:0px;"
     title="button for show or not background image 🖼️"
     data-popover-title="button for show or not background image 🖼️"
     data-popover-content='Bouton pour afficher/masquer l image de fond 🖼️ de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
@@ -687,7 +687,7 @@ alt="Images/arrows-collapse.png"
     onclick="show_or_not_right_menu()"
     data-darkreader-inline-bgcolor=""
     class="btn button_h2 bi-list pop_button"
-    style="background-color:#333336;color:red;width : 40px;height:40px;top:175px;right:0px"
+    style="background-color:#333336;color:red;width : 40px;height:40px;top:205px;right:0px"
     title="button for show or not right menu"
     data-popover-title="button for show show_or_not_right_menu"
     data-popover-content='Bouton pour montrer ou non le menu vertical (situé à droite) &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
@@ -2063,7 +2063,7 @@ alt="Images/arrows-collapse.png"
 </tr>
 </tbody>
 </table>
-</div><p> </p><p><span style="background-color: rgba(0, 0, 0, 0); font-size: 16px; font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">Ce Mahdi devrait-il faire comprendre aux Musulmans que le vrai Dieu serait le Fils?, à l'appui du livre du Ciel et d'autres textes de Théologie catholique?</span></p><p>Puis devrait-il le faire comprendre aux Judaïsants? (ou enfin à au moins une partie d'entre eux.) Et enfin à divers <strong>C</strong>hristianisants eux-mêmes? (Car leur image du Fils ne serait pas forcément adéquate pour une partie des Christianisants actuels). Des Christianisants qui seront d'ailleurs peut-être les derniers à reconnaitre le Mahdi/Machia'h/grand Monarque? (après les Musulmanisans et les Judaïsants).</p></section><section class="bcLevel4" id="accueil_titre_perma_id_dn_jeudi_12_septembre_2024_3_355"><h4 class="avec_prevall_une_partie_modifiée_keypress_class">Délivrance finale / Mahdi. Une tentative d'invasion de la mecque? Par l'est?</h4><table class="table_float_end float-end table_outside_a_table_and_outside_card margin_left_2" style="border-collapse: collapse; background-color: black; text-align: center; empty-cells: show; width: 32vw; height: 42vh;" empty-cells="show" border="0">
+</div><p> </p><p><span style="background-color: rgba(0, 0, 0, 0); font-size: 16px; font-weight: var(--bs-body-font-weight); text-align: var(--bs-body-text-align);">Ce Mahdi devrait-il faire comprendre aux Musulmans que le vrai Dieu serait le Fils?, à l'appui du livre du Ciel et d'autres textes de Théologie catholique?</span></p><p>Puis devrait-il le faire comprendre aux Judaïsants? (ou enfin à au moins une partie d'entre eux.) Et enfin à divers <strong>C</strong>hristianisants eux-mêmes? (Car leur image du Fils ne serait pas forcément adéquate pour une partie des Christianisants actuels). Des Christianisants qui seront d'ailleurs peut-être les derniers à reconnaitre le Mahdi/Machia'h/grand Monarque? (après les Musulmanisans et les Judaïsants).</p></section><section class="bcLevel4" id="accueil_titre_perma_id_dn_jeudi_12_septembre_2024_3_355"><h4>Délivrance finale / Mahdi. Une tentative d'invasion de la mecque? Par l'est?</h4><table class="table_float_end float-end table_outside_a_table_and_outside_card margin_left_2" style="border-collapse: collapse; background-color: black; text-align: center; empty-cells: show; width: 32vw; height: 42vh;" empty-cells="show" border="0">
 <tbody>
 <tr>
 <td style="height: 100%; background-color: #60605f8a;">
@@ -3494,7 +3494,6 @@ window.addEventListener('load', () => {
   document.addEventListener("DOMContentLoaded", () => {
     const popovers = new Map();
     let activeSinglePopover = null; // Pour popover unique des nouveaux boutons
-    // Initialisation d'un popover sur un bouton (désactivé par défaut)
     function initializePopover(button) {
       const title = button.getAttribute("data-popover-title");
       const content = button.getAttribute("data-popover-content");
@@ -3512,9 +3511,7 @@ window.addEventListener('load', () => {
       popovers.set(button, popover);
       popover.disable();
     }
-    // Initialiser tous les popovers déjà existants (anciens boutons)
     document.querySelectorAll(".pop_button").forEach(initializePopover);
-    // Bouton pour afficher tous les anciens popovers en même temps
     const showAllPopoversButton = document.getElementById("trigger_popovers");
     if (showAllPopoversButton) {
       showAllPopoversButton.addEventListener("click", (e) => {
@@ -3527,60 +3524,60 @@ window.addEventListener('load', () => {
         });
       });
     }
-    // Gestion des nouveaux boutons (ex. créés dynamiquement dans TinyMCE)
-    // On cible par exemple la classe "popover_editable" (ou une autre classe spécifique)
     document.body.addEventListener("click", (e) => {
       const target = e.target;
       if (target.classList.contains("popover_editable")) {
         e.stopPropagation();
-        // Si popover unique déjà actif sur un autre bouton, on le cache
         if (activeSinglePopover && activeSinglePopover.btn !== target) {
           activeSinglePopover.popover.hide();
-          activeSinglePopover.popover.dispose();
+          // Ne pas dispose ici pour réutilisation possible
           activeSinglePopover = null;
         }
         if (!activeSinglePopover || activeSinglePopover.btn !== target) {
-          // Créer et afficher un nouveau popover pour ce bouton cliqué
           const title =
             target.getAttribute("title") ||
             target.getAttribute("data-popover-title") ||
             "";
-          // Récupérer le contenu caché à côté dans le DOM, par exemple dans un sibling avec .popover_content
-          let content = "";
+          let content = document.createElement("div");
           const wrapper = target.closest(".popover_wrapper");
           if (wrapper) {
             const contentDiv = wrapper.querySelector(".popover_content");
-            if (contentDiv) content = contentDiv.innerHTML;
+            if (contentDiv) {
+              const clonedContent = contentDiv.cloneNode(true);
+              clonedContent.style.display = "block"; // Forcer affichage
+              content.appendChild(clonedContent);
+            }
           }
-          // Créer popover Bootstrap
           const popover = new bootstrap.Popover(target, {
             trigger: "manual",
             placement: "auto",
             title: title,
-            content: content,
+            content: content.innerHTML,
             container: "body",
             html: true,
+            sanitize: false,
           });
           popover.show();
           activeSinglePopover = { btn: target, popover: popover };
         } else {
-          // Si on reclique sur le même bouton, on cache le popover
           activeSinglePopover.popover.hide();
-          activeSinglePopover.popover.dispose();
           activeSinglePopover = null;
         }
       } else {
-        // Clic en dehors : cacher le popover unique
         if (activeSinglePopover) {
+          const popoverElement = document.querySelector(".popover.show");
+          // Vérifier si clic à l'intérieur du popover : ne rien faire
+          if (popoverElement && popoverElement.contains(e.target)) {
+            return;
+          }
+          // Clic en dehors du bouton ET du popover : fermer le popover actif
           activeSinglePopover.popover.hide();
-          activeSinglePopover.popover.dispose();
           activeSinglePopover = null;
         }
-        // Cacher tous les popovers des anciens boutons aussi
+        // Cacher tous les popovers "anciens"
         popovers.forEach((popover) => popover.hide());
       }
     });
-    // MutationObserver pour détecter les nouveaux boutons pop_button (anciens style)
     const observer = new MutationObserver(() => {
       document.querySelectorAll(".pop_button").forEach((button) => {
         if (!popovers.has(button)) {
