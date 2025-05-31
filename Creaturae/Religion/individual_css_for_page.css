@@ -1,0 +1,113 @@
+html,
+body,
+#breadcrumb > ul,
+.h1_background_class_horizontal_heading,
+.h2_background_class_horizontal_heading,
+.h3_background_class_horizontal_heading,
+.h4_background_class_horizontal_heading,
+.liste_tous_titres_class {
+  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_différentes_religions_v2.avif");
+  
+  
+  background-position: left 0% top 0%;
+  
+  background-attachment: fixed !important;
+  background-position-y: 0rem;
+  background-size: 24.75%;
+  
+  
+}
+
+#breadcrumb > ul {
+  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_différentes_religions_v2.avif");
+
+  
+  
+  background-position: left 0% top 0%;
+  
+  background-attachment: fixed !important;
+  background-position-y: 0rem;
+  background-size: 24.75%;
+  
+  
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: rgb(109, 0, 123);
+}
+
+audio::-webkit-media-controls-mute-button {
+  background-color: #010203;
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+  background-color: rgba(2, 5, 7, 0.7);
+}
+
+audio::-webkit-media-controls-timeline {
+  
+  border-radius: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+}
+
+
+
+
+div::-webkit-scrollbar {
+  width: 12px;
+}
+
+
+div::-webkit-scrollbar-button {
+  background: rgb(14, 13, 8);
+  
+}
+
+
+div::-webkit-scrollbar-thumb {
+  background: #37005c;
+  border-radius: 10px;
+}
+
+
+div::-webkit-scrollbar-thumb:hover {
+  
+  background: #37005c;
+}
+
+
+div::-webkit-scrollbar-track {
+  background: rgb(1, 1, 1);
+  border-radius: 10px;
+}
+
+
+div::-webkit-scrollbar-corner {
+  background: #121;
+}
+
+
+div::-webkit-resizer {
+  background: rgb(57, 161, 68);
+}
+
+
+
+.progress_bar_p {
+  height: 5px; 
+  background-color: #310085;
+  cursor: pointer;
+}
+
+.progress_bar_fill_p {
+  position: absolute;
+  height: 100%;
+  background-color: #5200c5;
+}
+button:hover {
+  color: #5200c5;
+}
+

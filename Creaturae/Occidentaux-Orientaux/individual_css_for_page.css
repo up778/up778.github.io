@@ -1,0 +1,84 @@
+html,
+body,
+.h1_background_class_horizontal_heading,
+.h2_background_class_horizontal_heading,
+.h3_background_class_horizontal_heading,
+.h4_background_class_horizontal_heading,
+.liste_tous_titres_class {
+  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/map-4818844.avif");
+  background-position: top left;
+
+  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+  background-position-y: 0%;
+  background-size: contain;
+}
+
+#breadcrumb > ul {
+  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/map-4818844.avif");
+
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-attachment: fixed !important;
+  background-position-y: 0%;
+
+  background-size: contain;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #875a00;
+}
+
+audio::-webkit-media-controls-mute-button {
+  background-color: #010203;
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+  background-color: rgba(2, 5, 7, 0.7);
+}
+
+div::-webkit-scrollbar {
+  width: 12px;
+}
+
+div::-webkit-scrollbar-button {
+  background: rgb(14, 13, 8);
+}
+
+div::-webkit-scrollbar-thumb {
+  background: #993b00;
+  border-radius: 10px;
+}
+
+div::-webkit-scrollbar-thumb:hover {
+  background: #c14a00;
+}
+
+div::-webkit-scrollbar-track {
+  background: rgb(1, 1, 1);
+  border-radius: 10px;
+}
+
+div::-webkit-scrollbar-corner {
+  background: #121;
+}
+
+div::-webkit-resizer {
+  background: rgb(57, 161, 68);
+}
+
+.progress_bar_p {
+  height: 5px;
+  background-color: #412700;
+  cursor: pointer;
+}
+
+.progress_bar_fill_p {
+  position: absolute;
+  height: 100%;
+  background-color: #935800;
+}
+button:hover {
+  color: #935800;
+}
