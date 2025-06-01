@@ -1539,6 +1539,7 @@ article,
   background-image: linear-gradient(to right, #7d7d7d 1px, transparent 1px),
     linear-gradient(to bottom, #7d7d7d 1px, transparent 1px);
   background-size: 50px 20px;
+  text-shadow: 0 0 4px rgb(0, 0, 0);
 }
 
 .volet_historique_tiny_class [class^="modified_parts"]:nth-child(2n + 1) {
