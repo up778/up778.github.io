@@ -5014,7 +5014,7 @@ window.addEventListener('load', () => {
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const popovers = new Map();
-    let activeSinglePopover = null; // Pour popover unique des nouveaux boutons
+    let activeSinglePopover = null;
     function initializePopover(button) {
       const title = button.getAttribute("data-popover-title");
       const content = button.getAttribute("data-popover-content");
@@ -5045,57 +5045,64 @@ window.addEventListener('load', () => {
         });
       });
     }
+    function removeVisiblePopovers() {
+      document.querySelectorAll(".popover.show").forEach((p) => p.remove());
+    }
     document.body.addEventListener("click", (e) => {
       const target = e.target;
       if (target.classList.contains("popover_editable")) {
         e.stopPropagation();
-        if (activeSinglePopover && activeSinglePopover.btn !== target) {
+        // Deuxième clic sur le même bouton → fermeture
+        if (activeSinglePopover && activeSinglePopover.btn === target) {
           activeSinglePopover.popover.hide();
-          // Ne pas dispose ici pour réutilisation possible
+          activeSinglePopover.popover.dispose();
+          removeVisiblePopovers(); // Nettoyage DOM
           activeSinglePopover = null;
+          return;
         }
-        if (!activeSinglePopover || activeSinglePopover.btn !== target) {
-          const title =
-            target.getAttribute("title") ||
-            target.getAttribute("data-popover-title") ||
-            "";
-          let content = document.createElement("div");
-          const wrapper = target.closest(".popover_wrapper");
-          if (wrapper) {
-            const contentDiv = wrapper.querySelector(".popover_content");
-            if (contentDiv) {
-              const clonedContent = contentDiv.cloneNode(true);
-              clonedContent.style.display = "block"; // Forcer affichage
-              content.appendChild(clonedContent);
-            }
-          }
-          const popover = new bootstrap.Popover(target, {
-            trigger: "manual",
-            placement: "auto",
-            title: title,
-            content: content.innerHTML,
-            container: "body",
-            html: true,
-            sanitize: false,
-          });
-          popover.show();
-          activeSinglePopover = { btn: target, popover: popover };
-        } else {
-          activeSinglePopover.popover.hide();
-          activeSinglePopover = null;
-        }
-      } else {
+        // Clic sur un autre bouton → fermer l’ancien
         if (activeSinglePopover) {
-          const popoverElement = document.querySelector(".popover.show");
-          // Vérifier si clic à l'intérieur du popover : ne rien faire
-          if (popoverElement && popoverElement.contains(e.target)) {
-            return;
-          }
-          // Clic en dehors du bouton ET du popover : fermer le popover actif
           activeSinglePopover.popover.hide();
+          activeSinglePopover.popover.dispose();
+          removeVisiblePopovers(); // Nettoyage DOM
           activeSinglePopover = null;
         }
-        // Cacher tous les popovers "anciens"
+        const title =
+          target.getAttribute("title") ||
+          target.getAttribute("data-popover-title") ||
+          "";
+        let content = document.createElement("div");
+        const wrapper = target.closest(".popover_wrapper");
+        if (wrapper) {
+          const contentDiv = wrapper.querySelector(".popover_content");
+          if (contentDiv) {
+            const clonedContent = contentDiv.cloneNode(true);
+            clonedContent.style.display = "block";
+            content.appendChild(clonedContent);
+          }
+        }
+        const popover = new bootstrap.Popover(target, {
+          trigger: "manual",
+          placement: "auto",
+          title: title,
+          content: content.innerHTML,
+          container: "body",
+          html: true,
+          sanitize: false,
+        });
+        popover.show();
+        activeSinglePopover = { btn: target, popover: popover };
+      } else {
+        const popoverElement = document.querySelector(".popover.show");
+        if (popoverElement && popoverElement.contains(e.target)) {
+          return;
+        }
+        if (activeSinglePopover) {
+          activeSinglePopover.popover.hide();
+          activeSinglePopover.popover.dispose();
+          removeVisiblePopovers(); // Nettoyage DOM
+          activeSinglePopover = null;
+        }
         popovers.forEach((popover) => popover.hide());
       }
     });
