@@ -1121,6 +1121,10 @@ $(document).ready(function () {
       });
   });
 
+  let prefix = window.location.href.includes("github") ? "" : "../../";
+
+  // Gestion du clic pour le bouton btn_new_3
+
   $(document).on("click", ".btn_new_3", function () {
     let filename = $(this).attr("trois_week_attrib");
     let ffilename_sans_ext_ = filename.replace(".html", "");
@@ -1129,6 +1133,7 @@ $(document).ready(function () {
       ffilename_sans_ext_ +
       "_added_3_last_weeks.html";
 
+    filename = prefix + filename;
     let where_to_search = $(this).parent().find(".to_replace_btn_btn2")
       ? "." + $(this).next().children().attr("class")
       : ".trois_last_news_weeks";
@@ -1155,7 +1160,7 @@ $(document).ready(function () {
       "Pages_pour_historique_site/Parties_modifs_3_last_weeks/" +
       ffilename_sans_ext_ +
       "_modifs_3_last_weeks.html";
-
+    filename = prefix + filename;
     $.ajax({
       url: filename,
       dataType: "html",
