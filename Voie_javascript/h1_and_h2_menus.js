@@ -846,6 +846,7 @@ $("body").on(
     }
   },
 );
+
 $("body").on(
   "hide.bs.modal",
   ".div_for_modal_for_link_outside_modal",
@@ -1278,6 +1279,8 @@ $(document).ready(function () {
 
   const minus_60 = decreaseColor(predo_color_of_page, 60);
   const minus_70 = decreaseColor(predo_color_of_page, 70);
+  const minus_85 = decreaseColor(predo_color_of_page, 85);
+  const plus_25 = increaseColor(predo_color_of_page, 25);
   const plus_50 = increaseColor(predo_color_of_page, 50);
 
   const sheet = document.styleSheets[0];
@@ -1355,14 +1358,27 @@ $(document).ready(function () {
   border-radius: 10px;
   z-index: -1;
   background:
-    repeating-linear-gradient(to right, ${predo_color_of_page} 0 1px, transparent 1px 1vw) top
+    repeating-linear-gradient(to right, ${plus_25} 0 1px, transparent 1px 1vw) top
       center / 100% 1px no-repeat,
-    repeating-linear-gradient(to right, ${predo_color_of_page} 0 1px, transparent 1px 1vw) bottom
+    repeating-linear-gradient(to right, ${plus_25} 0 1px, transparent 1px 1vw) bottom
       center / 100% 1px no-repeat,
-    repeating-linear-gradient(to bottom, ${predo_color_of_page} 0 1px, transparent 1px 1vw) left
+    repeating-linear-gradient(to bottom, ${plus_25} 0 1px, transparent 1px 1vw) left
       center / 1px 100% no-repeat,
-    repeating-linear-gradient(to bottom, ${predo_color_of_page} 0 1px, transparent 1px 1vw) right
+    repeating-linear-gradient(to bottom, ${plus_25} 0 1px, transparent 1px 1vw) right
       center / 1px 100% no-repeat;
+}`,
+    `.popover_editable {
+    background-color: ${minus_30} !important;
+    border: 1px dashed grey !important;
+    }`,
+    `.popover-body {
+    background-color: ${minus_70} !important;
+    }`,
+    `.modal-content {
+    background-color: ${minus_85} !important;
+    }`,
+    `.no_border_for_video::before {
+  background: none !important;
 }`,
   ];
 
@@ -1395,3 +1411,22 @@ function decreaseColor(hex, percent) {
 
   return newHex;
 }
+
+document
+  .querySelectorAll(".toggle_youtube_buttons")
+  .forEach(function (toggleBtn) {
+    toggleBtn.addEventListener("click", function () {
+      document.querySelectorAll(".yt_extra_buttons").forEach(function (el) {
+        const current = window.getComputedStyle(el).display;
+        el.style.display = current === "none" ? "flex" : "none";
+      });
+    });
+  });
+
+document
+  .querySelector(".toggle_youtube_borders")
+  .addEventListener("click", () => {
+    document.querySelectorAll(".border_for_video").forEach((el) => {
+      el.classList.toggle("no_border_for_video");
+    });
+  });

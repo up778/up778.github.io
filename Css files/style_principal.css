@@ -2460,3 +2460,36 @@ table .trois_last_modifs_weeks {
   max-height: 94vh;
   overflow: hidden;
 }
+
+.popover-body {
+  max-width: 70vw;
+}
+
+.btn_outline_info_youtube_nohover {
+  background-color: transparent;
+  color: #0dcaf0;
+  border: 1px dashed #0dcaf0;
+}
+.btn_outline_info_youtube_nohover:hover {
+  background-color: transparent;
+  color: white !important;
+  border: 1px dashed white;
+}
+
+.btn_outline_light_custom_youtube {
+  color: #9655d7;
+  border: 1px solid #9655d7;
+  background-color: transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: 0.375rem;
+  transition:
+    color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+.btn_outline_light_custom_youtube:hover {
+  color: #bf7fff !important;
+  border: 1px solid #bf7fff;
+  background-color: transparent;
+}
