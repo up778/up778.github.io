@@ -1368,7 +1368,7 @@ $(document).ready(function () {
       center / 1px 100% no-repeat;
 }`,
     `.popover_editable {
-    background-color: ${minus_30} !important;
+    background-color: ${minus_70} !important;
     border: 1px dashed grey !important;
     }`,
     `.popover-body {

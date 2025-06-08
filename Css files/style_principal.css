@@ -2493,3 +2493,8 @@ table .trois_last_modifs_weeks {
   border: 1px solid #bf7fff;
   background-color: transparent;
 }
+
+.bs-popover-auto {
+  max-height: 90vh;
+  overflow-y: auto;
+}
