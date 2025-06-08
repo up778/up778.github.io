@@ -1074,12 +1074,14 @@ const onClickOutside = (e) => {
 
 // new Zoomist('#zoomist')
 
+var Albert = 0;
 $(document).ready(function () {
   let background_coquille_image;
 
   const body = document.body;
   const computedStyle = getComputedStyle(body);
   background_coquille_image = computedStyle.backgroundImage;
+  Albert = background_coquille_image;
 
   function applyBackgroundImage(selector) {
     $(selector).css({
@@ -1368,15 +1370,23 @@ $(document).ready(function () {
       center / 1px 100% no-repeat;
 }`,
     `.popover_editable {
-    background-color: ${minus_70} !important;
+ background-color: ${minus_70} !important;
     border: 1px dashed grey !important;
+
     }`,
     `.popover-body {
-    background-color: ${minus_70} !important;
+    position: relative !important;
+     background  : ${Albert} !important;
+     background-attachment:fixed !important;
+     background-position: center center !important;
+     background-size: 100% !important;
     }`,
+
     `.modal-content {
-    background-color: ${minus_85} !important;
+
+background-color: ${minus_70} !important;
     }`,
+
     `.no_border_for_video::before {
   background: none !important;
 }`,
