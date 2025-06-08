@@ -231,7 +231,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/lamb-4280668_'blanc'_16-9.jpg"
                   ],
         "datePublished": "2024-09-28",
-                  "dateModified": "2025-06-07",
+                  "dateModified": "2025-06-08",
                   "author": [
                     {
                       "name": "Philippe",
@@ -3443,9 +3443,9 @@ document.addEventListener("DOMContentLoaded", function () {
       params.delete("index");
       const playlistUrl = base + "?" + params.toString();
       popoverContent = `
-                    lien de la playlist (au cas où la première vidéo de la playlist serait plus disponible) :<br>
-                    <span style="user-select: text;">${playlistUrl}</span>
-                    <a href="${playlistUrl}" target="_blank" rel="noopener noreferrer" style="margin-left: 6px; text-decoration: none; font-weight: bold; font-size: 1.2em;">↗</a>
+                    <span style="font-weight: bold;">lien de la playlist (au cas où la première vidéo de la playlist serait plus disponible) :</span><br>
+                    <span style="user-select: text;">${playlistUrl}</span><br>
+                    <a href="${playlistUrl}" target="_blank" rel="noopener noreferrer" style="margin-left: 6px; text-decoration: none; font-weight: normal; font-size: 80%;">lien cliquable pour ouverture de la playlist en onglet externe ↗</a>
                   `;
       popoverTitle = "Lien de la playlist";
     } else if (originalSrc.includes("start=") || startTime > 0) {
