@@ -1463,6 +1463,11 @@ appearance: none;
   cursor: pointer;
   border: none;
 }`,
+    `
+
+.reload_button_youtube, .info_button_youtube  {
+background-color: #00000099 !important;;
+}`,
   ];
 
   rules.forEach(insert);

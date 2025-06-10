@@ -2497,6 +2497,6 @@ table .trois_last_modifs_weeks {
 .bs-popover-auto {
   max-height: 90vh;
   overflow-y: auto;
-  max-width: 50vw !important;
+  max-width: 90vw !important;
   overflow-x: hidden;
 }
