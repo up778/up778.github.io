@@ -1518,3 +1518,47 @@ document
       el.classList.toggle("no_border_for_video");
     });
   });
+
+$(document).ready(function () {
+  document.querySelectorAll(".panzoom_reset").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const range = document.querySelector(".panzoom_range");
+      if (range) {
+        range.value = 1;
+        range.dispatchEvent(new Event("input", { bubbles: true }));
+        range.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+  });
+
+  document.querySelectorAll(".panzoom_in").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const range = document.querySelector(".panzoom_range");
+      if (range) {
+        let val = parseFloat(range.value);
+        val = Math.min(val + 0.2, parseFloat(range.max));
+        range.value = val.toFixed(1);
+        range.dispatchEvent(new Event("input", { bubbles: true }));
+        range.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+  });
+
+  document.querySelectorAll(".panzoom_out").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const range = document.querySelector(".panzoom_range");
+      if (range) {
+        let val = parseFloat(range.value);
+        val = Math.max(val - 0.2, parseFloat(range.min));
+        range.value = val.toFixed(1);
+        range.dispatchEvent(new Event("input", { bubbles: true }));
+        range.dispatchEvent(new Event("change", { bubbles: true }));
+      }
+    });
+  });
+  document.querySelectorAll(".dropdown-menu button").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  });
+});
