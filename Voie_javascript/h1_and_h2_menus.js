@@ -31,13 +31,13 @@ function return_button_for_backrgound_video(
         id="button_for_video_background"
       >
         <button
-          class="flex-column me-1 mt-1 btn dropdown-toggle bi-film justify-content-center pop_button"
+          class="flex-column me-1 mt-1 btn dropdown-toggle bi-film pop_button"
           type="button"
           role="button"
           data-bs-toggle="dropdown"
           data-bs-auto-close="false"
           aria-expanded="false"
-          style="color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
+          style="position:fixed;left:0px;bottom:100px;color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
           title="btn pour film en arrière plan de la page (fonction expérimentale)"
           data-popover-title="Titre pour Bouton"
           data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
