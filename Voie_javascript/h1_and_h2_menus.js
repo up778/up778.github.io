@@ -26,18 +26,18 @@ function return_button_for_backrgound_video(
       '"';
     div_pour_les_videos_de_background =
       `<div
-        class="d-flex dropup justify-content-center"
-        style="background-color: transparent;position:fixed;left:0px;bottom:100px"
+        class="dropup"
+        style="background-color: transparent;position:fixed !important;left:0px;bottom:100px"
         id="button_for_video_background"
       >
         <button
-          class="flex-column me-1 mt-1 btn dropdown-toggle bi-film pop_button"
+          class="flex-column me-1 mt-1 btn dropdown-toggle bi-film"
           type="button"
           role="button"
           data-bs-toggle="dropdown"
           data-bs-auto-close="false"
           aria-expanded="false"
-          style="position:fixed;left:0px;bottom:100px;color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
+          style="color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
           title="btn pour film en arrière plan de la page (fonction expérimentale)"
           data-popover-title="Titre pour Bouton"
           data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
@@ -1420,58 +1420,74 @@ background-color: ${minus_70} !important;
   position: relative !important;
 }`,
 
-    `
-.panzoom_range::-webkit-slider-runnable-track {
-  height: 6px;
-  background: ${predo_color_of_page} !important; /* couleur de fond de la barre */
-  border-radius: 4px;
-}`,
-
-    `
-.panzoom_range::-webkit-slider-runnable-track {
-  background: black;
-  height: 6px;
-  border-radius: 5px;
-}`,
-
-    `
-.panzoom_range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-appearance: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: white !important;
-  margin-top: -5px;
-  cursor: pointer;
-  border: none;
-}`,
-
-    `
-.panzoom_range::-moz-range-track {
-  height: 6px;
-  background: ${predo_color_of_page};
-  border-radius: 4px;
-}`,
-    `
-.panzoom_range::-moz-range-thumb {
-  appearance: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: ${plus_50} !important;;
-  cursor: pointer;
-  border: none;
-}`,
-    `
-
-.reload_button_youtube, .info_button_youtube  {
+    `.reload_button_youtube, .info_button_youtube  {
 background-color: #00000099 !important;;
 }`,
   ];
 
   rules.forEach(insert);
 });
+
+const panzoom_problematic_styles = `
+.panzoom_range::-moz-range-track {
+  height: 6px;
+  background: ${predo_color_of_page};
+  border-radius: 4px;
+}
+
+.panzoom_range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid ${predo_color_of_page};
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+.panzoom_range::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid ${predo_color_of_page};
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px;
+  -webkit-appearance: none;
+}
+
+.panzoom_range::-webkit-slider-runnable-track {
+  height: 6px;
+  background: ${predo_color_of_page};
+  border-radius: 4px;
+}
+
+.panzoom_range::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 2px solid ${predo_color_of_page};
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.panzoom_range::-ms-track {
+  height: 6px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+.panzoom_range::-ms-fill-lower,
+.panzoom_range::-ms-fill-upper {
+  background: ${predo_color_of_page};
+  border-radius: 4px;
+}
+`;
+
+const panzoom_style = document.createElement("style");
+panzoom_style.textContent = panzoom_problematic_styles;
+document.head.appendChild(panzoom_style);
 
 function increaseColor(hex, percent) {
   let r = parseInt(hex.substring(1, 3), 16);
