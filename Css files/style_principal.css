@@ -678,25 +678,15 @@ anchor {
 }
 
 blockquote,
-blockquote > *:empty {
-  font-size: 104%;
+blockquote > *:empty,
+blockquote > p,
+* > blockquote > p {
   font-family: "Times New Roman", calibri, Times, serif !important;
-
   border-radius: 2%;
 }
 
 blockquote > p {
-  font-size: 104%;
-
   padding-left: 10px;
-
-  border-radius: 2%;
-}
-
-* > blockquote > p {
-  font-size: 104%;
-
-  border-radius: 2%;
 }
 
 #example1 {
@@ -2495,8 +2485,12 @@ table .trois_last_modifs_weeks {
 }
 
 .bs-popover-auto {
-  max-height: 90vh;
+  max-height: 70vh;
   overflow-y: auto;
   max-width: 90vw !important;
   overflow-x: hidden;
+}
+.bs-popover-auto .popover-body {
+  white-space: normal;
+  word-wrap: break-word;
 }
