@@ -955,7 +955,7 @@ alt="Images/arrows-collapse.png"
 </tbody>
 </table>
 </div><p> </p></section>
-</article><article id="capsule_des_h1_4002" class="capsule1 capsule_des_h1_4002 capsule bcLevel1" style="content-visibility: visible;" perma_id_of_this_article_from_perma_id="accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452"><h1 id="accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452" >Différentes manières de voir/ressentir le monde</h1>
+</article><article id="capsule_des_h1_4002" class="capsule1 capsule_des_h1_4002 capsule bcLevel1" style="content-visibility: visible;" perma_id_of_this_article_from_perma_id="accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452"><h1 id="accueil_titre_perma_id_dn_samedi_5_octobre_2024_45_452">Différentes manières de voir/ressentir le monde</h1>
 <p><em>(Différentes manières de voir, de ressentir, le monde, ou sinon le monde, du moins, la société.)</em></p>
 <section class="bcLevel2" id="accueil_titre_perma_id_dn_vendredi_11_octobre_2024_25_563"><h2>Différents ressentis sur le monde. Préambule</h2><p>J'eus l'impression qu'il y avait différentes manières de ressentir le monde : la manière qui serait plutôt celle des Enfants, la manière des Agnostiques, la manière des Athées, des Catholiques, des Philosophes, des Protestants, des Orthodoxes, des Hindouistes, des Bouddhistes, des Musulmans, etc.<br>Donc, pour reprendre sur qu'est-ce que ce site, sur ce site, j'évoque quelles sensations furent les miennes, face au monde, mais, globalement, voici, dans le tableau suivant, dans quelle catégorie j'estime me situer :</p><section class="bcLevel3" id="accueil_titre_perma_id_dn_samedi_17_août_2024_50_991"><h3>Tableau de diverses conceptions, diverses sensations/émotions, face au monde, et dans quelle catégorie, j'estime, ce site se situe</h3><div class="div_with_table_outside_a_table_and_outside_card">
 <table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 98.0005%; height: 1365.76px;" id="accueil_table_perma_id_dn_samedi_17_août_2024_51_633"><colgroup> <col style="width: 10.7375%;"> <col style="width: 17.3965%;"> <col style="width: 22.3907%;"> <col style="width: 11.6531%;"> <col style="width: 16.1479%;"> <col style="width: 21.6416%;"> </colgroup>
@@ -3830,23 +3830,47 @@ document.addEventListener("DOMContentLoaded", function () {
           "";
         let content = document.createElement("div");
         const wrapper = target.closest(".popover_wrapper");
+        // Placement dynamique
+        const rect = target.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const spaceTop = rect.top;
+        const spaceBottom = viewportHeight - rect.bottom;
+        const spaceLeft = rect.left;
+        const spaceRight = viewportWidth - rect.right;
+        const rightThreshold = viewportWidth * 0.5; // 50% largeur fenêtre
         if (wrapper) {
           const contentDiv = wrapper.querySelector(".popover_content");
           if (contentDiv) {
             const clonedContent = contentDiv.cloneNode(true);
             clonedContent.style.display = "block";
+            const maxWidth = Math.max(150, spaceRight - 60); // 20px de marge de sécurité, 150px largeur minimale
+            clonedContent.style.width = `${maxWidth}px`;
             content.appendChild(clonedContent);
           }
         }
-        // Placement dynamique
-        const rect = target.getBoundingClientRect();
-        const viewportWidth = window.innerWidth;
-        const placement =
-          rect.right > viewportWidth * 0.85
-            ? "left"
-            : rect.right > viewportWidth / 2
-              ? "top"
-              : "bottom";
+        let placement;
+        if (spaceRight < rightThreshold) {
+          // Trop proche du bord droit : éviter "right"
+          placement = spaceTop > spaceBottom ? "top" : "bottom";
+        } else {
+          // Choisir la direction avec le plus d’espace
+          const maxSpace = Math.max(
+            spaceTop,
+            spaceBottom,
+            spaceLeft,
+            spaceRight,
+          );
+          if (maxSpace === spaceTop) {
+            placement = "top";
+          } else if (maxSpace === spaceBottom) {
+            placement = "bottom";
+          } else if (maxSpace === spaceLeft) {
+            placement = "left";
+          } else {
+            placement = "right";
+          }
+        }
         const popover = new bootstrap.Popover(target, {
           trigger: "manual",
           placement: placement,
