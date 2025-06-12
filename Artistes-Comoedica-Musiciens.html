@@ -232,7 +232,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/sheep-5427870_'jaune'_16-9.jpg"
                   ],
         "datePublished": "2024-03-18",
-                  "dateModified": "2025-06-07",
+                  "dateModified": "2025-06-12",
                   "author": [
                     {
                       "name": "Philippe",
@@ -5283,23 +5283,47 @@ document.addEventListener("DOMContentLoaded", function () {
           "";
         let content = document.createElement("div");
         const wrapper = target.closest(".popover_wrapper");
+        // Placement dynamique
+        const rect = target.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+        const spaceTop = rect.top;
+        const spaceBottom = viewportHeight - rect.bottom;
+        const spaceLeft = rect.left;
+        const spaceRight = viewportWidth - rect.right;
+        const rightThreshold = viewportWidth * 0.5; // 50% largeur fenêtre
         if (wrapper) {
           const contentDiv = wrapper.querySelector(".popover_content");
           if (contentDiv) {
             const clonedContent = contentDiv.cloneNode(true);
             clonedContent.style.display = "block";
+            const maxWidth = Math.max(150, spaceRight - 60); // 20px de marge de sécurité, 150px largeur minimale
+            clonedContent.style.width = `${maxWidth}px`;
             content.appendChild(clonedContent);
           }
         }
-        // Placement dynamique
-        const rect = target.getBoundingClientRect();
-        const viewportWidth = window.innerWidth;
-        const placement =
-          rect.right > viewportWidth * 0.85
-            ? "left"
-            : rect.right > viewportWidth / 2
-              ? "top"
-              : "bottom";
+        let placement;
+        if (spaceRight < rightThreshold) {
+          // Trop proche du bord droit : éviter "right"
+          placement = spaceTop > spaceBottom ? "top" : "bottom";
+        } else {
+          // Choisir la direction avec le plus d’espace
+          const maxSpace = Math.max(
+            spaceTop,
+            spaceBottom,
+            spaceLeft,
+            spaceRight,
+          );
+          if (maxSpace === spaceTop) {
+            placement = "top";
+          } else if (maxSpace === spaceBottom) {
+            placement = "bottom";
+          } else if (maxSpace === spaceLeft) {
+            placement = "left";
+          } else {
+            placement = "right";
+          }
+        }
         const popover = new bootstrap.Popover(target, {
           trigger: "manual",
           placement: placement,
