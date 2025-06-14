@@ -477,8 +477,8 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
 
   var tag = $target.prop("tagName");
   var classes = $target.attr("class") || "";
-  console.log("ggggggggggggggggggggggghhh");
-  console.log($target, `$target`);
+  // console.log("ggggggggggggggggggggggghhh");
+
   const animations = {
     H1: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
     H2: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
