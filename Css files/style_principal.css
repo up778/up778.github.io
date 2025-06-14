@@ -140,6 +140,7 @@ body {
 .dropup,
 .modal-content,
 .modal-body {
+  overflow-y: auto;
 }
 
 .modal-dialog {
