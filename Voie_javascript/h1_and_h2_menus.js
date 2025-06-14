@@ -431,6 +431,34 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
   var hrefParts = href.split("#");
   if (hrefParts[0] === currentPage || hrefParts[0] === "") {
     var anchor = "#" + hrefParts[1];
+
+    // Si l'ancre cible est dans un popover_content
+    // console.log("l'ancre cible est dans un popover_content");
+    var $popoverContent = $(".popover_content").has(anchor);
+    if ($popoverContent.length) {
+      const $btnPopover = $popoverContent
+        .prevAll("button[data-bs-toggle='popover']")
+        .first();
+      if ($btnPopover.length) {
+        const $popoverWrapper = $btnPopover.closest(".popover_wrapper");
+
+        if ($popoverWrapper.length) {
+          const offset =
+            $popoverWrapper.offset().top +
+            $popoverWrapper.outerHeight() / 2 -
+            $(window).height() / 2;
+          $("html, body").scrollTop(offset);
+          restartAnimation($popoverWrapper, "rotateIn");
+        } else {
+          console.warn("Élément .popover_wrapper introuvable pour le scroll.");
+        }
+
+        return;
+      }
+
+      return;
+    }
+
     var $target = $(anchor);
     if ($target.length) {
       $("html, body").animate({ scrollTop: $target.offset().top - 141 }, 0);
