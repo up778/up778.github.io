@@ -496,9 +496,6 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
   if ($(this).hasClass("h_table")) {
     restartAnimation($target, "zoomIn");
   }
-  if ($(this).hasClass("h_nouvelle_image_svg")) {
-    restartAnimation($target, "swing");
-  }
 
   if (classes.includes("div_around_iframe")) {
     const $table = $target.closest("table");
