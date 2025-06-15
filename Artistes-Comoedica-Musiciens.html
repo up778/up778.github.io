@@ -5300,15 +5300,16 @@ document.addEventListener("DOMContentLoaded", function () {
           if (contentDiv) {
             const clonedContent = contentDiv.cloneNode(true);
             clonedContent.style.display = "block";
+            // console.log(clonedContent, `clonedContent`);
             // let minWidthVW = null;
             let div_around_iframe =
               clonedContent.querySelector(".div_around_iframe");
             let not_video = clonedContent.querySelector(
-              ".avoid_iframe8_pour_iframe_wiki_etc",
+              ".avoid_iframe_pour_iframe_wiki_etc",
             );
-            console.log(not_video, `not_video`);
+            // console.log(not_video, `not_video`);
             if (div_around_iframe && !not_video) {
-              console.log(`fff`);
+              // console.log(`fff`);
               const table = div_around_iframe.closest("table");
               if (table) {
                 const vwMatch = table.style.width.match(/([\d.]+)vw/);
