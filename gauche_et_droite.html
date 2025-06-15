@@ -231,7 +231,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/lamb-4280668_'blanc'_16-9.jpg"
                   ],
         "datePublished": "2024-09-28",
-                  "dateModified": "2025-06-12",
+                  "dateModified": "2025-06-16",
                   "author": [
                     {
                       "name": "Philippe",
@@ -3917,10 +3917,16 @@ document.addEventListener("DOMContentLoaded", function () {
           if (contentDiv) {
             const clonedContent = contentDiv.cloneNode(true);
             clonedContent.style.display = "block";
+            // console.log(clonedContent, `clonedContent`);
             // let minWidthVW = null;
             let div_around_iframe =
               clonedContent.querySelector(".div_around_iframe");
-            if (div_around_iframe) {
+            let not_video = clonedContent.querySelector(
+              ".avoid_iframe_pour_iframe_wiki_etc",
+            );
+            // console.log(not_video, `not_video`);
+            if (div_around_iframe && !not_video) {
+              // console.log(`fff`);
               const table = div_around_iframe.closest("table");
               if (table) {
                 const vwMatch = table.style.width.match(/([\d.]+)vw/);
