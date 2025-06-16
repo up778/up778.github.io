@@ -26,28 +26,29 @@ function return_button_for_backrgound_video(
       '"';
     div_pour_les_videos_de_background =
       `<div
-        class="dropup"
-        style="background-color: transparent;position:fixed !important;left:0px;bottom:100px"
+        class="dropdown"
+        style="background-color: transparent;position:fixed !important;left:0px;bottom:420px"
         id="button_for_video_background"
       >
         <button
           class="flex-column me-1 mt-1 btn dropdown-toggle bi-film"
           type="button"
           role="button"
+
           data-bs-toggle="dropdown"
           data-bs-auto-close="false"
           aria-expanded="false"
-          style="color: rgb(135, 136, 221); background-color: rgb(25, 24, 25); --darkreader-inline-color: #84adf3; --darkreader-inline-bgcolor: #000000;"
+          style="color: rgb(135, 136, 221); background-color: rgb(63, 63, 63);"
           title="btn pour film en arrière plan de la page (fonction expérimentale)"
           data-popover-title="Titre pour Bouton"
           data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
         ></button>
-        <ul class="dropdown-menu class_for_append_test flex-column" style="background-color:transparent">
+        <ul class="dropdown-menu-end dropdown-menu class_for_append_test flex-column force-dropup" style="background-color:transparent"  data-bs-display="static">
           <li>
             <div
               id="youtube_mb_buttons"
               class="btn boutons_background_video btn-group-vertical container btn_video_background"
-              style="position: fixed; bottom: 8vh; left: 0vw; max-width: 3vw; max-height: 50vh; z-index: 400; border: dashed #444 1px; color: #ccc; background-color: #00000060;"
+              style="max-width: 3vw; max-height: 50vh; z-index: 400; border: dashed #444 1px; color: #ccc; background-color: #00000060;"
             >
               <div style="font-size:14px; display:none">
                 boutons pour vidéo de fond <br />attention, fonction
@@ -79,7 +80,7 @@ function return_button_for_backrgound_video(
               >
                 <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();" -->
                 ▶️
-              </button>
+  </button>
               <button
              class="btn btn_video_background"
                 style="
@@ -137,7 +138,7 @@ function return_button_for_backrgound_video(
                 <!-- fonctionna pas -->
                 ⏹️
               </button>
-            </div>
+</div>
           </li>
         </ul>
       </div>`;
