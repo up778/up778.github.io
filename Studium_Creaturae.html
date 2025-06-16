@@ -231,7 +231,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/lamb-4280668_'blanc'_16-9.jpg"
                   ],
         "datePublished": "2024-02-26",
-                  "dateModified": "2025-06-14",
+                  "dateModified": "2025-06-17",
                   "author": [
                     {
                       "name": "Philippe",
@@ -4360,6 +4360,98 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // script_youtube
 ////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+// window.add_buttons_for_youtube_videos();
+// add_buttons_for_youtube_videos();
+// const observer = new MutationObserver(() => {
+//   document.querySelectorAll('.div_around_iframe').forEach(video => {
+//     if (!video.querySelector('.yt_extra_buttons')) {
+//       // ajouterBoutonInfo(video);  // fonction définie dans script1
+//       // window.add_buttons_for_youtube_videos();
+//       add_buttons_for_youtube_videos();
+//     }
+//   });
+// });
+// observer.observe(document.body, { childList: true, subtree: true });
+////////////////////////////////////////////////////////////////////////////////////////////////////////
+function add_buttons_for_youtube_videos() {
+  document.querySelectorAll(".div_around_iframe").forEach(function (container) {
+    if (container.querySelector(".yt_extra_buttons")) return;
+    const liteYoutube = container.querySelector("lite-youtube");
+    if (!liteYoutube) return;
+    const originalSrc = (liteYoutube.getAttribute("src") || "").split("&")[0];
+    const btnContainer = document.createElement("div");
+    btnContainer.classList.add("yt_extra_buttons");
+    btnContainer.style.position = "absolute";
+    btnContainer.style.top = "10px";
+    btnContainer.style.left = "10px";
+    btnContainer.style.zIndex = "10";
+    btnContainer.style.display = "flex";
+    btnContainer.style.gap = "4px";
+    const reloadBtn = document.createElement("button");
+    reloadBtn.className = "reload_button_youtube btn btn-sm btn_outline_light_custom_youtube";
+    reloadBtn.innerHTML = "↻";
+    reloadBtn.type = "button";
+    reloadBtn.setAttribute("data-bs-toggle", "tooltip");
+    btnContainer.appendChild(reloadBtn);
+    reloadBtn.addEventListener("click", function () {
+      const iframe = container.querySelector("iframe");
+      if (iframe) {
+        let src = iframe.getAttribute("src") || "";
+        let baseUrl = src.split("?")[0];
+        let params = new URLSearchParams(src.split("?")[1] || "");
+        params.set("autoplay", "1");
+        params.set("enablejsapi", "1");
+        iframe.src = baseUrl + "?" + params.toString();
+      } else {
+        liteYoutube.click();
+      }
+    });
+    new bootstrap.Tooltip(reloadBtn);
+    const infoBtn = document.createElement("button");
+    infoBtn.className = "info_button_youtube btn btn-sm btn_outline_info_youtube_nohover";
+    infoBtn.innerHTML = "i";
+    infoBtn.type = "button";
+    btnContainer.appendChild(infoBtn);
+    const popoverContent = `<span style="user-select: text;">${originalSrc}</span>`;
+    const popover = new bootstrap.Popover(infoBtn, {
+      html: true,
+      sanitize: false,
+      trigger: "manual",
+      content: popoverContent,
+      title: "Informations",
+      placement: "bottom",
+    });
+    infoBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (popover._isShown()) {
+        popover.hide();
+      } else {
+        popover.show();
+      }
+    });
+    document.addEventListener("click", function (event) {
+      const popoverEl = document.querySelector(".popover");
+      const isClickInsidePopover = popoverEl && popoverEl.contains(event.target);
+      const isClickOnButton = infoBtn.contains(event.target);
+      if (!isClickInsidePopover && !isClickOnButton) {
+        popover.hide();
+      }
+    });
+    container.appendChild(btnContainer);
+  });
+}
+if (!window.location.href.includes("up778.github.io") && !window.location.href.includes("up778.ct.ws")) {
+  add_buttons_for_youtube_videos();
+  // Observer pour remettre les boutons si supprimés
+  const observer = new MutationObserver(() => {
+    add_buttons_for_youtube_videos();
+  });
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+}
 </script>
 <script>
   $("video").each(function (index, elem) {
