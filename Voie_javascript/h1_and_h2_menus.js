@@ -838,7 +838,7 @@ $("body").on(
       $(this)
         .find(".avoid_iframe_pour_iframe_wiki_etc")
         .append(
-          '<iframe width="" height="" style="height: 90vh; width: 98%;" src="' +
+          '<iframe width="" height="" style="height: 70vh; width: 98%;" src="' +
             src_from +
             '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
         );
@@ -1384,8 +1384,12 @@ $(document).ready(function () {
 
     `.modal-content {
 
-background-color: ${minus_70} !important;
+background: ${Albert} !important;
     }`,
+    `
+    .modal_body_wikipedia,.modal_body_not_wikipedia {
+  overflow-y: hidden !important;
+}`,
 
     `.no_border_for_video::before {
   background: none !important;
