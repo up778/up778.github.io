@@ -219,18 +219,17 @@ class LiteYTEmbed extends HTMLElement {
     this.append(videoPlaceholderEl);
 
     const paramsObj = Object.fromEntries(this.getParams().entries());
-    console.log(this.videoId, `videoId`);
-    console.log(paramsObj, `playerVars`);
 
-    // Recherche dans le DOM (div autour)
-    const parentDiv = document.getElementById("iframe_id_" + this.videoId)?.closest(".div_around_iframe");
+    const parentDiv = document
+      .getElementById("iframe_id_" + this.videoId)
+      ?.closest(".div_around_iframe");
     const liteYT = parentDiv?.querySelector("lite-youtube");
 
-    // Extraire params clip/clipt s'ils existent
     if (liteYT) {
-      let rawUrl = liteYT.getAttribute("video_id") || liteYT.getAttribute("src");
+      let rawUrl =
+        liteYT.getAttribute("video_id") || liteYT.getAttribute("src");
       if (rawUrl) {
-        const url = new URL("https://dummy.com/?" + rawUrl.split("?")[1]); // ajout d’un hôte fictif pour parser les paramètres
+        const url = new URL("https://dummy.com/?" + rawUrl.split("?")[1]);
 
         const clip = url.searchParams.get("clip");
         const clipt = url.searchParams.get("clipt");
