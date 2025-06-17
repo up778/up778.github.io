@@ -212,15 +212,46 @@ class LiteYTEmbed extends HTMLElement {
 
   async addYTPlayerIframe() {
     this.fetchYTPlayerApi();
-
     await this.ytApiPromise;
 
     const videoPlaceholderEl = document.createElement("div");
     videoPlaceholderEl.id = "iframe_id_" + this.videoId;
-
     this.append(videoPlaceholderEl);
 
     const paramsObj = Object.fromEntries(this.getParams().entries());
+    console.log(this.videoId, `videoId`);
+    console.log(paramsObj, `playerVars`);
+
+    // Recherche dans le DOM (div autour)
+    const parentDiv = document.getElementById("iframe_id_" + this.videoId)?.closest(".div_around_iframe");
+    const liteYT = parentDiv?.querySelector("lite-youtube");
+
+    // Extraire params clip/clipt s'ils existent
+    if (liteYT) {
+      let rawUrl = liteYT.getAttribute("video_id") || liteYT.getAttribute("src");
+      if (rawUrl) {
+        const url = new URL("https://dummy.com/?" + rawUrl.split("?")[1]); // ajout d’un hôte fictif pour parser les paramètres
+
+        const clip = url.searchParams.get("clip");
+        const clipt = url.searchParams.get("clipt");
+
+        if (clip && clipt) {
+          paramsObj.clip = clip;
+          paramsObj.clipt = clipt;
+        }
+      }
+    }
+
+    // Nettoyage ID
+    if (typeof this.videoId === "string") {
+      const cleanId = this.videoId.split("?")[0].split("&")[0];
+      if (/^[a-zA-Z0-9_-]{11}$/.test(cleanId)) {
+        this.videoId = cleanId;
+      } else {
+        console.warn("ID vidéo invalide détecté :", this.videoId);
+        return;
+      }
+    }
 
     this.playerPromise = new Promise((resolve) => {
       let player = new YT.Player(videoPlaceholderEl, {
@@ -241,6 +272,7 @@ class LiteYTEmbed extends HTMLElement {
 
     return this.display_block();
   }
+
 
   addNoscriptIframe() {
     const iframeEl = this.createBasicIframe();
@@ -327,6 +359,8 @@ class LiteYTEmbed extends HTMLElement {
     params.append("autoplay", "1");
     params.append("playsinline", "1");
 
+
+
     return this.addYTPlayerIframe(params);
 
     const iframeEl = document.createElement("iframe");
@@ -372,6 +406,7 @@ function onPlayerStateChange(event) {
     }
 
     if (event.target.options.videoId.indexOf("clip") > 0) {
+      // console.log(gggg, `gggg`);
       last_played_video = event.target.options.videoId;
     } else {
       last_played_video = event.target.playerInfo.videoData.video_id;
