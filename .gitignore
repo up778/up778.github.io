@@ -59,6 +59,8 @@
 !/bootstrap-5.3.3-dist/**
 !/bootstrap-5.3.4-dist/
 !/bootstrap-5.3.4-dist/**
+!/bootstrap-5.3.7-dist/
+!/bootstrap-5.3.7-dist/**
 Voie_javascript/check_which_browser.js
 
 # !/Pages_pour_historique_site/
