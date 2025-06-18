@@ -1386,6 +1386,7 @@ $(document).ready(function () {
 
 background: ${Albert} !important;
     }`,
+
     `
     .modal_body_wikipedia,.modal_body_not_wikipedia {
   overflow-y: hidden !important;
