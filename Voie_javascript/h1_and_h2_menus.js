@@ -1374,18 +1374,18 @@ $(document).ready(function () {
     border: 1px dashed grey !important;
 
     }`,
-    `.popover-body {
-    position: relative !important;
-     background  : ${Albert} !important;
-     background-attachment:fixed !important;
-     background-position: center center !important;
-     background-size: 100% !important;
-    }`,
 
     `.modal-content {
 
 background: ${Albert} !important;
     }`,
+
+    `.btn_custom_source {
+  color: #ffffff;
+  /* background-color: #4e668a; */
+  background-color: #6381af !important;
+  border-right: 0px solid black !important;
+}`,
 
     `
     .modal_body_wikipedia,.modal_body_not_wikipedia {
