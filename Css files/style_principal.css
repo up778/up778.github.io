@@ -329,7 +329,7 @@ h1 {
   line-height: 1;
   padding-bottom: 0px;
 
-  margin: 60px 0px 0px 16%;
+  margin: 60px 0px 0px 1%;
   color: red;
 }
 
@@ -344,7 +344,7 @@ h1 > a {
   line-height: 1;
   padding-bottom: 0px;
 
-  margin: 60px 0px 0px 12%;
+  margin: 60px 0px 0px 1%;
   color: red;
   text-decoration: none;
 }
@@ -353,7 +353,7 @@ h2 {
   font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
-  margin: 0px 0px 0px 10%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-2);
 
   visibility: visible !important;
@@ -364,7 +364,7 @@ h2 > a {
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
   padding-bottom: 0px;
-  margin: 0px 0px 0px 10%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-2);
   text-decoration: none;
 }
@@ -373,7 +373,7 @@ h1 + h2 {
   font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-  margin: 0px 0px 0px 10%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-2);
 
   visibility: visible !important;
@@ -383,7 +383,7 @@ h1 + h2 {
   font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-  margin: 0px 0px 0px 10%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-2);
 
   visibility: visible !important;
@@ -398,7 +398,7 @@ h3 {
   font-weight: normal !important;
   text-align: left;
   font-family: "Times New Roman", calibri, Abelone, Arial, serif;
-  margin: 0px 0px 0px 8%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-3);
 }
 
@@ -406,7 +406,7 @@ h3 {
   font-size: var(--h3-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-  margin: 40px 0px 0px 9% !important;
+  margin: 40px 0px 0px 0% !important;
   color: var(--titre-de-niveau-3);
 }
 
@@ -415,7 +415,7 @@ h2 + h3 {
   font-weight: normal !important;
   text-align: left;
   font-family: "Times New Roman", calibri, Abelone, Arial, serif;
-  margin: 0px 0px 0px 8%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-3);
 }
 
@@ -426,7 +426,7 @@ p + h3 {
   text-align: left;
   font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
     serif;
-  margin: 0px 0px 0px 8%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-3);
 }
 
@@ -436,7 +436,7 @@ h2 + div + h3 {
   text-align: left;
   font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
     serif;
-  margin: 0px 0px -0px 8%;
+  margin: 0px 0px -0px 0%;
   color: var(--titre-de-niveau-3);
 }
 
@@ -444,7 +444,7 @@ h4 {
   font-size: 111%;
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-  margin: 20px 0px 0px 6%;
+  margin: 20px 0px 0px 0%;
   color: var(--titre-de-niveau-4);
 }
 
@@ -452,7 +452,7 @@ h3 + h4 {
   font-size: 111%;
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-  margin: 0px 0px 0px 6%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-4);
 }
 
@@ -460,8 +460,7 @@ h3 + h4 {
   font-size: 111%;
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-
-  margin: 0px 0px 0px 6%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-4);
 }
 
@@ -471,7 +470,7 @@ h3 + div + h4 {
   text-align: left;
   font-family: "Times New Roman", calibri, "Times New Roman", Abelone, Arial,
     serif;
-  margin: 0px 0px 0px 6%;
+  margin: 0px 0px 0px 0%;
   color: var(--titre-de-niveau-4) !important;
 }
 
@@ -482,7 +481,7 @@ h5 {
 
   line-height: 1;
 
-  margin: 3px 50px 3px 4%;
+  margin: 3px 50px 3px 0%;
 }
 
 h4 + h5 {
@@ -492,7 +491,7 @@ h4 + h5 {
   font-size: 104%;
 
   line-height: 1;
-  margin: 0px 0px 0px 4% !important;
+  margin: 0px 0px 0px 0% !important;
 }
 
 *:not(h4) + h5 {
@@ -502,7 +501,7 @@ h4 + h5 {
   font-size: 104%;
 
   line-height: 1;
-  margin: 0px 0px 0px 4% !important;
+  margin: 0px 0px 0px 0% !important;
 }
 
 h6 {
@@ -510,7 +509,7 @@ h6 {
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
 
-  margin: 0px 0px 0px 2% !important;
+  margin: 0px 0px 0px 0% !important;
 
   color: var(--titre-de-niveau-6);
 }
@@ -524,7 +523,7 @@ h5 + [id^="mce"] > h6:nth-child(n) {
   font-size: 100%;
   font-weight: bold;
   line-height: 1;
-  margin: 20px 0px 0px 2% !important;
+  margin: 20px 0px 0px 0% !important;
 }
 
 *:not(h5) + h6,
@@ -536,7 +535,7 @@ h5 + [id^="mce"] > h6:nth-child(n) {
   font-size: 100%;
 
   line-height: 1;
-  margin: 20px 0px 0px 2% !important;
+  margin: 20px 0px 0px 0% !important;
 }
 
 h7.post-title {
@@ -1261,10 +1260,6 @@ audio::-webkit-media-controls-timeline {
   background-color: green !important;
 }
 
-blockquote {
-  display: flex;
-}
-
 blockquote table {
   margin-left: 0px !important;
 }
@@ -1299,16 +1294,21 @@ blockquote > p {
   font-style: italic;
   padding-left: 10px;
   border-radius: 20px;
+
+  overflow: hidden;
 }
 
 .probable_citation_de_Dieu {
   display: inline-block;
+
   border-left: 4px solid #fbff00 !important;
   font-style: italic;
   color: #fbff00;
   padding-left: 10px;
 
   border-radius: 20px;
+
+  overflow: hidden;
 }
 
 .probable_citation_de_Dieu > p > * {
@@ -1656,11 +1656,6 @@ article {
 }
 .bcLevel3.bordures-cachees::before {
   background-color: transparent;
-}
-
-.bcLevel2,
-.bcLevel3 {
-  padding-left: 4px;
 }
 
 .bcLevel2 {
