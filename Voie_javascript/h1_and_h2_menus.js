@@ -1375,6 +1375,13 @@ $(document).ready(function () {
 
     }`,
 
+    ` .popover_content { position: relative !important;
+     background  : ${Albert} !important;
+     background-attachment:fixed !important;
+     background-position: center center !important;
+     background-size: 100% !important;
+    }`,
+
     `.modal-content {
 
 background: ${Albert} !important;
