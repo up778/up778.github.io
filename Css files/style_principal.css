@@ -136,9 +136,6 @@ body {
   z-index: 8000;
 }
 
-.nav-item,
-.dropup,
-.modal-content,
 .modal-body {
   overflow-y: auto;
 }
