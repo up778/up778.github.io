@@ -27,14 +27,13 @@ function return_button_for_backrgound_video(
     div_pour_les_videos_de_background =
       `<div
         class="dropdown"
-        style="background-color: transparent;position:fixed !important;left:0px;bottom:420px"
+        style="background-color: transparent;position:fixed !important;left:0px;top:260px"
         id="button_for_video_background"
       >
         <button
           class="flex-column me-1 mt-1 btn dropdown-toggle bi-film"
           type="button"
           role="button"
-
           data-bs-toggle="dropdown"
           data-bs-auto-close="false"
           aria-expanded="false"
