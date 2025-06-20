@@ -329,7 +329,7 @@ h1 {
   line-height: 1;
   padding-bottom: 0px;
 
-  margin: 60px 0px 0px 1%;
+  margin: 60px 0px 0px 7%;
   color: red;
 }
 
@@ -344,7 +344,7 @@ h1 > a {
   line-height: 1;
   padding-bottom: 0px;
 
-  margin: 60px 0px 0px 1%;
+  margin: 60px 0px 0px 7%;
   color: red;
   text-decoration: none;
 }
@@ -353,7 +353,7 @@ h2 {
   font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
-  margin: 0px 0px 0px 0%;
+  margin: 0px 0px 0px 2%;
   color: var(--titre-de-niveau-2);
 
   visibility: visible !important;
@@ -364,7 +364,7 @@ h2 > a {
   font-weight: normal !important;
   font-family: "Times New Roman", calibri, Abelone, Arial;
   padding-bottom: 0px;
-  margin: 0px 0px 0px 0%;
+  margin: 0px 0px 0px 2%;
   color: var(--titre-de-niveau-2);
   text-decoration: none;
 }
@@ -373,7 +373,7 @@ h1 + h2 {
   font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-  margin: 0px 0px 0px 0%;
+  margin: 0px 0px 0px 2%;
   color: var(--titre-de-niveau-2);
 
   visibility: visible !important;
@@ -383,7 +383,7 @@ h1 + h2 {
   font-size: var(--h2-font-size);
   font-weight: normal !important;
   font-family: "Times New Roman", Abelone, Arial;
-  margin: 0px 0px 0px 0%;
+  margin: 0px 0px 0px 2%;
   color: var(--titre-de-niveau-2);
 
   visibility: visible !important;
@@ -1297,6 +1297,41 @@ blockquote > p {
 
   overflow: hidden;
 }
+.probable_citation_du_Père {
+  border-left: 4px solid #ff2e2e !important;
+  font-style: italic;
+  color: #ff2e2e !important;
+  padding-left: 10px;
+  border-radius: 20px;
+}
+.probable_citation_du_Père {
+  font-family: "Georgia", serif;
+  font-style: italic;
+  color: #dd3333;
+  letter-spacing: 0.5px;
+}
+
+.probable_citation_du_Fils {
+  border-left: 4px solid yellow !important;
+  font-style: italic;
+  color: yellow !important;
+  padding-left: 10px;
+  border-radius: 20px;
+}
+.probable_citation_du_Saint-Esprit {
+  border-left: 4px solid white !important;
+  font-style: italic;
+  color: white !important;
+  padding-left: 10px;
+  border-radius: 20px;
+}
+.probable_citation_de_la_Mère {
+  border-left: 4px solid #ff4ff6 !important;
+  font-style: italic;
+  color: #ff4ff6 !important;
+  padding-left: 10px;
+  border-radius: 20px;
+}
 
 .probable_citation_de_Dieu {
   display: inline-block;
@@ -1985,17 +2020,17 @@ video {
 }
 
 .bcLevel3 {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .bcLevel4 {
-  padding-left: 40px;
+  padding-left: 20px;
 }
 .bcLevel5 {
-  padding-left: 60px;
+  padding-left: 30px;
 }
 .bcLevel6 {
-  padding-left: 80px;
+  padding-left: 40px;
 }
 
 #breadcrumb > ul {
