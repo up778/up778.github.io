@@ -506,7 +506,6 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
   };
 
   if (animations[tag]) {
-    console.log(animations[tag], "animations[tag]");
     animations[tag]();
   }
 
