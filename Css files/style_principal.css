@@ -1278,7 +1278,7 @@ blockquote > p {
 
 .probable_non_citation_de_Dieu,
 .probable_non_citation_de_Dieu > p {
-  color: rgb(85, 255, 85) !important;
+  color: #55ff55 !important;
   font-style: italic;
 }
 .probable_non_citation_de_Dieu {
@@ -1304,12 +1304,6 @@ blockquote > p {
   padding-left: 10px;
   border-radius: 20px;
 }
-.probable_citation_du_Père {
-  font-family: "Georgia", serif;
-  font-style: italic;
-  color: #dd3333;
-  letter-spacing: 0.5px;
-}
 
 .probable_citation_du_Fils {
   border-left: 4px solid yellow !important;
@@ -1329,6 +1323,13 @@ blockquote > p {
   border-left: 4px solid #ff4ff6 !important;
   font-style: italic;
   color: #ff4ff6 !important;
+  padding-left: 10px;
+  border-radius: 20px;
+}
+.class_citation_standard {
+  border-left: 4px solid #55ff55 !important;
+  font-style: italic;
+  color: #55ff55;
   padding-left: 10px;
   border-radius: 20px;
 }
