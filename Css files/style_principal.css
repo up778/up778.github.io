@@ -1690,6 +1690,24 @@ article {
 .bcLevel2.bordures-cachees::before {
   background-color: transparent;
 }
+
+.bcLevel2 + .bcLevel2 {
+  margin-top: 80px;
+}
+.bcLevel3 + .bcLevel3 {
+  margin-top: 70px;
+}
+.bcLevel4 + .bcLevel4 {
+  margin-top: 60px;
+}
+.bcLevel5 + .bcLevel5 {
+  margin-top: 50px;
+}
+
+article + article {
+  margin-top: 100px;
+}
+
 .bcLevel3.bordures-cachees::before {
   background-color: transparent;
 }

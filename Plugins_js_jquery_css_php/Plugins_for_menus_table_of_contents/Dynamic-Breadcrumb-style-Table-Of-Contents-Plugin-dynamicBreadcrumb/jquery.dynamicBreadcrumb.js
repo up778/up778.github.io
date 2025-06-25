@@ -82,7 +82,7 @@ $("head").append(styleTag);
           level = i;
 
           currentContainer = $(
-            "." + settings.levelClassPrefix + i + ":in-viewport( 300 )",
+            "." + settings.levelClassPrefix + i + ":in-viewport( 200 )",
           ).first();
 
           if (
