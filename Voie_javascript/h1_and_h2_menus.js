@@ -27,7 +27,7 @@ function return_button_for_backrgound_video(
     div_pour_les_videos_de_background =
       `<div
         class="dropdown"
-        style="background-color: transparent;position:fixed !important;left:0px;top:260px"
+        style="background-color: transparent;position:fixed;left:0px;top:260px"
         id="button_for_video_background"
       >
         <button
@@ -42,7 +42,7 @@ function return_button_for_backrgound_video(
           data-popover-title="Titre pour Bouton"
           data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
         ></button>
-        <ul class="dropdown-menu-end dropdown-menu class_for_append_test flex-column force-dropup" style="background-color:transparent"  data-bs-display="static">
+        <ul class="dropdown-menu-start dropdown-menu class_for_append_test flex-column force-dropup" style="background-color:transparent"  data-bs-display="static">
           <li>
             <div
               id="youtube_mb_buttons"
@@ -63,16 +63,7 @@ function return_button_for_backrgound_video(
               >⏮️</button>
               <button
                 class="btn btn_video_background"
-                style="
-    
-      "btn btn_video_background
-      color: #000000;
-      font-size: 14px;
-      cursor: pointer;
-      z-index: 4000;
-      position: relative;
-    
-    "
+                style="color: #000000; font-size: 14px; cursor: pointer; z-index: 4000; position: relative;"
                 onclick='add_ytmb(` +
       concatenated +
       `);'
@@ -82,25 +73,14 @@ function return_button_for_backrgound_video(
   </button>
               <button
              class="btn btn_video_background"
-                style="
-    
-    
-      "btn btn_video_background
-      color: #000000;
-      font-size: 14px;
-      cursor: pointer;
-      z-index: 4000;
-      position: relative;
-    
-    "
+                style="      color: #000000;      font-size: 14px;      cursor: pointer;      z-index: 4000;      position: relative;  "
                 onclick="jQuery('#myPlayerID').YTPPause();"
               >
                 ⏸️
               </button>
               <button
                 class="btn btn_video_background"
-                style=" contain:contain;  "btn btn_video_background
-      color: #fff;  font-size: 14px;  cursor: pointer; z-index: 4000; position: relative;"
+                style=" contain:contain; color: #fff;  font-size: 14px;  cursor: pointer; z-index: 4000; position: relative;"
                 onclick="jQuery('#myPlayerID').YTPPlayNext();jQuery('#myPlayerID').YTPMute();testyy()" >
                 ⏭️
               </button>
@@ -110,7 +90,6 @@ function return_button_for_backrgound_video(
                 style="
     
                 contain:contain;
-      "btn btn_video_background
       color: #fff !important;
       font-size: 14px;
       cursor: pointer;
