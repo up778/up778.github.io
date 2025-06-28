@@ -55,13 +55,7 @@ function return_button_for_backrgound_video(
                 normalement, commencer à lire une vidéo devrait ajouter une barre de
                 lecture en bas de la fenêtre.(Barre transparente sauf si curseur de souris au dessus).
               </div>
-    
-              <button
-                class="btn btn_video_background flex-column btn_special_9"
-                style="color: #000000; font-size: 14px; cursor: pointer;"
-                onclick="jQuery('#myPlayerID').YTPPlayPrev()"
-              >⏮️</button>
-              <button
+    <button
                 class="btn btn_video_background"
                 style="color: #000000; font-size: 14px; cursor: pointer; z-index: 4000; position: relative;"
                 onclick='add_ytmb(` +
@@ -78,6 +72,12 @@ function return_button_for_backrgound_video(
               >
                 ⏸️
               </button>
+              <button
+                class="btn btn_video_background flex-column btn_special_9"
+                style="color: #000000; font-size: 14px; cursor: pointer;"
+                onclick="jQuery('#myPlayerID').YTPPlayPrev()"
+              >⏮️</button>
+              
               <button
                 class="btn btn_video_background"
                 style=" contain:contain; color: #fff;  font-size: 14px;  cursor: pointer; z-index: 4000; position: relative;"
