@@ -2570,3 +2570,11 @@ table .trois_last_modifs_weeks {
   white-space: normal;
   word-wrap: break-word;
 }
+
+#button_for_video_background .dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  margin-top: 0.5rem;
+  z-index: 1050;
+}
