@@ -61,7 +61,7 @@ $("head").append(styleTag);
       .prependTo(breadcrumbContainer)
       .addClass("breadcrumb");
 
-    for (let i = 0; i < settings.levels; i++) {
+    for (let i = 0; i < 4; i++) {
       breadcrumbList.append("<li class='gfre oncliik'></li>");
     }
 
@@ -111,7 +111,7 @@ $("head").append(styleTag);
 
             if (timer22 == 0) {
               setTimeout(() => {
-                $dynamicContentMenuHeaders.each(function (index, element) {
+                $dynamicContentMenuHeaders.each(function () {
                   if ($(this).attr("id") == ff) {
                     $(this).css("border", "");
                     // $(this).attr(
@@ -136,7 +136,7 @@ $("head").append(styleTag);
                 timer22 = 1;
               }, 2000);
             } else {
-              $dynamicContentMenuHeaders.each(function (index, element) {
+              $dynamicContentMenuHeaders.each(function () {
                 if ($(this).attr("id") == ff) {
                   $(this).css("border", "");
 
@@ -205,76 +205,45 @@ $("head").append(styleTag);
             ).appendTo(childLi);
           }
 
-          siblings = 0;
+          let siblings =
+            level > 0
+              ? currentContainer
+                  .parent()
+                  .children("." + settings.levelClassPrefix + level)
+              : [];
 
-          if (level > 0) {
-            siblings = currentContainer
-              .parent()
-              .children("." + settings.levelClassPrefix + level);
-          } else {
-            siblings = "a";
-          }
-
-          if (level > 0) {
-            if (siblings.length > 0) {
-              var subMenu = $('<ul class="yyyy">').appendTo(
-                $("<div>").appendTo(childLi),
-              );
-              siblings.each(function () {
-                if (
-                  $(this)
-                    .find("h" + cssLevel)
-                    .first()
-                    .text() ==
-                  currentContainer
-                    .find("h" + cssLevel)
-                    .first()
-                    .text()
-                ) {
-                  subMenu.append(
-                    '<li class=" "><a style="border-radius: 10px;border:2px dotted ' +
+          if (siblings.length > 0) {
+            var subMenu = $('<ul class="yyyy">').appendTo(
+              $("<div>").appendTo(childLi),
+            );
+            siblings.each(function () {
+              var headingText = $(this)
+                .find("h" + cssLevel)
+                .first()
+                .text();
+              var isCurrent =
+                headingText ===
+                currentContainer
+                  .find("h" + cssLevel)
+                  .first()
+                  .text();
+              subMenu.append(
+                '<li class=""><a style="border-radius: 10px;' +
+                  (isCurrent
+                    ? "border:2px dotted " +
                       t2rans_predo_color_of_page_recup +
-                      ';  class="Jacques2" href="#' +
-                      $(this).attr("id") +
-                      '">' +
-                      $(this)
-                        .find("h" + cssLevel)
-                        .first()
-                        .text() +
-                      '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span></a></li>',
-                  );
-                } else {
-                  subMenu.append(
-                    '<li class=" "><a class="Jacques2" href="#' +
-                      $(this).attr("id") +
-                      '">' +
-                      $(this)
-                        .find("h" + cssLevel)
-                        .first()
-                        .text() +
-                      "</a></li>",
-                  );
-                }
-              });
-            }
-          } else {
-            if (siblings.length > 0) {
-              var subMenu = $('<ul class=" ">').appendTo(
-                $("<div>").appendTo(childLi),
+                      ";"
+                    : "") +
+                  '" class="Jacques2" href="#' +
+                  $(this).attr("id") +
+                  '">' +
+                  headingText +
+                  (isCurrent
+                    ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
+                    : "") +
+                  "</a></li>",
               );
-              $(".class_around_h1").each(function () {
-                subMenu.append(
-                  '<li><a role="button" href="#' +
-                    $(this).attr("id") +
-                    '">' +
-                    $(this)
-                      .find("h" + cssLevel)
-                      .first()
-                      .text() +
-                    "</a></li>",
-                );
-              });
-            }
+            });
           }
 
           childLi.show();
@@ -289,6 +258,10 @@ $("head").append(styleTag);
     return breadcrumbContainer;
   };
 })(jQuery);
+
+// function SmoothScrollTo(id_or_Name, timelength) {
+//   var timelength = timelength || 1000;
+//   $('html, body').animate({
 
 $("html").on("click", ".Jacques2", function (e) {
   var clicked_link = $(this).attr("href");
