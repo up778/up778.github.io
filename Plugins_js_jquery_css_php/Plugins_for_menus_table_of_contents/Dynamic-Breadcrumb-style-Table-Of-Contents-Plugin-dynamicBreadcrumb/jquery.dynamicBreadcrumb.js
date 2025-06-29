@@ -63,9 +63,10 @@ $("head").append(
       breadcrumbList.append("<li class='gfre oncliik'></li>");
     }
 
-    let $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
+    // let $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
 
     function refreshBreadcrumb() {
+      const $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
       let level = 0;
       let currentContainer;
 
@@ -130,8 +131,8 @@ $("head").append(
           .text();
         $(
           '<a data-bs-toggle="dropdown" role="button" href="javascript:void(0)">' +
-            heading +
-            "</a>",
+          heading +
+          "</a>",
         ).appendTo(li);
 
         const siblings = currentContainer
@@ -149,19 +150,19 @@ $("head").append(
             const isCurrent = siblingHeading === heading;
             subMenu.append(
               '<li><a class="Jacques2" href="#' +
-                $(this).attr("id") +
-                '" style="border-radius:10px;' +
-                (isCurrent
-                  ? "border:2px dotted " +
-                    t2rans_predo_color_of_page_recup +
-                    ";"
-                  : "") +
-                '">' +
-                siblingHeading +
-                (isCurrent
-                  ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
-                  : "") +
-                "</a></li>",
+              $(this).attr("id") +
+              '" style="border-radius:10px;' +
+              (isCurrent
+                ? "border:2px dotted " +
+                t2rans_predo_color_of_page_recup +
+                ";"
+                : "") +
+              '">' +
+              siblingHeading +
+              (isCurrent
+                ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
+                : "") +
+              "</a></li>",
             );
           });
         }
