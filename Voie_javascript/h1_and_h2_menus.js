@@ -459,15 +459,15 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
   // console.log("ggggggggggggggggggggggghhh");
 
   const animations = {
-    H1: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
-    H2: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
-    H3: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
-    H4: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
-    H5: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
-    H6: () => animate_background_title_jquery_ui($target, "2px dotted yellow"),
+    H1: () => animate_background_title_jquery_ui($target, "red"),
+    H2: () => animate_background_title_jquery_ui($target, "orange"),
+    H3: () => animate_background_title_jquery_ui($target, "yellow"),
+    H4: () => animate_background_title_jquery_ui($target, "yellow"),
+    H5: () => animate_background_title_jquery_ui($target, "yellow"),
+    H6: () => animate_background_title_jquery_ui($target, "yellow"),
     IMG: () => {
       if ($target[0].outerHTML.indexOf(".svg") < 0) {
-        animate_background_title_jquery_ui($target, "2px dotted yellow");
+        animate_background_title_jquery_ui($target, "yellow");
       }
     },
 
@@ -477,11 +477,10 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
       if ($(this).hasClass("h_titre")) {
         animate_background_title_jquery_ui($target, "2px dotted pink");
       } else if ($(this).hasClass("h_partie")) {
-        animate_background_title_jquery_ui($target, "2px dotted yellow");
+        animate_background_title_jquery_ui($target, "yellow");
       }
     },
-    TABLE: () =>
-      animate_background_title_jquery_ui($target, "2px dotted yellow"),
+    TABLE: () => animate_background_title_jquery_ui($target, "yellow"),
   };
 
   if (animations[tag]) {
@@ -1567,3 +1566,50 @@ $(document).ready(function () {
     });
   });
 });
+
+$("body").on("click", ".dynamicContentMenu__item", function () {
+  const uniqueText = $(this).data("unique");
+  if (!uniqueText) return;
+
+  const normalizedUnique = normalizeText(uniqueText);
+
+  const $targetH1 = $("h1")
+    .filter(function () {
+      return normalizeText($(this).text()) === normalizedUnique;
+    })
+    .first();
+
+  if ($targetH1.length) {
+    const color =
+      typeof predo_color_of_page !== "undefined"
+        ? predo_color_of_page
+        : "yellow";
+    animate_background_title_jquery_ui($targetH1, color);
+  }
+});
+
+function normalizeText(str) {
+  if (!str) return "";
+
+  // Décomposer accents
+  let normalized = str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+
+  // Supprimer espaces multiples et caractères invisibles Unicode
+  normalized = normalized.replace(/\s+/g, " ");
+
+  return normalized;
+}
+
+function animate_background_title_jquery_ui($h1, border_color) {
+  if (!$h1.length) return;
+
+  $h1.css("--flash-color", border_color);
+
+  $h1.removeClass("h1_flash_animation");
+  void $h1[0].offsetWidth;
+  $h1.addClass("h1_flash_animation");
+}
