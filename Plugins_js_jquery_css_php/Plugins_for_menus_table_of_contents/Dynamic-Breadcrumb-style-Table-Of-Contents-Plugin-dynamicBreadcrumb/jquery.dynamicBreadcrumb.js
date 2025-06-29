@@ -4,14 +4,14 @@ const predo_color_of_page_recup =
 const trans_predo_color_of_page_recup = predo_color_of_page_recup
   ? predo_color_of_page_recup + "77 !important;"
   : "#ffff0050";
+
 const t2rans_predo_color_of_page_recup = predo_color_of_page_recup
   ? predo_color_of_page_recup + "cc !important;"
   : "#ffff00bb";
 
-var customBg =
-  "background-color: " + trans_predo_color_of_page_recup + " !important;";
-var styleTag = $("<style>.customStyle { " + customBg + " }</style>");
-$("head").append(styleTag);
+$("head").append(
+  `<style>.customStyle { background-color: ${trans_predo_color_of_page_recup} !important; }</style>`,
+);
 
 (function ($) {
   /**
@@ -43,7 +43,7 @@ $("head").append(styleTag);
   /* do stuff.. */
 
   $.fn.initBreadcrumb = function (options) {
-    var settings = $.extend(
+    const settings = $.extend(
       {
         levels: 5,
 
@@ -53,221 +53,162 @@ $("head").append(styleTag);
       options,
     );
 
-    var temp_current_cont = 0;
-    var timer22 = 0;
-    var breadcrumbContainer = $(this);
+    let lastActiveHeaderId = "";
+    let breadcrumbContainer = $(this);
+    let breadcrumbList = $('<ul class="breadcrumb"></ul>').prependTo(
+      breadcrumbContainer,
+    );
 
-    var breadcrumbList = $('<ul class=""></ul>')
-      .prependTo(breadcrumbContainer)
-      .addClass("breadcrumb");
-
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
       breadcrumbList.append("<li class='gfre oncliik'></li>");
     }
 
-    var $dynamicContentMenuHeaders;
-    $(document).ready(function () {
-      $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
-    });
+    let $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
 
-    breadcrumbContainer.refresh = function () {
-      var level = 0;
-      var currentContainer;
+    function refreshBreadcrumb() {
+      let level = 0;
+      let currentContainer;
 
       for (let i = settings.levels; i > 0; i--) {
-        if (
-          $("." + settings.levelClassPrefix + i + ":in-viewport( 120 )")
-            .length > 0
-        ) {
+        const inView = $(
+          "." + settings.levelClassPrefix + i + ":in-viewport(120)",
+        );
+        if (inView.length > 0) {
           level = i;
-
-          currentContainer = $(
-            "." + settings.levelClassPrefix + i + ":in-viewport( 120 )",
-          ).first();
-
-          if (
-            temp_current_cont !=
-            "currentContainer:" + currentContainer.closest("article").attr("id")
-          ) {
-            temp_current_cont =
-              "currentContainer:" +
-              currentContainer.closest("article").attr("id");
-
-            var etttttt =
-              "currentContainer:" +
-              currentContainer.closest("article").attr("id");
-
-            let match6 = etttttt.match(/(\d?[a-zA-Z0-9])$/);
-
-            let lastItem = match6 ? match6[0] : null;
-
-            if (lastItem && lastItem.length === 2 && lastItem[0] === "0") {
-              lastItem = lastItem[1];
-            }
-
-            let lastItem2 = lastItem - 1;
-
-            var ff = "dynamicContentMenu__header" + lastItem2;
-
-            if (timer22 == 0) {
-              setTimeout(() => {
-                $dynamicContentMenuHeaders.each(function () {
-                  if ($(this).attr("id") == ff) {
-                    $(this).css("border", "");
-                    // $(this).attr(
-                    //   "style",
-
-                    $(this).attr("style", function (i, s) {
-                      return (
-                        (s || "") +
-                        "; border: 2px dashed " +
-                        predo_color_of_page_recup +
-                        " !important;"
-                      );
-                    });
-                    // $(this).css({
-                    //   "border": "2px dashed " + predo_color_of_page_recup + " !important",
-                  } else {
-                    $(this).css("border", "");
-                    // $(this).css(
-                    //   "background-color",
-                  }
-                });
-                timer22 = 1;
-              }, 2000);
-            } else {
-              $dynamicContentMenuHeaders.each(function () {
-                if ($(this).attr("id") == ff) {
-                  $(this).css("border", "");
-
-                  // $(this).attr(
-                  //   "style",
-
-                  $(this).attr("style", function (i, s) {
-                    return (
-                      (s || "") +
-                      "; border: 2px dashed " +
-                      predo_color_of_page_recup +
-                      " !important;"
-                    );
-                  });
-                  // $(this).css({
-                  //   "border": "2px dashed " + predo_color_of_page_recup + " !important",
-                } else {
-                  $(this).css("border", "");
-                  // $(this).css(
-                  //   "background-color",
-                }
-              });
-            }
-          }
-
+          currentContainer = inView.first();
           break;
         }
       }
 
-      if (level > 0) {
-        for (let i = settings.levels; i > level; i--) {
-          breadcrumbList.find("> li:nth-child(" + (i + 1) + ")").hide();
-        }
-        for (; level > 0; level--) {
-          var cssLevel = level + 1;
-
-          var childLi = breadcrumbList
-            .find("> li:nth-child(" + cssLevel + ")")
-            .empty();
-
-          cssLevel = level;
-
-          if (level > 0) {
-            if (level == 1) {
-            }
-            $(
-              '<a data-bs-toggle="dropdown" aria-expanded="false" role="button" href="javascript:void(0)' +
-                '">' +
-                currentContainer
-                  .find("h" + cssLevel)
-                  .first()
-                  .text() +
-                "</a>",
-            ).appendTo(childLi);
-          } else {
-            $(
-              '<a data-bs-toggle="dropdown" aria-expanded="false" role="button"  href="javascript:void(0)' +
-                '">' +
-                currentContainer
-                  .parent()
-                  .prev()
-                  .find("h" + cssLevel)
-                  .first()
-                  .text() +
-                "</a>",
-            ).appendTo(childLi);
-          }
-
-          let siblings =
-            level > 0
-              ? currentContainer
-                  .parent()
-                  .children("." + settings.levelClassPrefix + level)
-              : [];
-
-          if (siblings.length > 0) {
-            var subMenu = $('<ul class="yyyy">').appendTo(
-              $("<div>").appendTo(childLi),
-            );
-            siblings.each(function () {
-              var headingText = $(this)
-                .find("h" + cssLevel)
-                .first()
-                .text();
-              var isCurrent =
-                headingText ===
-                currentContainer
-                  .find("h" + cssLevel)
-                  .first()
-                  .text();
-              subMenu.append(
-                '<li class=""><a style="border-radius: 10px;' +
-                  (isCurrent
-                    ? "border:2px dotted " +
-                      t2rans_predo_color_of_page_recup +
-                      ";"
-                    : "") +
-                  '" class="Jacques2" href="#' +
-                  $(this).attr("id") +
-                  '">' +
-                  headingText +
-                  (isCurrent
-                    ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
-                    : "") +
-                  "</a></li>",
-              );
-            });
-          }
-
-          childLi.show();
-          currentContainer = currentContainer.parent();
-        }
-        breadcrumbContainer.slideDown(settings.slideDuration);
-      } else {
+      if (!currentContainer) {
         breadcrumbContainer.slideUp(settings.slideDuration);
+        return;
       }
-    };
+
+      const currentId = currentContainer.closest("article").attr("id");
+      if (lastActiveHeaderId !== currentId) {
+        lastActiveHeaderId = currentId;
+
+        const match = currentId.match(/(\d?[a-zA-Z0-9])$/);
+        let lastItem = match ? match[0] : "";
+        if (lastItem.length === 2 && lastItem[0] === "0") {
+          lastItem = lastItem[1];
+        }
+
+        const headerTargetId = "dynamicContentMenu__header" + (lastItem - 1);
+
+        $dynamicContentMenuHeaders.each(function () {
+          const $el = $(this);
+          $el.css("border", "");
+          if ($el.attr("id") === headerTargetId) {
+            $el.attr(
+              "style",
+              (i, s) =>
+                (s || "") +
+                "; border: 2px dashed " +
+                predo_color_of_page_recup +
+                " !important;",
+            );
+            // $(this).css(
+            //   "background-color",
+          }
+        });
+      }
+
+      for (let i = settings.levels; i > level; i--) {
+        breadcrumbList.find("> li:nth-child(" + (i + 1) + ")").hide();
+      }
+      for (; level > 0; level--) {
+        const cssLevel = level;
+        const li = breadcrumbList
+          .find("> li:nth-child(" + (cssLevel + 1) + ")")
+          .empty();
+
+        const heading = currentContainer
+          .find("h" + cssLevel)
+          .first()
+          .text();
+        $(
+          '<a data-bs-toggle="dropdown" role="button" href="javascript:void(0)">' +
+            heading +
+            "</a>",
+        ).appendTo(li);
+
+        const siblings = currentContainer
+          .parent()
+          .children("." + settings.levelClassPrefix + level);
+        if (siblings.length > 0) {
+          const subMenu = $('<ul class="yyyy">').appendTo(
+            $("<div>").appendTo(li),
+          );
+          siblings.each(function () {
+            const siblingHeading = $(this)
+              .find("h" + cssLevel)
+              .first()
+              .text();
+            const isCurrent = siblingHeading === heading;
+            subMenu.append(
+              '<li><a class="Jacques2" href="#' +
+                $(this).attr("id") +
+                '" style="border-radius:10px;' +
+                (isCurrent
+                  ? "border:2px dotted " +
+                    t2rans_predo_color_of_page_recup +
+                    ";"
+                  : "") +
+                '">' +
+                siblingHeading +
+                (isCurrent
+                  ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
+                  : "") +
+                "</a></li>",
+            );
+          });
+        }
+
+        li.show();
+        currentContainer = currentContainer.parent();
+      }
+      breadcrumbContainer.slideDown(settings.slideDuration);
+    }
+
+    // ---------- Intégration requestAnimationFrame ----------
+    let refreshScheduled = false;
+
+    function scheduleRefresh() {
+      if (!refreshScheduled) {
+        refreshScheduled = true;
+        requestAnimationFrame(() => {
+          refreshBreadcrumb();
+          refreshScheduled = false;
+        });
+      }
+    }
+
+    // Appel sur scroll
+    $(window).on("scroll resize", scheduleRefresh);
+
+    // Première exécution
+    scheduleRefresh();
 
     return breadcrumbContainer;
   };
 })(jQuery);
 
-// function SmoothScrollTo(id_or_Name, timelength) {
-//   var timelength = timelength || 1000;
-//   $('html, body').animate({
-
-$("html").on("click", ".Jacques2", function (e) {
-  var clicked_link = $(this).attr("href");
-
-  $(clicked_link).addClass("animate__animated animate__shakeX");
+// Animation clic
+$("html").on("click", ".Jacques2", function () {
+  const target = $(this).attr("href");
+  $(target).addClass("animate__animated animate__shakeX");
   setTimeout(() => {
-    $(clicked_link).removeClass("animate__animated animate__shakeX");
+    $(target).removeClass("animate__animated animate__shakeX");
   }, 500);
+
+  // SmoothScrollTo(clicked_link, 1000);
+  // $(clicked_link).get(0).scrollIntoView() - 400;
+  // setTimeout(() => {
+  //   $(clicked_link).get(0).scrollIntoView() + 400;
+  // }, 500);
+  // $(clicked_link).get(0).scrollIntoView() + 400;
+
+  // const id = 'profilePhoto';
 });
