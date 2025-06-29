@@ -11,7 +11,7 @@
   color-scheme: dark;
 
   --titre-de-niveau-1: red;
-  --titre-de-niveau-2: orange;
+  --titre-de-niveau-2: rgb(255, 145, 0);
   --titre-de-niveau-3: #ff009d;
   --titre-de-niveau-4: #cf3eff;
   --titre-de-niveau-5: #9e5eff;
