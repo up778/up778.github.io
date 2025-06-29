@@ -71,7 +71,7 @@ $("head").append(
 
       for (let i = settings.levels; i > 0; i--) {
         const inView = $(
-          "." + settings.levelClassPrefix + i + ":in-viewport(120)",
+          "." + settings.levelClassPrefix + i + ":in-viewport(300)",
         );
         if (inView.length > 0) {
           level = i;
