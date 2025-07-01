@@ -1331,6 +1331,9 @@ blockquote > p {
   padding-left: 10px;
   border-radius: 20px;
 }
+.class_citation_standard span[style*="background-color: #843fa1"] {
+  color: #55ff55 !important;
+}
 
 .probable_citation_de_Dieu {
   display: inline-block;
