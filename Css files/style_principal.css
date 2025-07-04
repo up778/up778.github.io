@@ -1083,7 +1083,7 @@ thead > tr > td {
   padding-top: 10px;
 }
 
-*:not(.modal-body) > thead {
+body:not(:has(.dropdown-menu thead)):not(:has(.modal-body thead)) thead {
   line-height: 1;
   position: sticky;
 
@@ -1095,6 +1095,11 @@ thead > tr > td {
   font-weight: 550;
 
   z-index: 40;
+}
+
+.dropdown-menu thead {
+  position: sticky;
+  top: 20px;
 }
 
 * > thead > th:first-child {
