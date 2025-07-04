@@ -212,10 +212,12 @@ class LiteYTEmbed extends HTMLElement {
 
   async addYTPlayerIframe() {
     this.fetchYTPlayerApi();
+
     await this.ytApiPromise;
 
     const videoPlaceholderEl = document.createElement("div");
     videoPlaceholderEl.id = "iframe_id_" + this.videoId;
+
     this.append(videoPlaceholderEl);
 
     const paramsObj = Object.fromEntries(this.getParams().entries());
@@ -241,7 +243,6 @@ class LiteYTEmbed extends HTMLElement {
       }
     }
 
-    // Nettoyage ID
     if (typeof this.videoId === "string") {
       const cleanId = this.videoId.split("?")[0].split("&")[0];
       if (/^[a-zA-Z0-9_-]{11}$/.test(cleanId)) {
@@ -271,7 +272,6 @@ class LiteYTEmbed extends HTMLElement {
 
     return this.display_block();
   }
-
 
   addNoscriptIframe() {
     const iframeEl = this.createBasicIframe();
@@ -358,8 +358,6 @@ class LiteYTEmbed extends HTMLElement {
     params.append("autoplay", "1");
     params.append("playsinline", "1");
 
-
-
     return this.addYTPlayerIframe(params);
 
     const iframeEl = document.createElement("iframe");
@@ -405,7 +403,6 @@ function onPlayerStateChange(event) {
     }
 
     if (event.target.options.videoId.indexOf("clip") > 0) {
-      // console.log(gggg, `gggg`);
       last_played_video = event.target.options.videoId;
     } else {
       last_played_video = event.target.playerInfo.videoData.video_id;
@@ -470,11 +467,16 @@ function reach_played_youtube_video() {
     var id = id_de_l_iframe_de_la_video;
 
     var elem = document.getElementById(id);
-    elem.scrollIntoView({
-      behavior: "instant",
-      block: "center",
-      inline: "nearest",
-    });
+    setTimeout(() => {
+      elem.scrollIntoView({
+        behavior: "instant",
+        block: "center",
+        inline: "nearest",
+      });
+    }, 30);
+    var $target = $(elem.closest("table"));
+
+    restartAnimation($target, "shakeX");
   } else {
     var id;
 
