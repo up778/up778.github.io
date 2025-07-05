@@ -2537,6 +2537,10 @@ table .trois_last_modifs_weeks {
 
 .popover-body {
   max-width: 70vw;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
 
 .btn_outline_info_youtube_nohover {
@@ -2599,4 +2603,13 @@ table .trois_last_modifs_weeks {
 .h1_flash_animation {
   display: inline-block !important;
   animation: flash-shadow 2s forwards !important;
+}
+
+.popover_content {
+  padding-left: 20px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  padding-top: 5px;
+  padding-bottom: 10px;
 }
