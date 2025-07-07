@@ -56,6 +56,7 @@
   type="text/javascript"
   src="Assets/jquery-ui/dist/jquery-ui.min.js"
 ></script>
+<script src="Assets/supabase_.js"></script>
 <!-- <script
   type="text/javascript"
   src="Voie_javascript/jquery-ui-1.13.3.custom/external/jquery/jquery.js"
@@ -231,7 +232,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/lamb-4280668_'blanc'_16-9.jpg"
                   ],
         "datePublished": "2024-09-28",
-                  "dateModified": "2025-07-05",
+                  "dateModified": "2025-07-07",
                   "author": [
                     {
                       "name": "Philippe",
@@ -2956,6 +2957,12 @@ $(document).ready(function includeHTML() {
         if (this.readyState == 4) {
           if (this.status == 200) {
             elmnt.innerHTML = this.responseText;
+            // Après injection, vérifier que l'élément existe
+            const chatContainer = document.getElementById("chatContainer");
+            if (chatContainer && typeof window.initChatButton === "function") {
+              chatContainer.style.display = "none";
+              window.initChatButton();
+            }
           }
           if (this.status == 404) {
             // elmnt.innerHTML = "Page not found.";
@@ -2964,7 +2971,7 @@ $(document).ready(function includeHTML() {
           elmnt.removeAttribute("w3-include-html");
           includeHTML();
           // replace_by_date_of_last_modification();
-          // 
+          //
         }
       };
       xhttp.open("GET", file, true);
@@ -2973,8 +2980,29 @@ $(document).ready(function includeHTML() {
       return;
     }
   }
+});
+async function initChatButton() {
+  const openChatBtn = document.getElementById("openChatBtn");
+  const chatContainer = document.getElementById("chatContainer");
+  if (!openChatBtn || !chatContainer) return;
+  openChatBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    if (chatContainer.style.display === "none" || !chatContainer.style.display) {
+      chatContainer.style.display = "block";
+      openChatBtn.textContent = "Fermer la messagerie";
+      await initChat();
+    } else {
+      chatContainer.style.display = "none";
+      openChatBtn.textContent = "Messagerie instantanée";
+    }
+  });
 }
-);
+function handleChatToggle(e) {
+  e.preventDefault();
+  const chatContainer = document.getElementById("chatContainer");
+  if (!chatContainer) return;
+  chatContainer.style.display = chatContainer.style.display === "block" ? "none" : "block";
+}
 // includeHTML();
 // replace_by_date_of_last_modification();
 document.addEventListener("DOMContentLoaded", () => {
@@ -4525,6 +4553,435 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     );
   });
 </script>
+<script>
+  // === Configuration Supabase ===
+  const supabaseUrl = "https://crdzcgqrakjjdujhqmic.supabase.co";
+  const supabaseKey =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyZHpjZ3FyYWtqamR1amhxbWljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcyNTQ2MDAsImV4cCI6MjA2MjgzMDYwMH0.F32OEbuWNwRAbmiaAK5WMMvCfopXc6pIvh9CgX0sLY8";
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+  // === Gestion du chat dans un objet pour éviter les variables globales ===
+  const ChatApp = {
+    uidKey: "chat_uid",
+    uid: null,
+    rooms: [],
+    activeRoom: null,
+    chatLoaded: false,
+    roomSet: new Set(), // Pour éviter de parcourir le DOM à chaque fois
+    init() {
+      // Initialisation UID utilisateur unique, stocké en localStorage
+      this.uid = localStorage.getItem(this.uidKey);
+      if (!this.uid) {
+        this.uid = crypto.randomUUID();
+        localStorage.setItem(this.uidKey, this.uid);
+      }
+      this.activeRoom = this.uid;
+      this.rooms = [this.uid];
+    },
+    // Fonction utilitaire : tronquer une chaîne sans couper les emojis
+    truncateString(str, maxLength) {
+      if (!str) return "";
+      if (typeof Intl !== "" && typeof Intl.Segmenter === "function") {
+        const segmenter = new Intl.Segmenter(void 0, {
+          granularity: "grapheme",
+        });
+        const graphemes = Array.from(segmenter.segment(str), (s) => s.segment);
+        if (graphemes.length <= maxLength) return str;
+        return graphemes.slice(0, maxLength).join("") + "…";
+      }
+      if (str.length <= maxLength) return str;
+      return str.slice(0, maxLength) + "…";
+    },
+    // Création d'un onglet (tab) de room, avec prévention de doublons et limite à 10 onglets
+    createTab(roomName, userName) {
+      const chatTabs = document.getElementById("chatTabs");
+      if (!chatTabs) return;
+      if (chatTabs.children.length >= 10) {
+        console.warn("Limite de 10 rooms atteinte.");
+        return;
+      }
+      if (this.roomSet.has(roomName)) return;
+      const tab = document.createElement("button");
+      tab.classList.add("chat-tab");
+      tab.dataset.room = roomName;
+      tab.dataset.userName = userName || "";
+      const spanName = document.createElement("span");
+      spanName.textContent = userName
+        ? this.truncateString(userName, 14)
+        : this.truncateString(roomName, 14);
+      tab.appendChild(spanName);
+      const btnDelete = document.createElement("button");
+      btnDelete.textContent = "×";
+      btnDelete.title = "Supprimer cette room";
+      btnDelete.classList.add("btn-delete-room");
+      btnDelete.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        await this.deleteRoom(roomName);
+      });
+      tab.appendChild(btnDelete);
+      tab.addEventListener("click", () => {
+        this.activeRoom = roomName;
+        this.loadMessages();
+        this.updateTabs();
+      });
+      chatTabs.appendChild(tab);
+      this.roomSet.add(roomName);
+      this.updateTabs();
+    },
+    // Met à jour l'état visuel des onglets et description selon l'onglet actif
+    updateTabs() {
+      const chatTabs = document.getElementById("chatTabs");
+      const descBar = document.getElementById("roomDescription");
+      if (!chatTabs || !descBar) return;
+      Array.from(chatTabs.children).forEach((tab) => {
+        tab.classList.toggle("active", tab.dataset.room === this.activeRoom);
+      });
+      const activeTab = [...chatTabs.children].find(
+        (tab) => tab.dataset.room === this.activeRoom,
+      );
+      const userName = activeTab?.dataset.userName || "";
+      if (userName.toLowerCase().includes("rédaction")) {
+        descBar.textContent =
+          "📝 Onglet /room pour comment est rédigé le site / orthographe";
+      } else if (userName.toLowerCase().includes("informatique")) {
+        descBar.textContent =
+          "💻 Questions ou informations techniques sur le site";
+      } else {
+        descBar.textContent = "";
+      }
+    },
+    // Ajoute un message au DOM (affichage)
+    addMessageToUI(msg) {
+      const chatMessages = document.getElementById("chatMessages");
+      if (!chatMessages) return;
+      const el = document.createElement("div");
+      el.classList.add("msg");
+      if (msg.uid === this.uid) {
+        el.classList.add("me");
+      } else {
+        el.classList.add("other");
+      }
+      el.textContent = `${msg.name} : ${msg.text} (${new Date(msg.inserted_at).toLocaleTimeString()})`;
+      chatMessages.appendChild(el);
+      el.scrollIntoView();
+    },
+    // Charge les messages d'une room active (limité aux champs nécessaires)
+    async loadMessages() {
+      const chatMessages = document.getElementById("chatMessages");
+      if (!chatMessages) return;
+      chatMessages.innerHTML = ""; // on vide ici (à améliorer si cache souhaité)
+      const { data, error } = await supabaseClient
+        .from("messages")
+        .select("room, name, text, inserted_at, uid")
+        .eq("room", this.activeRoom)
+        .order("inserted_at", { ascending: true });
+      if (error) {
+        console.error("Erreur lors du chargement des messages :", error);
+        return;
+      }
+      data.forEach((msg) => this.addMessageToUI(msg));
+    },
+    // Supprime une room et ses messages dans la BDD, met à jour l'interface
+    async deleteRoom(roomName) {
+      if (!roomName) return;
+      const { error } = await supabaseClient
+        .from("messages")
+        .delete()
+        .eq("room", roomName);
+      if (error) {
+        console.error("Erreur suppression messages de la room :", error);
+        alert("Erreur lors de la suppression des messages.");
+        return;
+      }
+      const chatTabs = document.getElementById("chatTabs");
+      if (chatTabs) {
+        const tabToDelete = [...chatTabs.children].find(
+          (tab) => tab.dataset.room === roomName,
+        );
+        if (tabToDelete) {
+          tabToDelete.remove();
+          this.roomSet.delete(roomName);
+        }
+      }
+      if (this.activeRoom === roomName) {
+        const remainingTabs = chatTabs ? [...chatTabs.children] : [];
+        this.activeRoom =
+          remainingTabs.length > 0 ? remainingTabs[0].dataset.room : null;
+        if (this.activeRoom) {
+          await this.loadMessages();
+          this.updateTabs();
+        } else {
+          const chatMessages = document.getElementById("chatMessages");
+          if (chatMessages) chatMessages.innerHTML = "";
+        }
+      }
+    },
+    // Souscription aux nouveaux messages en temps réel via Supabase
+    subscribeToMessages() {
+      supabaseClient
+        .channel("room_channel_all")
+        .on(
+          "postgres_changes",
+          { event: "INSERT", schema: "public", table: "messages" },
+          (payload) => {
+            const newMsg = payload.new;
+            this.addMessageToUI(newMsg);
+            if (!this.roomSet.has(newMsg.room)) {
+              this.createTab(newMsg.room, newMsg.name);
+            }
+          },
+        )
+        .subscribe();
+    },
+    // Initialisation de la structure HTML et événements du chat
+    async initChat() {
+      if (this.chatLoaded) return;
+      const chatContainer = document.getElementById("chatContainer");
+      if (!chatContainer || document.getElementById("chatForm")) return;
+      // Titre
+      if (!document.getElementById("chatTitle")) {
+        const chatTitle = document.createElement("div");
+        chatTitle.id = "chatTitle";
+        chatTitle.textContent =
+          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet";
+        chatTitle.style.cssText =
+          "font-size:1em;font-weight:bold;margin-bottom:4px;color:#ccc;text-align:left;";
+        const chatTabs = document.getElementById("chatTabs");
+        if (chatTabs) {
+          chatContainer.insertBefore(chatTitle, chatTabs);
+        } else {
+          chatContainer.prepend(chatTitle);
+        }
+      }
+      // Barre d'onglets
+      if (!document.getElementById("chatTabs")) {
+        const chatTabs = document.createElement("div");
+        chatTabs.id = "chatTabs";
+        chatTabs.style.cssText = "display:flex;gap:10px;margin-bottom:10px;";
+        const chatTitle = document.getElementById("chatTitle");
+        if (chatTitle) {
+          chatContainer.insertBefore(chatTabs, chatTitle.nextSibling);
+        } else {
+          chatContainer.prepend(chatTabs);
+        }
+      }
+      // Description
+      if (!document.getElementById("roomDescription")) {
+        const descBar = document.createElement("div");
+        descBar.id = "roomDescription";
+        descBar.style.cssText = "font-size:0.9em;color:#ccc;margin-bottom:8px;";
+        const chatTabs = document.getElementById("chatTabs");
+        if (chatTabs) {
+          chatContainer.insertBefore(descBar, chatTabs.nextSibling);
+        } else {
+          chatContainer.appendChild(descBar);
+        }
+      }
+      // Zone messages
+      let chatMessages = document.getElementById("chatMessages");
+      if (!chatMessages) {
+        chatMessages = document.createElement("div");
+        chatMessages.id = "chatMessages";
+        chatMessages.style.cssText =
+          "flex-grow:1;overflow-y:auto;margin-bottom:0.5em;";
+        chatContainer.appendChild(chatMessages);
+      }
+      // Bouton Nouveau sujet
+      if (!document.getElementById("newRoomBtn")) {
+        const newRoomBtn = document.createElement("button");
+        newRoomBtn.id = "newRoomBtn";
+        newRoomBtn.textContent = "➕ Nouveau sujet";
+        newRoomBtn.style.cssText =
+          "padding:0.3em 0.6em;cursor:pointer;background-color:#333;color:#eee;border:1px solid #666;border-radius:4px;font-size:0.9em;";
+        newRoomBtn.addEventListener("click", () => {
+          const topic = prompt("Titre du nouveau sujet :")?.trim();
+          if (!topic) return;
+          const roomId = `topic_${crypto.randomUUID()}`;
+          this.rooms.push(roomId);
+          this.activeRoom = roomId;
+          this.createTab(roomId, topic);
+          this.loadMessages();
+          this.updateTabs();
+        });
+        const chatTabs = document.getElementById("chatTabs");
+        if (chatTabs) chatTabs.appendChild(newRoomBtn);
+      }
+      // Récupération des rooms depuis la base
+      try {
+        const { data: roomsData, error } = await supabaseClient
+          .from("messages")
+          .select("room, name, room_order")
+          .not("room", "is", null);
+        if (error) {
+          console.error("Erreur récupération rooms :", error);
+          this.createTab(this.activeRoom);
+        } else if (!roomsData || roomsData.length === 0) {
+          this.createTab(this.activeRoom);
+        } else {
+          // Regrouper par room avec nom et ordre
+          const roomMap = new Map();
+          roomsData.forEach(({ room, name, room_order }) => {
+            if (!roomMap.has(room)) {
+              roomMap.set(room, { name, room_order });
+            }
+          });
+          // Transformer en tableau
+          const roomsArray = Array.from(roomMap.entries()).map(
+            ([room, { name, room_order }]) => ({
+              room,
+              name,
+              room_order,
+            }),
+          );
+          // Trier en mettant les nulls de room_order à la fin
+          roomsArray.sort((a, b) => {
+            if (a.room_order === null && b.room_order === null) return 0;
+            if (a.room_order === null) return 1;
+            if (b.room_order === null) return -1;
+            return a.room_order - b.room_order;
+          });
+          // Création des onglets dans l’ordre trié
+          roomsArray.forEach(({ room, name }) => {
+            this.createTab(room, name);
+          });
+          if (!this.activeRoom || !uniqueRooms.includes(this.activeRoom)) {
+            this.activeRoom = uniqueRooms[0];
+          }
+        }
+      } catch (e) {
+        console.error("Erreur lors récupération rooms :", e);
+        this.createTab(this.activeRoom);
+      }
+      this.updateTabs();
+      await this.loadMessages();
+      this.subscribeToMessages();
+      // Création formulaire
+      const form = document.createElement("form");
+      form.id = "chatForm";
+      form.style.display = "flex";
+      form.style.alignItems = "center";
+      const inputName = document.createElement("input");
+      inputName.placeholder = "nom, prénom ou pseudo";
+      inputName.required = true;
+      inputName.style.marginRight = "0.5em";
+      const inputText = document.createElement("input");
+      inputText.placeholder = "Message";
+      inputText.required = true;
+      inputText.style.marginRight = "0.5em";
+      const btnSend = document.createElement("button");
+      btnSend.type = "submit";
+      btnSend.textContent = "Envoyer";
+      const btnInfo = document.createElement("button");
+      btnInfo.type = "button";
+      btnInfo.textContent = "Infos";
+      btnInfo.style.marginLeft = "0.5em";
+      form.appendChild(inputName);
+      form.appendChild(inputText);
+      form.appendChild(btnSend);
+      form.appendChild(btnInfo);
+      chatContainer.appendChild(form);
+      // Popup d'informations
+      const popup = document.createElement("div");
+      popup.style.cssText =
+        "position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);background-color:#222;color:#eee;padding:1em 2em;border-radius:0.5em;box-shadow:0 0 10px rgba(0,0,0,0.7);z-index:10000;display:none;min-width:200px;";
+      popup.textContent =
+        "fenêtre pour chat.possibilité de laisser un message.";
+      popup.appendChild(document.createElement("br"));
+      popup.appendChild(
+        document.createTextNode(
+          "si onglet fermé par erreur --> rechargement page devrait restaurer tous les onglets",
+        ),
+      );
+      const btnClose = document.createElement("button");
+      btnClose.textContent = "Fermer";
+      btnClose.style.cssText =
+        "margin-top:1em;padding:0.3em 1em;cursor:pointer;";
+      popup.appendChild(document.createElement("br"));
+      // popup.appendChild(btnClose); // décommentez si besoin du bouton fermer
+      document.body.appendChild(popup);
+      btnInfo.addEventListener("click", () => {
+        popup.style.display =
+          popup.style.display === "block" ? "none" : "block";
+      });
+      btnClose.addEventListener("click", () => {
+        popup.style.display = "none";
+      });
+      window.addEventListener("click", (e) => {
+        if (
+          popup.style.display === "block" &&
+          !popup.contains(e.target) &&
+          e.target !== btnInfo
+        ) {
+          popup.style.display = "none";
+        }
+      });
+      // Soumission formulaire
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const name = inputName.value.trim();
+        const text = inputText.value.trim();
+        if (!name || !text) return;
+        await supabaseClient
+          .from("messages")
+          .insert([{ name, text, uid: this.uid, room: this.activeRoom }]);
+        inputText.value = "";
+      });
+      this.chatLoaded = true;
+    },
+    // Bouton d'ouverture/fermeture du chat et gestion clics hors chat
+    async initChatButton() {
+      const openChatBtn = document.getElementById("openChatBtn");
+      const chatContainer = document.getElementById("chatContainer");
+      if (!openChatBtn || !chatContainer) return;
+      openChatBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (
+          chatContainer.style.display === "none" ||
+          !chatContainer.style.display
+        ) {
+          chatContainer.style.display = "flex";
+          openChatBtn.textContent = "Fermer la messagerie";
+          await this.initChat();
+        } else {
+          chatContainer.style.display = "none";
+          openChatBtn.textContent = "Messagerie instantanée";
+        }
+      });
+      document.addEventListener("click", (event) => {
+        const path = event.composedPath();
+        if (
+          chatContainer.style.display !== "none" &&
+          !path.includes(chatContainer) &&
+          !path.includes(openChatBtn)
+        ) {
+          chatContainer.style.display = "none";
+          openChatBtn.textContent = "Messagerie instantanée";
+        }
+      });
+    },
+  };
+  // Initialisation
+  ChatApp.init();
+  // Expose la fonction d'initialisation bouton pour l'utiliser globalement
+  window.initChatButton = ChatApp.initChatButton.bind(ChatApp);
+</script>
+<style>
+  /* Styles déplacés du JS vers CSS */
+  .btn-delete-room {
+    margin-left: 8px;
+    background: transparent;
+    border: none;
+    color: #f88;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    line-height: 1;
+    padding: 0 4px;
+  }
+  .chat-tab.active {
+    background-color: #444;
+    color: #0af;
+  }
+</style>
 <!-- <?php include "../../Additional_html/horizontal_heading.html" ?> --> <!-- <?php include
 "../../Additional_html/footer.html" ?> -->
 <!-- <div w3-include-html="Additional_html/horizontal_heading.html"></div>

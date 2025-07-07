@@ -1358,6 +1358,11 @@ $(document).ready(function () {
      background-size: 100% !important;
     }`,
 
+    `
+    #chatContainer{
+background  : ${Albert} !important;
+     }`,
+
     `.modal-content {
 
 background: ${Albert} !important;
