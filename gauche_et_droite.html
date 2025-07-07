@@ -4554,21 +4554,18 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
   });
 </script>
 <script>
-  // === Configuration Supabase ===
   const supabaseUrl = "https://crdzcgqrakjjdujhqmic.supabase.co";
   const supabaseKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyZHpjZ3FyYWtqamR1amhxbWljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcyNTQ2MDAsImV4cCI6MjA2MjgzMDYwMH0.F32OEbuWNwRAbmiaAK5WMMvCfopXc6pIvh9CgX0sLY8";
   const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
-  // === Gestion du chat dans un objet pour éviter les variables globales ===
   const ChatApp = {
     uidKey: "chat_uid",
     uid: null,
     rooms: [],
     activeRoom: null,
     chatLoaded: false,
-    roomSet: new Set(), // Pour éviter de parcourir le DOM à chaque fois
+    roomSet: new Set(),
     init() {
-      // Initialisation UID utilisateur unique, stocké en localStorage
       this.uid = localStorage.getItem(this.uidKey);
       if (!this.uid) {
         this.uid = crypto.randomUUID();
@@ -4577,7 +4574,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       this.activeRoom = this.uid;
       this.rooms = [this.uid];
     },
-    // Fonction utilitaire : tronquer une chaîne sans couper les emojis
     truncateString(str, maxLength) {
       if (!str) return "";
       if (typeof Intl !== "" && typeof Intl.Segmenter === "function") {
@@ -4591,7 +4587,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       if (str.length <= maxLength) return str;
       return str.slice(0, maxLength) + "…";
     },
-    // Création d'un onglet (tab) de room, avec prévention de doublons et limite à 10 onglets
     createTab(roomName, userName) {
       const chatTabs = document.getElementById("chatTabs");
       if (!chatTabs) return;
@@ -4606,8 +4601,8 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       tab.dataset.userName = userName || "";
       const spanName = document.createElement("span");
       spanName.textContent = userName
-        ? this.truncateString(userName, 14)
-        : this.truncateString(roomName, 14);
+        ? this.truncateString(userName, 18)
+        : this.truncateString(roomName, 18);
       tab.appendChild(spanName);
       const btnDelete = document.createElement("button");
       btnDelete.textContent = "×";
@@ -4627,7 +4622,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       this.roomSet.add(roomName);
       this.updateTabs();
     },
-    // Met à jour l'état visuel des onglets et description selon l'onglet actif
     updateTabs() {
       const chatTabs = document.getElementById("chatTabs");
       const descBar = document.getElementById("roomDescription");
@@ -4649,7 +4643,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         descBar.textContent = "";
       }
     },
-    // Ajoute un message au DOM (affichage)
     addMessageToUI(msg) {
       const chatMessages = document.getElementById("chatMessages");
       if (!chatMessages) return;
@@ -4664,11 +4657,10 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       chatMessages.appendChild(el);
       el.scrollIntoView();
     },
-    // Charge les messages d'une room active (limité aux champs nécessaires)
     async loadMessages() {
       const chatMessages = document.getElementById("chatMessages");
       if (!chatMessages) return;
-      chatMessages.innerHTML = ""; // on vide ici (à améliorer si cache souhaité)
+      chatMessages.innerHTML = "";
       const { data, error } = await supabaseClient
         .from("messages")
         .select("room, name, text, inserted_at, uid")
@@ -4680,7 +4672,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       }
       data.forEach((msg) => this.addMessageToUI(msg));
     },
-    // Supprime une room et ses messages dans la BDD, met à jour l'interface
     async deleteRoom(roomName) {
       if (!roomName) return;
       const { error } = await supabaseClient
@@ -4715,7 +4706,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         }
       }
     },
-    // Souscription aux nouveaux messages en temps réel via Supabase
     subscribeToMessages() {
       supabaseClient
         .channel("room_channel_all")
@@ -4732,12 +4722,54 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         )
         .subscribe();
     },
-    // Initialisation de la structure HTML et événements du chat
+    async loadRooms() {
+      const chatTabs = document.getElementById("chatTabs");
+      if (!chatTabs) return;
+      // Supprimer tous les onglets sauf le bouton "Nouveau sujet"
+      Array.from(chatTabs.children).forEach((child) => {
+        if (child.id !== "newRoomBtn") child.remove();
+      });
+      this.roomSet.clear();
+      const { data: roomsData, error } = await supabaseClient
+        .from("messages")
+        .select("room, name, room_order")
+        .not("room", "is", null);
+      if (error) {
+        console.error("Erreur récupération rooms :", error);
+        this.createTab(this.activeRoom);
+        return;
+      }
+      const roomMap = new Map();
+      roomsData.forEach(({ room, name, room_order }) => {
+        if (!roomMap.has(room)) {
+          roomMap.set(room, { name, room_order });
+        }
+      });
+      const roomsArray = Array.from(roomMap.entries()).map(
+        ([room, { name, room_order }]) => ({
+          room,
+          name,
+          room_order,
+        }),
+      );
+      roomsArray.sort((a, b) => {
+        if (a.room_order === null && b.room_order === null) return 0;
+        if (a.room_order === null) return 1;
+        if (b.room_order === null) return -1;
+        return a.room_order - b.room_order;
+      });
+      roomsArray.forEach(({ room, name }) => {
+        this.createTab(room, name);
+      });
+      if (!this.activeRoom && roomsArray.length > 0) {
+        this.activeRoom = roomsArray[0].room;
+      }
+    },
     async initChat() {
       if (this.chatLoaded) return;
       const chatContainer = document.getElementById("chatContainer");
       if (!chatContainer || document.getElementById("chatForm")) return;
-      // Titre
+      // Création des éléments : titre, onglets, description, messages, bouton "Nouveau sujet"
       if (!document.getElementById("chatTitle")) {
         const chatTitle = document.createElement("div");
         chatTitle.id = "chatTitle";
@@ -4752,7 +4784,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
           chatContainer.prepend(chatTitle);
         }
       }
-      // Barre d'onglets
       if (!document.getElementById("chatTabs")) {
         const chatTabs = document.createElement("div");
         chatTabs.id = "chatTabs";
@@ -4764,7 +4795,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
           chatContainer.prepend(chatTabs);
         }
       }
-      // Description
       if (!document.getElementById("roomDescription")) {
         const descBar = document.createElement("div");
         descBar.id = "roomDescription";
@@ -4776,7 +4806,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
           chatContainer.appendChild(descBar);
         }
       }
-      // Zone messages
       let chatMessages = document.getElementById("chatMessages");
       if (!chatMessages) {
         chatMessages = document.createElement("div");
@@ -4785,76 +4814,41 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
           "flex-grow:1;overflow-y:auto;margin-bottom:0.5em;";
         chatContainer.appendChild(chatMessages);
       }
-      // Bouton Nouveau sujet
       if (!document.getElementById("newRoomBtn")) {
         const newRoomBtn = document.createElement("button");
         newRoomBtn.id = "newRoomBtn";
         newRoomBtn.textContent = "➕ Nouveau sujet";
         newRoomBtn.style.cssText =
           "padding:0.3em 0.6em;cursor:pointer;background-color:#333;color:#eee;border:1px solid #666;border-radius:4px;font-size:0.9em;";
-        newRoomBtn.addEventListener("click", () => {
+        newRoomBtn.addEventListener("click", async () => {
           const topic = prompt("Titre du nouveau sujet :")?.trim();
           if (!topic) return;
           const roomId = `topic_${crypto.randomUUID()}`;
-          this.rooms.push(roomId);
+          const { error } = await supabaseClient.from("messages").insert([
+            {
+              room: roomId,
+              name: topic,
+              text: "Room créée",
+              uid: this.uid,
+            },
+          ]);
+          if (error) {
+            console.error("Erreur création nouvelle room :", error);
+            alert("Impossible de créer le nouveau sujet.");
+            return;
+          }
+          await this.loadRooms();
           this.activeRoom = roomId;
-          this.createTab(roomId, topic);
-          this.loadMessages();
+          await this.loadMessages();
           this.updateTabs();
         });
         const chatTabs = document.getElementById("chatTabs");
         if (chatTabs) chatTabs.appendChild(newRoomBtn);
       }
-      // Récupération des rooms depuis la base
-      try {
-        const { data: roomsData, error } = await supabaseClient
-          .from("messages")
-          .select("room, name, room_order")
-          .not("room", "is", null);
-        if (error) {
-          console.error("Erreur récupération rooms :", error);
-          this.createTab(this.activeRoom);
-        } else if (!roomsData || roomsData.length === 0) {
-          this.createTab(this.activeRoom);
-        } else {
-          // Regrouper par room avec nom et ordre
-          const roomMap = new Map();
-          roomsData.forEach(({ room, name, room_order }) => {
-            if (!roomMap.has(room)) {
-              roomMap.set(room, { name, room_order });
-            }
-          });
-          // Transformer en tableau
-          const roomsArray = Array.from(roomMap.entries()).map(
-            ([room, { name, room_order }]) => ({
-              room,
-              name,
-              room_order,
-            }),
-          );
-          // Trier en mettant les nulls de room_order à la fin
-          roomsArray.sort((a, b) => {
-            if (a.room_order === null && b.room_order === null) return 0;
-            if (a.room_order === null) return 1;
-            if (b.room_order === null) return -1;
-            return a.room_order - b.room_order;
-          });
-          // Création des onglets dans l’ordre trié
-          roomsArray.forEach(({ room, name }) => {
-            this.createTab(room, name);
-          });
-          if (!this.activeRoom || !uniqueRooms.includes(this.activeRoom)) {
-            this.activeRoom = uniqueRooms[0];
-          }
-        }
-      } catch (e) {
-        console.error("Erreur lors récupération rooms :", e);
-        this.createTab(this.activeRoom);
-      }
-      this.updateTabs();
+      await this.loadRooms();
       await this.loadMessages();
       this.subscribeToMessages();
-      // Création formulaire
+      // Création du formulaire
       const form = document.createElement("form");
       form.id = "chatForm";
       form.style.display = "flex";
@@ -4914,7 +4908,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
           popup.style.display = "none";
         }
       });
-      // Soumission formulaire
       form.addEventListener("submit", async (event) => {
         event.preventDefault();
         const name = inputName.value.trim();
@@ -4927,7 +4920,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       });
       this.chatLoaded = true;
     },
-    // Bouton d'ouverture/fermeture du chat et gestion clics hors chat
     async initChatButton() {
       const openChatBtn = document.getElementById("openChatBtn");
       const chatContainer = document.getElementById("chatContainer");
@@ -4959,9 +4951,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       });
     },
   };
-  // Initialisation
   ChatApp.init();
-  // Expose la fonction d'initialisation bouton pour l'utiliser globalement
   window.initChatButton = ChatApp.initChatButton.bind(ChatApp);
 </script>
 <style>
