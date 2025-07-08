@@ -130,10 +130,12 @@ body {
   z-index: 8000;
 }
 
-#controlBar_myPlayerID {
-  position: fixed !important;
+#controlBar_myPlayerID,
+.mb_YTPseekbar {
+  position: absolute !important;
   bottom: 0px;
-  z-index: 10000 !important;
+  z-index: 40000 !important;
+  cursor: pointer;
 }
 
 .modal-body {
