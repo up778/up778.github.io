@@ -5,23 +5,6 @@ var bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
 
 var div_pour_les_videos_de_background;
 var bb;
-let ytPlayer;
-
-const _originalYTAPIReady = window.onYouTubeIframeAPIReady;
-
-window.onYouTubeIframeAPIReady = function () {
-  if (typeof _originalYTAPIReady === "function") {
-    _originalYTAPIReady();
-  }
-
-  ytPlayer = new YT.Player("iframe_myPlayerID", {
-    events: {
-      onReady: function () {
-        console.log("YouTube player ready (nouvelle initialisation)");
-      },
-    },
-  });
-};
 
 function getTotalTime() {
   if (ytPlayer && typeof ytPlayer.getDuration === "function") {
@@ -246,33 +229,60 @@ function add_ytmb(url1, url2, url3) {
 
     if (!$("#controlBar_myPlayerID").length) {
       $("body").append(`
-    <div id="controlBar_myPlayerID" class="mb_YTPBar" style="
-      white-space: nowrap; 
-      position: fixed !important; 
-      z-index: 10000; 
-      bottom: 0; 
-      left: 0; 
-      width: 100%;
-      background-color: rgba(0,0,0,0.6);
-      cursor: pointer;
-    ">
-      <div class="buttonBar" style="display: flex; align-items: center; gap: 8px; padding: 4px 10px;">
-        <span class="mb_YTPPlayPause ytpicon" style="user-select:none; cursor:pointer;">P</span>
-        <span class="mb_YTPMuteUnmute ytpicon" style="user-select:none; cursor:pointer;">M</span>
-        <div class="mb_YTPVolumeBar simpleSlider" style="flex-grow:1; cursor:auto;">
+    <div id="controlBar_myPlayerID" class="mb_YTPBar inlinePlayer" style="white-space: nowrap; position: absolute; z-index: 100;">
+      <div class="buttonBar">
+        <span class="mb_YTPPlayPause ytpicon">P</span>
+        <span class="mb_YTPMuteUnmute ytpicon">M</span>
+        <div class="mb_YTPVolumeBar simpleSlider" style="display: inline-block; cursor: default;">
           <div class="level horizontal" style="width: 50%;"></div>
         </div>
-        <span class="mb_YTPTime" style="user-select:none;">00 : 00 / 00 : 00</span>
-        <span class="mb_YTPUrl ytpicon" title="view on YouTube" style="user-select:none; cursor:pointer;">Y</span>
-        <span class="mb_OnlyYT ytpicon" style="user-select:none;">O</span>
+        <span class="mb_YTPTime">00 : 04 / 01 : 05</span>
+        <span class="mb_YTPUrl ytpicon" title="view on YouTube">Y</span>
+        <span class="mb_OnlyYT ytpicon">O</span>
       </div>
-      <div class="mb_YTPProgress" style="position: relative; height: 10px; background: #222; margin-top: 4px;">
-        <div class="mb_YTPLoaded" style="position: absolute; left: 0; height: 100%; background: #555; width: 0%;"></div>
-        <div class="mb_YTPseekbar" style="position: absolute; left: 0; height: 100%; background: #61dafb; width: 0;"></div>
+      <div class="mb_YTPProgress" style="position: absolute;">
+        <div class="mb_YTPLoaded" style="position: absolute; left: 0px; width: 38.9232%;"></div>
+        <div class="mb_YTPseekbar" style="position: absolute; left: 0px; width: 81.5588px;"></div>
       </div>
     </div>
   `);
+
+      forcer_affichage_barre_de_controle();
     }
+
+    function forcer_affichage_barre_de_controle() {
+      $("#wrapper_myPlayerID").css("pointer-events", "none");
+      $("#myPlayerID").css("pointer-events", "none");
+      $(".YTPOverlay").css("pointer-events", "none");
+      const $barre = $("#controlBar_myPlayerID");
+
+      if ($barre.length) {
+        $barre.css({
+          position: "fixed",
+          bottom: "0",
+          left: "0",
+          width: "100%",
+          "z-index": "2147483647",
+          "background-color": "rgba(0, 0, 0, 0.6)",
+          "pointer-events": "auto",
+        });
+
+        $barre.find(".mb_YTPProgress, .mb_YTPLoaded, .mb_YTPseekbar").css({
+          "z-index": "2147483647",
+          position: "relative",
+        });
+
+        $("#wrapper_myPlayerID").css("z-index", "100");
+        $("#myPlayerID").css("z-index", "0");
+        $(".YTPOverlay").css("pointer-events", "none");
+      } else {
+        console.warn(
+          "#controlBar_myPlayerID introuvable pour appliquer le patch",
+        );
+      }
+    }
+
+    $("#controlBar_myPlayerID").css("z-index", 2147483647);
 
     $("html, body").css("background", "#00000000 !important");
     $(".background_class_horizontal_heading").css("background-color", "black");
@@ -288,7 +298,7 @@ function add_ytmb(url1, url2, url3) {
       $(this).addClass("video_bg_transparent");
       $(this).css({
         "background-color": "transparent",
-        opacity: "0.95",
+        opacity: "1",
       });
     });
 
@@ -318,46 +328,27 @@ function add_ytmb(url1, url2, url3) {
     const myPlayListPlayer = $(playerId).YTPlaylist(videos, false, () => {
       setTimeout(() => {
         $(playerId).YTPPlay();
-        const $player = $(playerId);
-        function waitForDuration(callback, maxTries = 20, interval = 200) {
-          let tries = 0;
-          const checkDuration = setInterval(() => {
-            const duration = getTotalTime();
-            if (duration > 0) {
-              clearInterval(checkDuration);
-              callback(duration);
-            } else if (tries++ > maxTries) {
-              clearInterval(checkDuration);
-              console.error("Impossible de récupérer la durée de la vidéo");
-            }
-          }, interval);
-        }
 
-        $player.on("YTPReady", function () {
-          waitForDuration((duration) => {
-            $(".YTPOverlay").css("pointer-events", "none");
-            $(".mb_YTPProgress, .mb_YTPLoaded, .mb_YTPseekbar")
-              .off("click")
-              .on("click", function (e) {
-                e.stopPropagation();
-                const progressBar = $(".mb_YTPProgress").first();
-                const offset = progressBar.offset();
-                const width = progressBar.width();
-                const clickX = e.pageX - offset.left;
-                const ratio = Math.min(Math.max(clickX / width, 0), 1);
-                const seekTo = duration * ratio;
-                console.log("Seek to:", seekTo);
-                if (ytPlayer && typeof ytPlayer.seekTo === "function") {
-                  ytPlayer.seekTo(seekTo, true);
-                } else {
-                  console.error("ytPlayer.seekTo() non disponible");
-                }
-              });
+        ytPlayer = myPlayListPlayer;
+
+        $(".YTPOverlay").css("pointer-events", "none");
+        $(".mb_YTPProgress, .mb_YTPLoaded, .mb_YTPseekbar")
+          .off("click")
+          .on("click", function (e) {
+            e.stopPropagation();
+            const progressBar = $(".mb_YTPProgress").first();
+            const offset = progressBar.offset();
+            const width = progressBar.width();
+            const clickX = e.pageX - offset.left;
+            const ratio = Math.min(Math.max(clickX / width, 0), 1);
+            const seekTo = getTotalTime() * ratio;
+            if (ytPlayer && typeof ytPlayer.seekTo === "function") {
+              ytPlayer.seekTo(seekTo, true);
+            }
           });
-        });
       }, 200);
     });
-
+    ytPlayer = myPlayListPlayer;
     let currentVideoIndex = 0;
     myPlayListPlayer.on("YTPEnded", () => {
       currentVideoIndex = (currentVideoIndex + 1) % videos.length;
@@ -1442,6 +1433,20 @@ $(document).ready(function () {
   const insert = (rule) => sheet.insertRule(rule, sheet.cssRules.length);
 
   const rules = [
+    `#controlBar_myPlayerID {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    pointer-events: auto;
+  }`,
+    `.mb_YTPProgress, .mb_YTPLoaded, .mb_YTPseekbar {
+    position: relative;
+    z-index: 9999;
+    cursor: pointer;
+  }`,
+
     `#breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(n) > a:hover {
       color: ${plus_50}; 
       border-radius: 10px;

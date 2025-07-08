@@ -96,7 +96,7 @@ html {
 
   scroll-behavior: auto !important;
 
-  z-index: -10 !important;
+  z-index: auto !important;
   color-scheme: dark !important;
 }
 
@@ -115,27 +115,13 @@ body {
 
   top: 100px;
 
-  z-index: -2 !important;
+  z-index: auto !important;
 
   background: inherit !important;
 }
 
 * > span {
   font-size: 104%;
-}
-
-#wrapper_myPlayerID {
-  position: fixed !important;
-  top: 0px;
-  z-index: 8000;
-}
-
-#controlBar_myPlayerID,
-.mb_YTPseekbar {
-  position: absolute !important;
-  bottom: 0px;
-  z-index: 40000 !important;
-  cursor: pointer;
 }
 
 .modal-body {
