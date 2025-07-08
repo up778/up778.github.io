@@ -133,7 +133,7 @@ body {
 #controlBar_myPlayerID {
   position: fixed !important;
   bottom: 0px;
-  z-index: 8000;
+  z-index: 10000 !important;
 }
 
 .modal-body {
