@@ -5,6 +5,23 @@ var bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
 
 var div_pour_les_videos_de_background;
 var bb;
+let ytPlayer;
+
+const _originalYTAPIReady = window.onYouTubeIframeAPIReady;
+
+window.onYouTubeIframeAPIReady = function () {
+  if (typeof _originalYTAPIReady === "function") {
+    _originalYTAPIReady();
+  }
+
+  ytPlayer = new YT.Player("iframe_myPlayerID", {
+    events: {
+      onReady: function () {
+        console.log("YouTube player ready (nouvelle initialisation)");
+      },
+    },
+  });
+};
 
 function getTotalTime() {
   if (ytPlayer && typeof ytPlayer.getDuration === "function") {
@@ -272,7 +289,7 @@ function add_ytmb(url1, url2, url3) {
           position: "relative",
         });
 
-        $("#wrapper_myPlayerID").css("z-index", "100");
+        $("#wrapper_myPlayerID").css("z-index", "1");
         $("#myPlayerID").css("z-index", "0");
         $(".YTPOverlay").css("pointer-events", "none");
       } else {
@@ -284,7 +301,6 @@ function add_ytmb(url1, url2, url3) {
 
     $("#controlBar_myPlayerID").css("z-index", 2147483647);
 
-    $("html, body").css("background", "#00000000 !important");
     $(".background_class_horizontal_heading").css("background-color", "black");
 
     const $elements = $(".bcLevel2, article, .bclevel3, .bclevel4");
@@ -328,24 +344,43 @@ function add_ytmb(url1, url2, url3) {
     const myPlayListPlayer = $(playerId).YTPlaylist(videos, false, () => {
       setTimeout(() => {
         $(playerId).YTPPlay();
-
-        ytPlayer = myPlayListPlayer;
-
-        $(".YTPOverlay").css("pointer-events", "none");
-        $(".mb_YTPProgress, .mb_YTPLoaded, .mb_YTPseekbar")
-          .off("click")
-          .on("click", function (e) {
-            e.stopPropagation();
-            const progressBar = $(".mb_YTPProgress").first();
-            const offset = progressBar.offset();
-            const width = progressBar.width();
-            const clickX = e.pageX - offset.left;
-            const ratio = Math.min(Math.max(clickX / width, 0), 1);
-            const seekTo = getTotalTime() * ratio;
-            if (ytPlayer && typeof ytPlayer.seekTo === "function") {
-              ytPlayer.seekTo(seekTo, true);
+        const $player = $(playerId);
+        function waitForDuration(callback, maxTries = 20, interval = 200) {
+          let tries = 0;
+          const checkDuration = setInterval(() => {
+            const duration = getTotalTime();
+            if (duration > 0) {
+              clearInterval(checkDuration);
+              callback(duration);
+            } else if (tries++ > maxTries) {
+              clearInterval(checkDuration);
+              console.error("Impossible de récupérer la durée de la vidéo");
             }
+          }, interval);
+        }
+
+        $player.on("YTPReady", function () {
+          waitForDuration((duration) => {
+            $(".YTPOverlay").css("pointer-events", "none");
+            $(".mb_YTPProgress, .mb_YTPLoaded, .mb_YTPseekbar")
+              .off("click")
+              .on("click", function (e) {
+                e.stopPropagation();
+                const progressBar = $(".mb_YTPProgress").first();
+                const offset = progressBar.offset();
+                const width = progressBar.width();
+                const clickX = e.pageX - offset.left;
+                const ratio = Math.min(Math.max(clickX / width, 0), 1);
+                const seekTo = duration * ratio;
+                console.log("Seek to:", seekTo);
+                if (ytPlayer && typeof ytPlayer.seekTo === "function") {
+                  ytPlayer.seekTo(seekTo, true);
+                } else {
+                  console.error("ytPlayer.seekTo() non disponible");
+                }
+              });
           });
+        });
       }, 200);
     });
     ytPlayer = myPlayListPlayer;
