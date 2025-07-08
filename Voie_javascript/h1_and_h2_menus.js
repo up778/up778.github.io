@@ -5,6 +5,30 @@ var bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
 
 var div_pour_les_videos_de_background;
 var bb;
+let ytPlayer;
+
+const _originalYTAPIReady = window.onYouTubeIframeAPIReady;
+
+window.onYouTubeIframeAPIReady = function () {
+  if (typeof _originalYTAPIReady === "function") {
+    _originalYTAPIReady();
+  }
+
+  ytPlayer = new YT.Player("iframe_myPlayerID", {
+    events: {
+      onReady: function () {
+        console.log("YouTube player ready (nouvelle initialisation)");
+      },
+    },
+  });
+};
+
+function getTotalTime() {
+  if (ytPlayer && typeof ytPlayer.getDuration === "function") {
+    return ytPlayer.getDuration();
+  }
+  return 0;
+}
 
 window._original_background_html = $("html").attr("style") || null;
 window._original_background_body = $("body").attr("style") || null;
@@ -198,6 +222,12 @@ function add_ytmb(url1, url2, url3) {
       );
     }
 
+    $("#wrapper_myPlayerID")
+      .off("click")
+      .on("click", function (e) {
+        e.stopPropagation();
+      });
+
     if (!$(playerId).length) {
       $("#wrapper_myPlayerID").append(`
         <div id="myPlayerID" class="player mb_YTPlayer isMuted"
@@ -216,20 +246,32 @@ function add_ytmb(url1, url2, url3) {
 
     if (!$("#controlBar_myPlayerID").length) {
       $("body").append(`
-        <div id="controlBar_myPlayerID" class="mb_YTPBar" style="white-space: nowrap; position: fixed; z-index: 10000;">
-          <div class="buttonBar">
-            <span class="mb_YTPPlayPause ytpicon">P</span>
-            <span class="mb_YTPMuteUnmute ytpicon">M</span>
-            <div class="mb_YTPVolumeBar simpleSlider"><div class="level horizontal" style="width: 50%;"></div></div>
-            <span class="mb_YTPTime">00 : 00 / 00 : 00</span>
-            <span class="mb_YTPUrl ytpicon" title="view on YouTube">Y</span>
-            <span class="mb_OnlyYT ytpicon">O</span>
-          </div>
-          <div class="mb_YTPProgress">
-            <div class="mb_YTPLoaded" style="width: 0%; left: 0px;"></div>
-            <div class="mb_YTPseekbar" style="width: 0px; left: 0px;"></div>
-          </div>
-        </div>`);
+    <div id="controlBar_myPlayerID" class="mb_YTPBar" style="
+      white-space: nowrap; 
+      position: fixed !important; 
+      z-index: 10000; 
+      bottom: 0; 
+      left: 0; 
+      width: 100%;
+      background-color: rgba(0,0,0,0.6);
+      cursor: pointer;
+    ">
+      <div class="buttonBar" style="display: flex; align-items: center; gap: 8px; padding: 4px 10px;">
+        <span class="mb_YTPPlayPause ytpicon" style="user-select:none; cursor:pointer;">P</span>
+        <span class="mb_YTPMuteUnmute ytpicon" style="user-select:none; cursor:pointer;">M</span>
+        <div class="mb_YTPVolumeBar simpleSlider" style="flex-grow:1; cursor:auto;">
+          <div class="level horizontal" style="width: 50%;"></div>
+        </div>
+        <span class="mb_YTPTime" style="user-select:none;">00 : 00 / 00 : 00</span>
+        <span class="mb_YTPUrl ytpicon" title="view on YouTube" style="user-select:none; cursor:pointer;">Y</span>
+        <span class="mb_OnlyYT ytpicon" style="user-select:none;">O</span>
+      </div>
+      <div class="mb_YTPProgress" style="position: relative; height: 10px; background: #222; margin-top: 4px;">
+        <div class="mb_YTPLoaded" style="position: absolute; left: 0; height: 100%; background: #555; width: 0%;"></div>
+        <div class="mb_YTPseekbar" style="position: absolute; left: 0; height: 100%; background: #61dafb; width: 0;"></div>
+      </div>
+    </div>
+  `);
     }
 
     $("html, body").css("background", "#00000000 !important");
@@ -276,6 +318,43 @@ function add_ytmb(url1, url2, url3) {
     const myPlayListPlayer = $(playerId).YTPlaylist(videos, false, () => {
       setTimeout(() => {
         $(playerId).YTPPlay();
+        const $player = $(playerId);
+        function waitForDuration(callback, maxTries = 20, interval = 200) {
+          let tries = 0;
+          const checkDuration = setInterval(() => {
+            const duration = getTotalTime();
+            if (duration > 0) {
+              clearInterval(checkDuration);
+              callback(duration);
+            } else if (tries++ > maxTries) {
+              clearInterval(checkDuration);
+              console.error("Impossible de récupérer la durée de la vidéo");
+            }
+          }, interval);
+        }
+
+        $player.on("YTPReady", function () {
+          waitForDuration((duration) => {
+            $(".YTPOverlay").css("pointer-events", "none");
+            $(".mb_YTPProgress, .mb_YTPLoaded, .mb_YTPseekbar")
+              .off("click")
+              .on("click", function (e) {
+                e.stopPropagation();
+                const progressBar = $(".mb_YTPProgress").first();
+                const offset = progressBar.offset();
+                const width = progressBar.width();
+                const clickX = e.pageX - offset.left;
+                const ratio = Math.min(Math.max(clickX / width, 0), 1);
+                const seekTo = duration * ratio;
+                console.log("Seek to:", seekTo);
+                if (ytPlayer && typeof ytPlayer.seekTo === "function") {
+                  ytPlayer.seekTo(seekTo, true);
+                } else {
+                  console.error("ytPlayer.seekTo() non disponible");
+                }
+              });
+          });
+        });
       }, 200);
     });
 
@@ -301,6 +380,34 @@ function add_ytmb(url1, url2, url3) {
       $("#videoTitle").html(e.prop.title);
     });
   }, 600);
+
+  setTimeout(() => {
+    const $player = $("#myPlayerID");
+
+    $(".mb_YTPProgress").css({
+      position: "fixed",
+      bottom: "0",
+      left: "0",
+      width: "100%",
+      height: "14px",
+      backgroundColor: "#333",
+      zIndex: "10000",
+      cursor: "pointer",
+      opacity: "0.6",
+    });
+
+    $(".mb_YTPLoaded").css({
+      height: "100%",
+      backgroundColor: "#666",
+    });
+
+    $(".mb_YTPseekbar").css({
+      height: "100%",
+      backgroundColor: "#ccc",
+    });
+
+    $(".YTPOverlay").css("pointer-events", "none");
+  }, 1000);
 }
 
 function stop_video_background() {
@@ -382,55 +489,6 @@ function add_button_for_background_video(
     );
     // }
   }, 1000);
-}
-
-function stop_video_background() {
-  if ($("#myPlayerID").length) {
-    try {
-      jQuery("#myPlayerID").YTPPause();
-    } catch (e) {}
-    try {
-      jQuery("#myPlayerID").YTPStop();
-    } catch (e) {}
-    $("#myPlayerID").remove();
-  }
-  $("#wrapper_myPlayerID").remove();
-  $("#controlBar_myPlayerID").remove();
-
-  if (Array.isArray(window._original_styles_for_video_background)) {
-    window._original_styles_for_video_background.forEach(
-      ({ element, style }) => {
-        element.classList.remove("video_bg_transparent");
-        if (style !== null) {
-          element.setAttribute("style", style);
-        } else {
-          element.removeAttribute("style");
-        }
-      },
-    );
-  }
-  window._original_styles_for_video_background = [];
-
-  setTimeout(() => {
-    if (window.background_html_and_body_image) {
-      $("html, body").css(
-        "background",
-        window.background_html_and_body_image + " !important",
-      );
-    }
-
-    if (window._original_background_html !== null) {
-      $("html").attr("style", window._original_background_html);
-    } else {
-      $("html").removeAttr("style");
-    }
-
-    if (window._original_background_body !== null) {
-      $("body").attr("style", window._original_background_body);
-    } else {
-      $("body").removeAttr("style");
-    }
-  }, 300);
 }
 
 function toggle_sections_2_and_3_borders() {
