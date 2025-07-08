@@ -10000,8 +10000,10 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       // console.log("The paragraph  is hidden.");
       $(function () {
         var breadcrumb = $("#breadcrumb").initBreadcrumb({});
-        $(window).scroll(breadcrumb.refresh);
-        breadcrumb.refresh();
+        if (breadcrumb && typeof breadcrumb.refresh === "function") {
+          $(window).scroll(breadcrumb.refresh);
+          breadcrumb.refresh();
+        }
       });
       // console.log($(".bouton_haut_droit")[0].innerHTML, `$(".bouton_haut_droit")[0].innerHTML`);
       $(".bouton_haut_droit").append("actus, pages, projets, etc.");
