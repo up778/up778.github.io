@@ -177,101 +177,192 @@ function toggleMute() {
 }
 
 function add_ytmb(url1, url2, url3) {
-  if ($(".inserted_ytmb").length === 0) {
-    $("body").append(`
-      <div id="myPlayerID" class="player mb_YTPlayer isMuted"
-        data-property='{ "videoURL":"${url1}", "containment":"#oiseau", "startAt":0,
-          "mute":true, "autoPlay":false, "loop":20000, "opacity":0.2 }'
-        style="display: none">
-      </div>
-    `);
+  stop_video_background();
 
-    jQuery(function () {
-      const videos = [url1, url2, url3].map((url, index) => ({
-        videoURL: url,
-        containment: "body",
-        autoPlay: true,
-        mute: false,
-        startAt: 0,
-        opacity: 0.4,
-        loop: true,
-        ratio: "4/3",
-        addRaster: false,
-        coverImage:
-          "../../Images mosaïques pour arrière plan web/bird-6812884_1920.jpg",
-        gaTrack: "false",
-      }));
+  $("script#www-widgetapi-script").slice(1).remove();
+  if (!$("#YTAPI").length)
+    $("head").prepend(
+      `<script src="https://www.youtube.com/iframe_api?v=3.3.9" id="YTAPI"></script>`,
+    );
+  if (!$("#www-widgetapi-script").length)
+    $("head").prepend(
+      `<script type="text/javascript" id="www-widgetapi-script" src="https://www.youtube.com/s/player/b7ed0796/www-widgetapi.vflset/www-widgetapi.js" async></script>`,
+    );
 
-      const myPlayListPlayer = jQuery("#myPlayerID").YTPlaylist(
-        videos,
-        false,
-        function () {
-          console.log("Player prêt, lancement de la lecture...");
-          jQuery("#myPlayerID").YTPPlay();
-        },
+  setTimeout(() => {
+    const playerId = "#myPlayerID";
+
+    if (!$("#wrapper_myPlayerID").length) {
+      $("body").prepend(
+        `<div id="wrapper_myPlayerID" class="mbYTP_wrapper" style="position: fixed; z-index: 0; min-width: 100%; min-height: 100%; left: 0; top: 0; overflow: hidden; opacity: 0.4;"></div>`,
       );
-      let currentVideoIndex = 0;
-      const totalVideos = videos.length;
+    }
 
-      myPlayListPlayer.on("YTPEnded", function () {
-        currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
-        const nextVideo = videos[currentVideoIndex].videoURL;
+    if (!$(playerId).length) {
+      $("#wrapper_myPlayerID").append(`
+        <div id="myPlayerID" class="player mb_YTPlayer isMuted"
+          data-property='{
+            "videoURL":"${url1}",
+            "containment":"#wrapper_myPlayerID",
+            "startAt":0,
+            "mute":true,
+            "autoPlay":false,
+            "loop":20000,
+            "opacity":0.2
+          }'
+          style="width: 100%; height: 100%; position: absolute; top: 0; left: 0;">
+        </div>`);
+    }
 
-        jQuery
-          .get(
-            `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${nextVideo}&format=json`,
-          )
-          .done(() => {
-            myPlayListPlayer.changeMovie(nextVideo, false);
-          })
-          .fail(() => {
-            console.warn("Vidéo non lisible en embed :", nextVideo);
+    if (!$("#controlBar_myPlayerID").length) {
+      $("body").append(`
+        <div id="controlBar_myPlayerID" class="mb_YTPBar" style="white-space: nowrap; position: fixed; z-index: 10000;">
+          <div class="buttonBar">
+            <span class="mb_YTPPlayPause ytpicon">P</span>
+            <span class="mb_YTPMuteUnmute ytpicon">M</span>
+            <div class="mb_YTPVolumeBar simpleSlider"><div class="level horizontal" style="width: 50%;"></div></div>
+            <span class="mb_YTPTime">00 : 00 / 00 : 00</span>
+            <span class="mb_YTPUrl ytpicon" title="view on YouTube">Y</span>
+            <span class="mb_OnlyYT ytpicon">O</span>
+          </div>
+          <div class="mb_YTPProgress">
+            <div class="mb_YTPLoaded" style="width: 0%; left: 0px;"></div>
+            <div class="mb_YTPseekbar" style="width: 0px; left: 0px;"></div>
+          </div>
+        </div>`);
+    }
 
-            currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
-            const skipVideo = videos[currentVideoIndex].videoURL;
-            myPlayListPlayer.changeMovie(skipVideo, false);
-          });
+    $("html, body").css("background", "#00000000 !important");
+    $(".background_class_horizontal_heading").css("background-color", "black");
+
+    const $elements = $(".bcLevel2, article, .bclevel3, .bclevel4");
+    window._original_styles_for_video_background = [];
+
+    $elements.each(function () {
+      window._original_styles_for_video_background.push({
+        element: this,
+        style: this.getAttribute("style"),
       });
-
-      myPlayListPlayer.on("YTPData", function (e) {
-        jQuery("#videoID").html(e.prop.id);
-        jQuery("#videoTitle").html(e.prop.title);
+      $(this).addClass("video_bg_transparent");
+      $(this).css({
+        "background-color": "transparent",
+        opacity: "0.95",
       });
-
-      jQuery("#myPlayerID").YTPPlay();
-      setTimeout(() => jQuery("#myPlayerID").YTPPlay(), 2000);
     });
 
-    setTimeout(() => {
-      $("html, body").attr("style", "background: #00000000 !important");
-      $(".background_class_horizontal_heading").attr(
-        "style",
-        "background-color: black",
+    $(".breadcrumb").css("background", "transparent");
+    if (typeof show_or_not_breadcrumb === "function") show_or_not_breadcrumb();
+    document.body.setAttribute("style", "background: #00000000 !important;");
+    document.documentElement.setAttribute(
+      "style",
+      "background: #00000000 !important;",
+    );
+
+    const videos = [url1, url2, url3].map((url) => ({
+      videoURL: url,
+      containment: "#wrapper_myPlayerID",
+      autoPlay: true,
+      mute: false,
+      startAt: 0,
+      opacity: 0.6,
+      loop: true,
+      ratio: "4/3",
+      addRaster: false,
+      coverImage:
+        "../../Images mosaïques pour arrière plan web/bird-6812884_1920.jpg",
+      gaTrack: "false",
+    }));
+
+    const myPlayListPlayer = $(playerId).YTPlaylist(videos, false, () => {
+      setTimeout(() => {
+        $(playerId).YTPPlay();
+      }, 200);
+    });
+
+    let currentVideoIndex = 0;
+    myPlayListPlayer.on("YTPEnded", () => {
+      currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+      const nextVideo = videos[currentVideoIndex].videoURL;
+      $.get(
+        `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${nextVideo}&format=json`,
+      )
+        .done(() => myPlayListPlayer.changeMovie(nextVideo, false))
+        .fail(() => {
+          currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+          myPlayListPlayer.changeMovie(
+            videos[currentVideoIndex].videoURL,
+            false,
+          );
+        });
+    });
+
+    myPlayListPlayer.on("YTPData", function (e) {
+      $("#videoID").html(e.prop.id);
+      $("#videoTitle").html(e.prop.title);
+    });
+  }, 600);
+}
+
+function stop_video_background() {
+  try {
+    jQuery("#myPlayerID").YTPPause();
+  } catch (e) {}
+  try {
+    jQuery("#myPlayerID").YTPStop();
+  } catch (e) {}
+
+  $("#myPlayerID").remove();
+  $("#wrapper_myPlayerID").remove();
+  $("#controlBar_myPlayerID").remove();
+
+  $("html").removeClass("video_bg_transparent");
+  $("body").removeClass("video_bg_transparent");
+
+  $(".bcLevel2, article, .bclevel3, .bclevel4")
+    .css({
+      "background-color": "",
+      opacity: "",
+    })
+    .removeClass("video_bg_transparent");
+
+  $(".background_class_horizontal_heading").css("background-color", "");
+  $(".breadcrumb").css("background", "");
+
+  // Restaurer styles initiaux sauvegardés
+  if (Array.isArray(window._original_styles_for_video_background)) {
+    window._original_styles_for_video_background.forEach(
+      ({ element, style }) => {
+        if (style !== null) element.setAttribute("style", style);
+        else element.removeAttribute("style");
+      },
+    );
+  }
+  window._original_styles_for_video_background = [];
+
+  setTimeout(() => {
+    if (window.background_html_and_body_image)
+      $("html, body").css(
+        "background",
+        window.background_html_and_body_image + " !important",
       );
 
-      const $elementsToModify = $(".bcLevel2, article, .bclevel3, .bclevel4");
+    if (window._original_background_html !== null)
+      $("html").attr("style", window._original_background_html);
+    else $("html").removeAttr("style");
 
-      window._original_styles_for_video_background = [];
+    if (window._original_background_body !== null)
+      $("body").attr("style", window._original_background_body);
+    else $("body").removeAttr("style");
+  }, 300);
 
-      $elementsToModify.each(function () {
-        const el = this;
-
-        window._original_styles_for_video_background.push({
-          element: el,
-          style: el.hasAttribute("style") ? el.getAttribute("style") : null,
-        });
-
-        el.classList.add("video_bg_transparent");
-      });
-
-      $(".breadcrumb").css("background", "transparent");
-      show_or_not_breadcrumb();
-    }, 1500);
-  }
-
-  if ($("#myPlayerID").length === 1) {
-    jQuery("#myPlayerID").YTPPlay();
-  }
+  $("style").each(function () {
+    if (
+      $(this).html().includes(".mbYTP_wrapper") ||
+      $(this).html().includes("YTPlayer")
+    ) {
+      $(this).remove();
+    }
+  });
 }
 
 function add_button_for_background_video(
@@ -294,9 +385,17 @@ function add_button_for_background_video(
 }
 
 function stop_video_background() {
-  $(
-    "#myPlayerID, .inserted_ytmb, #controlBar_myPlayerID, #wrapper_myPlayerID, #www-widgetapi-script, #YTAPI",
-  ).remove();
+  if ($("#myPlayerID").length) {
+    try {
+      jQuery("#myPlayerID").YTPPause();
+    } catch (e) {}
+    try {
+      jQuery("#myPlayerID").YTPStop();
+    } catch (e) {}
+    $("#myPlayerID").remove();
+  }
+  $("#wrapper_myPlayerID").remove();
+  $("#controlBar_myPlayerID").remove();
 
   if (Array.isArray(window._original_styles_for_video_background)) {
     window._original_styles_for_video_background.forEach(
@@ -313,22 +412,25 @@ function stop_video_background() {
   window._original_styles_for_video_background = [];
 
   setTimeout(() => {
-    $("html, body").css(
-      "background",
-      window.background_html_and_body_image + " !important",
-    );
-  }, 300);
-  if (window._original_background_html !== null) {
-    $("html").attr("style", window._original_background_html);
-  } else {
-    $("html").removeAttr("style");
-  }
+    if (window.background_html_and_body_image) {
+      $("html, body").css(
+        "background",
+        window.background_html_and_body_image + " !important",
+      );
+    }
 
-  if (window._original_background_body !== null) {
-    $("body").attr("style", window._original_background_body);
-  } else {
-    $("body").removeAttr("style");
-  }
+    if (window._original_background_html !== null) {
+      $("html").attr("style", window._original_background_html);
+    } else {
+      $("html").removeAttr("style");
+    }
+
+    if (window._original_background_body !== null) {
+      $("body").attr("style", window._original_background_body);
+    } else {
+      $("body").removeAttr("style");
+    }
+  }, 300);
 }
 
 function toggle_sections_2_and_3_borders() {
