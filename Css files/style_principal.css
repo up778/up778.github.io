@@ -2727,3 +2727,17 @@ table .trois_last_modifs_weeks {
   background-color: #666;
   border-radius: 3px;
 }
+
+.video_bg_transparent {
+  background: none !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+.msg.me {
+  background-color: #114422;
+  color: #ddf;
+}
+.msg.other {
+  background-color: #222;
+  color: #ccc;
+}

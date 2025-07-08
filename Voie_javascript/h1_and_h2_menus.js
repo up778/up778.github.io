@@ -6,6 +6,9 @@ var bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
 var div_pour_les_videos_de_background;
 var bb;
 
+window._original_background_html = $("html").attr("style") || null;
+window._original_background_body = $("body").attr("style") || null;
+
 function return_button_for_backrgound_video(
   video_background_youtube11_url_1,
   video_background_youtube11_url_2,
@@ -62,7 +65,7 @@ function return_button_for_backrgound_video(
       concatenated +
       `);'
               >
-                <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();" -->
+                <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();testyy()" -->
                 ▶️
   </button>
               <button
@@ -173,6 +176,193 @@ function toggleMute() {
   }
 }
 
+function add_ytmb(url1, url2, url3) {
+  if ($(".inserted_ytmb").length === 0) {
+    $("body").append(`
+      <div id="myPlayerID" class="player mb_YTPlayer isMuted"
+        data-property='{ "videoURL":"${url1}", "containment":"#oiseau", "startAt":0,
+          "mute":true, "autoPlay":false, "loop":20000, "opacity":0.2 }'
+        style="display: none">
+      </div>
+    `);
+
+    jQuery(function () {
+      const videos = [url1, url2, url3].map((url, index) => ({
+        videoURL: url,
+        containment: "body",
+        autoPlay: true,
+        mute: false,
+        startAt: 0,
+        opacity: 0.4,
+        loop: true,
+        ratio: "4/3",
+        addRaster: false,
+        coverImage:
+          "../../Images mosaïques pour arrière plan web/bird-6812884_1920.jpg",
+        gaTrack: "false",
+      }));
+
+      const myPlayListPlayer = jQuery("#myPlayerID").YTPlaylist(
+        videos,
+        false,
+        function () {
+          console.log("Player prêt, lancement de la lecture...");
+          jQuery("#myPlayerID").YTPPlay();
+        },
+      );
+      let currentVideoIndex = 0;
+      const totalVideos = videos.length;
+
+      myPlayListPlayer.on("YTPEnded", function () {
+        currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
+        const nextVideo = videos[currentVideoIndex].videoURL;
+
+        jQuery
+          .get(
+            `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${nextVideo}&format=json`,
+          )
+          .done(() => {
+            myPlayListPlayer.changeMovie(nextVideo, false);
+          })
+          .fail(() => {
+            console.warn("Vidéo non lisible en embed :", nextVideo);
+
+            currentVideoIndex = (currentVideoIndex + 1) % totalVideos;
+            const skipVideo = videos[currentVideoIndex].videoURL;
+            myPlayListPlayer.changeMovie(skipVideo, false);
+          });
+      });
+
+      myPlayListPlayer.on("YTPData", function (e) {
+        jQuery("#videoID").html(e.prop.id);
+        jQuery("#videoTitle").html(e.prop.title);
+      });
+
+      jQuery("#myPlayerID").YTPPlay();
+      setTimeout(() => jQuery("#myPlayerID").YTPPlay(), 2000);
+    });
+
+    setTimeout(() => {
+      $("html, body").attr("style", "background: #00000000 !important");
+      $(".background_class_horizontal_heading").attr(
+        "style",
+        "background-color: black",
+      );
+
+      const $elementsToModify = $(".bcLevel2, article, .bclevel3, .bclevel4");
+
+      window._original_styles_for_video_background = [];
+
+      $elementsToModify.each(function () {
+        const el = this;
+
+        window._original_styles_for_video_background.push({
+          element: el,
+          style: el.hasAttribute("style") ? el.getAttribute("style") : null,
+        });
+
+        el.classList.add("video_bg_transparent");
+      });
+
+      $(".breadcrumb").css("background", "transparent");
+      show_or_not_breadcrumb();
+    }, 1500);
+  }
+
+  if ($("#myPlayerID").length === 1) {
+    jQuery("#myPlayerID").YTPPlay();
+  }
+}
+
+function add_button_for_background_video(
+  video_background_youtube11_url_1,
+  video_background_youtube11_url_2,
+  video_background_youtube11_url_3,
+) {
+  setTimeout(() => {
+    $("body").append(
+      "" +
+        return_button_for_backrgound_video(
+          video_background_youtube11_url_1,
+          video_background_youtube11_url_2,
+          video_background_youtube11_url_3,
+        ) +
+        "",
+    );
+    // }
+  }, 1000);
+}
+
+function stop_video_background() {
+  $(
+    "#myPlayerID, .inserted_ytmb, #controlBar_myPlayerID, #wrapper_myPlayerID, #www-widgetapi-script, #YTAPI",
+  ).remove();
+
+  if (Array.isArray(window._original_styles_for_video_background)) {
+    window._original_styles_for_video_background.forEach(
+      ({ element, style }) => {
+        element.classList.remove("video_bg_transparent");
+        if (style !== null) {
+          element.setAttribute("style", style);
+        } else {
+          element.removeAttribute("style");
+        }
+      },
+    );
+  }
+  window._original_styles_for_video_background = [];
+
+  setTimeout(() => {
+    $("html, body").css(
+      "background",
+      window.background_html_and_body_image + " !important",
+    );
+  }, 300);
+  if (window._original_background_html !== null) {
+    $("html").attr("style", window._original_background_html);
+  } else {
+    $("html").removeAttr("style");
+  }
+
+  if (window._original_background_body !== null) {
+    $("body").attr("style", window._original_background_body);
+  } else {
+    $("body").removeAttr("style");
+  }
+}
+
+function toggle_sections_2_and_3_borders() {
+  if (bordures_pour_h2_et_h3_ont_elles_été_activées) {
+    $(".bcLevel2, .bcLevel3")
+      .css({
+        "border-top": "transparent",
+        "border-left": "transparent",
+      })
+      .addClass("bordures-cachees");
+    bordures_pour_h2_et_h3_ont_elles_été_activées = 0;
+  } else {
+    $(".bcLevel2")
+      .css({
+        "border-top": "1px dotted orange",
+
+        "border-left": "1px solid orange",
+      })
+      .removeClass("bordures-cachees");
+    $(".bcLevel3")
+      .css({
+        "border-top": "1px dotted #ff009d",
+
+        "border-left": "1px solid #ff009d",
+      })
+      .removeClass("bordures-cachees");
+    bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
+  }
+}
+
+const myModalEl = document.getElementById(
+  "https://fr.wikipedia.org/wiki/Luisa_Piccarreta20",
+);
+
 function h3() {
   if ($("h3").length > 0) {
     $("h3").each(function (index) {
@@ -187,8 +377,6 @@ function h3() {
     });
   }
 }
-
-function background_de_certains_h2() {}
 
 function know_if_avif_supported() {
   var avif = document.createElement("img");
@@ -597,195 +785,26 @@ $(document).ready(function () {
   });
 });
 
-function add_ytmb(
-  video_background_youtube11_url_1,
-  video_background_youtube11_url_2,
-  video_background_youtube11_url_3,
-) {
-  // console.log($(".inserted_ytmb").length, `$(".inserted_ytmb").length`);
-  if ($(".inserted_ytmb").length == 0) {
-    $("head").append(
-      `<script class="inserted_ytmb">
-    var myPlayListPlayer;
-    jQuery(function () {
-      /**
-       * Set the video list with all the parameters for each video
-       * @type {*[]}
-       */
-      let videos = [
-        {
-          videoURL: "` +
-        video_background_youtube11_url_1 +
-        `",
-          containment: "body",
-          autoPlay: false,
-          mute: false,
-          startAt: 0,
-          opacity: 0.4,
-          loop: true,
-          ratio: "4/3",
-          addRaster: false,
-          coverImage:
-            "../../Images mosaïques pour arrière plan web/bird-6812884_1920.jpg",
-          gaTrack: "false",
-          // showControls: false,
-        },
-        {
-          videoURL: "` +
-        video_background_youtube11_url_2 +
-        `",
-          containment: "body",
-          autoPlay: true,
-          mute: false,
-          startAt: 0,
-          opacity: 0.4,
-          loop: true,
-          ratio: "4/3",
-          addRaster: false,
-          coverImage:
-            "../../Images mosaïques pour arrière plan web/bird-6812884_1920.jpg",
-          gaTrack: "false",
-        },
-        {
-          videoURL: "` +
-        video_background_youtube11_url_3 +
-        `",
-          containment: "body",
-          autoPlay: true,
-          mute: false,
-          startAt: 0,
-          opacity: 0.4,
-          loop: true,
-          ratio: "4/3",
-          addRaster: false,
-          coverImage:
-            "../../Images mosaïques pour arrière plan web/bird-6812884_1920.jpg",
-          gaTrack: "false",
-        },
-      ];
-
-      myPlayListPlayer = jQuery("#myPlayerID").YTPlaylist(
-        videos,
-        false,
-        function (video) {
-          /*
-                  if (video.videoData) {
-                      jQuery("#videoID").html(video.videoData.id);
-                      jQuery("#videoTitle").html(video.videoData.title);
-                  }
-      */
-        }
-      );
-
-      myPlayListPlayer.on("YTPData", function (e) {
-        jQuery("#videoID").html(e.prop.id);
-        jQuery("#videoTitle").html(e.prop.title);
-      });
-    });
-  </script>
-
-`,
-    );
-    $("head").append("" + bb + "");
-
-    // console.log(ff, `ff`);
-
-    setTimeout(() => {
-      // jQuery('html,body').css('background', 'black');
-
-      $("html,body").attr("style", "background: #00000000 !important");
-
-      $(".background_class_horizontal_heading").attr(
-        "style",
-        "background-color: black",
-      );
-
-      jQuery("#myPlayerID").YTPPlay();
-      setTimeout(() => {
-        jQuery("#myPlayerID").YTPPlay();
-      }, 1500);
-      $(".bcLevel2").each(function () {
-        $(this).attr("style", "background-color: #00000000 !important");
-        $(".breadcrumb").attr("style", "background: transparent !important");
-      });
-      show_or_not_breadcrumb();
-    }, 1500);
-  }
-  if ($("#myPlayerID").length == 1) {
-    jQuery("#myPlayerID").YTPPlay();
-  }
-}
-
-function add_button_for_background_video(
-  video_background_youtube11_url_1,
-  video_background_youtube11_url_2,
-  video_background_youtube11_url_3,
-) {
-  setTimeout(() => {
-    $("body").append(
-      "" +
-        return_button_for_backrgound_video(
-          video_background_youtube11_url_1,
-          video_background_youtube11_url_2,
-          video_background_youtube11_url_3,
-        ) +
-        "",
-    );
-    // }
-  }, 1000);
-}
-
-function stop_video_background() {
-  $(
-    "#myPlayerID, .inserted_ytmb, #controlBar_myPlayerID, #wrapper_myPlayerID, #www-widgetapi-script, #YTAPI",
-  ).remove();
-
-  setTimeout(() => {
-    $("html, body").css(
-      "background",
-      window.background_html_and_body_image + " !important",
-    );
-  }, 300);
-}
-
-function toggle_sections_2_and_3_borders() {
-  if (bordures_pour_h2_et_h3_ont_elles_été_activées) {
-    $(".bcLevel2, .bcLevel3")
-      .css({
-        "border-top": "transparent",
-        "border-left": "transparent",
-      })
-      .addClass("bordures-cachees");
-    bordures_pour_h2_et_h3_ont_elles_été_activées = 0;
-  } else {
-    $(".bcLevel2")
-      .css({
-        "border-top": "1px dotted orange",
-
-        "border-left": "1px solid orange",
-      })
-      .removeClass("bordures-cachees");
-    $(".bcLevel3")
-      .css({
-        "border-top": "1px dotted #ff009d",
-
-        "border-left": "1px solid #ff009d",
-      })
-      .removeClass("bordures-cachees");
-    bordures_pour_h2_et_h3_ont_elles_été_activées = 1;
-  }
-}
-
+// console.log("hhhhhhhhh");
 $(document).ready(function () {
   var filename = location.pathname.match(/[^\/]+$/)[0];
-
+  // var filename0 = filename;
   var filename_histo = decodeURI(filename);
+  // console.log(filename_histo, `filename_histo`);
 
+  // console.log("ggggmmmm");
   setTimeout(() => {
     $(".icon_on_top").each(function () {
+      // element == this
+      // console.log(index, `index`);
+      // console.log($(this)[0].outerHTML);
+      // const content = element.outerHTML;, `$(this).html()`);
       if ($(this)[0].outerHTML.indexOf(filename_histo) > 0) {
+        // console.log("rrrrrrrrrrrrrrrrrrrrrr");
+        // $(this).find("picture").css("border", "1px solid #ff00f0");
+        // $(this).css("border", "1px solid #ff00f0");
         $(this).css("border", "1px solid #ff006a");
-
+        // $(this).find("picture").css("border-radius", "10%");
         $(this).css("border-radius", "10%");
         $(this).addClass("selected_border");
       }
@@ -793,9 +812,7 @@ $(document).ready(function () {
   }, 2000);
 });
 
-const myModalEl = document.getElementById(
-  "https://fr.wikipedia.org/wiki/Luisa_Piccarreta20",
-);
+// const myModalEl = document.getElementById('https:
 
 $("body").on(
   "show.bs.modal",
