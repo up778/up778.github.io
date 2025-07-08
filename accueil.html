@@ -248,7 +248,7 @@ class="image_autumn n5"
                   "url": "https://twitter.com/account7541"
                 },
                 "datePublished": "2024-02-26",
-              "dateModified": "2025-07-07"
+              "dateModified": "2025-07-09"
               }
             },
             {
@@ -773,7 +773,7 @@ alt="Images/arrows-collapse.png"
 <div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; position: relative; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; content-visibility: visible;"><div id="Page_d_accueil" class="grand_titre" style="text-align: center;">Accueil</div></article><div id="section1" class="class_between_h7_and_h1" style="position: relative;"><p><picture><source srcset="Accueil/Dossier_dans_dossier_accueil/Images/Avif_images/4-April-2025-00-41-rand1877D02.avif" type="image/avif"> </picture></p></div><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule bcLevel1" style="content-visibility: visible;" perma_id_of_this_article_from_perma_id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1"><h1 style="text-align: left;" id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">Préambule</h1>
 <p style="text-align: right;"><a class="link_avoid2" href="https://up778.github.io/accueil.html" target="_blank" rel="noopener noreferrer">site internet up778.github.io</a></p>
 <section class="bcLevel2" id="accueil_titre_perma_id_dn_samedi_3_août_2024_6_948"><h2>Qu'est-ce que c'est que ce site?</h2><div class="div_with_table_outside_a_table_and_outside_card">
-<table style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%; height: 207.884px;" id="accueil_table_perma_id_dn_samedi_17_août_2024_1"><colgroup> <col style="width: 10.4887%;"> <col style="width: 77.5848%;"> <col style="width: 11.9873%;"> </colgroup>
+<table style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%; height: 207.884px;" id="accueil_table_perma_id_dn_samedi_17_août_2024_1"><colgroup> <col style="width: 10.4889%;"> <col style="width: 77.5846%;"> <col style="width: 11.9041%;"> </colgroup>
 <tbody>
 <tr style="height: 144.911px;">
 <td><span style="font-size: 36px;"><span style="font-size: 20px;"> <picture><source srcset="Accueil/Dossier_dans_dossier_accueil/Images/Avif_images/11-March-2024-36-32-rand278image.avif" type="image/avif"> <img src="Accueil/Dossier_dans_dossier_accueil/Images/11-March-2024-36-32-rand278image.png" style="width: 50px; height: auto;" class="rounded" loading="lazy" alt="Images/11-March-2024-36-32-rand278image.png" width="285px" height="242px"></picture>   <picture><source srcset="Accueil/Dossier_dans_dossier_accueil/Images/Avif_images/7-October-2024-26-47-rand703image.avif" type="image/avif"> <img src="Accueil/Dossier_dans_dossier_accueil/Images/7-October-2024-26-47-rand703image.png" style="width: 90%; float: right;" class="rounded image_outside_td_and_float_right" width="285px"></picture></span></span></td>
@@ -2017,7 +2017,7 @@ alt="Images/arrows-collapse.png"
 <tr style="height: 78.1913px;">
 <td style="background-color: #63340a; vertical-align: middle;">Volonté Humaine.<br>excepté certains Rois (ou Dirigeants) qui veillèrent à apporter le Christianisme ou qui écoutèrent <strong>D</strong>ieu</td>
 <td style="vertical-align: middle; background-color: #000000;"></td>
-<td style="background-color: rgba(0, 86, 2, 0.54); vertical-align: top;" class="table_modified_temp_class">Volonté de <strong>D</strong>ieu<span style="background-color: #008800;"><br><br></span></td>
+<td style="background-color: rgba(0, 86, 2, 0.54); vertical-align: top;">Volonté de <strong>D</strong>ieu<span style="background-color: #008800;"><br><br></span></td>
 <td></td>
 </tr>
 <tr style="height: 174.252px;">
@@ -4622,8 +4622,8 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     createTab(roomName, userName) {
       const chatTabs = document.getElementById("chatTabs");
       if (!chatTabs) return;
-      if (chatTabs.children.length >= 10) {
-        console.warn("Limite de 10 rooms atteinte.");
+      if (chatTabs.children.length >= 8) {
+        console.warn("Limite de 8 rooms atteinte.");
         return;
       }
       if (this.roomSet.has(roomName)) return;
@@ -4752,23 +4752,28 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       this.subscribeToMessages();
     },
     addMessageToUI(msg) {
-      if (msg.uid !== this.uid && !this.trustedMap.has(msg.uid)) {
+      const isFromMe = msg.uid === this.uid;
+      const isTrusted = this.trustedMap.has(msg.uid);
+      const isCurrentBrowserTrusted = this.trustedMap.has(this.uid);
+      // ✅ Si le navigateur N'EST PAS de confiance → ne montrer que ses messages et ceux des trusted_uids
+      if (!isCurrentBrowserTrusted && !isFromMe && !isTrusted) {
         return;
       }
       const chatMessages = document.getElementById("chatMessages");
       if (!chatMessages) return;
       const el = document.createElement("div");
+      el.dataset.msgId = msg.id;
       el.classList.add("msg");
-      const isFromMe = msg.uid === this.uid || this.trustedMap.has(msg.uid);
-      if (isFromMe) {
+      el.dataset.id = msg.id;
+      if (isFromMe || isTrusted) {
         el.classList.add("me");
       } else {
         el.classList.add("other");
       }
-      if (msg.uid === this.uid) {
+      if (isFromMe) {
         el.title = `💬 Vous (navigateur actuel)`;
         el.classList.add("me", "me-current");
-      } else if (this.trustedMap.has(msg.uid)) {
+      } else if (isTrusted) {
         el.title = `💬 Votre autre navigateur : ${this.trustedMap.get(msg.uid)}`;
         el.classList.add("me", "me-other");
       } else {
@@ -4776,6 +4781,28 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         el.classList.add("other");
       }
       el.textContent = `${msg.name} : ${msg.text} (${new Date(msg.inserted_at).toLocaleTimeString()})`;
+      // Ajouter un bouton d’édition si le message appartient à l’utilisateur actuel
+      // if (msg.uid === this.uid) {
+      //   const editBtn = document.createElement("button");
+      //   editBtn.textContent = "✏️";
+      //   editBtn.style.marginLeft = "0.5em";
+      //   editBtn.title = "Modifier ce message";
+      //   editBtn.addEventListener("click", async () => {
+      //     const newText = prompt("Modifier le message :", msg.text);
+      //     if (!newText || newText.trim() === msg.text.trim()) return;
+      //     const { error } = await supabaseClient
+      //       .from("messages")
+      //       .update({ text: newText.trim() })
+      //       .eq("id", msg.id);
+      //     if (error) {
+      //       console.error("Erreur lors de la modification :", error);
+      //       alert("Modification échouée.");
+      //     } else {
+      //       await this.loadMessages(); // recharge les messages
+      //     }
+      //   });
+      //   el.appendChild(editBtn);
+      // }
       chatMessages.appendChild(el);
       el.scrollIntoView();
     },
@@ -4805,6 +4832,33 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
             // Ajouter un onglet pour la room si elle n'existe pas encore
             if (!this.roomSet.has(newMsg.room)) {
               this.createTab(newMsg.room, newMsg.name);
+            }
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "DELETE", schema: "public", table: "messages" },
+          (payload) => {
+            const deletedMsgId = payload.old.id;
+            const el = document.querySelector(
+              `[data-msg-id="${deletedMsgId}"]`,
+            );
+            if (el) el.remove();
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "UPDATE", schema: "public", table: "messages" },
+          (payload) => {
+            const updatedMsg = payload.new;
+            if (updatedMsg.room === this.activeRoom) {
+              const el = document.querySelector(
+                `#chatMessages .msg[data-msg-id="${updatedMsg.id}"]`,
+              );
+              if (el) {
+                el.remove();
+                this.addMessageToUI(updatedMsg);
+              }
             }
           },
         )
@@ -4861,7 +4915,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         const chatTitle = document.createElement("div");
         chatTitle.id = "chatTitle";
         chatTitle.textContent =
-          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet. Nombre maximal de ''rooms'' : 10";
+          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet. Nombre maximal de ''rooms'' : 8";
         chatTitle.style.cssText =
           "font-size:1em;font-weight:bold;margin-bottom:4px;color:#ccc;text-align:left;";
         const chatTabs = document.getElementById("chatTabs");

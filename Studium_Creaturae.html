@@ -232,7 +232,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/lamb-4280668_'blanc'_16-9.jpg"
                   ],
         "datePublished": "2024-02-26",
-                  "dateModified": "2025-07-08",
+                  "dateModified": "2025-07-09",
                   "author": [
                     {
                       "name": "Philippe",
@@ -4682,7 +4682,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       // console.log("The paragraph  is hidden.");
       $(function () {
         var breadcrumb = $("#breadcrumb").initBreadcrumb({});
-        if (breadcrumb && typeof breadcrumb.refresh === "function") {
+        if (typeof breadcrumb.refresh === "function") {
           $(window).scroll(breadcrumb.refresh);
           breadcrumb.refresh();
         }
@@ -5474,8 +5474,8 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     createTab(roomName, userName) {
       const chatTabs = document.getElementById("chatTabs");
       if (!chatTabs) return;
-      if (chatTabs.children.length >= 10) {
-        console.warn("Limite de 10 rooms atteinte.");
+      if (chatTabs.children.length >= 8) {
+        console.warn("Limite de 8 rooms atteinte.");
         return;
       }
       if (this.roomSet.has(roomName)) return;
@@ -5604,23 +5604,28 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       this.subscribeToMessages();
     },
     addMessageToUI(msg) {
-      if (msg.uid !== this.uid && !this.trustedMap.has(msg.uid)) {
+      const isFromMe = msg.uid === this.uid;
+      const isTrusted = this.trustedMap.has(msg.uid);
+      const isCurrentBrowserTrusted = this.trustedMap.has(this.uid);
+      // ✅ Si le navigateur N'EST PAS de confiance → ne montrer que ses messages et ceux des trusted_uids
+      if (!isCurrentBrowserTrusted && !isFromMe && !isTrusted) {
         return;
       }
       const chatMessages = document.getElementById("chatMessages");
       if (!chatMessages) return;
       const el = document.createElement("div");
+      el.dataset.msgId = msg.id;
       el.classList.add("msg");
-      const isFromMe = msg.uid === this.uid || this.trustedMap.has(msg.uid);
-      if (isFromMe) {
+      el.dataset.id = msg.id;
+      if (isFromMe || isTrusted) {
         el.classList.add("me");
       } else {
         el.classList.add("other");
       }
-      if (msg.uid === this.uid) {
+      if (isFromMe) {
         el.title = `💬 Vous (navigateur actuel)`;
         el.classList.add("me", "me-current");
-      } else if (this.trustedMap.has(msg.uid)) {
+      } else if (isTrusted) {
         el.title = `💬 Votre autre navigateur : ${this.trustedMap.get(msg.uid)}`;
         el.classList.add("me", "me-other");
       } else {
@@ -5628,6 +5633,28 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         el.classList.add("other");
       }
       el.textContent = `${msg.name} : ${msg.text} (${new Date(msg.inserted_at).toLocaleTimeString()})`;
+      // Ajouter un bouton d’édition si le message appartient à l’utilisateur actuel
+      // if (msg.uid === this.uid) {
+      //   const editBtn = document.createElement("button");
+      //   editBtn.textContent = "✏️";
+      //   editBtn.style.marginLeft = "0.5em";
+      //   editBtn.title = "Modifier ce message";
+      //   editBtn.addEventListener("click", async () => {
+      //     const newText = prompt("Modifier le message :", msg.text);
+      //     if (!newText || newText.trim() === msg.text.trim()) return;
+      //     const { error } = await supabaseClient
+      //       .from("messages")
+      //       .update({ text: newText.trim() })
+      //       .eq("id", msg.id);
+      //     if (error) {
+      //       console.error("Erreur lors de la modification :", error);
+      //       alert("Modification échouée.");
+      //     } else {
+      //       await this.loadMessages(); // recharge les messages
+      //     }
+      //   });
+      //   el.appendChild(editBtn);
+      // }
       chatMessages.appendChild(el);
       el.scrollIntoView();
     },
@@ -5657,6 +5684,33 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
             // Ajouter un onglet pour la room si elle n'existe pas encore
             if (!this.roomSet.has(newMsg.room)) {
               this.createTab(newMsg.room, newMsg.name);
+            }
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "DELETE", schema: "public", table: "messages" },
+          (payload) => {
+            const deletedMsgId = payload.old.id;
+            const el = document.querySelector(
+              `[data-msg-id="${deletedMsgId}"]`,
+            );
+            if (el) el.remove();
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "UPDATE", schema: "public", table: "messages" },
+          (payload) => {
+            const updatedMsg = payload.new;
+            if (updatedMsg.room === this.activeRoom) {
+              const el = document.querySelector(
+                `#chatMessages .msg[data-msg-id="${updatedMsg.id}"]`,
+              );
+              if (el) {
+                el.remove();
+                this.addMessageToUI(updatedMsg);
+              }
             }
           },
         )
@@ -5713,7 +5767,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         const chatTitle = document.createElement("div");
         chatTitle.id = "chatTitle";
         chatTitle.textContent =
-          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet. Nombre maximal de ''rooms'' : 10";
+          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet. Nombre maximal de ''rooms'' : 8";
         chatTitle.style.cssText =
           "font-size:1em;font-weight:bold;margin-bottom:4px;color:#ccc;text-align:left;";
         const chatTabs = document.getElementById("chatTabs");
