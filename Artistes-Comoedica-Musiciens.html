@@ -6029,7 +6029,6 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       const isFromMe = msg.uid === this.uid;
       const isTrusted = this.trustedMap.has(msg.uid);
       const isCurrentBrowserTrusted = this.trustedMap.has(this.uid);
-      // ✅ Si le navigateur N'EST PAS de confiance → ne montrer que ses messages et ceux des trusted_uids
       if (!isCurrentBrowserTrusted && !isFromMe && !isTrusted) {
         return;
       }
