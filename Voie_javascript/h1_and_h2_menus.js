@@ -854,7 +854,6 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
         animate_background_title_jquery_ui($target, "yellow");
       }
     },
-    TABLE: () => animate_background_title_jquery_ui($target, "yellow"),
   };
 
   if (animations[tag]) {
