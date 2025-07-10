@@ -232,7 +232,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/lamb-4280668_'blanc'_16-9.jpg"
                   ],
         "datePublished": "2024-02-26",
-                  "dateModified": "2025-07-09",
+                  "dateModified": "2025-07-10",
                   "author": [
                     {
                       "name": "Philippe",
@@ -6776,8 +6776,13 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       roomsArray.forEach(({ room, name }) => {
         this.createTab(room, name);
       });
-      if (!this.activeRoom && roomsArray.length > 0) {
-        this.activeRoom = roomsArray[0].room;
+      if (!this.activeRoom) {
+        const room1 = roomsArray.find((r) => r.room_order === 1);
+        if (room1) {
+          this.activeRoom = room1.room;
+        } else if (roomsArray.length > 0) {
+          this.activeRoom = roomsArray[0].room;
+        }
       }
     },
     async initChat() {
