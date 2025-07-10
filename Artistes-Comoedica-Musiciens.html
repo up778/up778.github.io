@@ -5896,7 +5896,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     createTab(roomName, userName) {
       const chatTabs = document.getElementById("chatTabs");
       if (!chatTabs) return;
-      if (chatTabs.children.length >= 8) {
+      if (chatTabs.children.length >= 9) {
         console.warn("Limite de 8 rooms atteinte.");
         return;
       }
@@ -6275,6 +6275,8 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       inputName.placeholder = "nom, prénom ou pseudo";
       inputName.required = true;
       inputName.style.marginRight = "0.5em";
+      const savedName = localStorage.getItem("chat_pseudo_" + this.uid);
+      if (savedName) inputName.value = savedName;
       const inputText = document.createElement("input");
       inputText.placeholder = "Message";
       inputText.required = true;
@@ -6329,6 +6331,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         const name = inputName.value.trim();
         const text = inputText.value.trim();
         if (!name || !text) return;
+        localStorage.setItem("chat_pseudo_" + this.uid, name);
         await supabaseClient
           .from("messages")
           .insert([{ name, text, uid: this.uid, room: this.activeRoom }]);
