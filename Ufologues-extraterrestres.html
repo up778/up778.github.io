@@ -69,10 +69,6 @@
   type="text/javascript"
   src="Plugins_js_jquery_css_php/Plugins_for_menus_table_of_contents/Dynamic-Breadcrumb-style-Table-Of-Contents-Plugin-dynamicBreadcrumb/jquery.dynamicBreadcrumb.js"
 ></script> -->
-<script
-  type="text/javascript"
-  src="Voie_javascript/lottie.min.js"
-></script>
 <!-- ------------------------------------------------ -->
 <div
   class="btn-group dropend w-100"
@@ -458,6 +454,10 @@ src="Images/sheep-5427870_'jaune'.jpg"
     document.head.appendChild(script2);
   }
 </script>
+<script
+  type="text/javascript"
+  src="Voie_javascript/lottie.min.js"
+></script>
 <script defer src="https://umami-dotd.onrender.com/script.js" data-website-id="e6beb47d-2198-443d-8a7c-669e5d636a88"></script></head>
 <div class="titre z-1" onclick="window.scrollTo(0, 0);"></div>
 <div class="col-md-4 right_dynamic_menu">
@@ -4476,8 +4476,8 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       tab.dataset.userName = userName || "";
       const spanName = document.createElement("span");
       spanName.textContent = userName
-        ? this.truncateString(userName, 18)
-        : this.truncateString(roomName, 18);
+        ? this.truncateString(userName, 28)
+        : this.truncateString(roomName, 28);
       tab.appendChild(spanName);
       const btnDelete = document.createElement("button");
       btnDelete.textContent = "×";
@@ -4497,7 +4497,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       this.roomSet.add(roomName);
       this.updateTabs();
     },
-    truncateString(text, maxLength = 20) {
+    truncateString(text, maxLength = 28) {
       if (!text) return "";
       return text.length > maxLength
         ? text.substring(0, maxLength - 1) + "…"
