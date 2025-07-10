@@ -4600,7 +4600,15 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
   const supabaseUrl = "https://crdzcgqrakjjdujhqmic.supabase.co";
   const supabaseKey =
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyZHpjZ3FyYWtqamR1amhxbWljIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDcyNTQ2MDAsImV4cCI6MjA2MjgzMDYwMH0.F32OEbuWNwRAbmiaAK5WMMvCfopXc6pIvh9CgX0sLY8";
-  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+  // Récupérer le chat-uid ou mettre "anonyme"
+  const chatUid = localStorage.getItem("chat_uid") || "anonyme";
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey, {
+    global: {
+      headers: {
+        "chat-uid": chatUid,
+      },
+    },
+  });
   const ChatApp = {
     uidKey: "chat_uid",
     uid: null,
@@ -4755,7 +4763,13 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
       const isFromMe = msg.uid === this.uid;
       const isTrusted = this.trustedMap.has(msg.uid);
       const isCurrentBrowserTrusted = this.trustedMap.has(this.uid);
-      if (!isCurrentBrowserTrusted && !isFromMe && !isTrusted) {
+      const isPublicRoom = msg.room === "public_room";
+      if (
+        !isCurrentBrowserTrusted &&
+        !isFromMe &&
+        !isTrusted &&
+        !isPublicRoom
+      ) {
         return;
       }
       const chatMessages = document.getElementById("chatMessages");
@@ -4990,6 +5004,9 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         const chatTabs = document.getElementById("chatTabs");
         if (chatTabs) chatTabs.appendChild(newRoomBtn);
       }
+      // if (!this.roomSet.has("public_room")) {
+      //   this.createTab("public_room", "💬 Discussions publiques");
+      // }
       await this.loadRooms();
       await this.loadMessages();
       this.subscribeToMessages();
