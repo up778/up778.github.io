@@ -4612,7 +4612,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         this.uid = crypto.randomUUID();
         localStorage.setItem(this.uidKey, this.uid);
       }
-      // console.log("Mon UID navigateur :", this.uid);
+      console.log("Mon UID navigateur :", this.uid);
       this.activeRoom = this.uid;
       this.rooms = [this.uid];
       this.trustedMap = new Map();
@@ -5086,6 +5086,75 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
           openChatBtn.textContent = "Messagerie instantanée";
         }
       });
+    },
+    subscribeToMessages() {
+      this.reconnectToMessages();
+    },
+    reconnectToMessages() {
+      if (this.supabaseChannel) {
+        supabaseClient.removeChannel(this.supabaseChannel);
+        console.log("⛔ Ancien canal Supabase retiré.");
+      }
+      this.supabaseChannel = supabaseClient
+        .channel("room_channel_all")
+        .on(
+          "postgres_changes",
+          { event: "INSERT", schema: "public", table: "messages" },
+          (payload) => {
+            const newMsg = payload.new;
+            // Ajouter le nouveau message à l'interface seulement si autorisé
+            const isTrusted = this.trustedMap.has(newMsg.uid);
+            const isMe = newMsg.uid === this.uid;
+            const isCurrentBrowserTrusted = this.trustedMap.has(this.uid);
+            if (!isCurrentBrowserTrusted && !isMe && !isTrusted) {
+              // Ne pas afficher si message inconnu et navigateur non autorisé
+              return;
+            }
+            this.addMessageToUI(newMsg);
+            // Gestion des onglets (création si la room n'existe pas)
+            if (!this.roomSet.has(newMsg.room)) {
+              this.createTab(newMsg.room, newMsg.name);
+            }
+            // Optionnel : alertes si message reçu d’un utilisateur inconnu
+            if (
+              !isMe &&
+              !isTrusted &&
+              isCurrentBrowserTrusted &&
+              window.location.href.includes("accueil.html")
+            ) {
+              alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
+            }
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "DELETE", schema: "public", table: "messages" },
+          (payload) => {
+            const deletedMsgId = payload.old.id;
+            const el = document.querySelector(
+              `[data-msg-id="${deletedMsgId}"]`,
+            );
+            if (el) el.remove();
+          },
+        )
+        .on(
+          "postgres_changes",
+          { event: "UPDATE", schema: "public", table: "messages" },
+          (payload) => {
+            const updatedMsg = payload.new;
+            if (updatedMsg.room === this.activeRoom) {
+              const el = document.querySelector(
+                `#chatMessages .msg[data-msg-id="${updatedMsg.id}"]`,
+              );
+              if (el) {
+                el.remove();
+                this.addMessageToUI(updatedMsg);
+              }
+            }
+          },
+        )
+        .subscribe();
+      console.log("🔌 Nouveau canal Supabase établi.");
     },
   };
   ChatApp.init().catch(console.error);
