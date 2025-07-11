@@ -4579,7 +4579,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
         this.uid = crypto.randomUUID();
         localStorage.setItem(this.uidKey, this.uid);
       }
-      // console.log("Mon UID navigateur :", this.uid);
+      // this.logIfTrusted("Mon UID navigateur :", this.uid);
       this.activeRoom = this.uid;
       this.rooms = [this.uid];
       this.trustedMap = new Map();
@@ -5077,7 +5077,7 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     reconnectToMessages() {
       if (this.supabaseChannel) {
         supabaseClient.removeChannel(this.supabaseChannel);
-        console.log("⛔ Ancien canal Supabase retiré.");
+        this.logIfTrusted("⛔ Ancien canal Supabase retiré.");
       }
       this.supabaseChannel = supabaseClient
         .channel("room_channel_all")
@@ -5138,7 +5138,13 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
           },
         )
         .subscribe();
-      console.log("🔌 Nouveau canal Supabase établi.");
+      this.logIfTrusted("🔌 Nouveau canal supabase établi.");
+      this.logIfTrusted("heure supabase", new Date().toLocaleTimeString());
+    },
+    logIfTrusted(...args) {
+      if (this.trustedMap?.has?.(this.uid)) {
+        console.log(...args);
+      }
     },
   };
   ChatApp.init().catch(console.error);
