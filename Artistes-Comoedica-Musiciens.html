@@ -2165,7 +2165,7 @@ alt="Images/arrows-collapse.png"
 </td>
 </tr>
 </tbody>
-</table><p>Saison actuelle : été</p><p style="clear: both; break-after: always"></p></section><section class="bcLevel3" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_mardi_3_septembre_2024_15_507"><h3>Playlist Felix Mendelssohn</h3><table style="width: 98%; height: 30vh; margin-left: auto; margin-right: auto;">
+</table><p>Saison actuelle : <span class="nom_de_la_saison">L'été</span> <span class="image_de_la_saison">🌾</span></p><p style="clear: both; break-after: always"></p></section><section class="bcLevel3" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_mardi_3_septembre_2024_15_507"><h3>Playlist Felix Mendelssohn</h3><table style="width: 98%; height: 30vh; margin-left: auto; margin-right: auto;">
 <tbody>
 <tr>
 <td style="width: 100%; height: 100%;">
@@ -4160,14 +4160,14 @@ alt="Images/arrows-collapse.png"
                         document.querySelectorAll(".nom_de_la_saison").forEach(el => {
         el.textContent = nomSaison[season] || "";
       });
-      const image_saison = {
+      const image_de_la_saison = {
                           spring: "🪻",
                           summer: "🌾",
                           autumn: "🍂",
                           winter: "❄️"
                         };
-                        document.querySelectorAll(".image_saison").forEach(el => {
-        el.textContent = image_saison[season] || "";
+                        document.querySelectorAll(".image_de_la_saison").forEach(el => {
+        el.textContent = image_de_la_saison[season] || "";
       });
       // 🌾🍂❄️🪻
                                     });
