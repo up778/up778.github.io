@@ -511,6 +511,7 @@ async function jumpToTime(videoId, containerId, timeInSeconds) {
       const player = await liteYT.getYTPlayer();
       await waitForPlayerReady(player);
       window.forceNextSeek = timeInSeconds;
+      dernier_element_lite_yt_joué = liteYT;
       player.seekTo(timeInSeconds, true);
       player.playVideo();
     } catch (e) {
@@ -531,6 +532,7 @@ async function jumpToTime(videoId, containerId, timeInSeconds) {
         const player = await liteYT.getYTPlayer();
         await waitForPlayerReady(player);
         window.forceNextSeek = timeInSeconds;
+        dernier_element_lite_yt_joué = liteYT;
         player.seekTo(timeInSeconds, true);
         player.playVideo();
       } catch (e) {
@@ -597,6 +599,7 @@ document.addEventListener("click", function (e) {
     return;
   }
 
+  dernier_element_lite_yt_joué = liteYT;
   liteYT
     .getYTPlayer?.()
     .then(async (player) => {
