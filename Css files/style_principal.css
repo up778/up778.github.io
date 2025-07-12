@@ -2729,3 +2729,26 @@ table .trois_last_modifs_weeks {
   background-color: #222;
   color: #ccc;
 }
+button.btn_yt_video_jump {
+  background-color: rgba(255, 0, 0, 0.15);
+  color: #cc0000;
+  border-color: #cc0000;
+}
+
+button.btn_yt_video_jump:hover {
+  background-color: rgba(255, 0, 0, 0.5);
+  color: #990000;
+  border-color: #990000;
+}
+
+button.class_btn_pause_yt_video {
+  background-color: #000dff26 !important;
+  color: grey !important;
+  border: 1px solid grey !important;
+}
+
+button.class_btn_pause_yt_video:hover {
+  background-color: #44444480 !important;
+  color: rgb(177, 177, 177) !important;
+  border: 1px solid grey !important;
+}

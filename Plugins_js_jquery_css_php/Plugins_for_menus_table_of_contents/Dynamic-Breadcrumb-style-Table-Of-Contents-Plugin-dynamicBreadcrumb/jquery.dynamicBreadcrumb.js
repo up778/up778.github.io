@@ -72,7 +72,7 @@ $("head").append(
 
       for (let i = settings.levels; i > 0; i--) {
         const inView = $(
-          "." + settings.levelClassPrefix + i + ":in-viewport(300)",
+          "." + settings.levelClassPrefix + i + ":in-viewport(120)",
         );
         if (inView.length > 0) {
           level = i;
@@ -131,8 +131,8 @@ $("head").append(
           .text();
         $(
           '<a data-bs-toggle="dropdown" role="button" href="javascript:void(0)">' +
-          heading +
-          "</a>",
+            heading +
+            "</a>",
         ).appendTo(li);
 
         const siblings = currentContainer
@@ -150,19 +150,19 @@ $("head").append(
             const isCurrent = siblingHeading === heading;
             subMenu.append(
               '<li><a class="Jacques2" href="#' +
-              $(this).attr("id") +
-              '" style="border-radius:10px;' +
-              (isCurrent
-                ? "border:2px dotted " +
-                t2rans_predo_color_of_page_recup +
-                ";"
-                : "") +
-              '">' +
-              siblingHeading +
-              (isCurrent
-                ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
-                : "") +
-              "</a></li>",
+                $(this).attr("id") +
+                '" style="border-radius:10px;' +
+                (isCurrent
+                  ? "border:2px dotted " +
+                    t2rans_predo_color_of_page_recup +
+                    ";"
+                  : "") +
+                '">' +
+                siblingHeading +
+                (isCurrent
+                  ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
+                  : "") +
+                "</a></li>",
             );
           });
         }
