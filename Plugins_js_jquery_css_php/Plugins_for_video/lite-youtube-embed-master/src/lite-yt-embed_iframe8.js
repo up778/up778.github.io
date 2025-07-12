@@ -14,6 +14,7 @@
 var last_played_video = 0;
 var id_de_l_iframe_de_la_video = 0;
 var b2ackground_coquille_image;
+window.forceNextSeek = null;
 
 class LiteYTEmbed extends HTMLElement {
   connectedCallback() {
@@ -401,7 +402,12 @@ function onPlayerStateChange(event) {
       last_played_video != event.target.playerInfo.videoData.video_id &&
       event.target.options.playerVars.start
     ) {
-      event.target.seekTo(event.target.options.playerVars.start);
+      if (window.forceNextSeek !== null) {
+        console.log("Ignoré playerVars.start car forceNextSeek est actif");
+        window.forceNextSeek = null;
+      } else {
+        event.target.seekTo(event.target.options.playerVars.start);
+      }
     }
 
     if (event.target.options.videoId.indexOf("clip") > 0) {
@@ -492,3 +498,121 @@ function reach_played_youtube_video() {
 }
 
 customElements.define("lite-youtube", LiteYTEmbed);
+
+async function jumpToTime(videoId, containerId, timeInSeconds) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const liteYT = container.querySelector("lite-youtube");
+  if (!liteYT) return;
+
+  if (liteYT.classList.contains("lyt-activated")) {
+    try {
+      const player = await liteYT.getYTPlayer();
+      await waitForPlayerReady(player);
+      window.forceNextSeek = timeInSeconds;
+      player.seekTo(timeInSeconds, true);
+      player.playVideo();
+    } catch (e) {
+      console.warn("Erreur avec getYTPlayer:", e);
+    }
+    return;
+  }
+
+  const playButton = liteYT.querySelector(".lty-playbtn, .lty-playbtn2");
+  if (playButton) {
+    playButton.click();
+
+    const observer = new MutationObserver(async (mutations, obs) => {
+      const iframe = liteYT.querySelector("iframe");
+      if (!iframe) return;
+
+      try {
+        const player = await liteYT.getYTPlayer();
+        await waitForPlayerReady(player);
+        window.forceNextSeek = timeInSeconds;
+        player.seekTo(timeInSeconds, true);
+        player.playVideo();
+      } catch (e) {
+        console.warn("Erreur après activation:", e);
+      } finally {
+        obs.disconnect();
+      }
+    });
+
+    observer.observe(liteYT, { childList: true, subtree: true });
+  } else {
+    console.warn("Bouton lecture introuvable dans lite-youtube");
+  }
+}
+
+function waitForPlayerReady(player, timeout = 4000) {
+  return new Promise((resolve, reject) => {
+    const start = Date.now();
+    const checkReady = () => {
+      if (player?.getPlayerState) {
+        resolve();
+      } else if (Date.now() - start > timeout) {
+        reject(new Error("Player non prêt après délai"));
+      } else {
+        setTimeout(checkReady, 100);
+      }
+    };
+    checkReady();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".btn_yt_video_jump");
+    if (!btn) return;
+    e.preventDefault();
+
+    const videoId = btn.dataset.videoId;
+    const containerId = btn.dataset.containerId;
+    const seconds = parseInt(btn.dataset.time, 10);
+
+    jumpToTime(videoId, containerId, seconds);
+  });
+});
+
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".class_btn_pause_yt_video");
+  if (!btn) return;
+
+  e.preventDefault();
+
+  const videoId = btn.dataset.videoId;
+  const containerId = btn.dataset.containerId;
+
+  const container = document.getElementById(containerId);
+  if (!container) {
+    console.warn("Conteneur non trouvé :", containerId);
+    return;
+  }
+
+  const liteYT = container.querySelector("lite-youtube");
+  if (!liteYT) {
+    console.warn("Élément lite-youtube non trouvé dans :", containerId);
+    return;
+  }
+
+  liteYT
+    .getYTPlayer?.()
+    .then(async (player) => {
+      if (!player) {
+        console.warn("Player introuvable via getYTPlayer");
+        return;
+      }
+
+      try {
+        await waitForPlayerReady(player);
+        player.pauseVideo();
+      } catch (err) {
+        console.warn("Erreur pendant la pause :", err);
+      }
+    })
+    .catch((err) => {
+      console.warn("Échec getYTPlayer :", err);
+    });
+});
