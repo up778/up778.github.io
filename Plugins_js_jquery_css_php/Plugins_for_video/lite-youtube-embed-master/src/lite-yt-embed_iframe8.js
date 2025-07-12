@@ -388,9 +388,11 @@ class LiteYTEmbed extends HTMLElement {
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING) {
-    document
-      .querySelector(".class_btn_play_pause_youtube_video")
-      .style.setProperty("background-color", "#44444480");
+    const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
+
+    el.forEach((button) => {
+      button.style.setProperty("background-color", "#44444480");
+    });
 
     if (last_played_video != 0) {
     }
@@ -410,89 +412,82 @@ function onPlayerStateChange(event) {
     id_de_l_iframe_de_la_video = event.target.g.id;
 
     event.target.g.classList.add("is_actualy_playing");
+
+    dernier_element_lite_yt_joué =
+      event.target.g?.closest("lite-youtube") || null;
   } else if (event.data === YT.PlayerState.PAUSED) {
-    document
-      .querySelector(".class_btn_play_pause_youtube_video")
-      .style.setProperty("background-color", "#dd000040");
+    const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
+
+    el.forEach((button) => {
+      button.style.setProperty("background-color", "#dd000040");
+    });
   } else if (event.data === YT.PlayerState.ENDED) {
     document
-      .querySelector(".class_btn_play_pause_youtube_video")
+      .querySelectorAll(".class_btn_play_pause_youtube_video")
       .style.setProperty("background-color", "#dd000040");
   }
 }
 
-function play_pause_youtube_video(vidFunc) {
-  var test;
+function play_pause_youtube_video() {
+  let iframe5 = null;
 
-  test = "iframe_id_" + last_played_video;
-  var element5 = document.getElementById(test);
-
-  if (element5 === null) {
-    test = id_de_l_iframe_de_la_video;
-  } else {
-    test = "iframe_id_" + last_played_video;
+  if (dernier_element_lite_yt_joué) {
+    let wrapper = dernier_element_lite_yt_joué.closest(
+      'div.div_around_iframe[id*="iframe_video_id"]',
+    );
+    if (!wrapper) {
+      wrapper = dernier_element_lite_yt_joué.closest(".div_around_iframe");
+    }
+    iframe5 = wrapper?.querySelector("iframe");
   }
 
-  var iframe4 = document.getElementById(test).contentWindow;
+  if (!iframe5) {
+    console.warn(
+      "Impossible de localiser l'iframe via le dernier élément connu.",
+    );
+    return;
+  }
 
-  var iframe5 = document.getElementById(test);
+  const iframe4 = iframe5.contentWindow;
 
-  if (iframe5.classList == "is_actualy_playing") {
+  if (iframe5.classList.contains("is_actualy_playing")) {
     iframe4.postMessage(
-      '{"event":"command","func":"' + "pauseVideo" + '","args":""}',
+      '{"event":"command","func":"pauseVideo","args":""}',
       "*",
     );
 
     iframe5.classList.remove("is_actualy_playing");
   } else {
     iframe4.postMessage(
-      '{"event":"command","func":"' + "playVideo" + '","args":""}',
+      '{"event":"command","func":"playVideo","args":""}',
       "*",
     );
   }
 }
 
 function reach_played_youtube_video() {
-  var test = "iframe_id_" + last_played_video;
+  if (dernier_element_lite_yt_joué) {
+    let wrapper = dernier_element_lite_yt_joué.closest(
+      'div.div_around_iframe[id*="iframe_video_id"]',
+    );
+    if (!wrapper) {
+      wrapper = dernier_element_lite_yt_joué.closest(".div_around_iframe");
+    }
 
-  var iframe5 = document.getElementById(test);
-
-  if (iframe5 === null) {
-    test = id_de_l_iframe_de_la_video;
-    iframe5 = document.getElementById(test);
-  } else {
-  }
-
-  if (iframe5.classList == "is_actualy_playing") {
-    var id = id_de_l_iframe_de_la_video;
-
-    var elem = document.getElementById(id);
     setTimeout(() => {
-      elem.scrollIntoView({
+      wrapper?.scrollIntoView({
         behavior: "instant",
         block: "center",
         inline: "nearest",
       });
+
+      const $target = $(wrapper.closest("table"));
+      restartAnimation($target, "shakeX");
     }, 30);
-    var $target = $(elem.closest("table"));
-
-    restartAnimation($target, "shakeX");
   } else {
-    var id;
-
-    if (last_played_video.indexOf("clip") > 0) {
-      id = last_played_video;
-    } else {
-      id = last_played_video.substring(0, 11);
-    }
-
-    var elem = document.querySelector('[video_id="' + id + '"]');
-
-    elem.scrollIntoView({
-      behavior: "instant",
-      block: "center",
-      inline: "nearest",
-    });
+    console.warn(
+      "Aucun élément lite-youtube en cours de lecture n’a été détecté.",
+    );
   }
 }
 
