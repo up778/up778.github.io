@@ -3391,58 +3391,62 @@ function add_buttons_for_youtube_videos() {
           liteYoutube.click();
           return;
         }
-        let src = iframe.getAttribute("src") || "";
-        let baseUrl = src.split("?")[0];
-        let params = new URLSearchParams(src.split("?")[1] || "");
-        // On récupère start et end en nombres
+        const src = iframe.getAttribute("src") || "";
+        const baseUrl = src.split("?")[0];
+        const params = new URLSearchParams(src.split("?")[1] || "");
         const start = params.has("start") ? parseInt(params.get("start"), 10) : null;
         const end = params.has("end") ? parseInt(params.get("end"), 10) : null;
-        // Activer l'API JS YouTube pour pouvoir utiliser la méthode postMessage
+        const seekTime = start !== null ? start : 0;
         params.set("enablejsapi", "1");
         params.set("autoplay", "1");
-        // Fonction utilitaire pour envoyer message à l'iframe (YouTube Player API)
         function postMessageToPlayer(command, args = []) {
-          iframe.contentWindow.postMessage(
-            JSON.stringify({
-              event: "command",
-              func: command,
-              args: args,
-              id: ""
-            }),
+          iframe.contentWindow?.postMessage(
+            JSON.stringify({ event: "command", func: command, args: args, id: "" }),
             "*"
           );
         }
-        // Flag pour savoir si vidéo a déjà démarré
-        let videoStarted = container.dataset.videoStarted === "1";
-        if (start !== null && videoStarted) {
-          // Si start existe et vidéo déjà lancée, on fait un seek au lieu de recharger
-          postMessageToPlayer("seekTo", [start, true]); // true = lecture immédiate
-          postMessageToPlayer("playVideo");
-        } else {
-          // Sinon on recharge l'iframe en modifiant l'URL (comme avant)
-          iframe.src = baseUrl + "?" + params.toString();
+        let responded = false;
+        function extractVideoIdFromUrl(url) {
+          const match = url.match(/\/embed\/([a-zA-Z0-9_-]{11})/);
+          return match ? match[1] : "";
         }
-        // On note que la vidéo a été lancée au moins une fois
-        container.dataset.videoStarted = "1";
-        // Si end est défini, on met en place un timer pour arrêter la vidéo
-        if (end !== null) {
-          // Ecouter le message "onStateChange" pour détecter la position vidéo
+        function onPing(event) {
+          if (event.source !== iframe.contentWindow || !event.data) return;
+          try {
+            const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+            if (data.event === "infoDelivery" && typeof data.info?.currentTime === "number") {
+              responded = true;
+              window.removeEventListener("message", onPing);
+              postMessageToPlayer("seekTo", [seekTime, true]);
+              postMessageToPlayer("playVideo");
+              // Mise à jour des variables globales
+              last_played_video = extractVideoIdFromUrl(src);
+              id_de_l_iframe_de_la_video = iframe.id || container.id || "";
+              dernier_element_lite_yt_joué = liteYoutube;
+              if (end !== null) setupEndWatcher(end);
+            }
+          } catch { }
+        }
+        window.addEventListener("message", onPing);
+        postMessageToPlayer("getCurrentTime");
+        setTimeout(() => {
+          if (!responded) {
+            window.removeEventListener("message", onPing);
+            iframe.src = baseUrl + "?" + params.toString();
+          }
+        }, 500);
+        function setupEndWatcher(endTime) {
           function onMessage(event) {
-            if (event.source !== iframe.contentWindow) return;
-            if (!event.data) return;
-            let data;
+            if (event.source !== iframe.contentWindow || !event.data) return;
             try {
-              data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-            } catch {
-              return;
-            }
-            if (data.event === "infoDelivery" && data.info) {
-              const currentTime = data.info.currentTime || 0;
-              if (currentTime >= end) {
-                postMessageToPlayer("pauseVideo");
-                window.removeEventListener("message", onMessage);
+              const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+              if (data.event === "infoDelivery" && typeof data.info?.currentTime === "number") {
+                if (data.info.currentTime >= endTime) {
+                  postMessageToPlayer("pauseVideo");
+                  window.removeEventListener("message", onMessage);
+                }
               }
-            }
+            } catch { }
           }
           window.addEventListener("message", onMessage);
         }
