@@ -2752,3 +2752,7 @@ button.class_btn_pause_yt_video:hover {
   color: rgb(177, 177, 177) !important;
   border: 1px solid grey !important;
 }
+
+button.class_btn_play_pause_youtube_video:hover {
+  border: 1px dashed rgb(76, 76, 76) !important;
+}
