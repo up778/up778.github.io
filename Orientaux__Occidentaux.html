@@ -9702,6 +9702,8 @@ function add_buttons_for_youtube_videos() {
     const originalSrc = sanitizeYoutubeSrc(liteYoutube.getAttribute("src") || "");
     const startTime = extractStartTime(originalSrc);
     const isPlaylist = originalSrc.includes("list=");
+    const clipParams = new URLSearchParams(originalSrc.split("?")[1] || "");
+    const isClip = clipParams.has("clip") || clipParams.has("clipt");
     const btnContainer = document.createElement("div");
     btnContainer.classList.add("yt_extra_buttons");
     btnContainer.style.position = "absolute";
@@ -9710,7 +9712,7 @@ function add_buttons_for_youtube_videos() {
     btnContainer.style.zIndex = "10";
     btnContainer.style.display = "flex";
     btnContainer.style.gap = "4px";
-    if (!isPlaylist) {
+    if (!isPlaylist && !isClip) {
       const reloadBtn = document.createElement("button");
       reloadBtn.className = "reload_button_youtube btn btn-sm btn_outline_light_custom_youtube";
       // btn-outline-light
