@@ -7373,12 +7373,12 @@ laissé en foyer à 9 ans.</td>
 </tr>
 </tbody>
 </table><p> <picture><source srcset="Creaturae/Occidentaux-Orientaux/Images/Avif_images/19-June-2025-56-35-rand3857A31.avif" type="image/avif"> <img src="Creaturae/Occidentaux-Orientaux/Images/19-June-2025-56-35-rand3857A31.jpg" style="width: 20%; float: left;" class="rounded image_outside_td_and_float_left" loading="lazy" alt="Images/19-June-2025-56-35-rand3857A31.jpg" width="1292px"></picture><br><br></p><p> </p><div class="div_with_table_outside_a_table_and_outside_card">
-<table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%;" class="reload-class_une_semaine__" id="Orientaux__Occidentaux_table_perma_id_dn_samedi_21_juin_2025_54_593" attr_une_semaine_new_timestamp="1750492483593"><colgroup> <col style="width: 33.3503%;"> <col style="width: 34.93%;"> <col style="width: 31.6875%;"> </colgroup>
+<table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%;" class="reload-class_une_semaine__" id="Orientaux__Occidentaux_table_perma_id_dn_samedi_21_juin_2025_54_593" attr_une_semaine_new_timestamp="1750492483593"><colgroup> <col style="width: 33.3139%;"> <col style="width: 33.4375%;"> <col style="width: 33.1902%;"> </colgroup>
 <tbody>
 <tr>
 <td></td>
 <td><picture><source srcset="Creaturae/Occidentaux-Orientaux/Images/Avif_images/21-June-2025-53-47-rand9806ED4.avif" type="image/avif"> <img src="Creaturae/Occidentaux-Orientaux/Images/21-June-2025-53-47-rand9806ED4.jpg" style="width: 90%; float: right;" class="rounded image_outside_td_and_float_right" loading="lazy" alt="Images/21-June-2025-53-47-rand9806ED4.jpg" width="1283px"></picture></td>
-<td></td>
+<td><picture><source srcset="Creaturae/Occidentaux-Orientaux/Images/Avif_images/21-June-2025-53-47-rand9806ED4.avif" type="image/avif"><img src="Creaturae/Occidentaux-Orientaux/Images/21-June-2025-53-47-rand9806ED4.jpg" style="width: 90%; float: right;" class="rounded image_outside_td_and_float_right" loading="lazy" alt="Images/21-June-2025-53-47-rand9806ED4.jpg" width="1283px"></picture></td>
 </tr>
 </tbody>
 </table>
@@ -11421,6 +11421,95 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     color: #0af;
   }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    function recreateOffcanvas(offcanvasEl, attached) {
+      const wasOpen = offcanvasEl.classList.contains("show");
+      let instance = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      if (instance) instance.dispose();
+      instance = new bootstrap.Offcanvas(offcanvasEl, {
+        backdrop: !attached, // false = pas de fond, donc clic dehors autorisé
+        scroll: true,
+      });
+      // Attacher le gestionnaire une seule fois
+      offcanvasEl._attachedHideHandler?.(); // Nettoyage
+      const handler = (event) => {
+        const isAttached = offcanvasEl.dataset.attached === "true";
+        console.log("Tentative de fermeture. attached =", isAttached);
+        if (isAttached) {
+          console.log("Annulation de la fermeture (fixé)");
+          event.preventDefault();
+        }
+      };
+      offcanvasEl.addEventListener("hide.bs.offcanvas", handler);
+      offcanvasEl._attachedHideHandler = () =>
+        offcanvasEl.removeEventListener("hide.bs.offcanvas", handler);
+      if (wasOpen) {
+        setTimeout(() => instance.show(), 10);
+      }
+    }
+    function initVoletToggleFor(offcanvasSelector) {
+      const offcanvasEl = document.querySelector(offcanvasSelector);
+      if (!offcanvasEl || offcanvasEl.dataset.initialized === "true") return;
+      const boutons = document.querySelectorAll(
+        `.toggle_attach_btn[data-target="${offcanvasSelector}"]`,
+      );
+      if (!boutons.length) return;
+      const updateButtons = (attached) => {
+        boutons.forEach((btn) => {
+          btn.textContent = attached ? "🔒" : "🔓";
+        });
+      };
+      boutons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const wasAttached = offcanvasEl.dataset.attached === "true";
+          const nowAttached = (!wasAttached).toString();
+          offcanvasEl.dataset.attached = nowAttached;
+          updateButtons(nowAttached === "true");
+          recreateOffcanvas(offcanvasEl, nowAttached === "true");
+        });
+      });
+      // Initialisation
+      updateButtons(offcanvasEl.dataset.attached === "true");
+      recreateOffcanvas(offcanvasEl, offcanvasEl.dataset.attached === "true");
+      offcanvasEl
+        .querySelectorAll('.btn_close_force[data-bs-dismiss="offcanvas"]')
+        .forEach((closeBtn) => {
+          closeBtn.addEventListener("click", (e) => {
+            e.preventDefault(); // Annule le comportement automatique de Bootstrap
+            const instance = bootstrap.Offcanvas.getInstance(offcanvasEl);
+            if (!instance) return;
+            // Désactive temporairement l’attachement
+            const originalValue = offcanvasEl.dataset.attached;
+            offcanvasEl.dataset.attached = "false";
+            // Ferme manuellement
+            instance.hide();
+            // Restaure après un cycle d’exécution
+            setTimeout(() => {
+              offcanvasEl.dataset.attached = originalValue;
+            }, 50); // court délai suffisant
+          });
+        });
+      offcanvasEl.dataset.initialized = "true";
+    }
+    function initAllVolets() {
+      const seen = new Set();
+      document
+        .querySelectorAll(".toggle_attach_btn[data-target]")
+        .forEach((btn) => {
+          const selector = btn.getAttribute("data-target");
+          if (!seen.has(selector)) {
+            seen.add(selector);
+            initVoletToggleFor(selector);
+          }
+        });
+    }
+    initAllVolets();
+    new MutationObserver(() => {
+      initAllVolets();
+    }).observe(document.body, { childList: true, subtree: true });
+  });
+</script>
 <!-- <?php include "../../Additional_html/horizontal_heading.html" ?> --> <!-- <?php include
 "../../Additional_html/footer.html" ?> -->
 <!-- <div w3-include-html="Additional_html/horizontal_heading.html"></div>

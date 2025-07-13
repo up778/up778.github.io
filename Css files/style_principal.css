@@ -2496,6 +2496,11 @@ table.dotted_between_rows td {
   margin-top: 10px;
   width: max-content;
 }
+.audio_elements_right2 {
+  padding: 0px 00px;
+  margin-top: 10px;
+  width: max-content;
+}
 
 .bouton_avec_fleche::after {
   content: "";
