@@ -5096,6 +5096,95 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     color: #0af;
   }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    function recreateOffcanvas(offcanvasEl, attached) {
+      const wasOpen = offcanvasEl.classList.contains("show");
+      let instance = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      if (instance) instance.dispose();
+      instance = new bootstrap.Offcanvas(offcanvasEl, {
+        backdrop: !attached, // false = pas de fond, donc clic dehors autorisé
+        scroll: true,
+      });
+      // Attacher le gestionnaire une seule fois
+      offcanvasEl._attachedHideHandler?.(); // Nettoyage
+      const handler = (event) => {
+        const isAttached = offcanvasEl.dataset.attached === "true";
+        console.log("Tentative de fermeture. attached =", isAttached);
+        if (isAttached) {
+          console.log("Annulation de la fermeture (fixé)");
+          event.preventDefault();
+        }
+      };
+      offcanvasEl.addEventListener("hide.bs.offcanvas", handler);
+      offcanvasEl._attachedHideHandler = () =>
+        offcanvasEl.removeEventListener("hide.bs.offcanvas", handler);
+      if (wasOpen) {
+        setTimeout(() => instance.show(), 10);
+      }
+    }
+    function initVoletToggleFor(offcanvasSelector) {
+      const offcanvasEl = document.querySelector(offcanvasSelector);
+      if (!offcanvasEl || offcanvasEl.dataset.initialized === "true") return;
+      const boutons = document.querySelectorAll(
+        `.toggle_attach_btn[data-target="${offcanvasSelector}"]`,
+      );
+      if (!boutons.length) return;
+      const updateButtons = (attached) => {
+        boutons.forEach((btn) => {
+          btn.textContent = attached ? "🔒" : "🔓";
+        });
+      };
+      boutons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const wasAttached = offcanvasEl.dataset.attached === "true";
+          const nowAttached = (!wasAttached).toString();
+          offcanvasEl.dataset.attached = nowAttached;
+          updateButtons(nowAttached === "true");
+          recreateOffcanvas(offcanvasEl, nowAttached === "true");
+        });
+      });
+      // Initialisation
+      updateButtons(offcanvasEl.dataset.attached === "true");
+      recreateOffcanvas(offcanvasEl, offcanvasEl.dataset.attached === "true");
+      offcanvasEl
+        .querySelectorAll('.btn_close_force[data-bs-dismiss="offcanvas"]')
+        .forEach((closeBtn) => {
+          closeBtn.addEventListener("click", (e) => {
+            e.preventDefault(); // Annule le comportement automatique de Bootstrap
+            const instance = bootstrap.Offcanvas.getInstance(offcanvasEl);
+            if (!instance) return;
+            // Désactive temporairement l’attachement
+            const originalValue = offcanvasEl.dataset.attached;
+            offcanvasEl.dataset.attached = "false";
+            // Ferme manuellement
+            instance.hide();
+            // Restaure après un cycle d’exécution
+            setTimeout(() => {
+              offcanvasEl.dataset.attached = originalValue;
+            }, 50); // court délai suffisant
+          });
+        });
+      offcanvasEl.dataset.initialized = "true";
+    }
+    function initAllVolets() {
+      const seen = new Set();
+      document
+        .querySelectorAll(".toggle_attach_btn[data-target]")
+        .forEach((btn) => {
+          const selector = btn.getAttribute("data-target");
+          if (!seen.has(selector)) {
+            seen.add(selector);
+            initVoletToggleFor(selector);
+          }
+        });
+    }
+    initAllVolets();
+    new MutationObserver(() => {
+      initAllVolets();
+    }).observe(document.body, { childList: true, subtree: true });
+  });
+</script>
 <!-- <?php include "../../Additional_html/horizontal_heading.html" ?> --> <!-- <?php include
 "../../Additional_html/footer.html" ?> -->
 <!-- <div w3-include-html="Additional_html/horizontal_heading.html"></div>

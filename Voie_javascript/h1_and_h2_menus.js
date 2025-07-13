@@ -51,8 +51,7 @@ function return_button_for_backrgound_video(
       '","' +
       video_background_youtube11_url_3 +
       '"';
-    div_pour_les_videos_de_background =
-      `<div
+    div_pour_les_videos_de_background = `<div
         class="dropdown"
         style="background-color: transparent;position:fixed;left:0px;top:260px"
         id="button_for_video_background"
@@ -82,16 +81,21 @@ function return_button_for_backrgound_video(
                 normalement, commencer à lire une vidéo devrait ajouter une barre de
                 lecture en bas de la fenêtre.(Barre transparente sauf si curseur de souris au dessus).
               </div>
-    <button
-                class="btn btn_video_background"
-                style="color: #000000; font-size: 14px; cursor: pointer; z-index: 4000; position: relative;"
-                onclick='add_ytmb(` +
-      concatenated +
-      `);'
-              >
-                <!-- onclick="jQuery('html,body').css('background', 'black');jQuery('#myPlayerID').YTPPlay();testyy()" -->
-                ▶️
-  </button>
+  <button
+  class="btn btn_video_background"
+  style="color: #000000; font-size: 14px; cursor: pointer; z-index: 4000; position: relative;"
+  onclick="
+    (function() {
+      const player = jQuery('#myPlayerID');
+      if (player.length && typeof player.YTPPlay === 'function') {
+        player.YTPPlay();
+      } else {
+        add_ytmb('${video_background_youtube11_url_1}', '${video_background_youtube11_url_2}', '${video_background_youtube11_url_3}');
+      }
+    })();"
+>
+  ▶️
+</button>
               <button
              class="btn btn_video_background"
                 style="      color: #000000;      font-size: 14px;      cursor: pointer;      z-index: 4000;      position: relative;  "
@@ -988,10 +992,10 @@ $(document).ready(function () {
         // console.log("rrrrrrrrrrrrrrrrrrrrrr");
         // $(this).find("picture").css("border", "1px solid #ff00f0");
         // $(this).css("border", "1px solid #ff00f0");
-        $(this).css("border", "1px solid #ff006a");
+        $(this).parent().css("border", "2px solid #ff006a");
         // $(this).find("picture").css("border-radius", "10%");
-        $(this).css("border-radius", "10%");
-        $(this).addClass("selected_border");
+        $(this).parent().css("border-radius", "10%");
+        $(this).parent().addClass("selected_border");
       }
     });
   }, 2000);
