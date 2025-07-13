@@ -454,60 +454,21 @@ function play_pause_youtube_video() {
     return;
   }
 
-  const iframeWindow = iframe5.contentWindow;
+  const iframe4 = iframe5.contentWindow;
 
-  if (!iframeWindow) {
-    console.warn("Iframe contentWindow non disponible.");
-    return;
-  }
+  if (iframe5.classList.contains("is_actualy_playing")) {
+    iframe4.postMessage(
+      '{"event":"command","func":"pauseVideo","args":""}',
+      "*",
+    );
 
-  function sendCommand(command, args = "") {
-    iframeWindow.postMessage(
-      JSON.stringify({
-        event: "command",
-        func: command,
-        args: Array.isArray(args) ? args : [args],
-      }),
+    iframe5.classList.remove("is_actualy_playing");
+  } else {
+    iframe4.postMessage(
+      '{"event":"command","func":"playVideo","args":""}',
       "*",
     );
   }
-
-  let currentState = null;
-
-  function onMessage(event) {
-    if (event.source !== iframeWindow) return;
-    try {
-      const data =
-        typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-      if (
-        data.event === "infoDelivery" &&
-        typeof data.info?.playerState === "number"
-      ) {
-        currentState = data.info.playerState;
-
-        if (currentState === 1) {
-          sendCommand("pauseVideo");
-          iframe5.classList.remove("is_actualy_playing");
-        } else {
-          sendCommand("playVideo");
-          iframe5.classList.add("is_actualy_playing");
-        }
-
-        window.removeEventListener("message", onMessage);
-      }
-    } catch (e) {}
-  }
-
-  window.addEventListener("message", onMessage);
-
-  sendCommand("getPlayerState");
-
-  setTimeout(() => {
-    window.removeEventListener("message", onMessage);
-
-    sendCommand("playVideo");
-    iframe5.classList.add("is_actualy_playing");
-  }, 1000);
 }
 
 function reach_played_youtube_video() {
