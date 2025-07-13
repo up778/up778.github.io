@@ -2,11 +2,11 @@
   --links_color_beadcrumb: rgb(73, 73, 255);
 
   --titre1-breadcrumb: red;
-  --titre2-breadcrumb: orange;
+  --titre2-breadcrumb: #00b7ff;
   --titre3-breadcrumb: #ff009d;
-  --titre4-breadcrumb: #cf3eff;
-  --titre5-breadcrumb: #9e5eff;
-  --titre6-breadcrumb: #8a9fff;
+  --titre4-breadcrumb: #bd67ff;
+  --titre5-breadcrumb: orange;
+  --titre6-breadcrumb: #aec900;
 
   --surlignage_lien-breadcrumb: #4949ff;
 
