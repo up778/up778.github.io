@@ -2760,3 +2760,8 @@ button.class_btn_pause_yt_video:hover {
 button.class_btn_play_pause_youtube_video:hover {
   border: 1px dashed rgb(76, 76, 76) !important;
 }
+
+.dropdown-menu section,
+.dropdown-menu table {
+  margin-left: 20px !important;
+}
