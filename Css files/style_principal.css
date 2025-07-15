@@ -1194,6 +1194,9 @@ audio::-webkit-media-controls-timeline {
   margin-bottom: 0px;
   margin-top: 10px;
 }
+.image_outside_td_and_float_left {
+  float: left;
+}
 
 .breadcrumb {
   min-height: 50px;
