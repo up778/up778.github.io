@@ -35,12 +35,12 @@ jobs:
       - name: Minify CSS files (root)
         run: |
           for f in *.css; do
-            cleancss --no-rebase -o "$f" "$f"
+            cleancss --rebase-off -o "$f" "$f"
           done
 
       - name: Minify CSS files in "Css files" folder recursively
         run: |
-          find "Css files" -name "*.css" -exec cleancss --no-rebase -o {} {} \;
+          find "Css files" -name "*.css" -exec cleancss --rebase-off -o {} {} \;
 
       - name: Commit and push minified files
         run: |
