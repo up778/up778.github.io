@@ -40,7 +40,7 @@ jobs:
 
       - name: Minify CSS files in "Css files" folder recursively
         run: |
-          find "Css files" -name "*.css" -exec cleancss --skip-rebase -o {} {} \;
+          find "Css files" -name "*.css" -exec cleancss --no-rebase -o {} {} \;
 
       - name: Commit and push minified files
         run: |
