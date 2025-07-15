@@ -22,10 +22,6 @@ jobs:
       - name: Install minifiers
         run: npm install -g html-minifier-terser csso-cli
 
-      - name: Create cleancss config
-        run: |
-          echo '{ "rebase": false }' > cleancss.config.json
-
       - name: Minify HTML files (root) excluding Liber_de_Creaturis__religio.html
         run: |
           for f in *.html; do
@@ -38,9 +34,15 @@ jobs:
 
       - name: Minify CSS files (root)
         run: |
-          for f in *.css; do
-            csso "$f" --output "$f"
-          done
+          shopt -s nullglob
+          files=( *.css )
+          if [ ${#files[@]} -gt 0 ]; then
+            for f in "${files[@]}"; do
+              csso "$f" --output "$f"
+            done
+          else
+            echo "No CSS files found in root"
+          fi
 
       - name: Minify CSS files in "Css files" folder recursively
         run: |
