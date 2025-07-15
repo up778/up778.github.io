@@ -35,7 +35,7 @@ jobs:
       - name: Minify CSS files (root)
         run: |
           for f in *.css; do
-            cleancss --skip-rebase -o "$f" "$f"
+            cleancss --no-rebase -o "$f" "$f"
           done
 
       - name: Minify CSS files in "Css files" folder recursively
