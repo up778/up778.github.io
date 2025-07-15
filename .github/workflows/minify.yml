@@ -23,7 +23,8 @@ jobs:
         run: npm install -g html-minifier-terser clean-css-cli
 
       - name: Create cleancss config
-        run: echo '{ "rebase": false }' > cleancss.config.json
+        run: |
+          echo '{ "rebase": false }' > cleancss.config.json
 
       - name: Minify HTML files (root) excluding Liber_de_Creaturis__religio.html
         run: |
