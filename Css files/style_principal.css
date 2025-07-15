@@ -945,8 +945,8 @@ a {
 }
 
 .table_outside_a_table_and_outside_card {
-  margin-left: auto;
-  margin-right: auto;
+  /* margin-left: auto;
+  margin-right: auto; */
 }
 
 .card p {
@@ -1033,6 +1033,7 @@ lite-youtube {
 
 .div_with_table_outside_a_table_and_outside_card {
   word-wrap: break-word;
+  display: inline !important;
 }
 
 .test2 {
@@ -2101,9 +2102,9 @@ h6 {
   + .table_float_end + p::before,
   + .table_float_start + p::before,
   + .div_with_table_outside_a_table_and_outside_card + p::before {
-    content: "";
-    display: inline-block;
-    width: 30px;
+    /* content: ""; */
+    display: inline;
+    /* width: 30px; */
   }
 }
 
