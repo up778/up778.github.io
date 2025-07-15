@@ -22,6 +22,9 @@ jobs:
       - name: Install minifiers
         run: npm install -g html-minifier-terser clean-css-cli
 
+      - name: Create cleancss config
+        run: echo '{ "rebase": false }' > cleancss.config.json
+
       - name: Minify HTML files (root) excluding Liber_de_Creaturis__religio.html
         run: |
           for f in *.html; do
@@ -35,12 +38,12 @@ jobs:
       - name: Minify CSS files (root)
         run: |
           for f in *.css; do
-            cleancss --rebase-off -o "$f" "$f"
+            cleancss --config cleancss.config.json -o "$f" "$f"
           done
 
       - name: Minify CSS files in "Css files" folder recursively
         run: |
-          find "Css files" -name "*.css" -exec cleancss --rebase-off -o {} {} \;
+          find "Css files" -type f -name "*.css" -exec cleancss --config cleancss.config.json -o {} {} \;
 
       - name: Commit and push minified files
         run: |
