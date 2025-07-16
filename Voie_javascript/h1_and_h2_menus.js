@@ -1143,7 +1143,8 @@ $("body").on("dblclick", "img", function () {
       if (ttt[0].style["width"].indexOf("%") > 0) {
         var pourcentage_agrandi0 = ttt[0].style["width"].replace("%", "");
         // console.log(pourcentage_agrandi0, `pourcentage_agrandi0`);
-        pourcentage_agrandi0 = +pourcentage_agrandi0 + +10;
+        // pourcentage_agrandi0 = +pourcentage_agrandi0 + +10;
+        pourcentage_agrandi0 = +pourcentage_agrandi0 + +30;
         // console.log(pourcentage_agrandi0, `pourcentage_agrandi0`);
         pourcentage_enventualy_agrandi = pourcentage_agrandi0 + "%";
       }
