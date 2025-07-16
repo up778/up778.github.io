@@ -1748,6 +1748,12 @@ article + article {
   top: 0px;
   z-index: 10000;
 }
+.un_conserve_p_top_l_dropdown_info {
+  background-color: rgb(0, 8, 169);
+  position: sticky;
+  top: 0px;
+  z-index: 10000;
+}
 
 .class_pour_la_partie_historique_de_toutes_les_pages,
 .news_parts_histo_div_for_this_page,

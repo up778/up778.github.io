@@ -269,6 +269,49 @@ class="image_autumn n5"
   data-popover-title="title"
   data-popover-class="btn_infos_g_site"
 >
+  <button
+    type="button"
+    role="button"
+    class="btn dropdown-toggle dropdown-toggle-split info_bouton_haut_gche bi-info-circle"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+    data-bs-auto-close="outside"
+    style="
+      --bs-btn-padding-y: 0.2rem;
+      --bs-btn-padding-x: 0.2rem;
+      background-color: #00006c;
+    "
+    title="Bouton pour afficher des infos générales sur le site"
+  >
+    <!-- <img
+      class="image_without_picture"
+      src="Additional_html/light-sheep.png"
+      style="width: 20px; height: auto; z-index: 9000"
+    /> -->
+  </button>
+  <div
+    class="z-3 dropdown-menu dropdown-menu-end"
+    style="
+      border: 1px solid grey;
+      max-height: 99vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+    "
+  >
+    <div
+      class="info_coquille_top_button dropdown-item image_without_picture"
+      style="min-width: 20vw; max-height: 90vh !important"
+    ></div>
+  </div>
+</div>
+<div
+  class="btn-group dropend image_without_picture pop_button"
+  style="position: fixed; z-index: 5001; top: 40px; left: 0px"
+  data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des infos générales sur le site'
+  data-popover-title="title"
+  data-popover-class="btn_infos_g_site"
+>
   <!-- 🐑 -->
   <!-- border: 1px solid grey; -->
   <button
@@ -283,12 +326,12 @@ class="image_autumn n5"
       --bs-btn-padding-x: 0.2rem;
       background-color: #00006c;
     "
-    title="Bouton pour afficher des infos générales sur le site"
+    title="Bouton haut / bas"
   >
     <img
       class="image_without_picture"
       src="Additional_html/arrow_fork_.png"
-      style="width: 20px; height: auto; z-index: 9000"
+      style="width: 16px; height: auto; z-index: 9000"
     />
   </button>
   <div
@@ -297,7 +340,7 @@ class="image_autumn n5"
       border: 1px solid grey;
       max-height: 99vh;
       position: fixed;
-      top: 0;
+      top: 60px;
       left: 0;
     "
   >
@@ -319,7 +362,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
       background-color: #363636;
       position: fixed;
       z-index: 501;
-      top: 38px;
+      top: 78px;
       left: 0px;
       max-height: 28px;
     "
@@ -350,7 +393,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
     color: plum;
     position: fixed;
     z-index: 501;
-    top: 72px;
+    top: 112px;
     left: 0px;
   "
   onclick="toggle_sections_2_and_3_borders()"
@@ -366,7 +409,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
     color: rgb(204, 0, 41);
     position: fixed;
     z-index: 501;
-    top: 160px;
+    top: 200px;
     left: 0px;
     font-size: 70%;
   "
@@ -387,7 +430,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   class="btn btn-sm btn-dark toggle_youtube_borders"
   style="
     position: fixed;
-    top: 220px;
+    top: 260px;
     left: 0;
     z-index: 3000;
     font-size: 60%;
