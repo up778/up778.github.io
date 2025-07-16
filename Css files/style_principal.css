@@ -2765,3 +2765,7 @@ button.class_btn_play_pause_youtube_video:hover {
 .dropdown-menu table {
   margin-left: 20px !important;
 }
+
+img[src$=".svg"] {
+  margin-top: 20px;
+}
