@@ -1,4 +1,4 @@
-name: Minify HTML and CSS in place
+name: Minify HTML and CSS in place.
 
 on:
   push:
