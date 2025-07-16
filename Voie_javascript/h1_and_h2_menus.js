@@ -1307,6 +1307,23 @@ $(document).ready(function () {
       });
   });
 
+  $(document).on("click", ".info_bouton_haut_gche", function () {
+    $.ajax({
+      url: "Additional_html/coquille_top_left_info.html",
+      dataType: "html",
+      cache: false,
+    })
+      .done(function (html) {
+        $(".info_coquille_top_button").replaceWith(html);
+        applyBackgroundImage(".info_coquille_top_button");
+      })
+      .fail(function () {
+        handleError(
+          "Erreur lors du chargement de 'info_coquille_top_button.html'.",
+        );
+      });
+  });
+
   let prefix = window.location.href.includes("github") ? "" : "../../";
 
   // Gestion du clic pour le bouton btn_new_3
