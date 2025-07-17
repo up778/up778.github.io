@@ -2065,6 +2065,10 @@ tbody:before {
 .table_outside_a_table_and_outside_card margin_left_2 {
   margin-top: 200px;
 }
+.table_outside_a_table_and_outside_card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 .playing_audio {
   background-color: green;
