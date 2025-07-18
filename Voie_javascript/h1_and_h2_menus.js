@@ -84,6 +84,7 @@ function return_button_for_backrgound_video(
   <button
   class="btn btn_video_background"
   style="color: #000000; font-size: 14px; cursor: pointer; z-index: 4000; position: relative;"
+  id="bckgd_video_play_button"
   onclick="
     (function() {
       const player = jQuery('#myPlayerID');
@@ -97,6 +98,7 @@ function return_button_for_backrgound_video(
   ▶️
 </button>
               <button
+              id="bckgd_video_pause_button"
              class="btn btn_video_background"
                 style="      color: #000000;      font-size: 14px;      cursor: pointer;      z-index: 4000;      position: relative;  "
                 onclick="jQuery('#myPlayerID').YTPPause();"
@@ -195,6 +197,7 @@ function toggleMute() {
 
   if (player.hasClass("isMuted")) {
     player.YTPUnmute();
+
     muteButton.html("🔇");
     player.removeClass("isMuted");
   } else {
@@ -388,6 +391,7 @@ function add_ytmb(url1, url2, url3) {
       }, 200);
     });
     ytPlayer = myPlayListPlayer;
+
     let currentVideoIndex = 0;
     myPlayListPlayer.on("YTPEnded", () => {
       currentVideoIndex = (currentVideoIndex + 1) % videos.length;
