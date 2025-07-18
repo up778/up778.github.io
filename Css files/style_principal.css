@@ -1288,12 +1288,34 @@ blockquote > p {
 
   overflow: hidden;
 }
+
 .probable_citation_du_Père {
-  border-left: 4px solid #ff0303 !important;
+  border-left: 4px solid red !important;
   font-style: italic;
-  color: #ff0303 !important;
+  color: red !important;
   padding-left: 10px;
   border-radius: 20px;
+  text-shadow:
+    1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0 1px 0 #000000,
+    0 -1px 0 #000000;
+}
+
+.probable_citation_du_Père > p > * {
+  font-style: italic;
+}
+
+* > .probable_citation_du_Père > p > span {
+  color: red;
+  font-style: italic;
+}
+
+.probable_citation_du_Père > * {
+  font-style: italic;
+  color: red;
+  font-family: "times new roman", cursive !important;
+  font-size: 17px !important;
 }
 
 .probable_citation_du_Fils {
@@ -1302,6 +1324,15 @@ blockquote > p {
   color: yellow !important;
   padding-left: 10px;
   border-radius: 20px;
+  text-shadow:
+    1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0 1px 0 #000000,
+    0 -1px 0 #000000;
+}
+* > .probable_citation_du_Fils > span {
+  color: yellow;
+  font-style: italic;
 }
 .probable_citation_du_Saint-Esprit {
   border-left: 4px solid white !important;
@@ -1309,6 +1340,15 @@ blockquote > p {
   color: white !important;
   padding-left: 10px;
   border-radius: 20px;
+  text-shadow:
+    1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0 1px 0 #000000,
+    0 -1px 0 #000000;
+}
+* > .probable_citation_du_Saint-Esprit > p > span {
+  color: white;
+  font-style: italic;
 }
 .probable_citation_de_la_Mère {
   border-left: 4px solid #ff4ff6 !important;
@@ -1316,6 +1356,15 @@ blockquote > p {
   color: #ff4ff6 !important;
   padding-left: 10px;
   border-radius: 20px;
+  text-shadow:
+    1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0 1px 0 #000000,
+    0 -1px 0 #000000;
+}
+* > .probable_citation_de_la_Mère > p > span {
+  color: #ff4ff6;
+  font-style: italic;
 }
 .class_citation_standard {
   border-left: 4px solid #55ff55 !important;
@@ -1339,6 +1388,11 @@ blockquote > p {
   border-radius: 20px;
 
   overflow: hidden;
+  text-shadow:
+    1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0 1px 0 #000000,
+    0 -1px 0 #000000;
 }
 
 .probable_citation_de_Dieu > p > * {
@@ -1355,28 +1409,6 @@ blockquote > p {
   color: #fbff00;
   font-family: "times new roman", cursive !important;
 
-  font-size: 17px !important;
-}
-
-.probable_citation_du_Père {
-  border-left: 4px solid red !important;
-  font-style: italic;
-  color: red;
-}
-
-.probable_citation_du_Père > p > * {
-  font-style: italic;
-}
-
-* > .probable_citation_du_Père > p > span {
-  color: red;
-  font-style: italic;
-}
-
-.probable_citation_du_Père > * {
-  font-style: italic;
-  color: red;
-  font-family: "times new roman", cursive !important;
   font-size: 17px !important;
 }
 
@@ -1534,11 +1566,19 @@ article,
 
 .h_citation {
   color: rgb(0, 255, 0) !important;
-  text-shadow: 0 0 4px rgb(0, 0, 0);
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 .h_nouvelle_image_svg {
   color: rgb(255, 106, 0) !important;
-  text-shadow: 0 0 4px rgb(0, 0, 0);
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 .h_image_svg {
   color: rgb(255, 106, 0) !important;
@@ -1546,14 +1586,22 @@ article,
 
 .nouvelle_image_svg_ {
   line-height: 10% !important;
-  text-shadow: 0 0 4px rgb(0, 0, 0);
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 
 .h_partie {
   border: 1px solid rgb(109, 109, 109) !important;
   background-color: #89898944 !important;
   color: rgb(255, 255, 255) !important;
-  text-shadow: 0 0 4px rgb(0, 0, 0);
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 .h_titre {
   color: rgb(202, 202, 202) !important;
@@ -1566,14 +1614,22 @@ article,
 .h_nouvelle_vidéo {
   color: rgb(255, 0, 0) !important;
 
-  text-shadow: 0 0 4px rgb(0, 0, 0);
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 
 .h_table {
   background-image: linear-gradient(to right, #7d7d7d 1px, transparent 1px),
     linear-gradient(to bottom, #7d7d7d 1px, transparent 1px);
   background-size: 50px 20px;
-  text-shadow: 0 0 4px rgb(0, 0, 0);
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 
 .volet_historique_tiny_class [class^="modified_parts"]:nth-child(2n + 1) {
