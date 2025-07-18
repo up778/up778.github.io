@@ -1299,12 +1299,17 @@ $(document).ready(function () {
       cache: false,
     })
       .done(function (html) {
-        $(".quatrieme_coquille_top_button").replaceWith(html);
+        const $html = $(html);
+        $(".quatrieme_coquille_top_button").replaceWith($html);
         applyBackgroundImage(".quatrieme_coquille_top_button");
       })
       .fail(function () {
         handleError("Erreur lors du chargement de 'coquille4_top_l.html'.");
       });
+  });
+
+  $(document).on("click", "#btn_dropdown_top_left_plus", function (e) {
+    $(".bouton_haut_gche").trigger("click");
   });
 
   $(document).on("click", ".info_bouton_haut_gche", function () {
