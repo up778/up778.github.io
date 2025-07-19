@@ -990,7 +990,8 @@ lite-youtube {
 }
 
 .float-end {
-  margin-left: 0px !important;
+  margin-left: 10px !important;
+  margin-top: 20px;
 }
 
 .table_float_end {
@@ -1003,6 +1004,7 @@ lite-youtube {
 
 .float-start {
   margin-right: 1% !important;
+  margin-top: 20px;
 }
 
 .table_float_start {
