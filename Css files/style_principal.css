@@ -1584,6 +1584,11 @@ article,
 }
 .h_image_svg {
   color: rgb(255, 106, 0) !important;
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 
 .nouvelle_image_svg_ {
@@ -1606,11 +1611,21 @@ article,
     0 -1px 0 #333;
 }
 .h_titre {
-  color: rgb(202, 202, 202) !important;
+  color: rgb(235, 235, 235) !important;
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 
 .h_audio {
   background-color: rgb(70, 70, 70) !important;
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
 }
 
 .h_nouvelle_vidéo {
