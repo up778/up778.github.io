@@ -1414,10 +1414,6 @@ blockquote > p {
   font-size: 17px !important;
 }
 
-* > p > span {
-  color: white;
-}
-
 article,
 .soixantepx_add {
 }
