@@ -53,7 +53,7 @@ function return_button_for_backrgound_video(
       '"';
     div_pour_les_videos_de_background = `<div
         class="dropdown"
-        style="background-color: transparent;position:fixed;left:0px;top:350px"
+        style="background-color: transparent;position:fixed;left:0px;top:370px"
         id="button_for_video_background"
       >
         <button
@@ -63,7 +63,7 @@ function return_button_for_backrgound_video(
           data-bs-toggle="dropdown"
           data-bs-auto-close="false"
           aria-expanded="false"
-          style="color: rgb(135, 136, 221); background-color: rgb(63, 63, 63);"
+          style="color: rgba(172, 173, 238, 1); background-color: #430003;"
           title="btn pour film en arrière plan de la page (fonction expérimentale)"
           data-popover-title="Titre pour Bouton"
           data-popover-content='&lt;i class="bi-arrow-left"&gt; Bouton pour afficher des boutons pour vidéo&lt;br /&gt; en arrière plan de la page ⚠️ attention, fonction expérimentale'
@@ -1511,6 +1511,10 @@ $(document).ready(function () {
     z-index: 9999;
     cursor: pointer;
   }`,
+
+    `.playing_audio {
+      color: ${plus_50} !important; 
+    }`,
 
     `#breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(n) > a:hover {
       color: ${plus_50}; 
