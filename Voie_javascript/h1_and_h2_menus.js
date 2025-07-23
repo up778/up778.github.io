@@ -73,7 +73,7 @@ function return_button_for_backrgound_video(
             <div
               id="youtube_mb_buttons"
               class="btn boutons_background_video btn-group-vertical container btn_video_background"
-              style="max-width: 3vw; max-height: 50vh; z-index: 400; border: dashed #444 1px; color: #ccc; background-color: #00000060;"
+              style="max-width: 3vw; max-height: 50vh; z-index: 400; border: dashed #444 1px; color: #ccc; background-color: #3d0000ff;"
             >
               <div style="font-size:14px; display:none">
                 boutons pour vidéo de fond <br />attention, fonction
@@ -83,7 +83,7 @@ function return_button_for_backrgound_video(
               </div>
   <button
   class="btn btn_video_background"
-  style="color: #000000; font-size: 14px; cursor: pointer; z-index: 4000; position: relative;"
+  style="color: #3d0000ff; font-size: 14px; cursor: pointer; z-index: 4000; position: relative;"
   id="bckgd_video_play_button"
   onclick="
     (function() {
