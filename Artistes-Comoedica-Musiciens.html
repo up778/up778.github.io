@@ -111,7 +111,7 @@
     background-color: transparent;
     position: fixed;
     left: 0px;
-    bottom: 20px;
+    bottom: 40px;
     z-index: 2000 !important;
   "
 >
@@ -229,7 +229,7 @@ class="image_autumn n5"
                     "https://up778.github.io/Images/sheep-5427870_'jaune'_16-9.jpg"
                   ],
         "datePublished": "2024-03-18",
-                  "dateModified": "2025-07-21",
+                  "dateModified": "2025-07-25",
                   "author": [
                     {
                       "name": "Philippe",
@@ -734,7 +734,7 @@ alt="Images/arrows-collapse.png"
 <td>
 <p> </p>
 <figure style="width: 70%; float: right;" class="figure_pour_audio_Vivaldi_saison">
-<figcaption id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_vendredi_11_juillet_2025_35_547" class="reload-class_une_semaine__"><br><br><br><br><br><br><br>Vivaldi <br>Un morceau de musique, en fonction de la saison</figcaption>
+<figcaption id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_vendredi_11_juillet_2025_35_547" class="reload-class_une_semaine__"><br><br><br><br><br><br><br>Un morceau de musique de Vivaldi, en fonction de la saison</figcaption>
 <audio style="width: 75%; height: 30px; display: inline;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
                       <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Vivaldi/Vivaldi_op8_mk_05_estate_adagio.mp3" type="audio/mp3">
                     </audio> <br><span class="nom_de_la_saison" style="font-size: 24px;">L'été</span> 
@@ -5213,6 +5213,216 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     subtree: true,
   });
 }
+// -------- chart --------------------
+(function () {
+  function parse_json_attr(attr_str, fallback) {
+    if (!attr_str || typeof attr_str !== 'string') return fallback;
+    try {
+      return JSON.parse(attr_str);
+    } catch (e) {
+      try {
+        const fixed = attr_str.replace(/'/g, '"');
+        return JSON.parse(fixed);
+      } catch (e2) {
+        console.warn('Erreur JSON non récupérable :', attr_str);
+        return fallback;
+      }
+    }
+  }
+  function init_chart_from_canvas(canvas) {
+    if (!canvas || !canvas.getContext) {
+      console.warn("Canvas non valide :", canvas);
+      return;
+    }
+    const container = canvas.closest('.figure_chartjs');
+    if (!container) return;
+    const type = canvas.dataset.chartType || 'bar';
+    const raw_labels = canvas.getAttribute('data-chart-labels');
+    const raw_values = canvas.getAttribute('data-chart-values');
+    let labels = parse_json_attr(raw_labels, []);
+    let valeurs = parse_json_attr(raw_values, []);
+    if (!Array.isArray(labels) || labels.length === 0) {
+      const spans = container.querySelectorAll('.chart_label');
+      labels = Array.from(spans).map(span => span.textContent.trim()).filter(Boolean);
+    }
+    if (labels.length === 0) labels = ['A', 'B', 'C'];
+    if (!Array.isArray(valeurs)) valeurs = [];
+    if (valeurs.length < labels.length) {
+      const missing = labels.length - valeurs.length;
+      valeurs = valeurs.concat(Array(missing).fill(0));
+    } else if (valeurs.length > labels.length) {
+      valeurs = valeurs.slice(0, labels.length);
+    }
+    valeurs = valeurs.map(v => (typeof v === 'number' && !isNaN(v)) ? v : 0);
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      console.warn('Impossible d’obtenir le contexte 2D pour le canvas', canvas);
+      return;
+    }
+    if (typeof ChartZoom !== '') Chart.register(ChartZoom);
+    if (typeof ChartDataLabels !== '') Chart.register(ChartDataLabels);
+    if (typeof ChartDeferred !== '') Chart.register(ChartDeferred);
+    if (typeof window['chartjs-plugin-annotation'] !== '') {
+      Chart.register(window['chartjs-plugin-annotation']);
+    }
+    const options = {
+      responsive: true,
+      animation: false,
+      plugins: {
+        datalabels: {
+          display: true,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          borderRadius: 3,
+          padding: 4,
+          color: '#fff',
+          font: { size: 12 }
+        },
+        zoom: {
+          pan: {
+            enabled: false
+          },
+          zoom: {
+            wheel: { enabled: true },
+            pinch: { enabled: true },
+            mode: 'xy',
+            onZoom: function ({ chart }) {
+              console.log("🔍 Zoom détecté");
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          min: 0,
+          max: labels.length - 1,
+          ticks: {
+            color: '#fff',
+            stepSize: 1
+          },
+          grid: { color: 'rgba(255,255,255,0.1)' }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: '#fff' },
+          grid: { color: 'rgba(255,255,255,0.1)' }
+        }
+      }
+    };
+    const chart = new Chart(ctx, {
+      type: type,
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Données',
+          data: valeurs,
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: options,
+      plugins: []
+    });
+    const initial_bounds = {
+      x: {
+        min: options.scales.x.min,
+        max: options.scales.x.max
+      },
+      y: {
+        min: options.scales.y.min,
+        max: options.scales.y.max
+      }
+    };
+    const bouton_reset = document.createElement('button');
+    bouton_reset.textContent = 'Réinitialiser le zoom/la position';
+    bouton_reset.style.margin = '8px 0 20px 0';
+    bouton_reset.onclick = () => {
+      const scales = chart.options.scales;
+      if (scales.x) {
+        scales.x.min = initial_bounds.x.min;
+        scales.x.max = initial_bounds.x.max;
+        if (chart.scales.x) {
+          chart.scales.x.options.min = initial_bounds.x.min;
+          chart.scales.x.options.max = initial_bounds.x.max;
+        }
+      }
+      if (scales.y) {
+        scales.y.min = initial_bounds.y.min;
+        scales.y.max = initial_bounds.y.max;
+        if (chart.scales.y) {
+          chart.scales.y.options.min = initial_bounds.y.min;
+          chart.scales.y.options.max = initial_bounds.y.max;
+        }
+      }
+      if (typeof chart.resetZoom === 'function') {
+        chart.resetZoom();
+      }
+      chart.update();
+    };
+    canvas.after(bouton_reset);
+    let is_mouse_panning = false;
+    let last_pos = { x: 0, y: 0 };
+    const sensitivity = 0.5;
+    canvas.addEventListener('mousedown', e => {
+      if (e.button === 0) {
+        is_mouse_panning = true;
+        last_pos = { x: e.clientX, y: e.clientY };
+        canvas.style.cursor = 'grabbing';
+      }
+    });
+    canvas.addEventListener('mouseup', e => {
+      if (e.button === 0) {
+        is_mouse_panning = false;
+        canvas.style.cursor = '';
+      }
+    });
+    canvas.addEventListener('mouseleave', () => {
+      is_mouse_panning = false;
+      canvas.style.cursor = '';
+    });
+    canvas.addEventListener('mousemove', e => {
+      if (!is_mouse_panning) return;
+      e.preventDefault();
+      const zoom_options = chart.options.plugins?.zoom;
+      const pan_enabled = zoom_options && zoom_options.pan && zoom_options.pan.enabled;
+      if (!pan_enabled) {
+        const dx = e.clientX - last_pos.x;
+        const dy = e.clientY - last_pos.y;
+        last_pos = { x: e.clientX, y: e.clientY };
+        ['x', 'y'].forEach(axis => {
+          const scale = chart.scales[axis];
+          if (!scale) return;
+          const range = scale.max - scale.min;
+          const pixelDelta = axis === 'x' ? dx : dy;
+          const pixelRange = axis === 'x' ? scale.width : scale.height;
+          const valueDelta = sensitivity * (range * pixelDelta) / pixelRange;
+          scale.options.min -= valueDelta;
+          scale.options.max -= valueDelta;
+        });
+        chart.update('none');
+      }
+    });
+  }
+  // Déclaration globale
+  window.chartjs_helper = {
+    parse_json_attr: parse_json_attr,
+    init_chart_from_canvas: init_chart_from_canvas,
+    init_all: function () {
+      const canvases = document.querySelectorAll('canvas[data-chart-type]');
+      canvases.forEach(canvas => {
+        if (!canvas.dataset.chartjs_initialized) {
+          init_chart_from_canvas(canvas);
+          canvas.dataset.chartjs_initialized = "1";
+        }
+      });
+    }
+  };
+  // Initialisation automatique
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvases = document.querySelectorAll('canvas[data-chart-type]');
+    canvases.forEach(canvas => window.chartjs_helper.init_chart_from_canvas(canvas));
+  });
+})();
 </script>
 <script>
   $("video").each(function (index, elem) {

@@ -1320,22 +1320,38 @@ blockquote > p {
   font-size: 17px !important;
 }
 
-.probable_citation_du_Fils {
-  border-left: 4px solid yellow !important;
+* > .probable_citation_du_Fils > p > span {
+  color: yellow;
   font-style: italic;
-  color: yellow !important;
-  padding-left: 10px;
-  border-radius: 20px;
+}
+
+.probable_citation_du_Fils {
+  position: relative;
+  background: #ffff0020;
+  color: #ffff00;
+
+  border-radius: 10px;
+
+  margin: 2em 0;
+  font-style: italic;
+
   text-shadow:
     1px 0 0 #000000,
     -1px 0 0 #000000,
     0 1px 0 #000000,
     0 -1px 0 #000000;
 }
-* > .probable_citation_du_Fils > span {
-  color: yellow;
-  font-style: italic;
+
+.probable_citation_du_Fils::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-size: 1.5em;
+  line-height: 1;
+  z-index: 10;
 }
+
 .probable_citation_du_Saint-Esprit {
   border-left: 4px solid white !important;
   font-style: italic;
@@ -1352,31 +1368,94 @@ blockquote > p {
   color: white;
   font-style: italic;
 }
-.probable_citation_de_la_Mère {
-  border-left: 4px solid #ff4ff6 !important;
+
+* > .probable_citation_de_la_Mère > p > span {
+  color: #ff4ff6;
   font-style: italic;
-  color: #ff4ff6 !important;
-  padding-left: 10px;
-  border-radius: 20px;
+}
+
+.probable_citation_de_la_Mère {
+  position: relative;
+
+  color: #ff4ff6;
+  border: 1px solid #ff4ff6bb;
+  border-radius: 10px;
+
+  margin: 2em 0;
+  font-style: italic;
+
   text-shadow:
     1px 0 0 #000000,
     -1px 0 0 #000000,
     0 1px 0 #000000,
     0 -1px 0 #000000;
 }
-* > .probable_citation_de_la_Mère > p > span {
-  color: #ff4ff6;
-  font-style: italic;
+
+.probable_citation_de_la_Mère::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-size: 1.5em;
+  line-height: 1;
+  z-index: 10;
 }
-.class_citation_standard {
-  border-left: 4px solid #55ff55 !important;
-  font-style: italic;
-  color: #55ff55;
-  padding-left: 10px;
-  border-radius: 20px;
-}
+
 .class_citation_standard span[style*="background-color: #843fa1"] {
   color: #55ff55 !important;
+}
+
+.class_citation_standard {
+  position: relative;
+  background: #55ff5530;
+  color: #55ff55;
+
+  border-radius: 10px;
+
+  margin: 1px 0 26px 0px;
+  font-style: italic;
+
+  z-index: 0 !important;
+}
+
+.class_citation_standard::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  font-size: 1.5em;
+  line-height: 1;
+  z-index: -10;
+}
+
+.class_citation_standard::after {
+  content: "";
+  position: absolute;
+
+  bottom: calc(-15px - 0px);
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+
+  border-width: 15px 15px 0 0;
+  border-color: #55ff5530 transparent transparent #55ff5530;
+
+  z-index: -5;
+  margin: 0px 0px 0.5px 0px;
+}
+
+img.image_outside_td_and_float_right,
+figure,
+.div_for_modal_for_link_outside_modal,
+.div_for_modal_not_wikipedia {
+  position: relative;
+  z-index: 10;
+}
+
+table.table_outside_a_table_and_outside_card {
+  position: relative;
+  z-index: 11;
 }
 
 .probable_citation_de_Dieu {
@@ -2848,4 +2927,8 @@ button.class_btn_play_pause_youtube_video:hover {
 
 img[src$=".svg"] {
   margin-top: 20px;
+}
+
+canvas:active {
+  cursor: grabbing;
 }
