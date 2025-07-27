@@ -1442,7 +1442,7 @@ blockquote > p {
   border-color: #55ff5530 transparent transparent #55ff5530;
 
   z-index: -5;
-  margin: 0px 0px 0.5px 0px;
+  margin: 0px 0px 0px 0px;
 }
 
 img.image_outside_td_and_float_right,
