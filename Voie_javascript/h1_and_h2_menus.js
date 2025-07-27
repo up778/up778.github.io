@@ -1558,8 +1558,14 @@ $(document).ready(function () {
     }`,
     ,
     `.modal-backdrop {
-     z-index:9 !important;
+         z-index:9 !important;
+        }`,
+    `
+    .modal-content,.modal-body {
+      overflow-y: auto;
+      z-index: 1800;
     }`,
+
     `.dropdown-menu {
     border:1px solid ${predo_color_of_page} !important;
     }`,
@@ -1569,6 +1575,10 @@ $(document).ready(function () {
     `.grand_titre {
      text-shadow: 0 0 15px ${plus_50}, 0 0 35px ${plus_50} !important;
     }`,
+    `.div_around_iframe {
+   
+     z-index: 20000 !important;
+      }`,
 
     `.border_for_video {
   position: relative;
