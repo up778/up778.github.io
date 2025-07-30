@@ -15,21 +15,19 @@
 </ul>
 </div>
 </div>
-
 <div class="offcanvas-body my_editable_div mce-content-body" id="mce_35"  style="font-size: 100% !important; position: relative;">
 <div style="position: fixed; bottom: 360px; right: 20px; z-index: 6000; width: 40px; height: 120px;" class="bg_for_youtube_button2">
 <div class="d-inline-flex align-items-center gap-1"><!-- Bouton cadenas toggle --> <button id="toggle_attach_btn" class="btn btn-sm btn-outline-light toggle_attach_btn" type="button" title="Fixer/Détacher le volet" data-target="#offcanvasNavbar">🔓</button></div>
-<div class="mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column" style="background-color: #c7000a45; border-radius: 10px;"><button id="b1" class="btn pop_button class_btn_play_pause_youtube_video" style="width: 40px; height: 40px; background-color: rgba(221, 0, 0, 0.25);" role="button" onclick="play_pause_youtube_video();" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton pour pauser/jouer la dernière vidéo youtube lue <i class=&quot;bi-arrow-right&quot;> </i>" data-no-popover="true" data-popover-color="red" data-popover-class="btn_custom_2"> <img class="image_without_picture" src="Images/youtube_play_pause_button.png" style="width: 40px; height: 40px; z-index: 9000; margin: -8px -14px -8px -14px;" alt="Images/youtube_play_pause_button.png"> </button> <button id="b2" class="btn bi-arrows-collapse pop_button" role="button" onclick="reach_played_youtube_video();" style="border: 1px solid grey;" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton pour rejoindre la position de la page où<br />se situe la dernière vidéo youtube jouée <i class=&quot;bi-arrow-right&quot;> </i>" data-no-popover="true" data-popover-class="btn_custom_2" data-bs-popover-body-color="blue" aria-label="reach played youtube video" data-bs-original-title="reach played youtube video"> <!-- <img
-class="image_without_picture arrows_collapse_img"
-src="Images/arrows-collapse.png"
-style="width: 20px; height: 20px;z-index: 9000;"
-alt="Images/arrows-collapse.png"
-/> --> </button></div>
+<div class="mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column" style="background-color: #c7000a45; border-radius: 10px;"><button id="b1" class="btn pop_button class_btn_play_pause_youtube_video" style="width: 40px; height: 40px; background-color: rgba(221, 0, 0, 0.25);" role="button" onclick="play_pause_youtube_video();" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton pour pauser/jouer la dernière vidéo youtube lue <i class=&quot;bi-arrow-right&quot;> </i>" data-no-popover="true" data-popover-color="red" data-popover-class="btn_custom_2"> <img class="image_without_picture" src="Images/youtube_play_pause_button.png" style="width: 40px; height: 40px; z-index: 9000; margin: -8px -14px -8px -14px;" alt="Images/youtube_play_pause_button.png"> </button> <button id="b2" class="btn bi-arrows-collapse pop_button" role="button" onclick="reach_played_youtube_video();" style="border: 1px solid grey;" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton pour rejoindre la position de la page où<br />se situe la dernière vidéo youtube jouée <i class=&quot;bi-arrow-right&quot;> </i>" data-no-popover="true" data-popover-class="btn_custom_2" data-bs-popover-body-color="blue" aria-label="reach played youtube video" data-bs-original-title="reach played youtube video"> </button></div>
 <div class="mt-3 d-inline-flex flex-column audio_elements_right2" style="background-color: #78797848; border-radius: 10px;"><!-- style="border: 1px dashed grey;" --> <button class="btn bi-cassette pop_button mt-0 mb-1" role="button" id="toggle_audio" onclick="fct_toggle_audio()" style="background-color: #212122; z-index: 9000; width: 40px; height: 40px; font-size: 20px; margin-top: 20px; border: 1px solid grey; padding: auto;" alt="Images/cassette.svg" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton qui devrait afficher si un audio est lu ou non <i class=&quot;bi-arrow-right&quot;> </i>" data-no-popover="true" data-popover-color="red" data-popover-bg="yellow" data-max-width="400px" aria-label="play/pause audio" data-bs-original-title="play/pause audio"></button> <button class="btn bi-arrow-down-left pop_button  mt-0 mb-1" style="background-color: #212122; z-index: 9000; width: 40px; height: 40px; font-size: 20px; margin-top: 20px; border: 1px solid grey; padding: auto; color: #ddd;" id="bouton_pour_rejoindre_audio" alt="bouton switch style" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton pour &quot;centrer&quot; sur la page le dernier audio lu <i class=&quot;bi-arrow-right&quot;> </i>" data-no-popover="true" aria-label="bouton pour basculer style audios" data-bs-original-title="bouton pour basculer style audios"></button> <button class="btn bi-brush pop_button mt-0 mb-1" style="background-color: #212122; z-index: 9000; width: 40px; height: 40px; font-size: 20px; margin-top: 20px; border: 1px solid grey; padding: auto; color: #ddd;" id="bouton_pour_basculer_style_audios" alt="bouton switch style" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton pour basculer entre les styles, pour tous les lecteurs audio de la page <i class=&quot;bi-arrow-right&quot;> </i>" data-no-popover="true" aria-label="bouton pour basculer style audios" data-bs-original-title="bouton pour basculer style audios"></button></div>
 </div>
 <div class="tab-content" id="pills-tabContent">
 <div class="tab-pane fade show active" id="nouvelles_parties_pills" role="tabpanel" aria-labelledby="nouvelles_parties_pills-tab" style="background-color: rgba(43, 255, 0, 0.235) !important;" data-darkreader-inline-bgcolor="" tabindex="0">
 <div class="div_news_parts_histo_for_this_page d-grid gap-0">
+<div class="news_parts_31_2025_div">
+<p class="titre_de_p_31_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 28 juillet 2025</p>
+<p class="p_de_modif_31_2025 h_partie">🔳 Partie "Vincent Reynouard🆕" ajoutée. <a href="#gauche_et_droite_titre_perma_id_dn_mercredi_3juillet_2025_59_405">lien</a></p>
+</div>
 <div class="news_parts_22_2025_div">
 <p class="titre_de_p_22_2025_news_parts titre_id first_paragraph_news_parts">Semaine du lundi 26 mai 2025</p>
 <p class="p_de_modif_22_2025 h_table">🧮 Table "" ajoutée. <a href="#gauche_et_droite_table_perma_id_dn_dimanche_1_juin_2025_36_4">lien</a></p>
@@ -112,11 +110,18 @@ alt="Images/arrows-collapse.png"
 </div>
 <div class="tab-pane fade" id="modified_parts_pills" role="tabpanel" aria-labelledby="modified_parts_pills-tab" style="background-color: rgba(78, 78, 78, 0.235) !important;" data-darkreader-inline-bgcolor="" tabindex="0">
 <div class="historique_des_modifs_pour_cette_page d-grid gap-0">
+<div class="modified_parts_31_2025_div">
+<p class="titre_de_p_31_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 28 juillet 2025</p>
+<p class="p_de_modif_31_2025 h_partie">🔳 Partie "Vincent Reynouard / Fort en science / empathie très peu? développée" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_mercredi_30_juillet_2025_47_406">lien</a></p>
+<p class="p_de_modif_31_2025 h_table">🧮 Table "" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_mercredi_30_juillet_2025_18_831">lien</a></p>
+<p class="p_de_modif_31_2025 h_partie">🔳 Partie "Diverses considérations de V. Reynouard" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_mercredi_30_juillet_2025_49_668">lien</a></p>
+<p class="p_de_modif_31_2025 h_partie">🔳 Partie "Marxistes, ''Gauchistes'' et langage" modifiée. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_3">lien</a></p>
+</div>
 <div class="modified_parts_29_2025_div">
 <p class="titre_de_p_29_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 14 juillet 2025</p>
 <p class="p_de_modif_29_2025 h_table">🧮 Table "Pierre-Marie P. Mathieu B. - + + -" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_samedi_15_mars_2025_44_154">lien</a></p>
 <p class="p_de_modif_29_2025 h_table">🧮 Table "Différentes manières de voir et leur degré de véracité, selon moi Une grande partie de la population, en Occident du moins Ce que me sembla la manière de voir les choses de Francis Cousin La manière de voir les choses qui me semblerait la plus juste" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_dimanche_1_juin_2025_34_244">lien</a></p>
-<p class="p_de_modif_29_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "''Mathieu B''. Sa position sur le Christianisme actuel (Analyse d'un extrait de sa vidéo à propos des îles canaries)" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_57_453">lien</a></p>
+<p class="p_de_modif_29_2025 h_titre">&nbsp;≣ Titre "''Mathieu B''. Sa position sur le Christianisme actuel (Analyse d'un extrait de sa vidéo à propos des îles canaries)" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_57_453">lien</a></p>
 <p class="p_de_modif_29_2025 h_partie">🔳 Partie "Trinité, Christianisme et Mathieu ''B''" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_20">lien</a></p>
 </div>
 <div class="modified_parts_28_2025_div">
@@ -147,7 +152,7 @@ alt="Images/arrows-collapse.png"
 <p class="titre_de_p_24_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 9 juin 2025</p>
 <p class="p_de_modif_24_2025 h_partie">🔳 Partie "Le vrai critère : Dieu" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_vendredi_4_octobre_2024_20_189">lien</a></p>
 <p class="p_de_modif_24_2025 h_partie">🔳 Partie "Préambule Pierre-Marie P. et Mathieu B." modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_10_novembre_2024_48_940">lien</a></p>
-<p class="p_de_modif_24_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Mathieu B. / Désactivabilité ou non des bombes atomiques / Extraterrestres / Dieu" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_24_novembre_2024_35_811">lien</a></p>
+<p class="p_de_modif_24_2025 h_titre">&nbsp;≣ Titre "Mathieu B. / Désactivabilité ou non des bombes atomiques / Extraterrestres / Dieu" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_24_novembre_2024_35_811">lien</a></p>
 <p class="p_de_modif_24_2025 h_partie">🔳 Partie "La position de Mathieu B. sur la bombe atomique ☢️⚛️" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_46_393">lien</a></p>
 </div>
 <div class="modified_parts_23_2025_div">
@@ -163,7 +168,7 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_22_2025 h_partie">🔳 Partie "Avant un éventuel futur article plus complet sur Francis Cousin / gdg, mon à priori🆕" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_1_juin_2025_1499">lien</a></p>
 <p class="p_de_modif_22_2025 h_partie">🔳 Partie "Francis Cousin de gdg" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_28_septembre_2024_41_764">lien</a></p>
 <p class="p_de_modif_22_2025 h_partie">🔳 Partie "Chaine ''les nouveaux Francs''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_20_janvier_2025_31_262">lien</a></p>
-<p class="p_de_modif_22_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "''Mathieu B.'' / la chaine ''Les nouveaux francs''" changé. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6">lien</a></p>
+<p class="p_de_modif_22_2025 h_titre">&nbsp;≣ Titre "''Mathieu B.'' / la chaine ''Les nouveaux francs''" changé. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6">lien</a></p>
 <p class="p_de_modif_22_2025 h_partie">🔳 Partie "Concernant une partie sur Michel Onfray" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_10">lien</a></p>
 <p class="p_de_modif_22_2025 h_table">🧮 Table "Pierre-Marie Mathieu B." modifiée. <a href="#gauche_et_droite_table_perma_id_dn_samedi_15_mars_2025_44_154">lien</a></p>
 <p class="p_de_modif_22_2025 h_partie">🔳 Partie "Liens ''Mathieu B''" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_23">lien</a></p>
@@ -188,21 +193,21 @@ alt="Images/arrows-collapse.png"
 </div>
 <div class="modified_parts_19_2025_div">
 <p class="titre_de_p_19_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 5 mai 2025</p>
-<p class="p_de_modif_19_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Francis Cousin de gdg" changé. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_28_septembre_2024_41_764">lien</a></p>
+<p class="p_de_modif_19_2025 h_titre">&nbsp;≣ Titre "Francis Cousin de gdg" changé. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_28_septembre_2024_41_764">lien</a></p>
 <p class="p_de_modif_19_2025 h_partie">🔳 Partie "Pierre Marie - Plaisirs du corps" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_17">lien</a></p>
 <p class="p_de_modif_19_2025 h_partie">🔳 Partie "Mathieu B.&nbsp;Jeanne D'Arc" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_37_805">lien</a></p>
 </div>
 <div class="modified_parts_16_2025_div">
 <p class="titre_de_p_16_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 14 avril 2025</p>
 <p class="p_de_modif_16_2025 h_table">🧮 Table "" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_18_novembre_2024_15_898">lien</a></p>
-<p class="p_de_modif_16_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Le mot ''monsieur'' dans cette vidéo de Mathieu B, employé pour qualifier pour certains ''libertins''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_49_504">lien</a></p>
+<p class="p_de_modif_16_2025 h_titre">&nbsp;≣ Titre "Le mot ''monsieur'' dans cette vidéo de Mathieu B, employé pour qualifier pour certains ''libertins''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_49_504">lien</a></p>
 </div>
 <div class="modified_parts_15_2025_div">
 <p class="titre_de_p_15_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 7 avril 2025</p>
 <p class="p_de_modif_15_2025 h_table">🧮 Table "Comparatif "intelligence de l'esprit" (rationalité) et intelligence du cœur, gauche/milieu/droite, jusqu'en 2023 inclus et depuis au moins des décennies.(Pourcentages approximatifs, plutôt donnés pour se faire une idée que pour leur précision.) Créature d'extrême "gauche" Population générale plutôt orientée à gauche Créatures à peu près équilibrées entre intelligence du cœur et rationalité&nbsp; Population générale plutôt orientée à droite Créature d'extrême "droite"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_4">lien</a></p>
 <p class="p_de_modif_15_2025 h_partie">🔳 Partie "Points communs&nbsp;entre extrême ''gauche'' et extrême ''droite''" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_6">lien</a></p>
 <p class="p_de_modif_15_2025 h_partie">🔳 Partie "Francis Cousin de gdg" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_28_septembre_2024_41_764">lien</a></p>
-<p class="p_de_modif_15_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Concernant une partie sur Michel Onfray" changé. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_10">lien</a></p>
+<p class="p_de_modif_15_2025 h_titre">&nbsp;≣ Titre "Concernant une partie sur Michel Onfray" changé. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_10">lien</a></p>
 </div>
 <div class="modified_parts_14_2025_div">
 <p class="titre_de_p_14_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 1 avril 2025</p>
@@ -230,7 +235,7 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_11_2025 h_partie">🔳 Partie "Préambule Pierre-Marie P. et Mathieu B." modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_10_novembre_2024_48_940">lien</a></p>
 <p class="p_de_modif_11_2025 h_image_svg">📊 Image svg "Comparaison Pierre-Marie P. et Mathieu B. par rapport à la moyenne.svg" modifiée. <a href="#gauche_et_droite_svg_perma_id_dn_samedi_15_mars_2025_39_783">lien</a></p>
 <p class="p_de_modif_11_2025 h_table">🧮 Table "Comparaison Pierre-Marie / "Mathieu B"Au niveau de l'orientation des deux je verrais plutôt Pierre-Marie à gauche et "Mathieu B" à droite. Mathieu B, au niveau de la pensée, aurait une certaine finesse orientale (une excessivité, parfois, aussi), alors que je verrais Pierre-Marie P. beaucoup plus occidental. Pierre-Marie P. &nbsp; "Mathieu B"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_58">lien</a></p>
-<p class="p_de_modif_11_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Préambule🔆 Droite et gauche" changé. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_11_2025 h_titre">&nbsp;≣ Titre "Préambule🔆 Droite et gauche" changé. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_1">lien</a></p>
 <p class="p_de_modif_11_2025 h_partie">🔳 Partie "Une conception que les n*zis auraient été les seuls à s'être opposés à diverses forces démoniaques" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_mercredi_12_mars_2025_30_345">lien</a></p>
 <p class="p_de_modif_11_2025 h_partie">🔳 Partie "Danger de ''jeter le bébé (Le Fils) avec l'eau du bain (le catholicisme)''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_41_924">lien</a></p>
 <p class="p_de_modif_11_2025 h_partie">🔳 Partie "Tous les Catholiques seraient-ils ''à jeter'', pour Quelqu'un de raci*liste? L'exemple de Jean Chrysostome" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_29_775">lien</a></p>
@@ -255,7 +260,7 @@ alt="Images/arrows-collapse.png"
 <p class="titre_de_p_7_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 10 février 2025</p>
 <p class="p_de_modif_7_2025 h_partie">🔳 Partie "Le vrai critère : Dieu" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_vendredi_4_octobre_2024_20_189">lien</a></p>
 <p class="p_de_modif_7_2025 h_image_svg">📊 Image svg "considérations sur la relative non popularité de Mathieu B. et Pierre-Marie P, leur blocage de certaines plateformes.svg" modifiée. <a href="#gauche_et_droite_svg_perma_id_dn_dimanche_24_novembre_2024_11_782">lien</a></p>
-<p class="p_de_modif_7_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Francis Cousin de gdg" changé. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_28_septembre_2024_41_764">lien</a></p>
+<p class="p_de_modif_7_2025 h_titre">&nbsp;≣ Titre "Francis Cousin de gdg" changé. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_28_septembre_2024_41_764">lien</a></p>
 <p class="p_de_modif_7_2025 h_partie">🔳 Partie "Concernant une partie sur Michel Onfray" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_10">lien</a></p>
 </div>
 <div class="modified_parts_6_2025_div">
@@ -268,10 +273,10 @@ alt="Images/arrows-collapse.png"
 </div>
 <div class="modified_parts_4_2025_div">
 <p class="titre_de_p_4_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 20 janvier 2025</p>
-<p class="p_de_modif_4_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Préambule, ''Mathieu B. / Claude / ''Le grand Monarque''''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_27_octobre_2024_48_716">lien</a></p>
+<p class="p_de_modif_4_2025 h_titre">&nbsp;≣ Titre "Préambule, ''Mathieu B. / Claude / ''Le grand Monarque''''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_27_octobre_2024_48_716">lien</a></p>
 <p class="p_de_modif_4_2025 h_image_svg">📊 Image svg "pensée.svg" modifiée. <a href="#0_gauche_et_droite_svg_perma_id_dn_lundi_20_janvier_2025_43_146">lien</a></p>
 <p class="p_de_modif_4_2025 h_partie">🔳 Partie "Chaine ''les nouveaux Francs''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_20_janvier_2025_31_262">lien</a></p>
-<p class="p_de_modif_4_2025 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "''Mathieu B.'' / la chaine ''Les nouveaux francs''" changé. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6">lien</a></p>
+<p class="p_de_modif_4_2025 h_titre">&nbsp;≣ Titre "''Mathieu B.'' / la chaine ''Les nouveaux francs''" changé. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6">lien</a></p>
 </div>
 <div class="modified_parts_1_2025_div">
 <p class="titre_de_p_1_2025_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 30 décembre 2024</p>
@@ -286,12 +291,12 @@ alt="Images/arrows-collapse.png"
 <div class="modified_parts_50_2024_div">
 <p class="titre_de_p_50_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 9 décembre 2024</p>
 <p class="p_de_modif_50_2024 h_partie">🔳 Partie "''Mathieu B''. Sa position sur le Christianisme actuel (Analyse d'un extrait de sa vidéo à propos des îles canaries)" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_57_453">lien</a></p>
-<p class="p_de_modif_50_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Tableau comparatif gauche/droite" changé. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_1">lien</a></p>
+<p class="p_de_modif_50_2024 h_titre">&nbsp;≣ Titre "Tableau comparatif gauche/droite" changé. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_1">lien</a></p>
 </div>
 <div class="modified_parts_49_2024_div">
 <p class="titre_de_p_49_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 2 décembre 2024</p>
 <p class="p_de_modif_49_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') - Le rap - le langage / Quelques considérations sur le rap" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_13">lien</a></p>
-<p class="p_de_modif_49_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Pierre-Marie (''oddr'') - Le rap - le langage / Quelques considérations sur le rap" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_13">lien</a></p>
+<p class="p_de_modif_49_2024 h_titre">&nbsp;≣ Titre "Pierre-Marie (''oddr'') - Le rap - le langage / Quelques considérations sur le rap" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_13">lien</a></p>
 <p class="p_de_modif_49_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') et Friedrich Nietzsche" modifiée. <a href="#gauche_et_droite_h4_perma_id_dn_lundi_15_juillet_2024_15">lien</a></p>
 <p class="p_de_modif_49_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') - Le rap - le langage / Quelques considérations sur le rap" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_13">lien</a></p>
 </div>
@@ -302,7 +307,7 @@ alt="Images/arrows-collapse.png"
 </div>
 <div class="modified_parts_47_2024_div">
 <p class="titre_de_p_47_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 18 novembre 2024</p>
-<p class="p_de_modif_47_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Questionnement/Hypothèse sur où se situait pendant quelques années Mathieu B." changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_18_novembre_2024_42_450">lien</a></p>
+<p class="p_de_modif_47_2024 h_titre">&nbsp;≣ Titre "Questionnement/Hypothèse sur où se situait pendant quelques années Mathieu B." changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_18_novembre_2024_42_450">lien</a></p>
 <p class="p_de_modif_47_2024 h_partie">🔳 Partie "Préambule, ''Mathieu B. / Claude / ''Le grand Monarque''''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_27_octobre_2024_48_716">lien</a></p>
 <p class="p_de_modif_47_2024 h_partie">🔳 Partie "Une trop grande importance donnée à la couleur de peau, à la ''race''?" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_31_240">lien</a></p>
 <p class="p_de_modif_47_2024 h_partie">🔳 Partie "Francis Cousin de gdg" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_28_septembre_2024_41_764">lien</a></p>
@@ -319,14 +324,14 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "En ce qui concerne la relative non popularité de Pierre-Marie P. et Mathieu B., et leur bannissement de youtube ou autre" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_14_novembre_2024_21_34">lien</a></p>
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "Liens ''Mathieu B''" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_23">lien</a></p>
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "Mathieu B. La réincarnation" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_38_212">lien</a></p>
-<p class="p_de_modif_46_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Mathieu B. et Friedrich Nietzsche" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_38_445">lien</a></p>
+<p class="p_de_modif_46_2024 h_titre">&nbsp;≣ Titre "Mathieu B. et Friedrich Nietzsche" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_38_445">lien</a></p>
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "Mathieu B.&nbsp;Jeanne D'Arc" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_37_805">lien</a></p>
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "Préambule Pierre-Marie P. et Mathieu B." modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_10_novembre_2024_48_940">lien</a></p>
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "Quelques parties à venir, peut-être" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_12_novembre_2024_23_623">lien</a></p>
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "Pierre-Marie et la violence physique. Un comportement Chrétien?" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_14">lien</a></p>
 <p class="p_de_modif_46_2024 h_table">🧮 Table "Aspects négatifs de l'extrême "droite" et de l'extrême "gauche" par rapport au Fils Le Fils Déviances d'extrême "gauche" Déviances d'extrême "droite"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_8">lien</a></p>
 <p class="p_de_modif_46_2024 h_partie">🔳 Partie "En ce qui concerne la non-popularité des sujets qu'abordèrent Pierre-Marie P. et Mathieu B." modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_10_novembre_2024_36_10">lien</a></p>
-<p class="p_de_modif_46_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
+<p class="p_de_modif_46_2024 h_titre">&nbsp;≣ Titre "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
 <p class="p_de_modif_46_2024 h_table">🧮 Table "Comparaison Pierre-Marie / "Mathieu B"Au niveau de l'orientation des deux je verrais plutôt Pierre-Marie à gauche et "Mathieu B" à droite. Mathieu B, au niveau de la pensée, aurait une certaine finesse orientale (une excessivité, parfois, aussi), alors que je verrais Pierre-Marie P. beaucoup plus occidental. Pierre-Marie &nbsp; "Mathieu B"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_58">lien</a></p>
 <p class="p_de_modif_46_2024 h_image_svg">📊 Image svg "Intelligence d'être prudent(e) face à divers ''Catholiques''. Grave danger de tout rejeter.svg" modifiée. <a href="#gauche_et_droite_svg_perma_id_dn_lundi_21_octobre_2024_41_120">lien</a></p>
 </div>
@@ -340,11 +345,11 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_45_2024 h_partie">🔳 Partie "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
 <p class="p_de_modif_45_2024 h_partie">🔳 Partie "Le vrai critère : Dieu" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_vendredi_4_octobre_2024_20_189">lien</a></p>
 <p class="p_de_modif_45_2024 h_partie">🔳 Partie "Pierre-Marie et ''Mathieu B''" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_19">lien</a></p>
-<p class="p_de_modif_45_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Une trop grande importance donnée à la couleur de peau, à la ''race''?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_31_240">lien</a></p>
+<p class="p_de_modif_45_2024 h_titre">&nbsp;≣ Titre "Une trop grande importance donnée à la couleur de peau, à la ''race''?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_31_240">lien</a></p>
 <p class="p_de_modif_45_2024 h_partie">🔳 Partie "Un lien quelconque entre Mathieu B. et l'apôtre Matthieu?" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_5_novembre_2024_10_551">lien</a></p>
 <p class="p_de_modif_45_2024 h_table">🧮 Table "" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_63">lien</a></p>
-<p class="p_de_modif_45_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Christianisme et ''Mathieu B''. En partie contradictoire" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_32">lien</a></p>
-<p class="p_de_modif_45_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "''Mathieu B'' - En partie, assez intéressant" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_31">lien</a></p>
+<p class="p_de_modif_45_2024 h_titre">&nbsp;≣ Titre "Christianisme et ''Mathieu B''. En partie contradictoire" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_32">lien</a></p>
+<p class="p_de_modif_45_2024 h_titre">&nbsp;≣ Titre "''Mathieu B'' - En partie, assez intéressant" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_31">lien</a></p>
 <p class="p_de_modif_45_2024 h_partie">🔳 Partie "Trinité, Christianisme et Mathieu ''B''" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_20">lien</a></p>
 </div>
 <div class="modified_parts_44_2024_div">
@@ -365,19 +370,19 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Préambule, ''Mathieu B. / Claude / ''Le grand Monarque''''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_27_octobre_2024_48_716">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie " extrait d'une chanson de Christine and the Queens (ou plutôt "Rahim Redcar", au dimanche 27 octobre 2024, lien :&nbsp;https://www.youtube.com/watch?v=_C7lXrdjrjQ). Un lien quelconque entre Mathieu B/Claude, et cette chanson?" modifiée. <a href="#gauche_et_droite_audio_perma_id_dn_dimanche_27_octobre_2024_41_865">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "''Mathieu B.'' / la chaine ''Les nouveaux francs''" modifiée. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Certains ''libertins'' profiteraient ils systématiquement de situations de guerre?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_48_981">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "Certains ''libertins'' profiteraient ils systématiquement de situations de guerre?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_48_981">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') -&nbsp;Importance donnée à la prière" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_15">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Sur ce site, des extraits audio &nbsp;de ''Mathieu B.'' ''blanchisés'' 🔉🏳️" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_31_973">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "Sur ce site, des extraits audio &nbsp;de ''Mathieu B.'' ''blanchisés'' 🔉🏳️" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_31_973">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') - Une ressemblance physique avec l'acteur Johannes Brandrup et l'apôtre Paul" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_20">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') et Friedrich Nietzsche" modifiée. <a href="#gauche_et_droite_h4_perma_id_dn_lundi_15_juillet_2024_15">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Pierre-Marie (de l' ''oddr'')" modifiée. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_4">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "''Mathieu B'' - Mon analyse de sa vidéo sur quelques ''libertins''" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_33">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Danger de ''jeter le bébé (Le Fils) avec l'eau du bain (le catholicisme)''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_41_924">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "Danger de ''jeter le bébé (Le Fils) avec l'eau du bain (le catholicisme)''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_41_924">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Préambule - Pierre-Marie P., de l'oddr" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_11">lien</a></p>
 <p class="p_de_modif_43_2024 h_table">🧮 Table "Comparaison Pierre-Marie / "Mathieu B"Au niveau de l'orientation des deux je verrais plutôt Pierre-Marie à gauche et "Mathieu B" à droite. Mathieu B, au niveau de la pensée, aurait une certaine finesse orientale (une excessivité parfois aussi), alors que je verrais Pierre-Marie beaucoup plus occidental. Pierre-Marie &nbsp; "Mathieu B"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_58">lien</a></p>
 <p class="p_de_modif_43_2024 h_table">🧮 Table "" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_38">lien</a></p>
 <p class="p_de_modif_43_2024 h_table">🧮 Table "Comparatif "intelligence de l'esprit" (rationalité) et intelligence du cœur, gauche/milieu/droite, jusqu'en 2023 inclus et depuis au moins des décennies.(Pourcentages approximatifs, plutôt donnés pour se faire une idée que pour leur précision.) Créature d'extrême "gauche" Population générale plutôt orientée à gauche Créatures à peu près équilibrées entre intelligence du cœur et rationalité Population générale plutôt orientée à droite Créature d'extrême "droite"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_4">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Mathieu B., des positionnements assez incompréhensibles, parfois, sur la Chrétienté" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_29_930">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "Mathieu B., des positionnements assez incompréhensibles, parfois, sur la Chrétienté" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_29_930">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Mathieu B. en relativement négatif. Les mots d'argot" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_40_546">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Mathieu B.&nbsp;Jeanne D'Arc" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_37_805">lien</a></p>
@@ -389,10 +394,10 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "La position de Mathieu B. sur la bombe atomique ☢️⚛️" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_46_393">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Pour la vidéo ''5 Clefs pour reconnaître un ab**t* politique + bonus''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_40_555">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Pour la vidéo ''Le dressage du bétail humain''" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_37">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "''Mathieu B''.&nbsp;La vidéo intitulée ''Pire que les juifs : les catholiques''. Considérations" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_30_845">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "''Mathieu B''. Sa position sur le Christianisme actuel (Analyse d'un extrait de sa vidéo à propos des îles canaries)" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_57_453">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Une trop grande importance donnée à la couleur de peau, à la ''race''?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_31_240">lien</a></p>
-<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Certains ''libertins'' chercheraient ils systématiquement ''de la blanche''?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_47_439">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "''Mathieu B''.&nbsp;La vidéo intitulée ''Pire que les juifs : les catholiques''. Considérations" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_30_845">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "''Mathieu B''. Sa position sur le Christianisme actuel (Analyse d'un extrait de sa vidéo à propos des îles canaries)" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_57_453">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "Une trop grande importance donnée à la couleur de peau, à la ''race''?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_lundi_21_octobre_2024_31_240">lien</a></p>
+<p class="p_de_modif_43_2024 h_titre">&nbsp;≣ Titre "Certains ''libertins'' chercheraient ils systématiquement ''de la blanche''?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_47_439">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Analyse de quelques propos de Mathieu ''B'' (propos issus de vidéos ou d'audio)" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_21">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Trinité, Christianisme et Mathieu ''B''" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_20">lien</a></p>
 <p class="p_de_modif_43_2024 h_partie">🔳 Partie "Christianisme et ''Mathieu B''. En partie contradictoire" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_32">lien</a></p>
@@ -404,14 +409,14 @@ alt="Images/arrows-collapse.png"
 <div class="modified_parts_41_2024_div">
 <p class="titre_de_p_41_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 7 octobre 2024</p>
 <p class="p_de_modif_41_2024 h_table">🧮 Table "" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_dimanche_29_septembre_2024_8_81">lien</a></p>
-<p class="p_de_modif_41_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Pierre-Marie (''oddr'') - Une ressemblance physique avec l'acteur Johannes Brandrup et l'apôtre Paul" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_20">lien</a></p>
-<p class="p_de_modif_41_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">&nbsp;≣ Titre "Pierre-Marie (''oddr'') - Une ressemblance physique avec l'acteur Johannes Brandrup et l'apôtre Paul" changé. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_20">lien</a></p>
+<p class="p_de_modif_41_2024 h_titre">&nbsp;≣ Titre "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
 <p class="p_de_modif_41_2024 h_partie">🔳 Partie "Mathieu ''B'' - Mon analyse de l'audio ''tu ''p*es'' la france''" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_34">lien</a></p>
 </div>
 <div class="modified_parts_40_2024_div">
 <p class="titre_de_p_40_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 30 septembre 2024</p>
 <p class="p_de_modif_40_2024 h_table">🧮 Table "Comparaison Pierre-Marie / "Mathieu B"Au niveau de l'orientation des deux je verrais plutôt Pierre-Marie à gauche et "Mathieu B" à droite. Mathieu B, au niveau de la pensée, aurait une certaine finesse orientale (une excessivité parfois aussi), alors que je verrais Pierre-Marie beaucoup plus occidental. Pierre-Marie &nbsp; "Mathieu B"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_58">lien</a></p>
-<p class="p_de_modif_40_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Considérations sur ce petit pourcentage cœur, chez les Judaïsants et l'extrême droite" changé. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_5_octobre_2024_8_853">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">&nbsp;≣ Titre "Considérations sur ce petit pourcentage cœur, chez les Judaïsants et l'extrême droite" changé. <a href="#gauche_et_droite_titre_perma_id_dn_samedi_5_octobre_2024_8_853">lien</a></p>
 <p class="p_de_modif_40_2024 h_partie">🔳 Partie "Le vrai critère : Dieu" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_vendredi_4_octobre_2024_20_189">lien</a></p>
 <p class="p_de_modif_40_2024 h_image_svg">📊 Image svg "distance_Dieu_''extrême droite'' ''extrême gauche''.svg" modifiée. <a href="#gauche_et_droite_svg_perma_id_dn_vendredi_16_août_2024_25">lien</a></p>
 <p class="p_de_modif_40_2024 h_partie">🔳 Partie "''Mathieu B.'' / la chaine ''Les nouveaux francs''" modifiée. <a href="#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6">lien</a></p>
@@ -425,13 +430,13 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_40_2024 h_partie">🔳 Partie "Analyse de quelques propos de Mathieu ''B'' (propos issus de vidéos ou d'audio)" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_21">lien</a></p>
 <p class="p_de_modif_40_2024 h_partie">🔳 Partie "Le mot ''monsieur'' dans cette vidéo de Mathieu B, employé pour qualifier pour certains ''libertins''" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_jeudi_3_octobre_2024_49_504">lien</a></p>
 <p class="p_de_modif_40_2024 h_partie">🔳 Partie "''Mathieu B'' - En partie, assez intéressant" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_31">lien</a></p>
-<p class="p_de_modif_40_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">&nbsp;≣ Titre "Sur cette page droite/gauche, une partie sur Pierre-Marie de l'''oddr'' et une partie sur ''Mathieu B/Claude/le grand Monarque''" changé. <a href="#gauche_et_droite_titre_perma_id_dn_mardi_1_octobre_2024_16_259">lien</a></p>
 <p class="p_de_modif_40_2024 h_partie">🔳 Partie "Des considérations assez intéressantes par moment" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_29_septembre_2024_51_179">lien</a></p>
-<p class="p_de_modif_40_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Mais un comportement vestimentaire contradictoire, dernièrement?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_29_septembre_2024_52_386">lien</a></p>
+<p class="p_de_modif_40_2024 h_titre">&nbsp;≣ Titre "Mais un comportement vestimentaire contradictoire, dernièrement?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_29_septembre_2024_52_386">lien</a></p>
 </div>
 <div class="modified_parts_39_2024_div">
 <p class="titre_de_p_39_2024_modified_parts titre_id first_paragraph_modified_parts">Semaine du lundi 23 septembre 2024</p>
-<p class="p_de_modif_39_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Mais un comportement vestimentaire contradictoire, dernièrement?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_29_septembre_2024_52_386">lien</a></p>
+<p class="p_de_modif_39_2024 h_titre">&nbsp;≣ Titre "Mais un comportement vestimentaire contradictoire, dernièrement?" changé. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_29_septembre_2024_52_386">lien</a></p>
 <p class="p_de_modif_39_2024 h_partie">🔳 Partie "Des considérations assez intéressantes par moment" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_29_septembre_2024_51_179">lien</a></p>
 <p class="p_de_modif_39_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') — Rapport à la nudité" modifiée. <a href="#gauche_et_droite_titre_perma_id_dn_dimanche_29_septembre_2024_29_95">lien</a></p>
 <p class="p_de_modif_39_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') - Une ressemblance physique avec l'acteur Johannes Brandrup et l'apôtre Paul" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_20">lien</a></p>
@@ -439,7 +444,7 @@ alt="Images/arrows-collapse.png"
 <p class="p_de_modif_39_2024 h_table">🧮 Table "" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_38">lien</a></p>
 <p class="p_de_modif_39_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') et Friedrich Nietzsche" modifiée. <a href="#gauche_et_droite_h4_perma_id_dn_lundi_15_juillet_2024_15">lien</a></p>
 <p class="p_de_modif_39_2024 h_partie">🔳 Partie "Pierre-Marie (de l'&nbsp; ''oddr'') et Christianisme" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_13">lien</a></p>
-<p class="p_de_modif_39_2024 h_titre">&nbsp;≣ Titre&nbsp;&nbsp; "Préambule - Pierre-Marie P., de l'oddr" changé. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_11">lien</a></p>
+<p class="p_de_modif_39_2024 h_titre">&nbsp;≣ Titre "Préambule - Pierre-Marie P., de l'oddr" changé. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_11">lien</a></p>
 <p class="p_de_modif_39_2024 h_partie">🔳 Partie "Pierre-Marie, l'appellation ''oddr'' et le pseudonyme ''amalek''" modifiée. <a href="#gauche_et_droite_h2_perma_id_dn_lundi_15_juillet_2024_12">lien</a></p>
 <p class="p_de_modif_39_2024 h_partie">🔳 Partie "Pierre-Marie (''oddr'') - Le rap - le langage / Quelques considérations sur le rap" modifiée. <a href="#gauche_et_droite_h3_perma_id_dn_lundi_15_juillet_2024_13">lien</a></p>
 <p class="p_de_modif_39_2024 h_table">🧮 Table "Comparaison Pierre-Marie / "Mathieu B"Au niveau de l'orientation des deux je verrais plutôt Pierre-Marie à gauche et "Mathieu B" à droite. Mathieu B, au niveau de la pensée, aurait une certaine finesse orientale (une excessivité parfois aussi), alors que je verrais Pierre-Marie beaucoup plus occidental. Pierre-Marie &nbsp; &nbsp; "Mathieu B"" modifiée. <a href="#gauche_et_droite_table_perma_id_dn_lundi_15_juillet_2024_58">lien</a></p>
