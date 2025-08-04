@@ -1291,9 +1291,9 @@ blockquote > p {
 }
 
 .probable_citation_du_Père {
-  border-left: 4px solid red !important;
   font-style: italic;
   color: red !important;
+  background: #ff000024;
   padding-left: 10px;
   border-radius: 20px;
   text-shadow:
@@ -1310,6 +1310,11 @@ blockquote > p {
 * > .probable_citation_du_Père > p > span {
   color: red;
   font-style: italic;
+  text-shadow:
+    1px 0 0 #000000,
+    -1px 0 0 #000000,
+    0 1px 0 #000000,
+    0 -1px 0 #000000;
 }
 
 .probable_citation_du_Père > * {
