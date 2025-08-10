@@ -1445,16 +1445,33 @@ function fct_toggle_audio() {
 }
 
 function updateButtonStyle(audio) {
-  const toggleButton = document.getElementById("toggle_audio");
+  if (!audio) return;
+
+  const externalToggleButton = document.getElementById("toggle_audio");
+  if (externalToggleButton) {
+    if (audio.paused) {
+      externalToggleButton.classList.remove("playing_audio");
+      externalToggleButton.classList.add("paused_audio");
+    } else {
+      externalToggleButton.classList.remove("bi-cassette");
+      externalToggleButton.classList.remove("paused_audio");
+      externalToggleButton.classList.add("playing_audio");
+    }
+  }
+
+  const playerContainer = audio.parentElement.querySelector(
+    ".custom_audio_player_p",
+  );
+  if (!playerContainer) return;
+  const customToggleButton = playerContainer.querySelector(".play_pause_p_p");
+  if (!customToggleButton) return;
+
   if (audio.paused) {
-    toggleButton.classList.remove("playing_audio");
-
-    toggleButton.classList.add("paused_audio");
+    customToggleButton.innerHTML = '<i class="bi-play"></i>';
+    customToggleButton.classList.remove("playing");
   } else {
-    toggleButton.classList.remove("bi-cassette");
-    toggleButton.classList.remove("paused_audio");
-
-    toggleButton.classList.add("playing_audio");
+    customToggleButton.innerHTML = '<i class="bi-pause"></i>';
+    customToggleButton.classList.add("playing");
   }
 }
 
