@@ -95,7 +95,6 @@ html {
 
   scroll-behavior: auto !important;
 
-  z-index: auto !important;
   color-scheme: dark !important;
 }
 
@@ -114,6 +113,8 @@ body {
 
   top: 100px;
 
+  z-index: auto !important;
+
   background: inherit !important;
 }
 
@@ -130,6 +131,10 @@ body {
 }
 
 .modal {
+  z-index: 9000 !important;
+}
+.modal-backdrop {
+  z-index: 1990 !important;
 }
 
 nav-item.dropup {
@@ -1062,6 +1067,7 @@ lite-youtube {
 }
 
 table {
+  z-index: 8 !important;
 }
 
 td {
@@ -1451,8 +1457,7 @@ blockquote > p {
 
 img.image_outside_td_and_float_right,
 figure {
-  position: relative;
-  z-index: 8;
+  z-index: 8 !important;
 }
 
 table.table_outside_a_table_and_outside_card {
@@ -1495,13 +1500,23 @@ table.table_outside_a_table_and_outside_card {
   font-size: 17px !important;
 }
 
+.modal_for_wikipedia {
+  position: fixed;
+  z-index: 300 !important;
+}
+
 article,
 .soixantepx_add {
 }
 
 .div_for_modal_wikipedia {
+  z-index: 999 !important;
+}
+
+.div_for_modal_wikipedia {
   padding-left: -60px;
   padding-right: -60px;
+  z-index: 99 !important;
 }
 
 .div_for_modal_for_link_outside_modal {
@@ -2006,11 +2021,6 @@ thead > tr:last-child {
 }
 
 video {
-}
-
-.modal-content {
-  border: 1px dashed grey;
-  max-height: 88vh !important;
 }
 
 .zoomist-container {
@@ -2686,8 +2696,9 @@ table .trois_last_modifs_weeks {
   max-height: 50vh !important;
 }
 .modal-content {
-  max-height: 94vh;
-  overflow: hidden;
+  border: 2px dashed grey;
+  max-height: 88vh !important;
+  z-index: 999 !important;
 }
 
 .popover-body {
