@@ -1573,14 +1573,20 @@ $(document).ready(function () {
     `#breadcrumb > ul > li:nth-child(n) > div > ul > li:nth-child(2n + 1) {
      background-color: ${minus_70} !important;
     }`,
-    ,
+
+    `.modal_for_wikipedia {
+  position: relative; /* ou relative si nécessaire */
+  z-index: 300 !important; /* supérieur à tout élément flottant */
+}`,
+
     `.modal-backdrop {
-         z-index:9 !important;
+         z-index:999 !important;
+         position: absolute;
         }`,
     `
     .modal-content,.modal-body {
       overflow-y: auto;
-      z-index: 1800;
+      z-index: 1800 !important;
     }`,
 
     `.dropdown-menu {
