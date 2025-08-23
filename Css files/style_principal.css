@@ -2947,3 +2947,12 @@ img[src$=".svg"] {
 canvas:active {
   cursor: grabbing;
 }
+
+.table_scroll_wrapper table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table_scroll_wrapper thead tr {
+  background-color: rgba(0, 136, 1, 0.54);
+}
