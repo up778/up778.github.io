@@ -36,7 +36,9 @@
 # Film_s
 # Audio_s
 **/Film_s/**/__*
+**/Film_s/**/*__.*
 **/Audio_s/**/__*
+**/Audio_s/**/*__.*
 # Film_s/*v3*
 # Audio_s/*v3*
 # AAA/**/*uuu*

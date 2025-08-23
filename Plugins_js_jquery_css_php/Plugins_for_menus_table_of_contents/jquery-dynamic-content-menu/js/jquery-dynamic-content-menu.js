@@ -241,22 +241,26 @@
   (DynamicContentMenu.prototype._setActiveElement = function (pageload) {
     var self = this,
       hash = window.location.hash.substring(1),
-      elem = self.$element.find('li[data-unique="' + hash + '"]');
+      elem;
+
+    function activateElement($el) {
+      if (!$el.length) return;
+
+      if ($el.is(":visible")) {
+        self.$element.find("." + self.focusClass).removeClass(self.focusClass);
+        $el.addClass(self.focusClass);
+      }
+    }
 
     if (hash.length) {
-      self.$element.find("." + self.focusClass).removeClass(self.focusClass);
-
-      elem.addClass(self.focusClass);
+      elem = self.$element.find('li[data-unique="' + hash + '"]');
+      activateElement(elem);
 
       if (self.options.showAndHide) {
         elem.click();
       }
-    } else {
-      self.$element.find("." + self.focusClass).removeClass(self.focusClass);
-
-      if (!hash.length && pageload && self.options.highlightDefault) {
-        self.$element.find(itemClass).first().addClass(self.focusClass);
-      }
+    } else if (pageload && self.options.highlightDefault) {
+      activateElement(self.$element.find(itemClass).first());
     }
 
     return self;
