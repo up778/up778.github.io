@@ -1297,8 +1297,6 @@ blockquote > p {
 }
 
 .probable_citation_du_Père {
-  z-index: 1 !important;
-
   font-style: italic;
   color: red !important;
   background: #ff000024;
@@ -1338,7 +1336,6 @@ blockquote > p {
 }
 
 .probable_citation_du_Fils {
-  z-index: 2 !important;
   position: relative;
   background: #ffff0020;
   color: #ffff00;
@@ -1366,7 +1363,6 @@ blockquote > p {
 }
 
 .probable_citation_du_Saint-Esprit {
-  z-index: 3 !important;
   border-left: 4px solid white !important;
   font-style: italic;
   color: white !important;
@@ -1389,9 +1385,6 @@ blockquote > p {
 }
 
 .probable_citation_de_la_Mère {
-  z-index: 4 !important;
-  position: relative;
-
   color: #ff4ff6;
   border: 1px solid #ff4ff6bb;
   border-radius: 10px;
@@ -1421,7 +1414,6 @@ blockquote > p {
 }
 
 .class_citation_standard {
-  position: relative;
   background: #55ff5530;
   color: #55ff55;
 
@@ -1429,8 +1421,6 @@ blockquote > p {
 
   margin: 1px 0 26px 0px;
   font-style: italic;
-
-  z-index: 0 !important;
 }
 
 .class_citation_standard::before {
