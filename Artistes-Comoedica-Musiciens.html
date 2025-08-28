@@ -672,7 +672,7 @@ alt="Images/arrows-collapse.png"
 <div class="background_class_horizontal_heading"><nav id="breadcrumb"></nav></div>
 <main role="main">
 <header role="banner"></header>
-<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Musiciens___Artistes___Com_diens">Musiciens 🎻- <span style="color: #3598db;">musique</span> 🎸🪕</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Art-Artistes/Artistes-Comoedica-Musiciens/Images/Images_for_backgrounds/sky-2675322_1920_v2.jpg');background-size:98vw;background-position:_;background-color:_;background-repeat:_;background-attachment:_" perma_id_of_this_article_from_perma_id="Artistes-Comoedica-Musiciens_h1_perma_id_dn_mardi_23_juillet_2024_1"><h1 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_1" id="Artistes-Comoedica-Musiciens_h1_perma_id_dn_mardi_23_juillet_2024_1" class="winnie">Musiciens classiques</h1>
+<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Musiciens___Artistes___Com_diens">Musiciens 🎻- <span style="color: #3598db;">musique</span> 🎸🪕</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Art-Artistes/Artistes-Comoedica-Musiciens/Images/Images_for_backgrounds/sky-2675322_1920_v2.jpg');background-size:98vw;background-position:_;background-color:_;background-repeat:_;background-attachment:_" perma_id_of_this_article_from_perma_id="Artistes-Comoedica-Musiciens_h1_perma_id_dn_mardi_23_juillet_2024_1"><h1 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_1" id="Artistes-Comoedica-Musiciens_h1_perma_id_dn_mardi_23_juillet_2024_1">Musiciens classiques</h1>
 <p> </p>
 <section class="bcLevel2" id="Artistes-Comoedica-Musiciens_h2_perma_id_dn_mardi_23_juillet_2024_1"><h2 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_2">Antonio Lucio Vivaldi</h2><table class="table_outside_a_table_and_outside_card margin_left_2" style="width: 72vw; height: 40vh;">
 <tbody>
@@ -2293,7 +2293,7 @@ alt="Images/arrows-collapse.png"
 <p> </p>
 </div>
 </div><p> </p></section>
-<section class="bcLevel2" id="Artistes-Comoedica-Musiciens_h2_perma_id_dn_mardi_23_juillet_2024_4"><h2 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_6">Jakob Ludwig Felix Mendelssohn</h2><section class="bcLevel3" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_mercredi_2_juillet_2025_51_737"><h3 class="reload-class_une_semaine__">Felix Mendelssohn, musique de saison🆕</h3><table style="width: 32vw; height: 48vh; border-collapse: collapse; text-align: center; empty-cells: show;" class="table_float_end float-end" empty-cells="show">
+<section class="bcLevel2" id="Artistes-Comoedica-Musiciens_h2_perma_id_dn_mardi_23_juillet_2024_4"><h2 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_6">Jakob Ludwig Felix Mendelssohn</h2><section class="bcLevel3" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_mercredi_2_juillet_2025_51_737"><h3 class="reload-class_une_semaine__">Felix Mendelssohn, musique de saison</h3><table style="width: 32vw; height: 48vh; border-collapse: collapse; text-align: center; empty-cells: show;" class="table_float_end float-end" empty-cells="show">
 <tbody>
 <tr>
 <td style="height: 100%;">
@@ -5563,6 +5563,60 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     canvases.forEach(canvas => window.chartjs_helper.init_chart_from_canvas(canvas));
   });
 })();
+// fichier: ajouter_icones.js
+window.addEventListener("DOMContentLoaded", function () {
+  setTimeout(() => {
+    function extraire_date_depuis_id(id) {
+      // Exemple d'id : "html_test_plus_titre_perma_id_dn_mardi_19_août_2025_15_234"
+      //                "html_test_plus_titre_perma_id_dn_dimanche_2juillet_2025_47_100"
+      const regex = /_(\d{1,2})_?([a-zA-Zéèêëàâîïôöùûüç]+)_(\d{4})/i;
+      const match = id.match(regex);
+      if (!match) return null;
+      const jour = parseInt(match[1], 10);
+      const mois_str = match[2]
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      const annee = parseInt(match[3], 10);
+      const mois_map = {
+        janvier: 0,
+        fevrier: 1,
+        mars: 2,
+        avril: 3,
+        mai: 4,
+        juin: 5,
+        juillet: 6,
+        aout: 7,
+        septembre: 8,
+        octobre: 9,
+        novembre: 10,
+        decembre: 11,
+      };
+      const mois = mois_map[mois_str];
+      if (mois == null) return null;
+      return new Date(annee, mois, jour);
+    }
+    const deux_semaines_ms = 14 * 24 * 60 * 60 * 1000;
+    const maintenant = new Date();
+    // cibler à la fois<article id=...> et <section id=...>
+    document.querySelectorAll("article[id], section[id]").forEach((bloc) => {
+      const d = extraire_date_depuis_id(bloc.id);
+      if (!d) return;
+      const ecart = Math.abs(maintenant - d);
+      if (ecart <= deux_semaines_ms) {
+        bloc.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((titre) => {
+          // éviter de dupliquer l'icône si elle est déjà présente
+          if (!titre.dataset.iconeAjoutee) {
+            const icone = document.createElement("span");
+            icone.textContent = " 🆕";
+            titre.appendChild(icone);
+            titre.dataset.iconeAjoutee = "1";
+          }
+        });
+      }
+    });
+  }, 500); // 0,5s après chargement du DOM
+});
 </script>
 <script>
   $("video").each(function (index, elem) {
