@@ -2867,8 +2867,6 @@ alt="Images/arrows-collapse.png"
 </tbody>
 </table><p>Une partie des Créatures déséquilibrées et des Créatures sous emprise démoniaque seront peut-être sauvées? (Certaines furent sous "emprise démoniaque" parce qu'elles furent victimes, alors ce ne serait vraiment pas pareil, par rapport à celles qui par choix continueraient vers des voies "démoniaques".)</p><p><picture><source srcset="Creaturae/Occidentaux-Orientaux/Images/Avif_images/3-August-2023-20-53-rand245image.avif" type="image/avif"> <img style="border-width: 1px; border-style: dashed; margin-top: 2%; margin-bottom: 2%; float: right; width: 80%; height: auto;" class="rounded image_outside_td_and_float_right" src="Creaturae/Occidentaux-Orientaux/Images/3-August-2023-20-53-rand245image.png" width="2149px" loading="lazy" alt="Images/3-August-2023-20-53-rand245image.png" height="418px"></picture> Attention, j'ai estimé qu'une même Créature pourrait être elle-même plutôt dans une colonne, concernant une partie de ses comportements, et pour une autre partie de ses comportements, dans une autre colonne.<br>De plus, à un certain âge, une même Créature pourrait être plutôt écartée du milieu et à un autre âge, plutôt rapprochée du milieu.<br>Les pourcentages 6, 14, 13, 12, 4, 12, 13, 14, 6 sont donnés vraiment à titre approximatif. Peut-être je pris le chiffre 6, pour les extrêmes, parce qu'un chiffre assez connoté, avec le 666. Mais le chiffre 6, à lui seul me sembla-t-il "maudit". Je dus, pour le moins, en douter.</p><p>Parfois, en réalisant ce tableau, je dus comme penser à Platon (entres autres) (un Auteur de l'antiquité). Je ne suis plus tout à fait sûr au moment de rédiger ceci, mais rédigea-t-il certains de ses textes avant l'engloutissement de l'atlantide? Genre fit-il comme une archive de son temps avant une catastrophe? Alors je dus parfois songer que cette rédaction sur les Occidentaux/orientaux avait peut-être certaines ressemblances avec les mémoires de Platon. Enfin je devrais me re-renseigner sur ces écrits de Platon.<br>J'ai rédigé aussi ces considérations sur occident/orient, peut-être avant divers événements eschatologiques devant survenir d'après divers Auteurs Chrétiens. (Dont l'engloutissement de certaines parties de la france, l'invasion arabo-russe d'une partie de la france (selon Marie-Julie Jahenny). Une troisième guerre mondiale?)</p><p style="clear: both; break-after: always">&nbsp;</p></section>
 </article><article id="capsule_des_h1_4004" class="capsule1 capsule_des_h1_4004 capsule bcLevel1" perma_id_of_this_article_from_perma_id="Orientaux__Occidentaux_h1_perma_id_dn_lundi_15_juillet_2024_7"><h1 permalien_dn="Orientaux__Occidentaux_permalien_dn_vendredi_31_mai_2024_176" id="Orientaux__Occidentaux_h1_perma_id_dn_lundi_15_juillet_2024_7">Comparaison occident/orient</h1>
-<p> </p>
-<p> </p>
 <section class="bcLevel2" id="Orientaux__Occidentaux_h2_perma_id_dn_lundi_15_juillet_2024_53"><h2 permalien_dn="Orientaux__Occidentaux_permalien_dn_vendredi_31_mai_2024_177">Comparaison générale occident/orient</h2><section class="bcLevel3" id="Orientaux__Occidentaux_h3_perma_id_dn_lundi_15_juillet_2024_57"><h3 permalien_dn="Orientaux__Occidentaux_permalien_dn_vendredi_31_mai_2024_181">Occident vs orient - Deux faces d'une même pièce?</h3><p><em> <picture><source srcset="Creaturae/Occidentaux-Orientaux/Images/Avif_images/mceclip24.avif" type="image/avif"> <img style="float: right; width: 15%; height: auto;" class="rounded image_outside_td_and_float_right" src="Creaturae/Occidentaux-Orientaux/Images/mceclip24.png" width="512px" loading="lazy" alt="Images/mceclip24.png" height="238px"></picture> Occident et orient, deux faces d'une même pièce?</em></p><p>Des tableaux comparatifs occident-orient, plus haut, j'aurais de quoi estimer, pour une Créature, que ce n'est pas forcément être oriental ou occidental, qui serait vraiment important, mais plutôt être proche ou non de <strong>D</strong>ieu (être proche ou non de la colonne du milieu, pour rédiger autrement).<br>En fonction des pays, en fonction des Créatures, j'eus l'impression que l'on retrouve parfois une part d'occident chez les Orientaux et une part d'oriental chez les occidentaux.</p><p>(Des fois, certains Gens vivant dans les pays orientaux sont plutôt mous, et vice-versa). Avec le temps, il me semble il y a de plus en plus de ressemblance entre Orientaux et Occidentaux, de mélanges. La distinction entre les uns et les autres me sembla parfois assez difficile à faire.</p><table class="table_float_end float-end table_outside_a_table_and_outside_card margin_left_2" style="border-collapse: collapse; text-align: center; empty-cells: show; width: 42vw; height: 51vh;" empty-cells="show" border="1">
 <tbody>
 <tr>
@@ -10171,6 +10169,60 @@ if (!window.location.href.includes("up778.github.io") && !window.location.href.i
     canvases.forEach(canvas => window.chartjs_helper.init_chart_from_canvas(canvas));
   });
 })();
+// fichier: ajouter_icones.js
+window.addEventListener("DOMContentLoaded", function () {
+  setTimeout(() => {
+    function extraire_date_depuis_id(id) {
+      // Exemple d'id : "html_test_plus_titre_perma_id_dn_mardi_19_août_2025_15_234"
+      //                "html_test_plus_titre_perma_id_dn_dimanche_2juillet_2025_47_100"
+      const regex = /_(\d{1,2})_?([a-zA-Zéèêëàâîïôöùûüç]+)_(\d{4})/i;
+      const match = id.match(regex);
+      if (!match) return null;
+      const jour = parseInt(match[1], 10);
+      const mois_str = match[2]
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      const annee = parseInt(match[3], 10);
+      const mois_map = {
+        janvier: 0,
+        fevrier: 1,
+        mars: 2,
+        avril: 3,
+        mai: 4,
+        juin: 5,
+        juillet: 6,
+        aout: 7,
+        septembre: 8,
+        octobre: 9,
+        novembre: 10,
+        decembre: 11,
+      };
+      const mois = mois_map[mois_str];
+      if (mois == null) return null;
+      return new Date(annee, mois, jour);
+    }
+    const deux_semaines_ms = 14 * 24 * 60 * 60 * 1000;
+    const maintenant = new Date();
+    // cibler à la fois<article id=...> et <section id=...>
+    document.querySelectorAll("article[id], section[id]").forEach((bloc) => {
+      const d = extraire_date_depuis_id(bloc.id);
+      if (!d) return;
+      const ecart = Math.abs(maintenant - d);
+      if (ecart <= deux_semaines_ms) {
+        bloc.querySelectorAll("h1, h2, h3, h4, h5, h6").forEach((titre) => {
+          // éviter de dupliquer l'icône si elle est déjà présente
+          if (!titre.dataset.iconeAjoutee) {
+            const icone = document.createElement("span");
+            icone.textContent = " 🆕";
+            titre.appendChild(icone);
+            titre.dataset.iconeAjoutee = "1";
+          }
+        });
+      }
+    });
+  }, 500); // 0,5s après chargement du DOM
+});
 </script>
 <script>
   $("video").each(function (index, elem) {
