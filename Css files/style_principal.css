@@ -2968,6 +2968,11 @@ canvas:active {
   cursor: grabbing;
 }
 
+.table_scroll_wrapper {
+  border: 1px solid grey;
+  border-radius: 2px;
+}
+
 .table_scroll_wrapper table {
   border-collapse: collapse;
   width: 100%;
