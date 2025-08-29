@@ -1662,6 +1662,31 @@ article,
     0 1px 0 #333,
     0 -1px 0 #333;
 }
+
+.h_citation.h_probable_citation_du_Père {
+  color: red !important;
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
+}
+.h_citation.h_probable_citation_du_Fils {
+  color: yellow !important;
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
+}
+.h_citation.h_probable_citation_de_la_Mère {
+  color: #ff4ff6 !important;
+  text-shadow:
+    1px 0 0 #333,
+    -1px 0 0 #333,
+    0 1px 0 #333,
+    0 -1px 0 #333;
+}
 .h_nouvelle_image_svg {
   color: rgb(255, 106, 0) !important;
   text-shadow:
