@@ -26,7 +26,10 @@
 
 #breadcrumb .tocLinkBreadcrumb {
   color: #7070ff;
-  font: 0.8em Helvetica, Arial, Sans-Serif;
+  font:
+    0.8em Helvetica,
+    Arial,
+    Sans-Serif;
   font-style: italic;
   float: right;
   margin-right: 20px;
@@ -36,7 +39,10 @@
 .breadcrumb {
   list-style: none;
 
-  font: 0.8em Helvetica, Arial, Sans-Serif;
+  font:
+    0.8em Helvetica,
+    Arial,
+    Sans-Serif;
   padding-left: 0;
 }
 
@@ -113,17 +119,21 @@
   border-radius: 10%;
 }
 
+.breadcrumb > li {
+  position: relative;
+}
+
 .breadcrumb > li > div {
   display: none;
   position: absolute;
 
+  top: 24px;
+  left: 100%;
   margin-top: 0px;
   background-color: white;
   border: 1px solid #4b4b4b;
   padding: 5px;
-
-  margin-left: 12vw;
-  margin-top: 24px;
+  transform: translateX(10%);
 }
 
 .breadcrumb > li > div ul {

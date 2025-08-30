@@ -59,7 +59,7 @@ $("head").append(
       breadcrumbContainer,
     );
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < settings.levels; i++) {
       breadcrumbList.append("<li class='gfre oncliik'></li>");
     }
 
@@ -72,7 +72,7 @@ $("head").append(
 
       for (let i = settings.levels; i > 0; i--) {
         const inView = $(
-          "." + settings.levelClassPrefix + i + ":in-viewport(320)",
+          "." + settings.levelClassPrefix + i + ":in-viewport(300)",
         );
         if (inView.length > 0) {
           level = i;
@@ -139,8 +139,8 @@ $("head").append(
           .parent()
           .children("." + settings.levelClassPrefix + level);
         if (siblings.length > 0) {
-          const subMenu = $('<ul class="yyyy" >').appendTo(
-            $("<div >").appendTo(li),
+          const subMenu = $('<ul class="yyyy">').appendTo(
+            $("<div>").appendTo(li),
           );
           siblings.each(function () {
             const siblingHeading = $(this)
@@ -149,7 +149,7 @@ $("head").append(
               .text();
             const isCurrent = siblingHeading === heading;
             subMenu.append(
-              '<li ><a class="Jacques2" href="#' +
+              '<li><a class="Jacques2" href="#' +
               $(this).attr("id") +
               '" style="border-radius:10px;' +
               (isCurrent
@@ -213,3 +213,33 @@ $("html").on("click", ".Jacques2", function () {
 
   // const id = 'profilePhoto';
 });
+
+// $(document).ready(function () {
+//   $(document).on("mouseenter", ".gfre", function () {
+//     const $thisDropdown = $(this).find(".dropdown");
+
+//     $(".gfre")
+//       .not(this)
+//       .each(function () {
+//         const $otherDropdown = $(this).find(".dropdown");
+//         if ($otherDropdown.hasClass("show")) {
+//           $otherDropdown.removeClass("show");
+//           $otherDropdown.find(".yyyy").removeClass("show");
+//         }
+//       });
+
+//     $thisDropdown.addClass("show");
+//     $thisDropdown.find(".yyyy").addClass("show");
+//   });
+
+//   $(document).on("click", function (e) {
+//     if ($(e.target).closest(".gfre").length === 0) {
+//       $(".dropdown.show").removeClass("show");
+//       $(".yyyy.show").removeClass("show");
+//     }
+//   });
+
+//   $(document).on("click", ".yyyy", function (e) {
+//     e.stopPropagation();
+//   });
+// });
