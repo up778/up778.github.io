@@ -2303,6 +2303,10 @@ tbody:before {
   margin-bottom: 20px;
 }
 
+figure {
+  z-index: 5 !important;
+}
+
 h1,
 h2,
 h3,
