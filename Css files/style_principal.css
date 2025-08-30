@@ -1526,7 +1526,7 @@ article,
 .div_around_iframe {
   border-radius: 10%;
 
-  z-index: 7 !important;
+  z-index: 70 !important;
 }
 
 .div_for_modal_for_link_outside_modal > a {
