@@ -1396,7 +1396,7 @@ function offsetAnchor() {
 }
 function for_breadcrumb_links_offsetAnchor() {
   if (location.hash.length !== 0) {
-    window.scrollTo(window.scrollX, window.scrollY - 110);
+    window.scrollTo(window.scrollX, window.scrollY - 120);
   }
 }
 $(document).on("click", "a", function (event) {
