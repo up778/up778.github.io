@@ -13,6 +13,9 @@ $("head").append(
   `<style>.customStyle { background-color: ${trans_predo_color_of_page_recup} !important; }</style>`,
 );
 
+let clicked_breadcrumb_id = null;
+let freeze_refresh = false;
+
 (function ($) {
   /**
    * jQuery Dynamic Breadcrumb Plugin.
@@ -70,14 +73,20 @@ $("head").append(
       let level = 0;
       let currentContainer;
 
-      for (let i = settings.levels; i > 0; i--) {
-        const inView = $(
-          "." + settings.levelClassPrefix + i + ":in-viewport(300)",
-        );
-        if (inView.length > 0) {
-          level = i;
-          currentContainer = inView.first();
-          break;
+      if (clicked_breadcrumb_id) {
+        currentContainer = $("#" + clicked_breadcrumb_id);
+        const match = currentContainer.attr("class").match(/bcLevel(\d)/);
+        level = match ? parseInt(match[1], 10) : 1;
+      } else {
+        for (let i = settings.levels; i > 0; i--) {
+          const inView = $(
+            "." + settings.levelClassPrefix + i + ":in-viewport(300)",
+          );
+          if (inView.length > 0) {
+            level = i;
+            currentContainer = inView.first();
+            break;
+          }
         }
       }
 
@@ -129,16 +138,17 @@ $("head").append(
           .find("h" + cssLevel)
           .first()
           .text();
-        $(
-          '<a data-bs-toggle="dropdown" role="button" href="javascript:void(0)">' +
-          heading +
-          "</a>",
-        ).appendTo(li);
-
         const siblings = currentContainer
           .parent()
           .children("." + settings.levelClassPrefix + level);
-        if (siblings.length > 0) {
+
+        if (siblings.length > 1) {
+          $(
+            '<a role="button" data-bs-toggle="dropdown" href="javascript:void(0)">' +
+            heading +
+            "</a>",
+          ).appendTo(li);
+
           const subMenu = $('<ul class="yyyy">').appendTo(
             $("<div>").appendTo(li),
           );
@@ -147,10 +157,14 @@ $("head").append(
               .find("h" + cssLevel)
               .first()
               .text();
-            const isCurrent = siblingHeading === heading;
+            const siblingId = $(this).attr("id");
+            const currentId = currentContainer.attr("id");
+
+            const isCurrent = siblingId === currentId;
+
             subMenu.append(
               '<li><a class="Jacques2" href="#' +
-              $(this).attr("id") +
+              siblingId +
               '" style="border-radius:10px;' +
               (isCurrent
                 ? "border:2px dotted " +
@@ -165,6 +179,15 @@ $("head").append(
               "</a></li>",
             );
           });
+        } else {
+          // cas seul → pas de dropdown
+          $(
+            '<a class="Jacques2" href="#' +
+            currentContainer.attr("id") +
+            '">' +
+            heading +
+            "</a>",
+          ).appendTo(li);
         }
 
         li.show();
@@ -173,10 +196,10 @@ $("head").append(
       breadcrumbContainer.slideDown(settings.slideDuration);
     }
 
-    // ---------- Intégration requestAnimationFrame ----------
     let refreshScheduled = false;
 
     function scheduleRefresh() {
+      if (freeze_refresh) return;
       if (!refreshScheduled) {
         refreshScheduled = true;
         requestAnimationFrame(() => {
@@ -186,60 +209,35 @@ $("head").append(
       }
     }
 
-    // Appel sur scroll
     $(window).on("scroll resize", scheduleRefresh);
 
-    // Première exécution
     scheduleRefresh();
 
-    return breadcrumbContainer;
+    return {
+      container: breadcrumbContainer,
+      refresh: refreshBreadcrumb,
+    };
   };
 })(jQuery);
 
-// Animation clic
-$("html").on("click", ".Jacques2", function () {
-  const target = $(this).attr("href");
-  $(target).addClass("animate__animated animate__shakeX");
-  setTimeout(() => {
-    $(target).removeClass("animate__animated animate__shakeX");
-  }, 500);
+$(document).ready(function () {
+  const breadcrumb = $("#breadcrumb").initBreadcrumb();
 
-  // SmoothScrollTo(clicked_link, 1000);
-  // $(clicked_link).get(0).scrollIntoView() - 400;
-  // setTimeout(() => {
-  //   $(clicked_link).get(0).scrollIntoView() + 400;
-  // }, 500);
-  // $(clicked_link).get(0).scrollIntoView() + 400;
+  $("html").on("click", ".Jacques2", function (e) {
+    freeze_refresh = true;
+    clicked_breadcrumb_id = $(this).attr("href").substring(1);
 
-  // const id = 'profilePhoto';
+    breadcrumb.refresh();
+
+    setTimeout(() => {
+      freeze_refresh = false;
+      clicked_breadcrumb_id = null;
+    }, 600);
+
+    const target = $(this).attr("href");
+    $(target).addClass("animate__animated animate__shakeX");
+    setTimeout(() => {
+      $(target).removeClass("animate__animated animate__shakeX");
+    }, 500);
+  });
 });
-
-// $(document).ready(function () {
-//   $(document).on("mouseenter", ".gfre", function () {
-//     const $thisDropdown = $(this).find(".dropdown");
-
-//     $(".gfre")
-//       .not(this)
-//       .each(function () {
-//         const $otherDropdown = $(this).find(".dropdown");
-//         if ($otherDropdown.hasClass("show")) {
-//           $otherDropdown.removeClass("show");
-//           $otherDropdown.find(".yyyy").removeClass("show");
-//         }
-//       });
-
-//     $thisDropdown.addClass("show");
-//     $thisDropdown.find(".yyyy").addClass("show");
-//   });
-
-//   $(document).on("click", function (e) {
-//     if ($(e.target).closest(".gfre").length === 0) {
-//       $(".dropdown.show").removeClass("show");
-//       $(".yyyy.show").removeClass("show");
-//     }
-//   });
-
-//   $(document).on("click", ".yyyy", function (e) {
-//     e.stopPropagation();
-//   });
-// });
