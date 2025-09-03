@@ -447,10 +447,10 @@ function add_ytmb(url1, url2, url3) {
 function stop_video_background() {
   try {
     jQuery("#myPlayerID").YTPPause();
-  } catch (e) {}
+  } catch (e) { }
   try {
     jQuery("#myPlayerID").YTPStop();
-  } catch (e) {}
+  } catch (e) { }
 
   $("#myPlayerID").remove();
   $("#wrapper_myPlayerID").remove();
@@ -514,12 +514,12 @@ function add_button_for_background_video(
   setTimeout(() => {
     $("body").append(
       "" +
-        return_button_for_backrgound_video(
-          video_background_youtube11_url_1,
-          video_background_youtube11_url_2,
-          video_background_youtube11_url_3,
-        ) +
-        "",
+      return_button_for_backrgound_video(
+        video_background_youtube11_url_1,
+        video_background_youtube11_url_2,
+        video_background_youtube11_url_3,
+      ) +
+      "",
     );
     // }
   }, 1000);
@@ -645,7 +645,7 @@ $(document).ready(function () {
           }
         }
       }
-    } catch (ex) {}
+    } catch (ex) { }
   }
 });
 
@@ -1025,8 +1025,8 @@ $("body").on(
         .find(".avoid_iframe_pour_iframe_wiki_etc")
         .append(
           '<iframe width="" height="" style="height: 70vh; width: 98%;" src="' +
-            src_from +
-            '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
+          src_from +
+          '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
         );
     } else {
     }
@@ -1063,13 +1063,13 @@ $("body").on("show.bs.modal", ".footermod3", function () {
     .find(".avoid_iframe_pour_iframe_wiki_etc")
     .append(
       '<iframe width="" height="" style="height: 90vh; width: 98%;" src="' +
-        src_from_footer +
-        '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
+      src_from_footer +
+      '" title="" frameborder="0" allowfullscreen="allowfullscreen" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>',
     );
 });
 $("body").on("hide.bs.modal", ".footermod3", function () {
   var closest_article = $(this).closest("article");
-  $("article").each(function () {});
+  $("article").each(function () { });
   closest_article.css("content-visibility", "visible");
   $(this).find(".avoid_iframe_pour_iframe_wiki_etc").find("iframe").remove();
 });
@@ -1090,16 +1090,16 @@ $(document).ready(function () {
     var tag_name_number_special = 3 - tag_name_number;
     $(".liste_tous_titres_class").append(
       '<li class="on_hover_lien_all_titles tytyu"><a class="' +
-        aio +
-        " dropdown-item lien_all_title_" +
-        tag_name_number +
-        ' lien_de_titre" style="font-size:1' +
-        tag_name_number_special +
-        '0%" href="#' +
-        id +
-        '">' +
-        text +
-        "</a></li>",
+      aio +
+      " dropdown-item lien_all_title_" +
+      tag_name_number +
+      ' lien_de_titre" style="font-size:1' +
+      tag_name_number_special +
+      '0%" href="#' +
+      id +
+      '">' +
+      text +
+      "</a></li>",
     );
   });
 
@@ -1167,24 +1167,24 @@ $("body").on("dblclick", "img", function () {
       if (ttt.css("float") == "left" || ttt.css("float") == "right") {
         ttt.wrap(
           '<div class="zoomist-container" id="' +
-            tintini +
-            '" style="max-width:' +
-            pourcentage_enventualy_agrandi +
-            ";float:" +
-            ttt.css("float") +
-            ";" +
-            height_pour_svg +
-            '"></div>',
+          tintini +
+          '" style="max-width:' +
+          pourcentage_enventualy_agrandi +
+          ";float:" +
+          ttt.css("float") +
+          ";" +
+          height_pour_svg +
+          '"></div>',
         );
       } else {
         ttt.wrap(
           '<div class="zoomist-container" id="' +
-            tintini +
-            '" style="max-width:' +
-            pourcentage_enventualy_agrandi +
-            ";" +
-            height_pour_svg +
-            '"></div>',
+          tintini +
+          '" style="max-width:' +
+          pourcentage_enventualy_agrandi +
+          ";" +
+          height_pour_svg +
+          '"></div>',
         );
       }
 
@@ -1417,7 +1417,7 @@ function toggle_falling_leaves(param) {
     $(".image_autumn").css("display", "none");
   }
 }
-setTimeout(() => {}, 100);
+setTimeout(() => { }, 100);
 
 let currentAudio = null;
 
