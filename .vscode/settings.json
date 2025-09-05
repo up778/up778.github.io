@@ -1,0 +1,17 @@
+// {
+//  "emeraldwalk.runonsave": {
+//     "commands": [
+//       {
+//         "match": "\\Scss\\\\custom.scss",
+//         "cmd": "sass Scss/custom.scss Scss/custom.css --style compressed"
+//         ///
+//       },
+//       {
+//         "match": ".*",
+//         "cmd": "powershell -Command \"$repo = git rev-parse --show-toplevel; if (-not (git show-ref --verify --quiet refs/heads/local-history2)) { git branch local-history2; }; git checkout local-history2; $relPath = Resolve-Path -Relative '${file}'; $ext = [System.IO.Path]::GetExtension('${file}'); $icon = switch ($ext) { '.js' { '🟨' }; '.ahk' { '🟩' }; '.bat' { '⚡' }; '.sh' { '⚡' }; '.php' { '🐘' }; '.py' { '🟪' }; '.json' { '☰' }; '.html' { '📙' }; '.css' { '🎨' }; '.txt' { '📝' }; default { '⏰' } }; git add -f '${file}'; if (-not (git diff --cached --quiet)) { git commit -m ((Get-Date -Format 'dd/MM/yyyy HH:mm:ss') + ' ' + $icon + ' ${fileBasename}') }\""
+//       }
+//     ]
+//   },
+
+
+// }
