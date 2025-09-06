@@ -1070,10 +1070,6 @@ table {
   z-index: 80 !important;
 }
 
-.modal_for_wikipedia {
-  z-index: 1000 !important;
-}
-
 td {
   z-index: 20 !important;
 }
@@ -1501,21 +1497,15 @@ table.table_outside_a_table_and_outside_card {
 
 .modal_for_wikipedia {
   position: fixed;
-  z-index: 300 !important;
+
+  z-index: 1000 !important;
+  padding-left: -60px;
+  padding-right: -60px;
+  z-index: 99 !important;
 }
 
 article,
 .soixantepx_add {
-}
-
-.div_for_modal_wikipedia {
-  z-index: 999 !important;
-}
-
-.div_for_modal_wikipedia {
-  padding-left: -60px;
-  padding-right: -60px;
-  z-index: 99 !important;
 }
 
 .div_for_modal_for_link_outside_modal {
