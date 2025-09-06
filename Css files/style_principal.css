@@ -1067,7 +1067,11 @@ lite-youtube {
 }
 
 table {
-  z-index: 8 !important;
+  z-index: 80 !important;
+}
+
+.modal_for_wikipedia {
+  z-index: 1000 !important;
 }
 
 td {
@@ -1089,7 +1093,7 @@ body:not(:has(.dropdown-menu thead)):not(:has(.modal-body thead)) thead {
 
   font-weight: 550;
 
-  z-index: 25;
+  z-index: 76;
 }
 
 .dropdown-menu thead {
@@ -2247,6 +2251,7 @@ tbody:before {
 
 .table_outside_a_table_and_outside_card margin_left_2 {
   margin-top: 200px;
+  z-index: 300 !important;
 }
 .table_outside_a_table_and_outside_card {
   margin-top: 20px;
@@ -2982,5 +2987,6 @@ canvas:active {
   width: 100%;
 }
 
-.table_scroll_wrapper thead tr {
+article > ul > li {
+  margin-bottom: 14px;
 }
