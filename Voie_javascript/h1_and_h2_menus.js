@@ -1510,6 +1510,7 @@ $(document).ready(function () {
   const minus_85 = decreaseColor(predo_color_of_page, 85);
   const plus_25 = increaseColor(predo_color_of_page, 25);
   const plus_50 = increaseColor(predo_color_of_page, 50);
+  const plus_70 = increaseColor(predo_color_of_page, 50);
 
   const sheet = document.styleSheets[0];
   const insert = (rule) => sheet.insertRule(rule, sheet.cssRules.length);
@@ -1544,7 +1545,7 @@ $(document).ready(function () {
       color: ${plus_50};
     }`,
     `.dynamicContentMenu__item:hover {
-      color: ${plus_50} !important;
+      color: ${plus_70} !important;
     }`,
     `.zoomist-image {
       background-color: ${minus_70} !important;
