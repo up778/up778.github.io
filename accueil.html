@@ -815,7 +815,8 @@ alt="Images/arrows-collapse.png"
 <div class="background_class_horizontal_heading"><nav id="breadcrumb"></nav></div>
 <main role="main">
 <header role="banner"></header>
-<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div id="Page_d_accueil" class="grand_titre" style="text-align: center;">Accueil</div></article><div id="section1" class="class_between_h7_and_h1" style="position: relative;"><p><picture><source srcset="Accueil/Dossier_dans_dossier_accueil/Images/Avif_images/4-April-2025-00-41-rand1877D02.avif" type="image/avif"> </picture></p></div><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule bcLevel1" perma_id_of_this_article_from_perma_id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1"><h1 style="text-align: left;" id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">Préambule</h1>
+<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div id="Page_d_accueil" class="grand_titre" style="text-align: center;">Accueil</div></article><div id="section1" class="class_between_h7_and_h1" style="position: relative;"><p><picture><source srcset="Accueil/Dossier_dans_dossier_accueil/Images/Avif_images/4-April-2025-00-41-rand1877D02.avif" type="image/avif"> </picture></p></div>
+        <div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule bcLevel1" perma_id_of_this_article_from_perma_id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1"><h1 style="text-align: left;" id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">Préambule</h1>
 <p style="text-align: right;"><a class="link_avoid2" href="https://up778.github.io/accueil.html" target="_blank" rel="noopener noreferrer">site internet up778.github.io</a></p>
 <section class="bcLevel2" id="accueil_titre_perma_id_dn_samedi_3_août_2024_6_948"><h2>Qu'est-ce que c'est que ce site?</h2><table style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%; height: 207.884px;" id="accueil_table_perma_id_dn_samedi_17_août_2024_1"><colgroup><col style="width: 10.4889%;"><col style="width: 79.9973%;"><col style="width: 9.49143%;"></colgroup>
 <tbody>
@@ -6365,9 +6366,9 @@ window.addEventListener("DOMContentLoaded", function () {
         const socket = supabaseClient.realtime?.socket;
         if (!socket || socket.conn?.readyState === 3) {
           console.warn("🔁 WebSocket fermé — tentative de reconnexion...");
-          this.subscribeToMessages();
+          this.reconnectToMessages();
         }
-      }, 10000); // toutes les 10 secondes
+      }, 10000); // vérification toutes les 10 secondes
     },
     async loadRooms() {
       const chatTabs = document.getElementById("chatTabs");
@@ -6425,9 +6426,9 @@ window.addEventListener("DOMContentLoaded", function () {
         const chatTitle = document.createElement("div");
         chatTitle.id = "chatTitle";
         chatTitle.textContent =
-          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet. Nombre maximal de ''rooms'' : 8";
+          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet up778.github.io. Nombre maximal de ''rooms'' : 8";
         chatTitle.style.cssText =
-          "font-size:1em;font-weight:bold;margin-bottom:4px;text-align:left;border:dashed 1px white";
+          "font-size:1em;font-weight:bold;margin-bottom:4px;text-align:left;border:dashed 1px red";
         const chatTabs = document.getElementById("chatTabs");
         if (chatTabs) {
           chatContainer.insertBefore(chatTitle, chatTabs);
@@ -6608,7 +6609,10 @@ window.addEventListener("DOMContentLoaded", function () {
     // subscribeToMessages() {
     //   this.reconnectToMessages();
     // },
-    reconnectToMessages() {
+    reconnectToMessages(retryCount = 0) {
+      const maxRetries = 10; // nombre maximum de tentatives
+      const baseDelay = 1000; // délai initial en ms
+      const delay = Math.min(baseDelay * 2 ** retryCount, 10000); // exponentiel jusqu'à 30s max
       if (!this.uid) {
         console.warn("UID non initialisé, abonnement Supabase reporté.");
         return;
@@ -6617,67 +6621,85 @@ window.addEventListener("DOMContentLoaded", function () {
         supabaseClient.removeChannel(this.supabaseChannel);
         this.logIfTrusted("⛔ Ancien canal Supabase retiré.");
       }
-      this.supabaseChannel = supabaseClient
-        .channel("room_channel_all")
-        .on(
-          "postgres_changes",
-          { event: "INSERT", schema: "public", table: "messages" },
-          (payload) => {
-            const newMsg = payload.new;
-            // Ajouter le nouveau message à l'interface seulement si autorisé
-            const isTrusted = this.trustedMap.has(newMsg.uid);
-            const isMe = newMsg.uid === this.uid;
-            const isCurrentBrowserTrusted = this.trustedMap.has(this.uid);
-            if (!isCurrentBrowserTrusted && !isMe && !isTrusted) {
-              // Ne pas afficher si message inconnu et navigateur non autorisé
-              return;
-            }
-            this.addMessageToUI(newMsg);
-            // Gestion des onglets (création si la room n'existe pas)
-            if (!this.roomSet.has(newMsg.room)) {
-              this.createTab(newMsg.room, newMsg.name);
-            }
-            // Optionnel : alertes si message reçu d’un utilisateur inconnu
-            if (
-              !isMe &&
-              !isTrusted &&
-              isCurrentBrowserTrusted &&
-              window.location.href.includes("e/accueil.html")
-            ) {
-              alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
-            }
-          },
-        )
-        .on(
-          "postgres_changes",
-          { event: "DELETE", schema: "public", table: "messages" },
-          (payload) => {
-            const deletedMsgId = payload.old.id;
-            const el = document.querySelector(
-              `[data-msg-id="${deletedMsgId}"]`,
-            );
-            if (el) el.remove();
-          },
-        )
-        .on(
-          "postgres_changes",
-          { event: "UPDATE", schema: "public", table: "messages" },
-          (payload) => {
-            const updatedMsg = payload.new;
-            if (updatedMsg.room === this.activeRoom) {
-              const el = document.querySelector(
-                `#chatMessages .msg[data-msg-id="${updatedMsg.id}"]`,
-              );
-              if (el) {
-                el.remove();
-                this.addMessageToUI(updatedMsg);
+      try {
+        this.supabaseChannel = supabaseClient
+          .channel("room_channel_all")
+          .on(
+            "postgres_changes",
+            { event: "INSERT", schema: "public", table: "messages" },
+            (payload) => {
+              const newMsg = payload.new;
+              const isTrusted = this.trustedMap.has(newMsg.uid);
+              const isMe = newMsg.uid === this.uid;
+              const isCurrentBrowserTrusted = this.trustedMap.has(this.uid);
+              if (!isCurrentBrowserTrusted && !isMe && !isTrusted) return;
+              this.addMessageToUI(newMsg);
+              if (!this.roomSet.has(newMsg.room)) {
+                this.createTab(newMsg.room, newMsg.name);
               }
-            }
-          },
-        )
-        .subscribe();
-      this.logIfTrusted("🔌 Nouveau canal supabase établi.");
-      this.logIfTrusted("heure supabase", new Date().toLocaleTimeString());
+              if (
+                !isMe &&
+                !isTrusted &&
+                isCurrentBrowserTrusted &&
+                window.location.href.includes("e/accueil.html")
+              ) {
+                // alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
+                // new Notification("💬 Nouveau message", {
+                //   body: "Message d’un utilisateur inconnu dans la room …",
+                //   icon: "/favicon.ico",
+                // });
+                const preview =
+                  newMsg.text.length > 50
+                    ? newMsg.text.substring(0, 50) + "…"
+                    : newMsg.text;
+                const notif = new Notification("💬 Nouveau message", {
+                  body: `${newMsg.name} : ${preview}`,
+                  icon: "Images/Favicons/magnifying-glass-tilted-right.png", // votre icône
+                });
+                setTimeout(() => {
+                  notif.close();
+                }, 10000);
+              }
+            },
+          )
+          .on(
+            "postgres_changes",
+            { event: "DELETE", schema: "public", table: "messages" },
+            (payload) => {
+              const deletedMsgId = payload.old.id;
+              const el = document.querySelector(
+                `[data-msg-id="${deletedMsgId}"]`,
+              );
+              if (el) el.remove();
+            },
+          )
+          .on(
+            "postgres_changes",
+            { event: "UPDATE", schema: "public", table: "messages" },
+            (payload) => {
+              const updatedMsg = payload.new;
+              if (updatedMsg.room === this.activeRoom) {
+                const el = document.querySelector(
+                  `#chatMessages .msg[data-msg-id="${updatedMsg.id}"]`,
+                );
+                if (el) {
+                  el.remove();
+                  this.addMessageToUI(updatedMsg);
+                }
+              }
+            },
+          )
+          .subscribe();
+        this.logIfTrusted("🔌 Nouveau canal supabase établi.");
+        this.logIfTrusted("heure supabase", new Date().toLocaleTimeString());
+      } catch (err) {
+        console.error("Erreur lors de l'abonnement Supabase :", err);
+        if (retryCount < maxRetries) {
+          setTimeout(() => this.reconnectToMessages(retryCount + 1), delay);
+        } else {
+          console.error("Nombre maximal de tentatives atteint.");
+        }
+      }
     },
     logIfTrusted(...args) {
       if (this.trustedMap?.has?.(this.uid)) {
