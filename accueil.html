@@ -815,8 +815,7 @@ alt="Images/arrows-collapse.png"
 <div class="background_class_horizontal_heading"><nav id="breadcrumb"></nav></div>
 <main role="main">
 <header role="banner"></header>
-<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div id="Page_d_accueil" class="grand_titre" style="text-align: center;">Accueil</div></article><div id="section1" class="class_between_h7_and_h1" style="position: relative;"><p><picture><source srcset="Accueil/Dossier_dans_dossier_accueil/Images/Avif_images/4-April-2025-00-41-rand1877D02.avif" type="image/avif"> </picture></p></div>
-        <div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule bcLevel1" perma_id_of_this_article_from_perma_id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1"><h1 style="text-align: left;" id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">Préambule</h1>
+<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div id="Page_d_accueil" class="grand_titre" style="text-align: center;">Accueil</div></article><div id="section1" class="class_between_h7_and_h1" style="position: relative;"><p><picture><source srcset="Accueil/Dossier_dans_dossier_accueil/Images/Avif_images/4-April-2025-00-41-rand1877D02.avif" type="image/avif"> </picture></p></div><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule bcLevel1" perma_id_of_this_article_from_perma_id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1"><h1 style="text-align: left;" id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_1">Préambule</h1>
 <p style="text-align: right;"><a class="link_avoid2" href="https://up778.github.io/accueil.html" target="_blank" rel="noopener noreferrer">site internet up778.github.io</a></p>
 <section class="bcLevel2" id="accueil_titre_perma_id_dn_samedi_3_août_2024_6_948"><h2>Qu'est-ce que c'est que ce site?</h2><table style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%; height: 207.884px;" id="accueil_table_perma_id_dn_samedi_17_août_2024_1"><colgroup><col style="width: 10.4889%;"><col style="width: 79.9973%;"><col style="width: 9.49143%;"></colgroup>
 <tbody>
@@ -6420,13 +6419,15 @@ window.addEventListener("DOMContentLoaded", function () {
     async initChat() {
       if (this.chatLoaded) return;
       const chatContainer = document.getElementById("chatContainer");
+      chatContainer.style.cssText =
+        "background-color:#00ff00;border:green dashed 1px";
       if (!chatContainer || document.getElementById("chatForm")) return;
       await this.loadTrustedUids();
       if (!document.getElementById("chatTitle")) {
         const chatTitle = document.createElement("div");
         chatTitle.id = "chatTitle";
         chatTitle.textContent =
-          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet up778.github.io. Nombre maximal de ''rooms'' : 8";
+          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet up778.github.io. Nombre maximal d'onglets : 8";
         chatTitle.style.cssText =
           "font-size:1em;font-weight:bold;margin-bottom:4px;text-align:left;border:dashed 1px red";
         const chatTabs = document.getElementById("chatTabs");
@@ -6450,7 +6451,10 @@ window.addEventListener("DOMContentLoaded", function () {
       if (!document.getElementById("roomDescription")) {
         const descBar = document.createElement("div");
         descBar.id = "roomDescription";
-        descBar.style.cssText = "font-size:0.9em;color:#ccc;margin-bottom:8px;";
+        descBar.style.cssText =
+          "font-size:0.9em;color:#ccc;margin-bottom:8px;background-color:#444;text-align:center";
+        descBar.style.border = "1px solid grey;";
+        descBar.style.borderBottom = "none";
         const chatTabs = document.getElementById("chatTabs");
         if (chatTabs) {
           chatContainer.insertBefore(descBar, chatTabs.nextSibling);
@@ -6480,7 +6484,7 @@ window.addEventListener("DOMContentLoaded", function () {
             {
               room: roomId,
               name: topic,
-              text: "Room créée",
+              text: "espace de discussion créé",
               uid: this.uid,
             },
           ]);
@@ -6521,10 +6525,13 @@ window.addEventListener("DOMContentLoaded", function () {
       const btnSend = document.createElement("button");
       btnSend.type = "submit";
       btnSend.textContent = "Envoyer";
+      btnSend.style.backgroundColor = "#555";
+      btnSend.style.borderRadius = "10px";
       const btnInfo = document.createElement("button");
       btnInfo.type = "button";
       btnInfo.textContent = "Infos";
       btnInfo.style.marginLeft = "0.5em";
+      btnInfo.style.backgroundColor = "#005500";
       form.appendChild(inputName);
       form.appendChild(inputText);
       form.appendChild(btnSend);
@@ -6532,13 +6539,14 @@ window.addEventListener("DOMContentLoaded", function () {
       chatContainer.appendChild(form);
       const popup = document.createElement("div");
       popup.style.cssText =
-        "position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);background-color:#222;color:#eee;padding:1em 2em;border-radius:0.5em;box-shadow:0 0 10px rgba(0,0,0,0.7);z-index:10000;display:none;min-width:200px;";
-      popup.textContent =
-        "fenêtre pour chat.possibilité de laisser un message.";
-      popup.appendChild(document.createElement("br"));
+        "position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);background-color:#007700;color:#eee;padding:1em 2em;border-radius:0.5em;box-shadow:0 0 10px rgba(0,0,0,0.7);z-index:10000;display:none;min-width:200px;";
+      popup.textContent = "fenêtre pour discussion instantannée.";
+      // popup.appendChild(document.createElement("br"));
+      document.createTextNode("Possibilité de laisser un message."),
+        popup.appendChild(document.createElement("br"));
       popup.appendChild(
         document.createTextNode(
-          "si onglet fermé par erreur --> rechargement page devrait restaurer tous les onglets",
+          'si onglet fermé par erreur (par ex. onglet "informatique 💻" ) → un rechargement de la page devrait restaurer tous les onglets',
         ),
       );
       const btnClose = document.createElement("button");
