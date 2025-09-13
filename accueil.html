@@ -6651,7 +6651,6 @@ window.addEventListener("DOMContentLoaded", function () {
                 isCurrentBrowserTrusted &&
                 window.location.href.includes("e/accueil.html")
               ) {
-                alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
                 // new Notification("💬 Nouveau message", {
                 //   body: "Message d’un utilisateur inconnu dans la room …",
                 //   icon: "/favicon.ico",
@@ -6667,6 +6666,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 setTimeout(() => {
                   notif.close();
                 }, 10000);
+                alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
               }
             },
           )
