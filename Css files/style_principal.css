@@ -2807,7 +2807,8 @@ table .trois_last_modifs_weeks {
   height: 62vh;
   min-height: 62vh;
   border: 1px solid #444;
-  background: #111;
+
+  background: #002306 !important;
   color: #eee;
   padding: 1em;
   border-radius: 8px;
