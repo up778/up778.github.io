@@ -7774,13 +7774,15 @@ window.addEventListener("DOMContentLoaded", function () {
     async initChat() {
       if (this.chatLoaded) return;
       const chatContainer = document.getElementById("chatContainer");
+      chatContainer.style.cssText =
+        "background-color:#00ff00;border:green dashed 1px";
       if (!chatContainer || document.getElementById("chatForm")) return;
       await this.loadTrustedUids();
       if (!document.getElementById("chatTitle")) {
         const chatTitle = document.createElement("div");
         chatTitle.id = "chatTitle";
         chatTitle.textContent =
-          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet up778.github.io. Nombre maximal de ''rooms'' : 8";
+          "💬 juillet 2025 : Nouvelle fenêtre de chat pour ce site internet up778.github.io. Nombre maximal d'onglets : 8";
         chatTitle.style.cssText =
           "font-size:1em;font-weight:bold;margin-bottom:4px;text-align:left;border:dashed 1px red";
         const chatTabs = document.getElementById("chatTabs");
@@ -7804,7 +7806,10 @@ window.addEventListener("DOMContentLoaded", function () {
       if (!document.getElementById("roomDescription")) {
         const descBar = document.createElement("div");
         descBar.id = "roomDescription";
-        descBar.style.cssText = "font-size:0.9em;color:#ccc;margin-bottom:8px;";
+        descBar.style.cssText =
+          "font-size:0.9em;color:#ccc;margin-bottom:8px;background-color:#444;text-align:center";
+        descBar.style.border = "1px solid grey;";
+        descBar.style.borderBottom = "none";
         const chatTabs = document.getElementById("chatTabs");
         if (chatTabs) {
           chatContainer.insertBefore(descBar, chatTabs.nextSibling);
@@ -7834,7 +7839,7 @@ window.addEventListener("DOMContentLoaded", function () {
             {
               room: roomId,
               name: topic,
-              text: "Room créée",
+              text: "espace de discussion créé",
               uid: this.uid,
             },
           ]);
@@ -7875,10 +7880,13 @@ window.addEventListener("DOMContentLoaded", function () {
       const btnSend = document.createElement("button");
       btnSend.type = "submit";
       btnSend.textContent = "Envoyer";
+      btnSend.style.backgroundColor = "#555";
+      btnSend.style.borderRadius = "10px";
       const btnInfo = document.createElement("button");
       btnInfo.type = "button";
       btnInfo.textContent = "Infos";
       btnInfo.style.marginLeft = "0.5em";
+      btnInfo.style.backgroundColor = "#005500";
       form.appendChild(inputName);
       form.appendChild(inputText);
       form.appendChild(btnSend);
@@ -7886,13 +7894,14 @@ window.addEventListener("DOMContentLoaded", function () {
       chatContainer.appendChild(form);
       const popup = document.createElement("div");
       popup.style.cssText =
-        "position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);background-color:#222;color:#eee;padding:1em 2em;border-radius:0.5em;box-shadow:0 0 10px rgba(0,0,0,0.7);z-index:10000;display:none;min-width:200px;";
-      popup.textContent =
-        "fenêtre pour chat.possibilité de laisser un message.";
-      popup.appendChild(document.createElement("br"));
+        "position:fixed;top:50%;left:50%;transform:translate(-50%, -50%);background-color:#007700;color:#eee;padding:1em 2em;border-radius:0.5em;box-shadow:0 0 10px rgba(0,0,0,0.7);z-index:10000;display:none;min-width:200px;";
+      popup.textContent = "fenêtre pour discussion instantannée.";
+      // popup.appendChild(document.createElement("br"));
+      document.createTextNode("Possibilité de laisser un message."),
+        popup.appendChild(document.createElement("br"));
       popup.appendChild(
         document.createTextNode(
-          "si onglet fermé par erreur --> rechargement page devrait restaurer tous les onglets",
+          'si onglet fermé par erreur (par ex. onglet "informatique 💻" ) → un rechargement de la page devrait restaurer tous les onglets',
         ),
       );
       const btnClose = document.createElement("button");
@@ -7997,7 +8006,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 isCurrentBrowserTrusted &&
                 window.location.href.includes("e/accueil.html")
               ) {
-                // alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
+                alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
                 // new Notification("💬 Nouveau message", {
                 //   body: "Message d’un utilisateur inconnu dans la room …",
                 //   icon: "/favicon.ico",
