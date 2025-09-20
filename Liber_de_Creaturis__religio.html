@@ -6486,6 +6486,110 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   }, 500); // 0,5s après chargement du DOM
 });
+// -------------------------------------------------
+document.addEventListener("DOMContentLoaded", function () {
+  const style = document.createElement("style");
+  style.textContent = `
+                    .scroll_hint {
+            position: fixed;
+            height: 140px;
+            width: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            color: black;
+            border-radius: 3px;
+            font-size: 24px;
+            pointer-events: none;
+            z-index: 1000;
+            top: calc(50% + 50px);
+            transform: translateY(-50%);
+            display: none;                /* caché par défaut */
+            flex-direction: column;       /* empile le contenu */
+            justify-content: center;
+            align-items: center;
+        }
+        .scroll_hint.show {
+            display: flex;                /* visible seulement quand .show est ajouté */
+        }
+        .scroll_hint i,
+        .scroll_hint span,
+        .scroll_hint p {
+            line-height: normal;
+            margin: 2px 0;
+            font-size: 18px;
+        }
+                `;
+  document.head.appendChild(style);
+  const tables = document.querySelectorAll(".table_scroll_wrapper");
+  tables.forEach(wrapper => {
+    let hintLeft = document.createElement("div");
+    let hintRight = document.createElement("div");
+    hintLeft.className = "scroll_hint";
+    hintRight.className = "scroll_hint";
+    // ajout de l'icône Bootstrap
+    hintLeft.innerHTML = `<span class="bi bi-table"></span><span>↨</span>`;
+    hintRight.innerHTML = `<span class="bi bi-table"></span><p>↨</p>`;
+    document.body.appendChild(hintLeft);
+    document.body.appendChild(hintRight);
+    function updateHintPositions() {
+      const rect = wrapper.getBoundingClientRect();
+      // pour coller le hint gauche juste à l'extérieur
+      hintLeft.style.left = `${rect.left - 30}px`; // 30 = largeur du hint
+      hintRight.style.left = `${rect.right - hintRight.offsetWidth - 40}px`;
+    }
+    function handleMouseMove(e) {
+      const rect = wrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const leftZone = rect.width * 0.1;
+      const rightZone = rect.width * 0.8;
+      if (x < leftZone) {
+        hintLeft.classList.add("show");
+        hintRight.classList.remove("show");
+      } else if (x > rightZone) {
+        hintRight.classList.add("show");
+        hintLeft.classList.remove("show");
+      } else {
+        hintLeft.classList.remove("show");
+        hintRight.classList.remove("show");
+      }
+    }
+    function handleMouseLeave() {
+      hintLeft.classList.remove("show");
+      hintRight.classList.remove("show");
+    }
+    function handleWheel(e) {
+      const rect = wrapper.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const scrollTop = wrapper.scrollTop;
+      const scrollHeight = wrapper.scrollHeight;
+      const clientHeight = wrapper.clientHeight;
+      const leftZone = rect.width * 0.1;
+      const rightZone = rect.width * 0.8;
+      if (x < leftZone) {
+        // zone gauche → scroll tableau uniquement si possible
+        if ((e.deltaY < 0 && scrollTop > 0) || (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight)) {
+          wrapper.scrollBy({ top: e.deltaY, behavior: "auto" });
+        }
+        e.preventDefault(); // toujours empêcher la page
+      } else if (x > rightZone) {
+        // zone droite → scroll tableau uniquement si possible
+        if ((e.deltaY < 0 && scrollTop > 0) || (e.deltaY > 0 && scrollTop + clientHeight < scrollHeight)) {
+          wrapper.scrollBy({ top: e.deltaY, behavior: "auto" });
+        }
+        e.preventDefault(); // toujours empêcher la page
+      } else {
+        // zone centrale → page scroll
+        window.scrollBy({ top: e.deltaY, behavior: "auto" });
+      }
+    }
+    wrapper.addEventListener("mousemove", handleMouseMove);
+    wrapper.addEventListener("mouseleave", handleMouseLeave);
+    wrapper.addEventListener("wheel", handleWheel, { passive: false });
+    window.addEventListener("resize", updateHintPositions);
+    window.addEventListener("scroll", updateHintPositions);
+    updateHintPositions();
+  });
+});
+// -------------------------------------------------
 </script>
 <script>
   $("video").each(function (index, elem) {
@@ -8020,8 +8124,10 @@ window.addEventListener("DOMContentLoaded", function () {
                 });
                 setTimeout(() => {
                   notif.close();
-                  alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
                 }, 10000);
+                setTimeout(() => {
+                  alert("📨 Nouveau message reçu d’un utilisateur inconnu !");
+                }, 1000);
               }
             },
           )
