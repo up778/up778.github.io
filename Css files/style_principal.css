@@ -1456,7 +1456,6 @@ figure {
 }
 
 table.table_outside_a_table_and_outside_card {
-  position: relative;
   z-index: 11;
 }
 
