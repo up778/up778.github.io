@@ -1530,6 +1530,10 @@ $(document).ready(function () {
     cursor: pointer;
   }`,
 
+    `.modal-backdrop {
+  width: 98vw;
+    }`,
+
     `.playing_audio {
       color: ${plus_50} !important; 
     }`,
