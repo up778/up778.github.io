@@ -286,7 +286,7 @@
         "data-unique": hashValue,
       }).append(
         $("<a/>", {
-          text: self.text(),
+          html: self.html(),
         }),
       );
 
