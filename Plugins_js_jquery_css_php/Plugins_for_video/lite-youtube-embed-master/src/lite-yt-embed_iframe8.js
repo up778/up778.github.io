@@ -392,8 +392,11 @@ function onPlayerStateChange(event) {
     const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
 
     el.forEach((button) => {
-      button.style.setProperty("background-color", "#44444480");
+      button.style.setProperty("background-color", "#be000061");
+      const plus_50 = increaseColor(predo_color_of_page, 50);
+      button.style.setProperty("border", "1px dashed " + plus_50 + "");
     });
+    // console.log("playing");
 
     if (last_played_video != 0) {
     }
@@ -425,12 +428,15 @@ function onPlayerStateChange(event) {
     const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
 
     el.forEach((button) => {
-      button.style.setProperty("background-color", "#dd000040");
+      button.style.setProperty("background-color", "#dd000081");
+
+      button.style.setProperty("border", "0px dashed grey");
     });
   } else if (event.data === YT.PlayerState.ENDED) {
     document
       .querySelectorAll(".class_btn_play_pause_youtube_video")
-      .style.setProperty("background-color", "#dd000040");
+      .style.setProperty("background-color", "transparent");
+    button.style.setProperty("border", "0px dashed grey");
   }
 }
 
