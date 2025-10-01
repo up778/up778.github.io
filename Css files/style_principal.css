@@ -1336,6 +1336,7 @@ blockquote > p {
 }
 
 .probable_citation_du_Fils {
+  font-size: 19px;
   position: relative;
   background: #ffff0020;
   color: #ffff00;
