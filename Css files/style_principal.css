@@ -1458,7 +1458,7 @@ figure {
 
 .div_for_modal_for_link_outside_modal,
 .a_pour_not_wikipedia {
-  z-index: 1500 !important;
+  z-index: 85 !important;
 }
 
 table.table_outside_a_table_and_outside_card {
