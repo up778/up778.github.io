@@ -5296,8 +5296,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         function handleMouseMove(e) {
           const rect = wrapper.getBoundingClientRect();
           const x = e.clientX - rect.left;
-          const leftZone = rect.width * 0.2;
-          const rightZone = rect.width * 0.8;
+          const leftZone = rect.width * 0.3;
+          const rightZone = rect.width * 0.7;
           if (x < leftZone) {
             hintLeft.classList.add("show");
             hintRight.classList.remove("show");
@@ -5319,8 +5319,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           const scrollTop = wrapper.scrollTop;
           const scrollHeight = wrapper.scrollHeight;
           const clientHeight = wrapper.clientHeight;
-          const leftZone = rect.width * 0.2;
-          const rightZone = rect.width * 0.8;
+          const leftZone = rect.width * 0.3;
+          const rightZone = rect.width * 0.7;
           if (x < leftZone) {
             // zone gauche → scroll tableau uniquement si possible
             if (
