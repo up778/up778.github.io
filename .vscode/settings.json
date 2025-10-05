@@ -1,0 +1,256 @@
+// https://code.visualstudio.com/api/references/theme-color
+{
+  "actionButtons": {
+    "defaultColor": "#ff0034", // Can also use string color names.
+    "loadNpmCommands": false, // Disables automatic generation of actions for npm commands.
+    "reloadButton": "♻️", // Custom reload button text or icon (default ↻). null value enables automatic reload on configuration change
+    "commands": [
+      {
+        "name": "🏚️",
+        "color": "#aa0000",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/accueil.html"]
+        // C:\xampp\htdocs\tinymce_6.0.3v2\tinymce\js\tinymce_v2\Accueil\Dossier_dans_dossier_accueil\accueil.html
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "$(search)",
+        "color": "#ffffff",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/Studium_Creaturae.html"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "🗺️",
+        "color": "#aaaaaa",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/Orientaux__Occidentaux.html"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "🛸",
+        "color": "#00aa00",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/ufologues-extraterrestres.html"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "📿",
+        "color": "#aa0000",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["xampp/htdocs/Site_github_page/Liber_de_Creaturis__religio.html"]
+        // /c/xampp/htdocs/Site_github_page/Créatures/Religion/créatures_du_livre__religions.html
+        //   "args": [
+        //     "--dart-define=APP_BACKENDS={[{\"id\":\"default\",\"url\":\"https://localhost\",\"port\": \"8080\"},]}",
+        // ],
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "$(color-mode)",
+        "color": "#bb0000",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/gauche_et_droite.html"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "🎼",
+        "color": "#5555ff",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/Artistes-Comoedica-Musiciens.html"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "⚗️",
+        "color": "#00aa00",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/étude_sur_la_possession_démoniaque.html", "10", "5"]
+      },
+      {
+        "name": "$(star-empty)",
+        "color": "#bbffff",
+        "useVsCodeApi": true,
+        "command": "htmlRelatedLinks.openFile",
+        "args": ["c:/xampp/htdocs/Site_github_page/perspectives-Christianisme-Délivrance_finale-3ème_fiat.html"]
+        // "extraCommands": ["vscode.commands.executeCommand('copyFilePath');"]
+      },
+      {
+        "name": "-$(diff-renamed)-",
+        "color": "yellow",
+        "useVsCodeApi": true,
+        "command": "workbench.action.showCommands"
+      },
+      {
+        "name": "ahkv2",
+        "color": "#aa0000",
+        "useVsCodeApi": false,
+        // "command": "\"C:/Program Files/AutoHotkey/v2/AutoHotkey64.exe\" c:/Users/Phi/Informatique/Souris/Scripts_ahk-souris/script_for_spotify_firefox_global_key.ahk"
+        "command": "\"C:/Program Files/AutoHotkey/v2/AutoHotkey64_UIA.exe\" c:/Users/Phi/Informatique/Souris/Scripts_ahk-souris/test_v2_script_souris_newV2.ahk"
+      },
+      {
+        "name": "files list",
+        "color": "yellow",
+        "useVsCodeApi": true,
+        "command": "workbench.action.quickOpen"
+      },
+      {
+        "name": "⬛term",
+        "color": "#aaaaaa",
+        "useVsCodeApi": true,
+        "command": "workbench.action.togglePanel"
+      },
+      // {
+      //   "name": "📤",
+      //   "color": "#aaaaaa",
+      //   "useVsCodeApi": true,
+      //   // "command": "sftp.upload.file.to.allProfiles",
+      //   "command": "sftp.upload.file.to.allProfiles Pages_pour_historique_site/0historique_des_modifications_pour_toutes_les_pages.html"
+      //   // "command": "sftp.upload.activeFile",
+      //   // "args": [
+      //   //   "Pages_pour_historique_site/0historique_des_modifications_pour_toutes_les_pages.html"
+      //   // ]
+      //   // "args": ["", ""]
+      // },
+      {
+        "name": "$(debug-configure)",
+        "color": "#aa00aa",
+        "useVsCodeApi": true,
+        "command": "workbench.action.openSettings"
+      },
+
+      {
+        "name": "$(key)",
+        "color": "#bbb",
+        "useVsCodeApi": true,
+        "command": "workbench.action.openGlobalKeybindings"
+      },
+      {
+        "name": "dev$(refresh)",
+        "color": "#ccc",
+        "useVsCodeApi": true,
+        "command": "workbench.action.reloadWindow"
+        // "args": [
+        //   "xampp/htdocs/tinymce_6.0.3v2/tinymce/js/tinymce_v2/Créatures/Extra-terrestres_et_ufologues/ufologues-extraterrestres.html"
+        // ]
+      },
+      {
+        "name": "file remove all c",
+        "color": "#ff0000",
+        "useVsCodeApi": true,
+        "command": "remove-comments.removeAllComments"
+        // "args": ["hello bunny"]
+        // "command": "\"C:\\Program Files (x86)\\clink\\clink.bat\" hello"
+        // "command": ""
+      },
+      {
+        "name": "$(music)f",
+        "color": "#5555ff",
+        "useVsCodeApi": true,
+        "command": "workbench.action.terminal.sendSequence",
+        "args": ["\u001b[1;5D\u007f"]
+
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "priv",
+        "color": "#fff",
+        "useVsCodeApi": true,
+        "command": "sftp.setProfile",
+        "args": ["Site_test_privé"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "2",
+        "color": "#fff",
+        "useVsCodeApi": true,
+        "command": "sftp.setProfile",
+        "args": ["Test2 public"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      },
+      {
+        "name": "!",
+        "color": "#ff0000",
+        "useVsCodeApi": true,
+        "command": "sftp.setProfile",
+        "args": ["warning"]
+        // "extraCommands": ["workbench.files.action.focusOpenEditorsView"]
+      }
+    ]
+  },
+  "workbench.localHistory.maxFileEntries": 1000000000000,
+  "local-history.maxDisplay": 16000000000,
+  "local-history.daysLimit": 0,
+  "local-history.path": "C:\\xampp\\htdocs\\Site_github_page_history\\",
+  "ShortcutMenuBar.userButton01Command": "workbench.action.quickOpen",
+  "ShortcutMenuBar.userButton02Command": "htmlRelatedLinks.openFile|${workspaceFolder}/Css files\\style_principal.css",
+  "ShortcutMenuBar.userButton03Command": "workbench.action.terminal.paste workbench.action.terminal.paste|workbench.action.terminal.paste|workbench.action.terminal.paste|",
+  "ShortcutMenuBar.userButton04Command": "htmlRelatedLinks.openFile|${workspaceFolder}/Voie_javascript\\h1_and_h2_menus.js",
+  "ShortcutMenuBar.userButton05Command": "",
+  "html.format.wrapLineLength": 0,
+  "editor.wordWrapColumn": 8000,
+  "editor.wordWrap": "on",
+  "colorTabs.statusBarBackground": false,
+  "colorTabs.tabBackground": true,
+  "workbench.colorCustomizations": {
+    "tab.activeBorder": "#040202",
+    "tab.activeBackground": "#0f7000",
+    "statusBar.background": "#083c00",
+    "editorStickyScroll.background": "#0f3c00"
+  },
+  "prettier.printWidth": 8000,
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "\\Scss\\\\custom.scss",
+        "cmd": "sass Scss/custom.scss Scss/custom.css --style compressed"
+        ///
+      },
+      {
+        "match": ".*",
+        "cmd": "powershell -Command \"$repo = git rev-parse --show-toplevel; if (-not (git show-ref --verify --quiet refs/heads/local-history2)) { git branch local-history2; }; git checkout local-history2; $relPath = Resolve-Path -Relative '${file}'; $ext = [System.IO.Path]::GetExtension('${file}'); $icon = switch ($ext) { '.js' { '🟨' }; '.ahk' { '🟩' }; '.bat' { '⚡' }; '.sh' { '⚡' }; '.php' { '🐘' }; '.py' { '🟪' }; '.json' { '☰' }; '.html' { '📙' }; '.css' { '🎨' }; '.txt' { '📝' }; default { '⏰' } }; git add -f '${file}'; if (-not (git diff --cached --quiet)) { git commit -m ((Get-Date -Format 'dd/MM/yyyy HH:mm:ss') + ' ' + $icon + ' ${fileBasename}') }\""
+      }
+    ]
+  },
+  "ShortcutMenuBar.userButton06Command": "explorer.openToSide",
+  "favorites.resources": [
+    {
+      "filePath": "Voie_javascript",
+      "group": "Default"
+    },
+    {
+      "filePath": "Pages_pour_historique_site",
+      "group": "Default"
+    }
+  ],
+  "prettier.singleAttributePerLine": false,
+  "prettier.embeddedLanguageFormatting": "off",
+  "sftp.debug": false,
+  "sqltools.connections": [
+    {
+      "mysqlOptions": {
+        "authProtocol": "default",
+        "enableSsl": "Disabled"
+      },
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 3306,
+      "driver": "MariaDB",
+      "name": "connexion_sqltools",
+      "database": "logs_db",
+      "username": "root",
+      "password": ""
+    }
+  ],
+  "database-client.telemetry.usesOnlineServices": false,
+  "sftp.printDebugLog": false,
+  "workbench.localHistory.mergeWindow": 2,
+  "local-history.absolute": true,
+  "workbench.localHistory.maxFileSize": 256000000000
+}
