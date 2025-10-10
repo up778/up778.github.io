@@ -1239,7 +1239,7 @@ alt="Images/arrows-collapse.png"
 <div class="popover_content" style="display: none;">
 <p>  Je ne serais pas étonné que beaucoup de Créatures d'extrême "droite", en général, eurent un goût assez peu développé pour la musique.</p>
 <figure style="position: relative;">
-<figcaption id="audio_figcaption2">Déclaration de Vincent Reynouard</figcaption>
+<figcaption id="audio_figcaption2">Goût pour la musique. exemple : Vincent Reynouard</figcaption>
 <audio style="width: 70%; height: 30px;" preload="metadata" loop="loop" controls="controls" id="gauche_et_droite_audio_perma_id_dn_lundi_15_juillet_2024_2" onclick="select_audio(this)">
                         <source src="Creaturae/Droite_gauche/Audio_s/Vincent Reynouard et la musique.mp3" type="audio/mpeg">
                       </audio> <br>Extrait issu de l'émission DPE33S07 </figure>
@@ -5940,8 +5940,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         function handleMouseMove(e) {
           const rect = wrapper.getBoundingClientRect();
           const x = e.clientX - rect.left;
-          const leftZone = rect.width * 0.2;
-          const rightZone = rect.width * 0.8;
+          const leftZone = rect.width * 0.3;
+          const rightZone = rect.width * 0.7;
           if (x < leftZone) {
             hintLeft.classList.add("show");
             hintRight.classList.remove("show");
@@ -5963,8 +5963,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           const scrollTop = wrapper.scrollTop;
           const scrollHeight = wrapper.scrollHeight;
           const clientHeight = wrapper.clientHeight;
-          const leftZone = rect.width * 0.2;
-          const rightZone = rect.width * 0.8;
+          const leftZone = rect.width * 0.3;
+          const rightZone = rect.width * 0.7;
           if (x < leftZone) {
             // zone gauche → scroll tableau uniquement si possible
             if (
