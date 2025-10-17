@@ -590,23 +590,24 @@ document.addEventListener("click", function (e) {
 
   e.preventDefault();
 
-  const videoId = btn.dataset.videoId;
-  const containerId = btn.dataset.containerId;
+  const video_id = btn.dataset.videoId;
+  const container_id = btn.dataset.containerId;
 
-  const container = document.getElementById(containerId);
+  const container = document.getElementById(container_id);
   if (!container) {
-    console.warn("Conteneur non trouvé :", containerId);
+    console.warn("Conteneur non trouvé :", container_id);
     return;
   }
 
-  const liteYT = container.querySelector("lite-youtube");
-  if (!liteYT) {
-    console.warn("Élément lite-youtube non trouvé dans :", containerId);
+  const lite_yt = container.querySelector("lite-youtube");
+  if (!lite_yt) {
+    console.warn("Élément lite-youtube non trouvé dans :", container_id);
     return;
   }
 
-  dernier_element_lite_yt_joué = liteYT;
-  liteYT
+  dernier_element_lite_yt_joué = lite_yt;
+
+  lite_yt
     .getYTPlayer?.()
     .then(async (player) => {
       if (!player) {
@@ -616,9 +617,16 @@ document.addEventListener("click", function (e) {
 
       try {
         await waitForPlayerReady(player);
-        player.pauseVideo();
+
+        const state = player.getPlayerState?.();
+
+        if (state === 1) {
+          player.pauseVideo();
+        } else {
+          player.playVideo();
+        }
       } catch (err) {
-        console.warn("Erreur pendant la pause :", err);
+        console.warn("Erreur pendant la lecture/pause :", err);
       }
     })
     .catch((err) => {
