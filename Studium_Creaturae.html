@@ -2596,7 +2596,7 @@ alt="Images/arrows-collapse.png"
 </tbody>
 </table></section><section class="bcLevel3" id="Studium_Creaturae_h3_perma_id_dn_lundi_22_juillet_2024_20"><h3>Nietzsche Quelqu'un qui dit ''non à papa'' - nvv</h3><p>Oui, il se serait opposé au <strong>C</strong>hristianisme de son époque. Mais de son temps le "Christianisme" courant (c'est-à-dire du protestantisme?) était bien probablement globalement insupportable.<br>Je dirais aussi "Quelqu'un qui dit non à maman".</p></section></section>
 <section class="bcLevel2" id="Studium_Creaturae_h2_perma_id_dn_lundi_22_juillet_2024_28"><h2>Divers liens - nvv - Hildegarde</h2><p>NOUS VOULONS VIVRE ! - YouTube <a href="https://www.youtube.com/c/NOUSVOULONSVIVRE" target="_blank" rel="noopener noreferrer">https://www.youtube.com/c/NOUSVOULONSVIVRE</a></p><p>Hildegarde (@@Hildegarde_FR) / Twitter <a href="https://x.com/Hildegarde_FR" target="_blank" rel="noopener noreferrer">https://x.com/Hildegarde_FR</a></p></section>
-</article><article id="capsule_des_h1_4010" class="capsule1 capsule_des_h1_4010 capsule background_class bcLevel1" style="background-image:url('Creaturae/Divers__/Images/Images_for_backgrounds/Images_for_backgrounds_avif/abstract-4752872_1920_lumi.avif');background-size:_;background-position:_;background-color:_;background-repeat:repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Créatures_du_livre,_religions_h2_perma_id_dn_lundi_15_juillet_2024_12"><h1 permalien_dn="Créatures_du_livre,_religions_permalien_dn_samedi_1_juin_2024_66" id="Créatures_du_livre,_religions_h2_perma_id_dn_lundi_15_juillet_2024_12">Salim Laïbi et la Théologie 🕋🤔</h1>
+</article><article id="capsule_des_h1_4010" class="capsule1 capsule_des_h1_4010 capsule background_class bcLevel1" style="background-image:url('Creaturae/Divers__/Images/Images_for_backgrounds/Images_for_backgrounds_avif/abstract-4752872_1920_lumi.avif');background-size:_;background-position:_;background-color:_;background-repeat:repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Créatures_du_livre,_religions_h2_perma_id_dn_lundi_15_juillet_2024_12"><h1 permalien_dn="Créatures_du_livre,_religions_permalien_dn_samedi_1_juin_2024_66" id="Créatures_du_livre,_religions_h2_perma_id_dn_lundi_15_juillet_2024_12" class="winnie">Salim Laïbi et la Théologie 🕋🤔</h1>
 <p><em>Une situation incompréhensible? 😐</em></p>
 <section class="bcLevel2" id=""><h2>Préambule, Salim Laïbi</h2><p>Salim Laïbi, un internaute, producteur de vidéos, que j'ai assez souvent vu/suivi, surtout il y a quelques années, quelques années précédant l'année 2025. Depuis quelques années, quand j'ai regardé ses vidéos, ce fut plutôt partiellement. Depuis des années, je dus avoir une sensation vraiment mitigée, par rapport à Salim Laïbi:</p><table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%;" class="reload-class_une_semaine__" id="Studium_Creaturae_table_perma_id_dn_lundi_3_mars_2025_13_773" attr_une_semaine_new_timestamp="1741029200773"><colgroup><col style="width: 48.6158%;"><col style="width: 0.831947%;"><col style="background-image: url('Additional_html/Images_addi/Images_for_backgrounds/Table_p_backgrounds/smoke-8201205_v2.avif'); background-size: cover; background-repeat: no-repeat; background-position: 100% 100%; background-position-y: 35px;"></colgroup>
 <tbody>
@@ -6120,6 +6120,198 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     }
   })();
 </script>
+<script class="popover_class_script_10">
+  document.addEventListener("DOMContentLoaded", () => {
+    const popovers = new Map();
+    let activeSinglePopover = null;
+    function initializePopover(button) {
+      const title = button.getAttribute("data-popover-title");
+      const content = button.getAttribute("data-popover-content");
+      const placement = button.getAttribute("data-placement") || "auto";
+      const customClass = button.getAttribute("data-popover-class") || "";
+      const popover = new bootstrap.Popover(button, {
+        trigger: "manual",
+        placement: placement,
+        title: title,
+        content: content,
+        container: "body",
+        customClass: customClass,
+        html: true,
+      });
+      popovers.set(button, popover);
+      popover.disable();
+    }
+    document.querySelectorAll(".pop_button").forEach(initializePopover);
+    const showAllPopoversButton = document.getElementById("trigger_popovers");
+    if (showAllPopoversButton) {
+      showAllPopoversButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        popovers.forEach((popover, btn) => {
+          if (!popover._element.classList.contains("disabled")) {
+            popover.enable();
+            popover.show();
+          }
+        });
+      });
+    }
+    // Gestion du clic sur le document (capture)
+    document.body.addEventListener(
+      "click",
+      (e) => {
+        const target = e.target;
+        // Clic sur un élément éditable pour popover
+        if (target.classList.contains("popover_editable")) {
+          e.stopPropagation();
+          if (activeSinglePopover && activeSinglePopover.btn === target) {
+            activeSinglePopover.popover.hide();
+            activeSinglePopover.popover.dispose();
+            activeSinglePopover = null;
+            return;
+          }
+          if (activeSinglePopover) {
+            activeSinglePopover.popover.hide();
+            activeSinglePopover.popover.dispose();
+            activeSinglePopover = null;
+          }
+          const title =
+            target.getAttribute("title") ||
+            target.getAttribute("data-popover-title") ||
+            "";
+          let content = document.createElement("div");
+          const wrapper = target.closest(".popover_wrapper");
+          const rect = target.getBoundingClientRect();
+          const viewportWidth = window.innerWidth;
+          const viewportHeight = window.innerHeight;
+          const spaceTop = rect.top;
+          const spaceBottom = viewportHeight - rect.bottom;
+          const spaceLeft = rect.left;
+          const spaceRight = viewportWidth - rect.right;
+          const rightThreshold = viewportWidth * 0.4;
+          let minWidthVW = null;
+          if (wrapper) {
+            const contentDiv = wrapper.querySelector(".popover_content");
+            if (contentDiv) {
+              const clonedContent = contentDiv.cloneNode(true);
+              clonedContent.style.display = "block";
+              const div_around_iframe =
+                clonedContent.querySelector(".div_around_iframe");
+              const not_video = clonedContent.querySelector(
+                ".avoid_iframe_pour_iframe_wiki_etc",
+              );
+              if (div_around_iframe && !not_video) {
+                const table = div_around_iframe.closest("table");
+                if (table) {
+                  const vwMatch = table.style.width.match(/([\d.]+)vw/);
+                  if (vwMatch) minWidthVW = parseFloat(vwMatch[1]);
+                  else
+                    minWidthVW =
+                      (table.getBoundingClientRect().width /
+                        window.innerWidth) *
+                      100;
+                  clonedContent.style.minWidth = `${minWidthVW}vw`;
+                  const heightStyle = table.style.height;
+                  if (heightStyle && heightStyle.endsWith("vh"))
+                    div_around_iframe.style.height = heightStyle;
+                  else
+                    div_around_iframe.style.height = `${table.getBoundingClientRect().height}px`;
+                }
+              }
+              if (minWidthVW !== null) {
+                const minPixelsWidth = (minWidthVW / 100) * window.innerWidth;
+                clonedContent.style.minWidth = `${minPixelsWidth}px`;
+                clonedContent.style.width = `${Math.max(minPixelsWidth, 150)}px`;
+              }
+              content.appendChild(clonedContent);
+            }
+          }
+          let placement;
+          if (spaceRight < rightThreshold)
+            placement = spaceTop > spaceBottom ? "top" : "bottom";
+          else {
+            const maxSpace = Math.max(
+              spaceTop,
+              spaceBottom,
+              spaceLeft,
+              spaceRight,
+            );
+            if (maxSpace === spaceTop) placement = "top";
+            else if (maxSpace === spaceBottom) placement = "bottom";
+            else if (maxSpace === spaceLeft) placement = "left";
+            else placement = "right";
+          }
+          const existingInstance = bootstrap.Popover.getInstance(target);
+          if (existingInstance) existingInstance.dispose();
+          const popover = new bootstrap.Popover(target, {
+            trigger: "manual",
+            placement: placement,
+            fallbackPlacements: ["bottom", "left", "top"],
+            title: title,
+            content: () => content,
+            container: "body",
+            html: true,
+            sanitize: false,
+          });
+          popover.show();
+          const popoverElement = document.querySelector(".popover.show");
+          if (placement === "right" && popoverElement) {
+            const maxWidth = window.innerWidth - rect.right - 100;
+            const contentElement =
+              popoverElement.querySelector(".popover_content");
+            if (contentElement) contentElement.style.maxWidth = maxWidth + "px";
+          }
+          activeSinglePopover = { btn: target, popover: popover };
+          return;
+        }
+        // ✅ Protection absolue : ne jamais fermer popover si clic dans popover ou ses boutons
+        if (activeSinglePopover) {
+          const popEl = document.querySelector(".popover.show");
+          if (
+            popEl &&
+            (popEl.contains(e.target) || e.target.closest(".popover.show"))
+          )
+            return;
+        }
+        // Sinon, fermer le popover actif
+        if (activeSinglePopover) {
+          activeSinglePopover.popover.hide();
+          activeSinglePopover.popover.dispose();
+          activeSinglePopover = null;
+        }
+        popovers.forEach((popover) => popover.hide());
+      },
+      true, // capture
+    );
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll(".pop_button").forEach((button) => {
+        if (!popovers.has(button)) initializePopover(button);
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    document.body.addEventListener("shown.bs.popover", () => {
+      if (typeof initAudioPlayers === "function") initAudioPlayers();
+    });
+  });
+</script>
+<script class="avoid_close_dropdown_if_clic_popover_10">
+  // Intercepter l'événement de fermeture Bootstrap AVANT qu'il cache le menu
+  document.addEventListener("hide.bs.dropdown", function (e) {
+    const trigger = e.target; // bouton ayant ouvert le dropdown
+    const menu = trigger?.nextElementSibling;
+    const active = document.activeElement;
+    // Si le clic se produit dans un popover, dans une vidéo, ou leurs sous-éléments
+    if (
+      active?.closest(".popover") ||
+      active?.closest(".popover_content") ||
+      active?.closest("lite-youtube") ||
+      active?.closest(".lty-playbtn") ||
+      active?.closest(".lty-playbtn2") ||
+      active?.closest(".yt_extra_buttons")
+    ) {
+      e.preventDefault(); // empêche la fermeture
+      e.stopImmediatePropagation(); // bloque toute propagation interne Bootstrap
+    }
+  });
+</script>
 <script>
   $("video").each(function (index, elem) {
     // console.log(i, "tf");
@@ -6452,178 +6644,6 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     dièze_perma_id_last_p_de_modif_clicked = ajkl;
   });
 </script> -->
-<script class="popover_class_script_12">
-  document.addEventListener("DOMContentLoaded", () => {
-    const popovers = new Map();
-    let activeSinglePopover = null;
-    function initializePopover(button) {
-      const title = button.getAttribute("data-popover-title");
-      const content = button.getAttribute("data-popover-content");
-      const placement = button.getAttribute("data-placement") || "auto";
-      const customClass = button.getAttribute("data-popover-class") || "";
-      const popover = new bootstrap.Popover(button, {
-        trigger: "manual",
-        placement: placement,
-        title: title,
-        content: content,
-        container: "body",
-        customClass: customClass,
-        html: true,
-      });
-      popovers.set(button, popover);
-      popover.disable();
-    }
-    document.querySelectorAll(".pop_button").forEach(initializePopover);
-    const showAllPopoversButton = document.getElementById("trigger_popovers");
-    if (showAllPopoversButton) {
-      showAllPopoversButton.addEventListener("click", (e) => {
-        e.stopPropagation();
-        popovers.forEach((popover, btn) => {
-          if (!popover._element.classList.contains("disabled")) {
-            popover.enable();
-            popover.show();
-          }
-        });
-      });
-    }
-    // Gestion du clic sur le document (capture)
-    document.body.addEventListener(
-      "click",
-      (e) => {
-        const target = e.target;
-        // Clic sur un élément éditable pour popover
-        if (target.classList.contains("popover_editable")) {
-          e.stopPropagation();
-          if (activeSinglePopover && activeSinglePopover.btn === target) {
-            activeSinglePopover.popover.hide();
-            activeSinglePopover.popover.dispose();
-            activeSinglePopover = null;
-            return;
-          }
-          if (activeSinglePopover) {
-            activeSinglePopover.popover.hide();
-            activeSinglePopover.popover.dispose();
-            activeSinglePopover = null;
-          }
-          const title =
-            target.getAttribute("title") ||
-            target.getAttribute("data-popover-title") ||
-            "";
-          let content = document.createElement("div");
-          const wrapper = target.closest(".popover_wrapper");
-          const rect = target.getBoundingClientRect();
-          const viewportWidth = window.innerWidth;
-          const viewportHeight = window.innerHeight;
-          const spaceTop = rect.top;
-          const spaceBottom = viewportHeight - rect.bottom;
-          const spaceLeft = rect.left;
-          const spaceRight = viewportWidth - rect.right;
-          const rightThreshold = viewportWidth * 0.4;
-          let minWidthVW = null;
-          if (wrapper) {
-            const contentDiv = wrapper.querySelector(".popover_content");
-            if (contentDiv) {
-              const clonedContent = contentDiv.cloneNode(true);
-              clonedContent.style.display = "block";
-              const div_around_iframe =
-                clonedContent.querySelector(".div_around_iframe");
-              const not_video = clonedContent.querySelector(
-                ".avoid_iframe_pour_iframe_wiki_etc",
-              );
-              if (div_around_iframe && !not_video) {
-                const table = div_around_iframe.closest("table");
-                if (table) {
-                  const vwMatch = table.style.width.match(/([\d.]+)vw/);
-                  if (vwMatch) minWidthVW = parseFloat(vwMatch[1]);
-                  else
-                    minWidthVW =
-                      (table.getBoundingClientRect().width /
-                        window.innerWidth) *
-                      100;
-                  clonedContent.style.minWidth = `${minWidthVW}vw`;
-                  const heightStyle = table.style.height;
-                  if (heightStyle && heightStyle.endsWith("vh"))
-                    div_around_iframe.style.height = heightStyle;
-                  else
-                    div_around_iframe.style.height = `${table.getBoundingClientRect().height}px`;
-                }
-              }
-              if (minWidthVW !== null) {
-                const minPixelsWidth = (minWidthVW / 100) * window.innerWidth;
-                clonedContent.style.minWidth = `${minPixelsWidth}px`;
-                clonedContent.style.width = `${Math.max(minPixelsWidth, 150)}px`;
-              }
-              content.appendChild(clonedContent);
-            }
-          }
-          let placement;
-          if (spaceRight < rightThreshold)
-            placement = spaceTop > spaceBottom ? "top" : "bottom";
-          else {
-            const maxSpace = Math.max(
-              spaceTop,
-              spaceBottom,
-              spaceLeft,
-              spaceRight,
-            );
-            if (maxSpace === spaceTop) placement = "top";
-            else if (maxSpace === spaceBottom) placement = "bottom";
-            else if (maxSpace === spaceLeft) placement = "left";
-            else placement = "right";
-          }
-          const existingInstance = bootstrap.Popover.getInstance(target);
-          if (existingInstance) existingInstance.dispose();
-          const popover = new bootstrap.Popover(target, {
-            trigger: "manual",
-            placement: placement,
-            fallbackPlacements: ["bottom", "left", "top"],
-            title: title,
-            content: () => content,
-            container: "body",
-            html: true,
-            sanitize: false,
-          });
-          popover.show();
-          const popoverElement = document.querySelector(".popover.show");
-          if (placement === "right" && popoverElement) {
-            const maxWidth = window.innerWidth - rect.right - 100;
-            const contentElement =
-              popoverElement.querySelector(".popover_content");
-            if (contentElement) contentElement.style.maxWidth = maxWidth + "px";
-          }
-          activeSinglePopover = { btn: target, popover: popover };
-          return;
-        }
-        // ✅ Protection absolue : ne jamais fermer popover si clic dans popover ou ses boutons
-        if (activeSinglePopover) {
-          const popEl = document.querySelector(".popover.show");
-          if (
-            popEl &&
-            (popEl.contains(e.target) || e.target.closest(".popover.show"))
-          )
-            return;
-        }
-        // Sinon, fermer le popover actif
-        if (activeSinglePopover) {
-          activeSinglePopover.popover.hide();
-          activeSinglePopover.popover.dispose();
-          activeSinglePopover = null;
-        }
-        popovers.forEach((popover) => popover.hide());
-      },
-      true, // capture
-    );
-    const observer = new MutationObserver(() => {
-      document.querySelectorAll(".pop_button").forEach((button) => {
-        if (!popovers.has(button)) initializePopover(button);
-      });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
-    document.body.addEventListener("shown.bs.popover", () => {
-      if (typeof initAudioPlayers === "function") initAudioPlayers();
-    });
-  });
-</script>
 <script class="youtube_button_reload_class_script_12">
   document.addEventListener("DOMContentLoaded", function () {
     const videoElements = document.querySelectorAll("video");
