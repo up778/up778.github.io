@@ -1299,6 +1299,7 @@ blockquote > p {
 .probable_citation_du_Père {
   font-style: italic;
   color: red !important;
+  background: #0037ff2f;
 
   padding-left: 10px;
   border-radius: 20px;
@@ -1338,7 +1339,8 @@ blockquote > p {
 .probable_citation_du_Fils {
   font-size: 19px;
   position: relative;
-  background: #ffff0020;
+
+  background: #0037ff2f;
   color: #ffff00;
 
   border-radius: 10px;
@@ -1364,9 +1366,10 @@ blockquote > p {
 }
 
 .probable_citation_du_Saint-Esprit {
-  border-left: 4px solid white !important;
   font-style: italic;
   color: white !important;
+  background: #0037ff2f;
+  border: 1px dashed white;
   padding-left: 10px;
   border-radius: 20px;
   text-shadow:
@@ -1387,7 +1390,8 @@ blockquote > p {
 
 .probable_citation_de_la_Mère {
   color: #ff4ff6;
-  border: 1px solid #ff4ff6bb;
+  background: #0037ff2f;
+  border: 1px dashed #ff4ff6bb;
   border-radius: 10px;
 
   margin: 2em 0;
