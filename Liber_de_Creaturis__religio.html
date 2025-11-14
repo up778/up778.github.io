@@ -6735,9 +6735,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         const ecart = Math.abs(maintenant - d);
         if (ecart <= deux_semaines_ms) {
           bloc
-            .querySelectorAll(
-              "article, h1, h2, h3, h4, h5, h6, .bcLevel2, .bcLevel3, .bcLevel4, .bcLevel5, .bcLevel6",
-            )
+            .querySelectorAll("article, h1, h2, h3, h4, h5, h6")
             .forEach((titre) => {
               // éviter de dupliquer l'icône si elle est déjà présente
               if (!titre.dataset.iconeAjoutee) {

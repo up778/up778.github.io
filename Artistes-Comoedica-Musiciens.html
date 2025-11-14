@@ -672,7 +672,7 @@ alt="Images/arrows-collapse.png"
 <div class="background_class_horizontal_heading"><nav id="breadcrumb"></nav></div>
 <main role="main">
 <header role="banner"></header>
-<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Musiciens___Artistes___Com_diens">Musiciens 🎻- <span style="color: #ffffff;">musique</span> 🎸🪕</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Art-Artistes/Artistes-Comoedica-Musiciens/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#ff75c144;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_jeudi_16_octobre_2025_9_17"><h1 class="reload-class_une_semaine__" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_jeudi_16_octobre_2025_9_17">Préambule</h1>
+<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Musiciens___Artistes___Com_diens">Musiciens 🎻- <span style="color: #ffffff;">musique</span> 🎸🪕</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Art-Artistes/Artistes-Comoedica-Musiciens/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#ff75c144;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_jeudi_16_octobre_2025_9_17"><h1 class="reload-class_une_semaine__ winnie" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_jeudi_16_octobre_2025_9_17">Préambule</h1>
 <p>7ème page du site.<br><span style="color: #ffffff;">7ème jour, un jour où <strong>D</strong>ieu se serait reposé..</span></p>
 <p class="probable_citation_du_Saint-Esprit">Et les cieux et la terre furent achevés, et toute leur armée. <br>Et <strong>D</strong>ieu eut achevé au septième jour son oeuvre qu'il fit; et il se reposa au septième jour de toute son oeuvre qu'il fit. <br>Et <strong>D</strong>ieu bénit le septième jour, et le sanctifia; car en ce jour il se reposa de toute son oeuvre que <strong>D</strong>ieu créa en la faisant. </p>
 <p style="text-align: right;">Livre de la Genèse 2. 1,2,3</p>
@@ -4319,8 +4319,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script>
-<script>
+ </script><script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
@@ -5681,9 +5680,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         const ecart = Math.abs(maintenant - d);
         if (ecart <= deux_semaines_ms) {
           bloc
-            .querySelectorAll(
-              "article, h1, h2, h3, h4, h5, h6, .bcLevel2, .bcLevel3, .bcLevel4, .bcLevel5, .bcLevel6",
-            )
+            .querySelectorAll("article, h1, h2, h3, h4, h5, h6")
             .forEach((titre) => {
               // éviter de dupliquer l'icône si elle est déjà présente
               if (!titre.dataset.iconeAjoutee) {
