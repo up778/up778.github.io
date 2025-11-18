@@ -337,7 +337,7 @@ function add_ytmb(url1, url2, url3) {
       videoURL: url,
       containment: "#wrapper_myPlayerID",
       autoPlay: true,
-      mute: false,
+      mute: true,
       startAt: 0,
       opacity: 0.6,
       loop: true,
@@ -1490,14 +1490,7 @@ for (let i = 0; i < audioElements.length; i++) {
   });
 }
 
-function testyy() {
-  setTimeout(() => {
-    jQuery("#myPlayerID").YTPMute();
-    setTimeout(() => {
-      jQuery("#myPlayerID").YTPUnmute();
-    }, 2000);
-  }, 2000);
-}
+function testyy() {}
 
 $(document).ready(function () {
   const predo_trans = predo_color_of_page + "60";
