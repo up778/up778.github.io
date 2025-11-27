@@ -2769,8 +2769,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script>
-<script>
+ </script><script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
@@ -4149,7 +4148,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
 <script class="table_scroll_wrapper_class_script">
   (function initTableScrollWrapper() {
     function main() {
-      console.log("9999999999999999"); // toujours exécuté
+      // console.log("9999999999999999"); // toujours exécuté
       const style = document.createElement("style");
       style.textContent = `
             .scroll_hint {

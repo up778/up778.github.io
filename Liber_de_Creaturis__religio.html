@@ -887,7 +887,7 @@ alt="Images/arrows-collapse.png"
 <div class="popover_content" style="display: none;">
 <figure style="position: relative;">
 <figcaption id="Liber_de_Creaturis__religio_fig_audio_perma_id_dn_lundi_17_novembre_2025_12_391" class="reload-class_une_semaine__"> </figcaption>
-<audio preload="metadata" style="width: 50vw; height: 30px; display: inline;" controls="controls" loop="loop">
+<audio style="width: 50vw; height: 30px; display: inline;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
                 <source src="Creaturae/Religion/Audio_s/Stephan Eicher - Oh Ironie version piano_v2.opus" type="audio/ogg; codecs=opus">
             </audio> <br> </figure>
 </div>
@@ -5392,8 +5392,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script>
-<script>
+ </script><script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
@@ -6772,7 +6771,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
 <script class="table_scroll_wrapper_class_script">
   (function initTableScrollWrapper() {
     function main() {
-      console.log("9999999999999999"); // toujours exécuté
+      // console.log("9999999999999999"); // toujours exécuté
       const style = document.createElement("style");
       style.textContent = `
             .scroll_hint {
