@@ -2985,3 +2985,7 @@ article > ul > li {
 section > ul > li {
   margin-bottom: 14px;
 }
+
+#btn_dropdown_top_left_plus.dropdown-toggle::after {
+  transform: rotate(-90deg);
+}
