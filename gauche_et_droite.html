@@ -5238,7 +5238,9 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       volumeSlider.type = "range";
       volumeSlider.min = "0";
       volumeSlider.max = "100";
-      volumeSlider.value = audio.volume * 100;
+      // Valeur initiale à 50 %
+      audio.volume = 0.5; // volume à 50%
+      volumeSlider.value = 50; // curseur positionné au milieu
       volumeSlider.className = "volume_slider_p";
       volumeSlider.style.width = "40px";
       volumeSlider.style.height = "100px";
@@ -5337,10 +5339,36 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         }
       });
       // Bouton recharger
+      // Bouton recharger
       reloadButton.addEventListener("click", () => {
+        // mettre en pause tous les autres lecteurs + remettre l'icône play
+        audioElements.forEach((otherAudio) => {
+          if (otherAudio !== audio) {
+            otherAudio.pause();
+            const otherPlayer = otherAudio.parentElement.querySelector(
+              ".custom_audio_player_p",
+            );
+            if (otherPlayer) {
+              const otherBtn = otherPlayer.querySelector(".play_pause_p_p");
+              if (otherBtn) {
+                otherBtn.innerHTML = '<i class="bi-play"></i>';
+                otherBtn.classList.remove("playing");
+              }
+            }
+          }
+        });
         audio.load();
-        playPauseButton.innerHTML = '<i class="bi-play"></i>';
-        playPauseButton.classList.remove("playing");
+        // remettre au début
+        audio.currentTime = 0;
+        // relancer automatiquement
+        audio.play();
+        // appliquer la logique "lecture unique" comme si on avait cliqué sur play
+        document.dispatchEvent(
+          new CustomEvent("custom_audio_play", { detail: audio }),
+        );
+        // mettre à jour l'icône du bouton
+        playPauseButton.innerHTML = '<i class="bi-pause"></i>';
+        playPauseButton.classList.add("playing");
         progressBarFill.style.width = "0%";
         timeDisplay.textContent = "00:00 / 00:00";
       });
@@ -5678,6 +5706,17 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       }
     });
   }
+  document.addEventListener("custom_audio_play", (e) => {
+    const current = e.detail; // l'audio qui vient d'être lancé
+    document.querySelectorAll("audio").forEach((a) => {
+      if (a !== current) {
+        a.pause();
+        a.closest(".html_test_plus_audio_perma_id") // adaptez si votre conteneur diffère
+          ?.querySelector(".playpause_button")
+          ?.classList.remove("playing");
+      }
+    });
+  });
   // Appel initial pour setup sur page load
   initAudioPlayers();
 </script>

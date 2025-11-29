@@ -4470,14 +4470,14 @@ alt="Images/arrows-collapse.png"
 <td style="background-color: #0056028a;"><picture><source srcset="Creaturae/Religion/Images/Avif_images/8-June-2025-49-44-rand909681F.avif" type="image/avif">   <img src="Creaturae/Religion/Images/8-June-2025-49-44-rand909681F.jpg" style="width: 30%; float: left;" class="rounded image_outside_td_and_float_left" loading="lazy" alt="Images/8-June-2025-22-40-rand6468D19.jpg" width="828px"></picture><picture><source src="Creaturae/Religion/Images/Avif_images/19-June-2025-46-38-rand5666E33.avif" type="image/avif"> <img src="Creaturae/Religion/Images/19-June-2025-46-38-rand5666E33.jpg" width="828px" style="width: 40%; float: right;" class="rounded" loading="lazy" alt="Images/19-June-2025-46-38-rand5666E33.jpg"> </picture><picture> </picture></td>
 </tr>
 <tr style="height: 44.6098px;">
-<td style="background-color: #4521558a;"><span style="font-size: 20px;">"Plongeon" et immersion solitaire</span></td>
+<td style="background-color: #4521558a;"><span style="font-size: 20px;">"Plongeon" solitaire et immersion solitaire</span></td>
 <td style="background-color: #0000018a;"></td>
 <td style="background-color: #0056028a;"><span style="font-size: 20px;">"Immersion" collective</span></td>
 </tr>
 <tr style="height: 228.201px;">
 <td style="vertical-align: top; background-color: #4521558a;">
 <figure style="position: relative;">
-<figcaption id="Liber_de_Creaturis__religio_fig_audio_perma_id_dn_dimanche_15_juin_2025_58_553" class="reload-class_une_semaine__"><span style="color: #55ff56;">"J*sus. Je me plonge <span style="text-decoration: underline;">complétement</span> dans ta "divine volonté" "</span></figcaption>
+<figcaption id="Liber_de_Creaturis__religio_fig_audio_perma_id_dn_dimanche_15_juin_2025_58_553" class="reload-class_une_semaine__"><span style="color: #55ff56;">"J*sus. Je me plonge <span style="text-decoration: underline;">complétement</span> dans ta "divine volonté", je m'imerge <span style="text-decoration: underline;">complétement</span> dans tout c'que tu es "</span></figcaption>
 <audio style="width: 100%; height: 30px; display: inline;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
                     <source src="Creaturae/Religion/Audio_s/''Colombine''/J'sus je me plonge complétement dans ta ''divine volonté''.mp3" type="audio/mp3"></audio><a href="https://youtu.be/CtQTrnY7UOA?list=PLLnQ3Om9rQE2xykarlsFhCIuSpMvzuu_-&t=17" target="_blank" rel="noopener noreferrer">https://youtu.be/CtQTrnY7UOA?list=PLLnQ3Om9rQE2xykarlsFhCIuSpMvzuu_-&t=17</a> </figure>
 </td>
@@ -5717,7 +5717,9 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       volumeSlider.type = "range";
       volumeSlider.min = "0";
       volumeSlider.max = "100";
-      volumeSlider.value = audio.volume * 100;
+      // Valeur initiale à 50 %
+      audio.volume = 0.5; // volume à 50%
+      volumeSlider.value = 50; // curseur positionné au milieu
       volumeSlider.className = "volume_slider_p";
       volumeSlider.style.width = "40px";
       volumeSlider.style.height = "100px";
@@ -5816,10 +5818,36 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         }
       });
       // Bouton recharger
+      // Bouton recharger
       reloadButton.addEventListener("click", () => {
+        // mettre en pause tous les autres lecteurs + remettre l'icône play
+        audioElements.forEach((otherAudio) => {
+          if (otherAudio !== audio) {
+            otherAudio.pause();
+            const otherPlayer = otherAudio.parentElement.querySelector(
+              ".custom_audio_player_p",
+            );
+            if (otherPlayer) {
+              const otherBtn = otherPlayer.querySelector(".play_pause_p_p");
+              if (otherBtn) {
+                otherBtn.innerHTML = '<i class="bi-play"></i>';
+                otherBtn.classList.remove("playing");
+              }
+            }
+          }
+        });
         audio.load();
-        playPauseButton.innerHTML = '<i class="bi-play"></i>';
-        playPauseButton.classList.remove("playing");
+        // remettre au début
+        audio.currentTime = 0;
+        // relancer automatiquement
+        audio.play();
+        // appliquer la logique "lecture unique" comme si on avait cliqué sur play
+        document.dispatchEvent(
+          new CustomEvent("custom_audio_play", { detail: audio }),
+        );
+        // mettre à jour l'icône du bouton
+        playPauseButton.innerHTML = '<i class="bi-pause"></i>';
+        playPauseButton.classList.add("playing");
         progressBarFill.style.width = "0%";
         timeDisplay.textContent = "00:00 / 00:00";
       });
@@ -6157,6 +6185,17 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       }
     });
   }
+  document.addEventListener("custom_audio_play", (e) => {
+    const current = e.detail; // l'audio qui vient d'être lancé
+    document.querySelectorAll("audio").forEach((a) => {
+      if (a !== current) {
+        a.pause();
+        a.closest(".html_test_plus_audio_perma_id") // adaptez si votre conteneur diffère
+          ?.querySelector(".playpause_button")
+          ?.classList.remove("playing");
+      }
+    });
+  });
   // Appel initial pour setup sur page load
   initAudioPlayers();
 </script>
