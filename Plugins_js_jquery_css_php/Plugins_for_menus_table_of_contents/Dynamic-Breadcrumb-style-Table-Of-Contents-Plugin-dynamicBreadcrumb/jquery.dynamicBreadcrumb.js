@@ -66,10 +66,16 @@ let freeze_refresh = false;
       breadcrumbList.append("<li class='gfre oncliik'></li>");
     }
 
-    // let $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
+    //  let $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
 
     function refreshBreadcrumb() {
-      const $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
+      if (!refreshBreadcrumb.allHeaders) {
+        refreshBreadcrumb.allHeaders = $(
+          ".dynamicContentMenu__header",
+        ).toArray();
+      }
+      const $allHeaders = $(refreshBreadcrumb.allHeaders);
+
       let level = 0;
       let currentContainer;
 
@@ -97,21 +103,24 @@ let freeze_refresh = false;
 
       const currentId = currentContainer.closest("article").attr("id");
       if (lastActiveHeaderId !== currentId) {
+        if (lastActiveHeaderId) {
+          $allHeaders
+            .filter("#dynamicContentMenu__header" + lastActiveHeaderId)
+            .css("border", "");
+        }
+
         lastActiveHeaderId = currentId;
 
         const match = currentId.match(/(\d?[a-zA-Z0-9])$/);
         let lastItem = match ? match[0] : "";
-        if (lastItem.length === 2 && lastItem[0] === "0") {
+        if (lastItem.length === 2 && lastItem[0] === "0")
           lastItem = lastItem[1];
-        }
 
         const headerTargetId = "dynamicContentMenu__header" + (lastItem - 1);
 
-        $dynamicContentMenuHeaders.each(function () {
-          const $el = $(this);
-          $el.css("border", "");
-          if ($el.attr("id") === headerTargetId) {
-            $el.attr(
+        $allHeaders.each(function () {
+          if (this.id === headerTargetId) {
+            $(this).attr(
               "style",
               (i, s) =>
                 (s || "") +
@@ -119,13 +128,16 @@ let freeze_refresh = false;
                 predo_color_of_page_recup +
                 " !important;",
             );
-            // $(this).css(
-            //   "background-color",
           }
         });
       }
 
+      // Gestion des niveaux du breadcrumb
       for (let i = settings.levels; i > level; i--) {
+        // console.log(
+        //   breadcrumbList.find("> li:nth-child(" + (i + 1) + ")"),
+        //   "breadcrumbList.find"
+
         breadcrumbList.find("> li:nth-child(" + (i + 1) + ")").hide();
       }
       for (; level > 0; level--) {
@@ -133,7 +145,6 @@ let freeze_refresh = false;
         const li = breadcrumbList
           .find("> li:nth-child(" + (cssLevel + 1) + ")")
           .empty();
-
         const heading = currentContainer
           .find("h" + cssLevel)
           .first()
@@ -145,54 +156,53 @@ let freeze_refresh = false;
         if (siblings.length > 1) {
           $(
             '<a role="button" data-bs-toggle="dropdown" href="javascript:void(0)">' +
-            heading +
-            "</a>",
+              heading +
+              "</a>",
           ).appendTo(li);
-
           const subMenu = $('<ul class="yyyy">').appendTo(
             $("<div>").appendTo(li),
           );
+
           siblings.each(function () {
             const siblingHeading = $(this)
               .find("h" + cssLevel)
               .first()
               .text();
             const siblingId = $(this).attr("id");
-            const currentId = currentContainer.attr("id");
-
-            const isCurrent = siblingId === currentId;
+            const isCurrent = siblingId === currentContainer.attr("id");
 
             subMenu.append(
               '<li><a class="Jacques2" href="#' +
-              siblingId +
-              '" style="border-radius:10px;' +
-              (isCurrent
-                ? "border:2px dotted " +
-                t2rans_predo_color_of_page_recup +
-                ";"
-                : "") +
-              '">' +
-              siblingHeading +
-              (isCurrent
-                ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
-                : "") +
-              "</a></li>",
+                siblingId +
+                '" style="border-radius:10px;' +
+                (isCurrent
+                  ? "border:2px dotted " +
+                    t2rans_predo_color_of_page_recup +
+                    ";"
+                  : "") +
+                '">' +
+                siblingHeading +
+                (isCurrent
+                  ? '&nbsp;&nbsp;&nbsp; 👈 <span style="color:#f7c226cc !important;font-size:80%"></span>'
+                  : "") +
+                "</a></li>",
             );
           });
         } else {
           // cas seul → pas de dropdown
           $(
             '<a class="Jacques2" href="#' +
-            currentContainer.attr("id") +
-            '">' +
-            heading +
-            "</a>",
+              currentContainer.attr("id") +
+              '">' +
+              heading +
+              "</a>",
           ).appendTo(li);
         }
 
         li.show();
         currentContainer = currentContainer.parent();
       }
+
       breadcrumbContainer.slideDown(settings.slideDuration);
     }
 
