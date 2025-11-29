@@ -3959,14 +3959,14 @@ alt="Images/arrows-collapse.png"
 </div>
 </div><p style="display: inline;">pourrait-il devenir le grand Monarque? (Pendant un moment il me sembla qu'il eut aussi comme nom "le grand Monarque".) Je dirais ce n'est peut-être pas tout à fait implausible. Mais, j'estime, sur certains points, il faudrait qu'il se calme fortement avant. Difficile de concevoir comment Le Fils pourrait valider Mathieu B en tant que grand Monarque, sinon. (S'il se trouve que <strong>D</strong>ieu soit le Fils, car le Fils aurait plutôt rejeté la violence physique. Or n'y aurait-il pas eut, parfois, concernant la force physique, pour le moins, ambiguïté, avec Mathieu B, sur certains sujets.)</p><p style="display: inline;"> </p><div id="Sylvain_Durif_=_?_le_Grand_Monarque_section" class="capsule capsule_dun_h4 rounded background_class" style="background-image: url('Accueil/Dossier_dans_dossier_accueil/Images/Images_for_backgrounds/background_image_transparent.png'); background-size: auto; background-position: 4vw; background-color: #0088018a; background-repeat: no-repeat; background-attachment: scroll;">
 <h4>Sylvain Durif = ? le Grand Monarque / L'Homme vert</h4>
-<table style="width: 55.0854%; height: 431.136px;" class="table_float_end float-end table_outside_a_table_and_outside_card margin_left_2">
+<table style="width: 32vw; height: 30vh; border-collapse: collapse; text-align: center; empty-cells: show;" class="table_float_end float-end table_outside_a_table_and_outside_card margin_left_2" empty-cells="show">
 <tbody>
 <tr style="height: 25px;">
 <td style="text-align: right; background-color: rgba(0, 86, 2, 0.54); width: 99.8767%;">Sylvain Durif serait-il le grand Monarque? 👑</td>
 </tr>
 <tr style="height: 269.11px;">
 <td style="background-color: rgba(0, 86, 2, 0.54); width: 99.8767%;">
-<div id="accueil_iframe_video_id_dn_samedi_21_décembre_2024_11_469" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video" style="position: relative; width: 55.0854%; height: 431.136px;"> <lite-youtube style="height: 431.136px; width: 55.0854%;" src="https://www.youtube.com/embed/ywDYM4imJbo?list=PLUwgePdXmoyVT_6o1ZhLF3iwIEmjwnofK" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="1" video_id="ywDYM4imJbo" img_src_iframe_8="Accueil/Dossier_dans_dossier_accueil/Images/Posters_for_images/Sylvain Durif, Le Grand Monarque,  le Christ cosmique-ywDYM4imJbo.avif" title_from_internet="Sylvain Durif, Le Grand Monarque,  le Christ cosmique" class="rounded-2" p_oster_evt="Accueil/Dossier_dans_dossier_accueil/Images/Images_for_backgrounds/Images_for_backgrounds_avif/window-4390940_1920_darker_poster.avif" params="?listType=playlist&list=PLUwgePdXmoyVT_6o1ZhLF3iwIEmjwnofK" height="431.136px" width="55.0854%"></lite-youtube></div>
+<div id="accueil_iframe_video_id_dn_samedi_21_décembre_2024_11_469" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video table_modified_temp_class" style="position: relative; width: 32vw; height: 30vh;"> <lite-youtube style="height:30vh; width:32vw" src="https://www.youtube.com/embed/ywDYM4imJbo?list=PLUwgePdXmoyVT_6o1ZhLF3iwIEmjwnofK" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="1" video_id="ywDYM4imJbo" img_src_iframe_8="Accueil/Dossier_dans_dossier_accueil/Images/Posters_for_images/Sylvain Durif, Le Grand Monarque,  le Christ cosmique-ywDYM4imJbo.avif" title_from_internet="Sylvain Durif, Le Grand Monarque,  le Christ cosmique" class="rounded-2" p_oster_evt="Accueil/Dossier_dans_dossier_accueil/Images/Images_for_backgrounds/Images_for_backgrounds_avif/window-4390940_1920_darker_poster.avif" params="?listType=playlist&list=PLUwgePdXmoyVT_6o1ZhLF3iwIEmjwnofK" height="30vh" width="32vw"></lite-youtube></div>
 </td>
 </tr>
 <tr style="height: 137.027px;">
@@ -5608,7 +5608,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             e.preventDefault(); // toujours empêcher la page
           } else {
             // zone centrale → page scroll
-            window.scrollBy({ top: e.deltaY, behavior: "auto" });
+            // zone centrale → page scroll plus lent
+            window.scrollBy({ top: e.deltaY * 0.25, behavior: "auto" });
           }
         }
         wrapper.addEventListener("mousemove", handleMouseMove);
