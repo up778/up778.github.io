@@ -3400,6 +3400,32 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       const progressBarFill = document.createElement("div");
       progressBarFill.className = "progress_bar_fill_p";
       progressBar.appendChild(progressBarFill);
+      // créer une zone invisible au-dessus pour capter les clics
+      const progressBarClickZone = document.createElement("div");
+      progressBarClickZone.style.position = "absolute";
+      progressBarClickZone.style.left = "0";
+      progressBarClickZone.style.right = "0";
+      progressBarClickZone.style.height = "20px"; // zone étendue (10px au-dessus et 10px en-dessous)
+      progressBarClickZone.style.top = "-10px"; // remonter 10px au-dessus
+      progressBarClickZone.style.cursor = "pointer";
+      progressBarClickZone.style.background = "transparent";
+      progressBar.appendChild(progressBarClickZone);
+      // gestion du clic sur cette zone
+      progressBarClickZone.addEventListener("click", (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = Math.max(
+          0,
+          Math.min(percent * audio.duration, audio.duration),
+        );
+      });
+      // mettre à jour la barre en fonction du temps
+      audio.addEventListener("timeupdate", () => {
+        const currentTime = audio.currentTime;
+        const duration = audio.duration;
+        progressBarFill.style.width = `${(currentTime / duration) * 100}%`;
+        timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+      });
       const timeDisplay = document.createElement("span");
       timeDisplay.className = "time_display_p";
       timeDisplay.textContent = "00:00 / 00:00";
@@ -3516,6 +3542,22 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
               }
             }
           });
+          // Supprimer la bordure rouge sur tous les lecteurs
+          audioElements.forEach((otherAudio) => {
+            const otherPlayerContainer = otherAudio.parentElement.querySelector(
+              ".custom_audio_player_p",
+            );
+            if (otherPlayerContainer) {
+              otherPlayerContainer.classList.remove("audio_playing_p");
+            }
+          });
+          // Ajouter la bordure rouge sur le lecteur actuel
+          const playerContainer = audio.parentElement.querySelector(
+            ".custom_audio_player_p",
+          );
+          if (playerContainer) {
+            playerContainer.classList.add("audio_playing_p");
+          }
           audio.play();
           playPauseButton.innerHTML = '<i class="bi-pause"></i>';
           playPauseButton.classList.add("playing");
@@ -3591,8 +3633,14 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       });
       progressBar.addEventListener("click", (e) => {
         const rect = progressBar.getBoundingClientRect();
+        // ✅ élargir la zone verticale
+        const yOffset = 10; // pixels au-dessus à prendre en compte
+        if (e.clientY < rect.top - yOffset || e.clientY > rect.bottom) return;
         const percent = (e.clientX - rect.left) / rect.width;
-        audio.currentTime = percent * audio.duration;
+        audio.currentTime = Math.max(
+          0,
+          Math.min(percent * audio.duration, audio.duration),
+        );
       });
       function formatTime(time) {
         const minutes = Math.floor(time / 60);
@@ -3707,6 +3755,15 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         .catch((err) =>
           console.error("Erreur lors de la lecture audio :", err),
         );
+      document.querySelectorAll(".custom_audio_player_p").forEach((pc) => {
+        pc.classList.remove("audio_playing_p"); // enlever bordure sur tous les lecteurs
+      });
+      const playerContainer = audio.parentElement.querySelector(
+        ".custom_audio_player_p",
+      );
+      if (playerContainer) {
+        playerContainer.classList.add("audio_playing_p"); // ajouter bordure rouge sur l’audio actuel
+      }
       const btnPP = elem.querySelector(".play_pause_p_p");
       if (btnPP) {
         btnPP.innerHTML = '<i class="bi-pause"></i>';

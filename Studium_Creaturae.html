@@ -5021,142 +5021,180 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     const audioElements = document.querySelectorAll("audio");
     let customPlayerVisible = true;
     let lastPlayedAudio = null;
-    // Créer un bouton pour basculer entre les deux vues
-    document
-      .getElementById("bouton_pour_basculer_style_audios")
-      .addEventListener("click", () => {
+    // Bouton toggle vue audio
+    const toggleBtn = document.getElementById(
+      "bouton_pour_basculer_style_audios",
+    );
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", () => {
         customPlayerVisible = !customPlayerVisible;
-        audioElements.forEach((audio, index) => {
+        audioElements.forEach((audio) => {
           const playerContainer = audio.parentElement.querySelector(
             ".custom_audio_player_p",
           );
           if (customPlayerVisible) {
             audio.style.display = "none"; // Masquer le lecteur natif
-            playerContainer.style.display = "block"; // Afficher le lecteur personnalisé
+            if (playerContainer) playerContainer.style.display = "block"; // Afficher le lecteur personnalisé
           } else {
             audio.style.display = "block"; // Afficher le lecteur natif
-            playerContainer.style.display = "none"; // Masquer le lecteur personnalisé
+            if (playerContainer) playerContainer.style.display = "none"; // Masquer le lecteur personnalisé
           }
         });
       });
+    }
     audioElements.forEach((audio) => {
-      // Supprimer le lecteur personnalisé existant s'il y en a un
+      // Supprimer lecteur personnalisé existant
       const existingPlayer = audio.parentElement.querySelector(
         ".custom_audio_player_p",
       );
-      if (existingPlayer) {
-        existingPlayer.remove();
-      }
+      if (existingPlayer) existingPlayer.remove();
       // Masquer le lecteur natif
       audio.style.display = "none";
       // Créer le conteneur du lecteur personnalisé
       const playerContainer = document.createElement("div");
       playerContainer.className = "custom_audio_player_p";
       playerContainer.style.width = getComputedStyle(audio).width;
-      // Bouton recharger
+      // 🔹 Boutons classiques
       const reloadButton = document.createElement("button");
       reloadButton.innerHTML = '<i class="bi-arrow-clockwise"></i>';
       reloadButton.title = "Recharger";
       reloadButton.className = "reload_audio_player_p";
       reloadButton.style.position = "absolute";
       reloadButton.style.left = "0px";
-      // Bouton play/pause
       const playPauseButton = document.createElement("button");
       playPauseButton.innerHTML = '<i class="bi-play"></i>';
       playPauseButton.title = "Lecture/Pause";
       playPauseButton.className = "play_pause_p_p";
-      // Barre de progression
       const progressBar = document.createElement("div");
       progressBar.className = "progress_bar_p";
       const progressBarFill = document.createElement("div");
       progressBarFill.className = "progress_bar_fill_p";
       progressBar.appendChild(progressBarFill);
-      // Affichage temps
+      // créer une zone invisible au-dessus pour capter les clics
+      const progressBarClickZone = document.createElement("div");
+      progressBarClickZone.style.position = "absolute";
+      progressBarClickZone.style.left = "0";
+      progressBarClickZone.style.right = "0";
+      progressBarClickZone.style.height = "20px"; // zone étendue (10px au-dessus et 10px en-dessous)
+      progressBarClickZone.style.top = "-10px"; // remonter 10px au-dessus
+      progressBarClickZone.style.cursor = "pointer";
+      progressBarClickZone.style.background = "transparent";
+      progressBar.appendChild(progressBarClickZone);
+      // gestion du clic sur cette zone
+      progressBarClickZone.addEventListener("click", (e) => {
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = Math.max(
+          0,
+          Math.min(percent * audio.duration, audio.duration),
+        );
+      });
+      // mettre à jour la barre en fonction du temps
+      audio.addEventListener("timeupdate", () => {
+        const currentTime = audio.currentTime;
+        const duration = audio.duration;
+        progressBarFill.style.width = `${(currentTime / duration) * 100}%`;
+        timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+      });
       const timeDisplay = document.createElement("span");
       timeDisplay.className = "time_display_p";
       timeDisplay.textContent = "00:00 / 00:00";
-      // Bouton muet
       const muteButton = document.createElement("button");
       muteButton.innerHTML = '<i class="bi-volume-up"></i>';
       muteButton.className = "btn_mute_p";
       muteButton.title = "Muet";
-      // Slider volume vertical
       const volumeSlider = document.createElement("input");
       volumeSlider.type = "range";
       volumeSlider.min = "0";
       volumeSlider.max = "100";
-      // Valeur initiale à 50 %
-      audio.volume = 0.5; // volume à 50%
-      volumeSlider.value = 50; // curseur positionné au milieu
+      audio.volume = 0.5;
+      volumeSlider.value = 50;
       volumeSlider.className = "volume_slider_p";
       volumeSlider.style.width = "40px";
       volumeSlider.style.height = "100px";
       volumeSlider.style.transform = "rotate(-90deg)";
-      // Bouton répéter
       const repeatButton = document.createElement("button");
       repeatButton.className = "audio_repeat_button_p";
       repeatButton.innerHTML = '<i class="bi-arrow-repeat"></i>';
       repeatButton.title = "Répéter : Désactivé";
       repeatButton.style.color = "#dd0000dd";
-      // Bouton options
       const optionsMenuButton = document.createElement("button");
       optionsMenuButton.innerHTML = '<i class="bi-speedometer2"></i>';
       optionsMenuButton.title = "Options";
       optionsMenuButton.className = "btn_options_menu_p";
-      // Menu options (initialement caché)
       const optionsMenu = document.createElement("div");
       optionsMenu.className = "options_menu_p";
       optionsMenu.style.display = "none";
-      // Option télécharger
       const downloadOption = document.createElement("button");
       downloadOption.textContent = "Télécharger";
       downloadOption.onclick = () => downloadAudio(audio);
-      // Option vitesse de lecture
       const speedOption = document.createElement("button");
       speedOption.textContent = "Vitesse de lecture";
       speedOption.onclick = () => toggleSpeedMenu();
       optionsMenu.appendChild(downloadOption);
       optionsMenu.appendChild(speedOption);
-      // Groupe de contrôle (muet, répéter, options)
-      const controlsGroup = document.createElement("div");
-      controlsGroup.className = "control_group_p";
-      controlsGroup.appendChild(muteButton);
-      controlsGroup.appendChild(repeatButton);
-      controlsGroup.appendChild(optionsMenuButton);
-      // Conteneur volume (mute + slider)
-      const volumeContainer = document.createElement("div");
-      volumeContainer.className = "volume_container_p";
-      volumeContainer.appendChild(muteButton);
-      volumeContainer.appendChild(volumeSlider);
-      // Assemblage du lecteur personnalisé
+      // 🔹 Bouton info + popup
+      const infoButton = document.createElement("button");
+      infoButton.innerHTML = '<i class="bi-info-circle"></i>';
+      infoButton.title = "Infos";
+      infoButton.className = "info_button_audio_player";
+      const infoPopup = document.createElement("div");
+      infoPopup.className = "info_popup_p";
+      infoPopup.style.display = "none";
+      // 🔹 Récupérer HTML réel depuis <p class="audio_info_p">
+      const infoTextEl = audio.parentElement.querySelector(".audio_info_p");
+      let infoHtml = infoTextEl
+        ? infoTextEl.innerHTML.replace(/\u00A0/g, " ").trim()
+        : "";
+      // Ne pas afficher <p> directement, popup uniquement
+      if (!infoHtml || infoHtml.toLowerCase() === "_pot_") {
+        infoButton.style.display = "none";
+        infoPopup.style.display = "none";
+        volumeSlider.style.marginLeft = "-140px";
+      } else {
+        infoPopup.innerHTML = infoHtml; // 🔹 HTML conservé
+        infoTextEl.style.display = "none"; // masquer <p> original
+      }
+      const rightControlsGroup = document.createElement("div");
+      rightControlsGroup.className = "right_controls_group_p";
+      rightControlsGroup.appendChild(muteButton);
+      rightControlsGroup.appendChild(volumeSlider);
+      rightControlsGroup.appendChild(repeatButton);
+      rightControlsGroup.appendChild(optionsMenuButton);
+      rightControlsGroup.appendChild(infoButton);
+      rightControlsGroup.appendChild(infoPopup);
+      infoButton.addEventListener("click", (e) => {
+        e.stopPropagation();
+        infoPopup.style.display =
+          infoPopup.style.display === "block" ? "none" : "block";
+      });
+      document.addEventListener("click", (e) => {
+        if (!infoButton.contains(e.target) && !infoPopup.contains(e.target)) {
+          infoPopup.style.display = "none";
+        }
+      });
+      // 🔹 Assemblage
       playerContainer.appendChild(reloadButton);
       playerContainer.appendChild(playPauseButton);
       playerContainer.appendChild(progressBar);
       playerContainer.appendChild(timeDisplay);
-      playerContainer.appendChild(volumeContainer);
-      playerContainer.appendChild(controlsGroup);
+      playerContainer.appendChild(rightControlsGroup);
       playerContainer.appendChild(optionsMenu);
-      // Insérer avant l'élément audio dans le DOM
       audio.parentNode.insertBefore(playerContainer, audio);
-      // Ajuster la hauteur du slider volume selon la hauteur de l'audio (optionnel)
+      // 🔹 Ajustement hauteur slider
       const updateSliderHeight = () => {
         const audioHeight = audio.offsetHeight;
         volumeSlider.style.height = `${audioHeight}px`;
       };
       updateSliderHeight();
       window.addEventListener("resize", updateSliderHeight);
-      // État boucle initial
-      if (audio.loop) {
-        repeatButton.classList.add("active_repeat_button");
-      }
-      // Mettre à jour l'affichage temps à la metadata chargée
+      if (audio.loop) repeatButton.classList.add("active_repeat_button");
       audio.addEventListener("loadedmetadata", () => {
         timeDisplay.textContent = `00:00 / ${formatTime(audio.duration)}`;
       });
-      // Play / Pause
+      // 🔹 Play/Pause
       playPauseButton.addEventListener("click", () => {
         if (audio.paused) {
-          // Mettre en pause tous les autres audios et mettre à jour leur bouton
           audioElements.forEach((otherAudio) => {
             if (otherAudio !== audio) {
               otherAudio.pause();
@@ -5174,7 +5212,22 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
               }
             }
           });
-          // Jouer l'audio cliqué
+          // Supprimer la bordure rouge sur tous les lecteurs
+          audioElements.forEach((otherAudio) => {
+            const otherPlayerContainer = otherAudio.parentElement.querySelector(
+              ".custom_audio_player_p",
+            );
+            if (otherPlayerContainer) {
+              otherPlayerContainer.classList.remove("audio_playing_p");
+            }
+          });
+          // Ajouter la bordure rouge sur le lecteur actuel
+          const playerContainer = audio.parentElement.querySelector(
+            ".custom_audio_player_p",
+          );
+          if (playerContainer) {
+            playerContainer.classList.add("audio_playing_p");
+          }
           audio.play();
           playPauseButton.innerHTML = '<i class="bi-pause"></i>';
           playPauseButton.classList.add("playing");
@@ -5185,10 +5238,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           playPauseButton.classList.remove("playing");
         }
       });
-      // Bouton recharger
-      // Bouton recharger
+      // 🔹 Les autres boutons restent inchangés (recharger, mute, repeat, options, download, vitesse…)
       reloadButton.addEventListener("click", () => {
-        // mettre en pause tous les autres lecteurs + remettre l'icône play
         audioElements.forEach((otherAudio) => {
           if (otherAudio !== audio) {
             otherAudio.pause();
@@ -5205,39 +5256,27 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           }
         });
         audio.load();
-        // remettre au début
         audio.currentTime = 0;
-        // relancer automatiquement
         audio.play();
-        // appliquer la logique "lecture unique" comme si on avait cliqué sur play
         document.dispatchEvent(
           new CustomEvent("custom_audio_play", { detail: audio }),
         );
-        // mettre à jour l'icône du bouton
         playPauseButton.innerHTML = '<i class="bi-pause"></i>';
         playPauseButton.classList.add("playing");
         progressBarFill.style.width = "0%";
         timeDisplay.textContent = "00:00 / 00:00";
       });
-      // Bouton muet
       muteButton.addEventListener("click", () => {
         audio.muted = !audio.muted;
         muteButton.innerHTML = audio.muted
           ? '<i class="bi-volume-mute"></i>'
           : '<i class="bi-volume-up"></i>';
-        if (audio.muted) {
-          volumeSlider.value = 0;
-        } else {
-          volumeSlider.value = audio.volume * 100;
-        }
+        if (audio.muted) volumeSlider.value = 0;
+        else volumeSlider.value = audio.volume * 100;
       });
-      // Slider volume
       volumeSlider.addEventListener("input", () => {
-        if (!audio.muted) {
-          audio.volume = volumeSlider.value / 100;
-        }
+        if (!audio.muted) audio.volume = volumeSlider.value / 100;
       });
-      // Bouton répéter
       repeatButton.addEventListener("click", () => {
         audio.loop = !audio.loop;
         repeatButton.title = audio.loop
@@ -5246,46 +5285,44 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         repeatButton.classList.toggle("active_repeat_button", audio.loop);
         repeatButton.style.color = audio.loop ? "#dd0000dd" : "#777877";
       });
-      // Bouton options menu
       optionsMenuButton.addEventListener("click", (e) => {
         e.stopPropagation();
         optionsMenu.style.display =
           optionsMenu.style.display === "none" ? "block" : "none";
         toggleSpeedMenu();
       });
-      // Clic hors options menu pour fermer
       document.addEventListener("click", (e) => {
-        if (!optionsMenuButton.contains(e.target)) {
+        if (!optionsMenuButton.contains(e.target))
           optionsMenu.style.display = "none";
-        }
       });
-      // Mise à jour de la barre de progression
       audio.addEventListener("timeupdate", () => {
         const currentTime = audio.currentTime;
         const duration = audio.duration;
         progressBarFill.style.width = `${(currentTime / duration) * 100}%`;
         timeDisplay.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
       });
-      // Click sur barre de progression pour sauter
       progressBar.addEventListener("click", (e) => {
-        const percent = (e.offsetX / progressBar.offsetWidth) * 100;
-        const newTime = (percent / 100) * audio.duration;
-        audio.currentTime = newTime;
+        const rect = progressBar.getBoundingClientRect();
+        // ✅ élargir la zone verticale
+        const yOffset = 10; // pixels au-dessus à prendre en compte
+        if (e.clientY < rect.top - yOffset || e.clientY > rect.bottom) return;
+        const percent = (e.clientX - rect.left) / rect.width;
+        audio.currentTime = Math.max(
+          0,
+          Math.min(percent * audio.duration, audio.duration),
+        );
       });
-      // Fonction formatage temps
       function formatTime(time) {
         const minutes = Math.floor(time / 60);
         const seconds = Math.floor(time % 60);
         return `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
       }
-      // Fonction téléchargement audio
       function downloadAudio(audio) {
-        const sourceElement = audio.querySelector("source");
-        if (!sourceElement) {
+        const audioUrl = audio.querySelector("source")?.src || audio.src;
+        if (!audioUrl) {
           console.error("Aucun fichier source audio trouvé !");
           return;
         }
-        const audioUrl = new URL(sourceElement.src, window.location.href).href;
         const link = document.createElement("a");
         fetch(audioUrl)
           .then((response) => response.blob())
@@ -5303,9 +5340,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             console.error("Erreur lors du téléchargement de l'audio:", error);
           });
       }
-      // Fonction afficher menu vitesse de lecture
       function toggleSpeedMenu() {
-        // Supprimer ancien menu s'il existe
         const oldSpeedMenu = optionsMenu.querySelector(".speed_menu_p");
         if (oldSpeedMenu) oldSpeedMenu.remove();
         const speedMenu = document.createElement("div");
@@ -5330,7 +5365,6 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         const audioContainer = audioElement.parentElement;
         const audioRect = audioContainer.getBoundingClientRect();
         const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        // animate_background_title_jquery_ui(audioContainer, "2px dotted yellow");
         if (audioRect.top + scrollTop > window.innerHeight) {
           window.scrollTo({
             top:
@@ -5342,19 +5376,15 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             behavior: "auto",
           });
         }
-        //   setTimeout(() => {
-        // }, 1000);
         if (
           audioContainer.classList.contains("animate__animated") &&
           audioContainer.classList.contains("animate__bounce")
         ) {
-          // console.log("L'élément a les deux classes.");
           audioContainer.classList.remove(
             "animate__animated",
             "animate__bounce",
           );
           setTimeout(() => {
-            // console.log("ggg");
             audioContainer.classList.add(
               "animate__animated",
               "animate__bounce",
@@ -5362,100 +5392,21 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           }, 100);
         } else {
           audioContainer.classList.add("animate__animated", "animate__bounce");
-          // console.log("L'élément n'a pas les deux classes.");
         }
       }
     }
-    // Ajouter un gestionnaire d'événements pour déplacer la page
-    document
-      .getElementById("bouton_pour_rejoindre_audio")
-      .addEventListener("click", () => {
-        scrollToLastPlayedAudio();
-      });
-    // Fonction globale pour lire un audio à un moment précis
-    function play_audio_at(audio_id, time) {
-      let container = document.getElementById(audio_id);
-      if (!container) {
-        console.warn(`Conteneur introuvable avec l’ID : ${audio_id}`);
-        return;
-      }
-      // Si c'est un figcaption, remonter au figure parent
-      if (container.tagName.toLowerCase() === "figcaption") {
-        const figure = container.closest("figure");
-        if (figure) container = figure;
-      }
-      const audio = container.querySelector("audio");
-      if (!audio) {
-        console.warn(
-          `Balise <audio> non trouvée dans le conteneur ID : ${audio_id}`,
-        );
-        return;
-      }
-      // Mettre en pause tous les autres audios et réinitialiser les boutons
-      document.querySelectorAll("audio").forEach((otherAudio) => {
-        if (otherAudio !== audio) {
-          otherAudio.pause();
-          const otherContainer = otherAudio.parentElement.querySelector(
-            ".custom_audio_player_p",
-          );
-          if (otherContainer) {
-            const otherPlayPauseButton =
-              otherContainer.querySelector(".play_pause_p_p");
-            if (otherPlayPauseButton) {
-              otherPlayPauseButton.innerHTML = '<i class="bi-play"></i>';
-              otherPlayPauseButton.classList.remove("playing");
-            }
-          }
-        }
-      });
-      audio.currentTime = time || 0;
-      audio.play().catch((err) => console.error("Erreur lecture audio :", err));
-      // Met à jour le bouton play/pause
-      const playerContainer = audio.parentElement.querySelector(
-        ".custom_audio_player_p",
-      );
-      if (playerContainer) {
-        const playPauseButton =
-          playerContainer.querySelector(".play_pause_p_p");
-        if (playPauseButton) {
-          playPauseButton.innerHTML = '<i class="bi-pause"></i>';
-          playPauseButton.classList.add("playing");
-        }
-      }
-      // Mettre à jour la variable pour le scroll
-      lastPlayedAudio = audio;
-    }
-    // Gestionnaire de clic pour tous les boutons 🎧
-    document.addEventListener("click", function (event) {
-      const btn = event.target.closest(".btn_audio_jump");
-      if (!btn) return;
-      const audioId = btn.dataset.audioId;
-      const time = parseFloat(btn.dataset.time || "0");
-      if (!audioId) {
-        console.warn("Aucun ID audio spécifié dans le bouton.");
-        return;
-      }
-      play_audio_at(audioId, time);
-    });
-    // Fonction globale de lecture
+    const scrollBtn = document.getElementById("bouton_pour_rejoindre_audio");
+    if (scrollBtn)
+      scrollBtn.addEventListener("click", () => scrollToLastPlayedAudio());
     window.play_audio_at = function (audio_id, time = 0) {
       let elem = document.getElementById(audio_id);
-      if (!elem) {
-        console.warn("Aucun élément trouvé avec l'ID :", audio_id);
-        return;
-      }
-      // Si l’élément est un <figcaption>, on remonte à son <figure>
+      if (!elem) return;
       if (elem.tagName.toLowerCase() === "figcaption") {
         const figure = elem.closest("figure");
         if (figure) elem = figure;
       }
-      const container = elem;
-      const audio = container.querySelector("audio");
-      if (!audio) {
-        console.warn("Aucun élément <audio> trouvé dans :", audio_id);
-        return;
-      }
-      // Mettre en pause tous les autres audios
+      const audio = elem.querySelector("audio");
+      if (!audio) return;
       document.querySelectorAll("audio").forEach((a) => {
         if (a !== audio) {
           a.pause();
@@ -5468,33 +5419,36 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           }
         }
       });
-      // Lancer l'audio
       audio.currentTime = time;
       audio
         .play()
         .catch((err) =>
           console.error("Erreur lors de la lecture audio :", err),
         );
-      // Mise à jour du bouton play/pause dans le conteneur actuel
-      const btnPP = container.querySelector(".play_pause_p_p");
+      document.querySelectorAll(".custom_audio_player_p").forEach((pc) => {
+        pc.classList.remove("audio_playing_p"); // enlever bordure sur tous les lecteurs
+      });
+      const playerContainer = audio.parentElement.querySelector(
+        ".custom_audio_player_p",
+      );
+      if (playerContainer) {
+        playerContainer.classList.add("audio_playing_p"); // ajouter bordure rouge sur l’audio actuel
+      }
+      const btnPP = elem.querySelector(".play_pause_p_p");
       if (btnPP) {
         btnPP.innerHTML = '<i class="bi-pause"></i>';
         btnPP.classList.add("playing");
       }
-      window.lastPlayedAudio = audio;
+      lastPlayedAudio = audio;
     };
-    // Gestionnaire d'événements pour les boutons externes
     document.addEventListener("click", function (e) {
       const play = e.target.closest(".btn_audio_jump");
       const pause = e.target.closest(".btn_audio_pause");
-      // Play avec saut à une position
       if (play) {
         const id = play.dataset.audioId;
         const time = parseFloat(play.dataset.time) || 0;
-        play_audio_at(id, time);
+        window.play_audio_at(id, time);
       }
-      // Pause audio spécifique
-      // Pause ou lecture selon l’état de l’audio
       if (pause) {
         let elem = document.getElementById(pause.dataset.audioId);
         if (!elem) return;
@@ -5504,20 +5458,16 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         }
         const audio = elem.querySelector("audio");
         if (!audio) return;
-        const btnPP = elem.querySelector(".play_pause_p_p"); // bouton dans le player
-        const btnExt = pause; // bouton externe cliqué
+        const btnPP = elem.querySelector(".play_pause_p_p");
+        const btnExt = pause;
         if (audio.paused) {
-          // Met en pause tous les autres audios
           document.querySelectorAll("audio").forEach((a) => {
             if (a !== audio) {
               a.pause();
               const otherBtnPP = a
                 .closest("figure, div")
                 ?.querySelector(".play_pause_p_p");
-              if (otherBtnPP) {
-                // otherBtnPP.innerHTML = '<i class="bi-play"></i>';
-                otherBtnPP.classList.remove("playing");
-              }
+              if (otherBtnPP) otherBtnPP.classList.remove("playing");
               const otherBtnExt = document.querySelector(
                 `.btn_audio_pause[data-audio-id="${a.id}"]`,
               );
@@ -5527,7 +5477,6 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
               }
             }
           });
-          // Lecture
           audio.play().catch((err) => console.error("Erreur lecture :", err));
           if (btnPP) {
             btnPP.innerHTML = '<i class="bi-pause"></i>';
@@ -5539,7 +5488,6 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           }
           lastPlayedAudio = audio;
         } else {
-          // Pause
           audio.pause();
           if (btnPP) {
             btnPP.innerHTML = '<i class="bi-play"></i>';
@@ -5554,17 +5502,17 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     });
   }
   document.addEventListener("custom_audio_play", (e) => {
-    const current = e.detail; // l'audio qui vient d'être lancé
+    const current = e.detail;
     document.querySelectorAll("audio").forEach((a) => {
       if (a !== current) {
         a.pause();
-        a.closest(".html_test_plus_audio_perma_id") // adaptez si votre conteneur diffère
+        a.closest(".html_test_plus_audio_perma_id")
           ?.querySelector(".playpause_button")
           ?.classList.remove("playing");
       }
     });
   });
-  // Appel initial pour setup sur page load
+  // Appel initial
   initAudioPlayers();
 </script>
 <script class="convertir_texte_en_secondes_class_script">
@@ -6263,7 +6211,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             e.preventDefault(); // toujours empêcher la page
           } else {
             // zone centrale → page scroll
-            window.scrollBy({ top: e.deltaY, behavior: "auto" });
+            // zone centrale → page scroll plus lent
+            window.scrollBy({ top: e.deltaY * 0.25, behavior: "auto" });
           }
         }
         wrapper.addEventListener("mousemove", handleMouseMove);
