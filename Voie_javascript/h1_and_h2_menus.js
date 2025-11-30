@@ -1527,6 +1527,10 @@ $(document).ready(function () {
   width: 98vw;
     }`,
 
+    `.audio_playing_p {
+  border: 1px dashed ${minus_30} !important;
+}`,
+
     `.playing_audio {
       color: ${plus_50} !important; 
     }`,

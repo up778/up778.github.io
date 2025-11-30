@@ -2992,3 +2992,9 @@ section > ul > li {
 
 .activev1 {
 }
+
+figure:has(audio) figcaption {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
