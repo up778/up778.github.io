@@ -2537,7 +2537,7 @@ table tr:has(td:contains("2025")) > * {
 }
 
 figcaption:not(.image > figcaption) {
-  color: rgb(0, 255, 217);
+  color: #45b990;
 }
 
 .dynamicContentMenu__item {
