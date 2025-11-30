@@ -17,34 +17,6 @@ let clicked_breadcrumb_id = null;
 let freeze_refresh = false;
 
 (function ($) {
-  /**
-   * jQuery Dynamic Breadcrumb Plugin.
-   *
-   * Copyright 2015, HBT GmbH
-   *
-   * Simple plugin for generating a dynamic breadcrumb with sub menus. Depends on the jQuery Viewport plugin (http:
-   *
-   * Call initBreadcrumb on a container like div or nav, then use the added refresh() function to refresh the breadcrumb, e.g.:
-   *
-   * var breadcrumb = $('#breadcrumb').initBreadcrumb();
-   * $(window).scroll(breadcrumb.refresh);
-   *
-   * Breadcrum levels must contain an identifying class:
-   *
-   * <div id="id1" class="bcLevel1">
-   *   <h2></h2>
-   *   <article id="id2" class="bcLevel2">
-   *     <h3></h3>
-   *     <section id="id3" class="bcLevel3"><h4></h4></section>
-   *     <section id="id4 class="bcLevel3"><h4></h4></section>
-   *   </article>
-   *   </article id="id5" class="bcLevel2">...</article>
-   *   ...
-   * </div>
-   */
-
-  /* do stuff.. */
-
   $.fn.initBreadcrumb = function (options) {
     const settings = $.extend(
       {
@@ -69,13 +41,7 @@ let freeze_refresh = false;
     //  let $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
 
     function refreshBreadcrumb() {
-      if (!refreshBreadcrumb.allHeaders) {
-        refreshBreadcrumb.allHeaders = $(
-          ".dynamicContentMenu__header",
-        ).toArray();
-      }
-      const $allHeaders = $(refreshBreadcrumb.allHeaders);
-
+      const $dynamicContentMenuHeaders = $(".dynamicContentMenu__header");
       let level = 0;
       let currentContainer;
 
@@ -103,24 +69,21 @@ let freeze_refresh = false;
 
       const currentId = currentContainer.closest("article").attr("id");
       if (lastActiveHeaderId !== currentId) {
-        if (lastActiveHeaderId) {
-          $allHeaders
-            .filter("#dynamicContentMenu__header" + lastActiveHeaderId)
-            .css("border", "");
-        }
-
         lastActiveHeaderId = currentId;
 
         const match = currentId.match(/(\d?[a-zA-Z0-9])$/);
         let lastItem = match ? match[0] : "";
-        if (lastItem.length === 2 && lastItem[0] === "0")
+        if (lastItem.length === 2 && lastItem[0] === "0") {
           lastItem = lastItem[1];
+        }
 
         const headerTargetId = "dynamicContentMenu__header" + (lastItem - 1);
 
-        $allHeaders.each(function () {
-          if (this.id === headerTargetId) {
-            $(this).attr(
+        $dynamicContentMenuHeaders.each(function () {
+          const $el = $(this);
+          $el.css("border", "");
+          if ($el.attr("id") === headerTargetId) {
+            $el.attr(
               "style",
               (i, s) =>
                 (s || "") +
@@ -128,16 +91,13 @@ let freeze_refresh = false;
                 predo_color_of_page_recup +
                 " !important;",
             );
+            // $(this).css(
+            //   "background-color",
           }
         });
       }
 
-      // Gestion des niveaux du breadcrumb
       for (let i = settings.levels; i > level; i--) {
-        // console.log(
-        //   breadcrumbList.find("> li:nth-child(" + (i + 1) + ")"),
-        //   "breadcrumbList.find"
-
         breadcrumbList.find("> li:nth-child(" + (i + 1) + ")").hide();
       }
       for (; level > 0; level--) {
@@ -145,6 +105,7 @@ let freeze_refresh = false;
         const li = breadcrumbList
           .find("> li:nth-child(" + (cssLevel + 1) + ")")
           .empty();
+
         const heading = currentContainer
           .find("h" + cssLevel)
           .first()
@@ -159,17 +120,19 @@ let freeze_refresh = false;
               heading +
               "</a>",
           ).appendTo(li);
+
           const subMenu = $('<ul class="yyyy">').appendTo(
             $("<div>").appendTo(li),
           );
-
           siblings.each(function () {
             const siblingHeading = $(this)
               .find("h" + cssLevel)
               .first()
               .text();
             const siblingId = $(this).attr("id");
-            const isCurrent = siblingId === currentContainer.attr("id");
+            const currentId = currentContainer.attr("id");
+
+            const isCurrent = siblingId === currentId;
 
             subMenu.append(
               '<li><a class="Jacques2" href="#' +
@@ -202,7 +165,6 @@ let freeze_refresh = false;
         li.show();
         currentContainer = currentContainer.parent();
       }
-
       breadcrumbContainer.slideDown(settings.slideDuration);
     }
 
