@@ -2538,6 +2538,9 @@ table tr:has(td:contains("2025")) > * {
 
 figcaption:not(.image > figcaption) {
   color: #45b990;
+  font-size: 15px;
+
+  font-family: Calibri, Arial, "Times New Roman", serif;
 }
 
 .dynamicContentMenu__item {

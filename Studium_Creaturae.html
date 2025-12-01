@@ -5141,6 +5141,14 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       const infoPopup = document.createElement("div");
       infoPopup.className = "info_popup_p";
       infoPopup.style.display = "none";
+      const rightControlsGroup = document.createElement("div");
+      rightControlsGroup.className = "right_controls_group_p";
+      rightControlsGroup.appendChild(muteButton);
+      rightControlsGroup.appendChild(volumeSlider);
+      rightControlsGroup.appendChild(repeatButton);
+      rightControlsGroup.appendChild(optionsMenuButton);
+      rightControlsGroup.appendChild(infoButton);
+      rightControlsGroup.appendChild(infoPopup);
       // 🔹 Récupérer HTML réel depuis <p class="audio_info_p">
       const infoTextEl = audio.parentElement.querySelector(".audio_info_p");
       let infoHtml = infoTextEl
@@ -5151,18 +5159,13 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         infoButton.style.display = "none";
         infoPopup.style.display = "none";
         volumeSlider.style.marginLeft = "-140px";
+        rightControlsGroup.style.right = "-25px";
+        progressBar.style.width = "calc(100% - 60px - 146px)";
+        timeDisplay.style.right = "120px";
       } else {
         infoPopup.innerHTML = infoHtml; // 🔹 HTML conservé
         infoTextEl.style.display = "none"; // masquer <p> original
       }
-      const rightControlsGroup = document.createElement("div");
-      rightControlsGroup.className = "right_controls_group_p";
-      rightControlsGroup.appendChild(muteButton);
-      rightControlsGroup.appendChild(volumeSlider);
-      rightControlsGroup.appendChild(repeatButton);
-      rightControlsGroup.appendChild(optionsMenuButton);
-      rightControlsGroup.appendChild(infoButton);
-      rightControlsGroup.appendChild(infoPopup);
       infoButton.addEventListener("click", (e) => {
         e.stopPropagation();
         infoPopup.style.display =
