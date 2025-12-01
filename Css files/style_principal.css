@@ -2537,6 +2537,7 @@ table tr:has(td:contains("2025")) > * {
 }
 
 figcaption:not(.image > figcaption) {
+  margin-left: 20px;
   color: #45b990;
   font-size: 15px;
 
