@@ -130,7 +130,7 @@ button.bi-arrow-repeat.active_repeat_button {
   padding: 10px;
   width: 150px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 90000;
 }
 
 .options_menu_p button {
@@ -151,7 +151,6 @@ button.bi-arrow-repeat.active_repeat_button {
   border-radius: 5px;
   padding: 10px;
   width: 100px;
-  z-index: 9;
 }
 
 .speed_menu_p button {
@@ -190,7 +189,7 @@ button.bi-arrow-repeat.active_repeat_button {
 }
 .time_display_p {
   position: absolute;
-  right: 150px;
+  right: 160px;
   top: 0px;
   white-space: nowrap;
 
@@ -221,7 +220,7 @@ button.bi-arrow-repeat.active_repeat_button {
 .progress_bar_p {
   position: absolute;
 
-  width: calc(100% - 60px - 180px);
+  width: calc(100% - 60px - 190px);
   margin-left: 80px;
   margin-right: 240px;
   margin-top: auto;
@@ -250,7 +249,6 @@ button.bi-arrow-repeat.active_repeat_button {
   appearance: none;
   background: transparent;
   outline: none;
-
   position: absolute;
   right: 6px;
   bottom: -6px;
@@ -335,7 +333,7 @@ button.bi-arrow-repeat.active_repeat_button {
   border-radius: 4px;
   display: none;
   white-space: nowrap;
-  z-index: 1000;
+  z-index: 90000 !important;
 }
 
 .audio_info_p {
