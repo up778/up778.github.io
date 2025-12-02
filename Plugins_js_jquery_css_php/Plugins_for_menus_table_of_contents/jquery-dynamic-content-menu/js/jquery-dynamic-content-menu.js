@@ -266,39 +266,32 @@
     return self;
   }),
     (DynamicContentMenu.prototype._nestElements = function (self, index) {
-      var arr, item, hashValue;
+      var $article = self.closest("article"),
+        uniqueId = $article.attr("id") || self.attr("id");
 
-      arr = $.grep(this.items, function (item) {
-        return item === self.text();
-      });
-
-      if (arr.length) {
-        this.items.push(self.text() + index);
-      } else {
-        this.items.push(self.text());
+      if (!uniqueId) {
+        uniqueId = self
+          .text()
+          .trim()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/\s+/g, "-");
       }
 
-      hashValue = this._generateHashValue(arr, self, index);
+      // Si aucun div existant pour cet ID, on le crée
+      if ($('div[data-unique="' + uniqueId + '"]').length === 0) {
+        self.before(
+          $("<div/>", {
+            name: uniqueId,
+            "data-unique": uniqueId,
+          }),
+        );
+      }
 
-      item = $("<li/>", {
+      return $("<li/>", {
         class: itemClassName,
-
-        "data-unique": hashValue,
-      }).append(
-        $("<a/>", {
-          html: self.html(),
-        }),
-      );
-
-      self.before(
-        $("<div/>", {
-          name: hashValue,
-
-          "data-unique": hashValue,
-        }),
-      );
-
-      return item;
+        "data-unique": uniqueId,
+      }).append($("<a/>", { html: self.html() }));
     }),
     (DynamicContentMenu.prototype._generateHashValue = function (
       arr,
@@ -703,30 +696,23 @@
   DynamicContentMenu.prototype._scrollTo = function (elem) {
     var self = this,
       duration = self.options.smoothScroll || 0,
-      scrollTo = self.options.scrollTo,
-      //!!!scrollTo = window.value_of_scroll_to_offset,
+      scrollTo = self.options.scrollTo;
 
-      currentDiv = $('div[data-unique="' + elem.attr("data-unique") + '"]');
+    var currentDiv = $(
+      'div[data-unique^="' + elem.attr("data-unique") + '"]',
+    ).first();
 
-    if (!currentDiv.length) {
-      return self;
-    }
+    if (!currentDiv.length) return self;
 
-    $("html, body")
-      .promise()
-      .done(function () {
-        $("html, body").animate(
-          {
-            scrollTop:
-              currentDiv.offset().top -
-              (isFunction222(scrollTo) ? scrollTo.call() : scrollTo) +
-              "px",
-          },
-          {
-            duration: duration,
-          },
-        );
-      });
+    $("html, body").animate(
+      {
+        scrollTop:
+          currentDiv.offset().top -
+          (isFunction222(scrollTo) ? scrollTo.call() : scrollTo) +
+          "px",
+      },
+      duration,
+    );
 
     return self;
   };
