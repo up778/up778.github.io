@@ -1545,6 +1545,10 @@ $(document).ready(function () {
     cursor: pointer;
   }`,
 
+    `.progress_bar_fill_p{
+background-color: ${plus_25} !important;
+  }`,
+
     `.modal-backdrop {
   width: 98vw;
     }`,

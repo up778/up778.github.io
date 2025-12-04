@@ -4773,7 +4773,7 @@ Mais connaissez-vous le sens du mot "religion" ? <em>Cela signifie suivre <stron
 <td style="background-color: rgba(69, 33, 85, 0.54); width: 34.7767%; text-align: center; vertical-align: top;"><span style="font-family: 'comic sans ms', sans-serif; font-size: 14px;"><br></span><span style="font-family: 'comic sans ms', sans-serif; font-size: 14px;">Comparativement à "Golems Klub", S. Laïbi ou P-M.P., j'estime, promouvraient pas des canaux de c*l où diraient pas si fréquemment : "qui tape" (comme sur le canal telegram "Golems Klub")</span></td>
 <td style="background-color: #4521558a; width: 3.021%;"><span style="font-family: 'comic sans ms', sans-serif; font-size: 14px;">en plutôt positif :</span></td>
 <td style="background-color: #0056028a; width: 4.8151%;"><span style="font-family: 'comic sans ms', sans-serif; font-size: 14px;">en plutôt positif :</span></td>
-<td style="background-color: rgba(0, 86, 2, 0.54); text-align: center;"><br><span style="font-family: 'comic sans ms', sans-serif; font-size: 14px;">une sorte dédramatisation/pardon par rapport à la s*xualité. Une "légèreté, mais pas une  légèreté  dans le sens négatif du mot légèreté. Mais plutôt quelque chose de relativement apaisé, si on compare ce canal à une mentalité relativement extrémiste, une mentalité plutôt à la P-M.P. ou Salim Laïbi</span></td>
+<td style="background-color: rgba(0, 86, 2, 0.54); text-align: center;"><br><span style="font-family: 'comic sans ms', sans-serif; font-size: 14px;">une sorte dédramatisation/pardon par rapport à la s*xualité. Par ex : <a href="https://t.me/golemsklub2/16087" target="_blank" rel="noopener noreferrer">https://t.me/golemsklub2/16087</a> ou <a href="https://t.me/golemsklub2/16088" target="_blank" rel="noopener noreferrer">https://t.me/golemsklub2/16088</a>  Une "légèreté, mais pas une  légèreté  dans le sens négatif du mot légèreté. Mais plutôt quelque chose de relativement apaisé, si on compare ce canal à une mentalité relativement extrémiste, une mentalité plutôt à la P-M.P. ou Salim Laïbi</span></td>
 </tr>
 </tbody>
 <colgroup><col style="width: 35.4386%;"><col style="width: 4.48444%;"><col style="width: 26.5809%;"><col style="width: 4.81456%;"><col style="width: 28.6815%;"></colgroup>
@@ -4981,7 +4981,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script><script>
+ </script>
+<script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
@@ -7484,7 +7485,18 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         el.title = `UID inconnu : ${msg.uid}`;
         el.classList.add("other");
       }
-      el.textContent = `${msg.name} : ${msg.text} (${new Date(msg.inserted_at).toLocaleTimeString()})`;
+      const d = new Date(msg.inserted_at);
+      // Format : 12 Feb 2025, 14:32:10
+      const date_str = d.toLocaleString("en-US", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      el.textContent = `${msg.name} : ${msg.text} (${date_str})`;
       // Ajouter un bouton d’édition si le message appartient à l’utilisateur actuel
       // if (msg.uid === this.uid) {
       //   const editBtn = document.createElement("button");
