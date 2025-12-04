@@ -13,7 +13,7 @@
 
   border: 1px dashed grey;
   max-width: 80vw;
-  z-index: 80 !important;
+  z-index: 4 !important;
 }
 
 button {
