@@ -3553,7 +3553,7 @@ alt="Images/arrows-collapse.png"
 </table>
 <p> </p>
 </div>
-</div><p style="display:inline;">  ).. ? (Je ne prétends pas que Jean Rémi = Rémi gration.) (Pendant au moins un temps, je dus, en partie, pas être trop à l'aise, avec diverses vidéos de "Jean Rémi", parce que comme je me demandais s'il s'agissait de Quelqu'un qui avait un autre nom que "Jean Rémi", je dus quand même me demander si y avait quand même "tromperie".)</p><table style="width: 90%; height: 20vh;" class="table_outside_a_table_and_outside_card table_inside_card_or_accordion_or_modal_or_row margin_left_2">
+</div><p style="display:inline;">  ).. ? (Je ne prétends pas que Jean Rémi = Rémi gration.) (Pendant au moins un temps, je dus, en partie, pas être trop à l'aise, avec diverses vidéos de "Jean Rémi", parce que comme je me demandais s'il s'agissait de Quelqu'un qui avait un autre nom que "Jean Rémi", je dus quand même me demander si y avait quand même "tromperie".) Mais enfin il s'agit aussi peut-être d'un vrai nom et prénom et juste il y aurait une sorte de ressemblance avec Quelqu'un et des coïncidences. Je n'affirmerais pas avec certitude que ce soit un faux nom / prénom.</p><table style="width: 90%; height: 20vh;" class="table_outside_a_table_and_outside_card table_inside_card_or_accordion_or_modal_or_row margin_left_2">
 <tbody>
 <tr>
 <td style="width: 100%; height: 100%;">
@@ -7900,7 +7900,18 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         el.title = `UID inconnu : ${msg.uid}`;
         el.classList.add("other");
       }
-      el.textContent = `${msg.name} : ${msg.text} (${new Date(msg.inserted_at).toLocaleTimeString()})`;
+      const d = new Date(msg.inserted_at);
+      // Format : 12 Feb 2025, 14:32:10
+      const date_str = d.toLocaleString("en-US", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      el.textContent = `${msg.name} : ${msg.text} (${date_str})`;
       // Ajouter un bouton d’édition si le message appartient à l’utilisateur actuel
       // if (msg.uid === this.uid) {
       //   const editBtn = document.createElement("button");

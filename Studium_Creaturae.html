@@ -7333,7 +7333,18 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         el.title = `UID inconnu : ${msg.uid}`;
         el.classList.add("other");
       }
-      el.textContent = `${msg.name} : ${msg.text} (${new Date(msg.inserted_at).toLocaleTimeString()})`;
+      const d = new Date(msg.inserted_at);
+      // Format : 12 Feb 2025, 14:32:10
+      const date_str = d.toLocaleString("en-US", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      });
+      el.textContent = `${msg.name} : ${msg.text} (${date_str})`;
       // Ajouter un bouton d’édition si le message appartient à l’utilisateur actuel
       // if (msg.uid === this.uid) {
       //   const editBtn = document.createElement("button");
