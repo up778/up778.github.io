@@ -1546,7 +1546,7 @@ $(document).ready(function () {
   }`,
 
     `.progress_bar_fill_p{
-background-color: ${plus_25} !important;
+background-color: ${predo_trans} !important;
   }`,
 
     `.modal-backdrop {
