@@ -1516,13 +1516,15 @@ function testyy() {}
 $(document).ready(function () {
   const predo_trans = predo_color_of_page + "60";
 
-  const minus_10 = decreaseColor(predo_color_of_page, 30);
+  const minus_10 = decreaseColor(predo_color_of_page, 10);
+  const minus_20 = decreaseColor(predo_color_of_page, 20);
   const minus_30 = decreaseColor(predo_color_of_page, 30);
   const trans_minus_60 = decreaseColor(predo_color_of_page, 60) + "cc";
 
   const minus_60 = decreaseColor(predo_color_of_page, 60);
   const minus_70 = decreaseColor(predo_color_of_page, 70);
   const minus_85 = decreaseColor(predo_color_of_page, 85);
+  const plus_10 = increaseColor(predo_color_of_page, 10);
   const plus_25 = increaseColor(predo_color_of_page, 25);
   const plus_50 = increaseColor(predo_color_of_page, 50);
   const plus_70 = increaseColor(predo_color_of_page, 50);
@@ -1546,7 +1548,7 @@ $(document).ready(function () {
   }`,
 
     `.progress_bar_fill_p{
-background-color: ${predo_trans} !important;
+background-color: ${minus_20} !important;
   }`,
 
     `.modal-backdrop {
