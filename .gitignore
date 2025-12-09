@@ -26,6 +26,8 @@
 !/Images/**
 !Voie_javascript/
 !Voie_javascript/**
+!/Audio_s/
+!/Audio_s/**
 
 !/Perspectives/Perspectives
 !/Perspectives/Perspectives/** */
