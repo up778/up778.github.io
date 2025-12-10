@@ -2725,6 +2725,11 @@ table .trois_last_modifs_weeks {
   z-index: 999 !important;
 }
 
+.popover {
+  max-width: 80vw !important;
+  width: auto !important;
+}
+
 .popover-body {
   max-width: 70vw;
   padding-left: 20px;
