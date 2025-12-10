@@ -15,6 +15,7 @@ var last_played_video = 0;
 var id_de_l_iframe_de_la_video = 0;
 var b2ackground_coquille_image;
 window.forceNextSeek = null;
+let dernier_element_lite_yt_joué = null;
 
 class LiteYTEmbed extends HTMLElement {
   connectedCallback() {
@@ -207,8 +208,7 @@ class LiteYTEmbed extends HTMLElement {
     if (!this.playerPromise) {
       await this.activate();
     }
-
-    return this.playerPromise;
+    return this.playerPromise || Promise.resolve(null);
   }
 
   async addYTPlayerIframe() {
@@ -257,8 +257,11 @@ class LiteYTEmbed extends HTMLElement {
     this.playerPromise = new Promise((resolve) => {
       let player = new YT.Player(videoPlaceholderEl, {
         width: "100%",
+
         videoId: this.videoId,
-        playerVars: paramsObj,
+        playerVars: {
+          ...paramsObj,
+        },
         events: {
           onReady: (event) => {
             event.target.playVideo();
@@ -286,6 +289,7 @@ class LiteYTEmbed extends HTMLElement {
     const params = new URLSearchParams(this.getAttribute("params") || []);
     params.append("autoplay", "1");
     params.append("playsinline", "1");
+
     return params;
   }
 
@@ -294,13 +298,14 @@ class LiteYTEmbed extends HTMLElement {
     this.classList.add("lyt-activated");
 
     if (this.needsYTApi) {
-      return this.addYTPlayerIframe(this.getParams());
+      this.playerPromise = this.addYTPlayerIframe();
+      return this.playerPromise;
+    } else {
+      const iframeEl = this.createBasicIframe();
+      this.append(iframeEl);
+      iframeEl.focus();
+      this.playerPromise = Promise.resolve(null);
     }
-
-    const iframeEl = this.createBasicIframe();
-    this.append(iframeEl);
-
-    iframeEl.focus();
   }
 
   createBasicIframe() {
@@ -355,48 +360,49 @@ class LiteYTEmbed extends HTMLElement {
     if (this.classList.contains("lyt-activated")) return;
     this.classList.add("lyt-activated");
 
+    dernier_element_lite_yt_joué = this;
+
+    document.querySelectorAll("lite-youtube").forEach((lt) => {
+      if (lt !== this) {
+        reset_to_lite_youtube(lt);
+      }
+    });
+
     const params = new URLSearchParams(this.getAttribute("params") || []);
     params.append("autoplay", "1");
     params.append("playsinline", "1");
+    params.append("controls", "1");
 
     return this.addYTPlayerIframe(params);
-
-    const iframeEl = document.createElement("iframe");
-    iframeEl.width = 560;
-    iframeEl.height = 315;
-    iframeEl.id = "55555555555";
-
-    iframeEl.title = this.playLabel;
-    iframeEl.textContent = this.playLabel2;
-    iframeEl.allow =
-      "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
-    iframeEl.allowFullscreen = true;
-
-    if (this.videoId.indexOf("clipt") > 0) {
-      iframeEl.src = `https://www.youtube.com/embed/` + this.videoId + ``;
-      // iframeEl.src = `https:
-    } else {
-      iframeEl.src = `https://www.youtube.com/embed/${encodeURIComponent(
-        this.videoId,
-      )}?${params.toString()}`;
-    }
-
-    this.append(iframeEl);
-
-    iframeEl.focus();
   }
 }
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING) {
+    dernier_element_lite_yt_joué =
+      event.target.g?.closest("lite-youtube") || null;
+
     const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
+
+    document.querySelectorAll("lite-youtube").forEach((lt) => {
+      if (lt !== dernier_element_lite_yt_joué) {
+        reset_to_lite_youtube(lt);
+      }
+    });
 
     el.forEach((button) => {
       button.style.setProperty("background-color", "#be000061");
       const plus_50 = increaseColor(predo_color_of_page, 50);
       button.style.setProperty("border", "1px dashed " + plus_50 + "");
     });
-    // console.log("playing");
+
+    // ------------------ ICI ------------------
+    // Ajouter la remise à poster pour toutes les autres vidéos
+    document.querySelectorAll("lite-youtube").forEach((lt) => {
+      if (lt !== dernier_element_lite_yt_joué) {
+        reset_to_lite_youtube(lt);
+      }
+    });
 
     if (last_played_video != 0) {
     }
@@ -405,11 +411,12 @@ function onPlayerStateChange(event) {
       last_played_video != event.target.playerInfo.videoData.video_id &&
       event.target.options.playerVars.start
     ) {
-      if (window.forceNextSeek !== null) {
-        console.log("Ignoré playerVars.start car forceNextSeek est actif");
-        window.forceNextSeek = null;
+      const start = event.target.options.playerVars.start;
+
+      if (!window.forceNextSeek && start && start > 0) {
+        setTimeout(() => event.target.seekTo(start), 100);
       } else {
-        event.target.seekTo(event.target.options.playerVars.start);
+        window.forceNextSeek = null;
       }
     }
 
@@ -421,9 +428,6 @@ function onPlayerStateChange(event) {
     id_de_l_iframe_de_la_video = event.target.g.id;
 
     event.target.g.classList.add("is_actualy_playing");
-
-    dernier_element_lite_yt_joué =
-      event.target.g?.closest("lite-youtube") || null;
   } else if (event.data === YT.PlayerState.PAUSED) {
     const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
 
@@ -433,10 +437,11 @@ function onPlayerStateChange(event) {
       button.style.setProperty("border", "0px dashed grey");
     });
   } else if (event.data === YT.PlayerState.ENDED) {
-    document
-      .querySelectorAll(".class_btn_play_pause_youtube_video")
-      .style.setProperty("background-color", "transparent");
-    button.style.setProperty("border", "0px dashed grey");
+    const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
+    el.forEach((button) => {
+      button.style.setProperty("background-color", "transparent");
+      button.style.setProperty("border", "0px dashed grey");
+    });
   }
 }
 
@@ -503,6 +508,17 @@ function reach_played_youtube_video() {
   }
 }
 
+function reset_to_lite_youtube(liteYT) {
+  if (!liteYT) return;
+  if (liteYT === dernier_element_lite_yt_joué) return;
+
+  const iframe = liteYT.querySelector("iframe");
+  if (iframe) iframe.remove();
+
+  liteYT.classList.remove("lyt-activated");
+  liteYT.style.display = "block";
+}
+
 customElements.define("lite-youtube", LiteYTEmbed);
 
 async function jumpToTime(videoId, containerId, timeInSeconds) {
@@ -536,7 +552,6 @@ async function jumpToTime(videoId, containerId, timeInSeconds) {
 
       try {
         const player = await liteYT.getYTPlayer();
-        await waitForPlayerReady(player);
         window.forceNextSeek = timeInSeconds;
         dernier_element_lite_yt_joué = liteYT;
         player.seekTo(timeInSeconds, true);
