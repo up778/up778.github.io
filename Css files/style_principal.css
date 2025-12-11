@@ -603,6 +603,11 @@ div > ul > li {
   max-width: 96%;
 }
 
+figure > figcaption {
+  font-style: normal;
+  color: white;
+}
+
 figure.image figcaption {
   padding: -20px 0px 0px 0px;
   text-align: center;
@@ -611,10 +616,12 @@ figure.image figcaption {
 }
 
 figure:where([style*="float: left"]) {
-  margin-right: 40px !important;
+  margin-right: 20px !important;
+  margin-left: 10px !important;
 }
 figure:where([style*="float: right"]) {
   margin-left: 20px !important;
+  margin-right: 10px !important;
 }
 
 figure.align-right,
@@ -2725,11 +2732,6 @@ table .trois_last_modifs_weeks {
   z-index: 999 !important;
 }
 
-.popover {
-  max-width: 80vw !important;
-  width: auto !important;
-}
-
 .popover-body {
   max-width: 70vw;
   padding-left: 20px;
@@ -3006,4 +3008,8 @@ figure:has(audio) figcaption {
   text-align: left;
   margin: 0;
   padding: 0;
+}
+.popover {
+  max-width: 70vw !important;
+  width: auto !important;
 }
