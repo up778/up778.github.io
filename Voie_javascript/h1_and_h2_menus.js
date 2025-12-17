@@ -869,11 +869,8 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
   }
 
   if ($(this).hasClass("h_audio")) {
-    const $table = $target.closest("figure");
-    $table.removeClass("animate__animated animate__shakeX");
-    setTimeout(() => {
-      $table.addClass("animate__animated animate__shakeX");
-    }, 500);
+    const $table = $target.closest("table, figure");
+    animate_once_and_force_cleanup($table, "shakeX");
   }
 
   if ($(this).hasClass("h_citation")) {
@@ -885,10 +882,7 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
 
   if (classes.includes("div_around_iframe")) {
     const $table = $target.closest("table");
-    $table.removeClass("animate__animated animate__shakeX");
-    setTimeout(() => {
-      $table.addClass("animate__animated animate__shakeX");
-    }, 500);
+    animate_once_and_force_cleanup($table, "shakeX");
   }
 
   if (
@@ -938,6 +932,37 @@ function animate_element(clicked_link, effect) {
 function animate_element_titre(clicked_link, effect, element) {
   const $header = $(clicked_link).find(":header").first();
   restartAnimation($header, effect);
+}
+
+function animate_once_and_force_cleanup($el, effect) {
+  if (!$el || !$el.length) return;
+
+  const animate_prefix = "animate__";
+  const base_class = "animate__animated";
+  const effect_class = animate_prefix + effect;
+
+  cleanup_animate_classes($el);
+
+  void $el[0].offsetWidth;
+
+  $el.addClass(base_class + " " + effect_class);
+
+  setTimeout(() => {
+    cleanup_animate_classes($el);
+  }, 1200);
+}
+
+function cleanup_animate_classes($root) {
+  const animate_prefix = "animate__";
+
+  $root.add($root.find("[class*='" + animate_prefix + "']")).each(function () {
+    const classes = this.className
+      .split(/\s+/)
+      .filter((c) => !c.startsWith(animate_prefix))
+      .join(" ");
+
+    this.className = classes;
+  });
 }
 
 var reduced_body_size = 0;
