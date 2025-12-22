@@ -1085,7 +1085,7 @@ thead > tr > td {
   padding-top: 10px;
 }
 
-body:not(:has(.dropdown-menu thead)):not(:has(.modal-body thead)) thead {
+:not(:has(.dropdown-menu thead)):not(:has(.modal-body thead)) thead {
   line-height: 1;
   position: sticky;
 
