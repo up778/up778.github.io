@@ -127,9 +127,10 @@
   display: none;
   position: absolute;
 
-  top: 24px;
-  left: 100%;
-  margin-top: 0px;
+  top: 28px;
+
+  left: 10px;
+  margin-top: -2px;
   background-color: white;
   border: 1px solid #4b4b4b;
   padding: 5px;
