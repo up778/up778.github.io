@@ -880,6 +880,13 @@ $("body").on("click", "p[class^='p_de_modif']", function (e) {
     restartAnimation($target, "zoomIn");
   }
 
+  if (
+    $(this).hasClass("h_nouvelle_vidéo") &&
+    !classes.includes("div_around_iframe")
+  ) {
+    restartAnimation($target, "pulse");
+  }
+
   if (classes.includes("div_around_iframe")) {
     const $table = $target.closest("table");
     animate_once_and_force_cleanup($table, "shakeX");
@@ -1443,7 +1450,6 @@ function toggle_falling_leaves(param) {
     $(".image_autumn").css("display", "none");
   }
 }
-setTimeout(() => {}, 100);
 
 let currentAudio = null;
 
@@ -1452,7 +1458,6 @@ function select_audio(audio) {
     currentAudio.pause();
   }
   currentAudio = audio;
-
   updateButtonStyle(currentAudio);
 }
 
@@ -1463,10 +1468,9 @@ function fct_toggle_audio() {
     } else {
       currentAudio.pause();
     }
-
     updateButtonStyle(currentAudio);
   } else {
-    console.log("No audio selected.");
+    console.log("No audio or video selected.");
   }
 }
 
@@ -1484,10 +1488,11 @@ function updateButtonStyle(audio) {
       externalToggleButton.classList.add("playing_audio");
     }
   }
+
   const externalToggleButton2 = document.getElementById(
     "bouton_pour_rejoindre_audio",
   );
-  if (externalToggleButton) {
+  if (externalToggleButton2) {
     if (audio.paused) {
       externalToggleButton2.classList.remove(
         "bouton_pour_rejoindre_audio_playing_audio",
@@ -1505,11 +1510,12 @@ function updateButtonStyle(audio) {
     }
   }
 
-  const playerContainer = audio.parentElement.querySelector(
-    ".custom_audio_player_p",
+  const media_container = audio.closest(
+    ".custom_audio_player_p, .custom_video_player_p",
   );
-  if (!playerContainer) return;
-  const customToggleButton = playerContainer.querySelector(".play_pause_p_p");
+  if (!media_container) return;
+
+  const customToggleButton = media_container.querySelector(".play_pause_p_p");
   if (!customToggleButton) return;
 
   if (audio.paused) {
@@ -1521,20 +1527,75 @@ function updateButtonStyle(audio) {
   }
 }
 
-const audioElements = document.getElementsByTagName("audio");
-for (let i = 0; i < audioElements.length; i++) {
-  audioElements[i].addEventListener("play", function () {
-    select_audio(this);
+document.addEventListener(
+  "play",
+  function (e) {
+    const media = e.target.closest("audio, video");
+    if (!media) return;
+    select_audio(media);
+  },
+  true,
+);
+
+document.addEventListener(
+  "pause",
+  function (e) {
+    const media = e.target.closest("audio, video");
+    if (!media) return;
+    if (media === currentAudio) updateButtonStyle(media);
+  },
+  true,
+);
+
+document.addEventListener("click", function (e) {
+  const media = e.target.closest("audio, video");
+  if (!media) return;
+  select_audio(media);
+});
+
+document.addEventListener("click", function (e) {
+  const bouton_rejoindre = e.target.closest("#bouton_pour_rejoindre_audio");
+  if (!bouton_rejoindre) return;
+
+  if (!currentAudio) {
+    console.log("Aucun audio ou video sélectionné.");
+    return;
+  }
+
+  const target =
+    currentAudio.closest(
+      "figure, .custom_video_player_p, .custom_audio_player_p",
+    ) || currentAudio;
+
+  target.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
   });
-  audioElements[i].addEventListener("pause", function () {
-    if (this === currentAudio) {
-      updateButtonStyle(this);
-    }
-  });
-  audioElements[i].addEventListener("click", function () {
-    select_audio(this);
-  });
-}
+});
+
+const observer = new MutationObserver((mutationsList) => {
+  for (let mutation of mutationsList) {
+    mutation.addedNodes.forEach((node) => {
+      if (!(node instanceof HTMLElement)) return;
+
+      const medias = node.matches("audio, video")
+        ? [node]
+        : node.querySelectorAll("audio, video");
+      medias.forEach((media) => {
+        if (!media._listenerAttached) {
+          media.addEventListener("play", () => select_audio(media));
+          media.addEventListener("pause", () => {
+            if (media === currentAudio) updateButtonStyle(media);
+          });
+          media.addEventListener("click", () => select_audio(media));
+          media._listenerAttached = true;
+        }
+      });
+    });
+  }
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
 
 function testyy() {}
 
