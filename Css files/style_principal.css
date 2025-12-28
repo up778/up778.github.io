@@ -3016,3 +3016,7 @@ figure:has(audio) figcaption {
   max-width: 70vw !important;
   width: auto !important;
 }
+
+p[style*="display:inline"] + p {
+  margin-top: 1em;
+}
