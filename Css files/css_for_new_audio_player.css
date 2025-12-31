@@ -333,7 +333,7 @@ button.bi-arrow-repeat.active_repeat_button {
   border-radius: 4px;
   display: none;
   white-space: nowrap;
-  z-index: 90000 !important;
+  z-index: 9000 !important;
 }
 
 .audio_info_p {

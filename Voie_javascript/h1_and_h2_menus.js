@@ -1619,6 +1619,9 @@ $(document).ready(function () {
   const insert = (rule) => sheet.insertRule(rule, sheet.cssRules.length);
 
   const rules = [
+    `.info_popup_p{
+    border : 1px dotted grey;
+ }`,
     `#controlBar_myPlayerID {
     position: fixed;
     bottom: 0;
