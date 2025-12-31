@@ -3017,6 +3017,7 @@ figure:has(audio) figcaption {
   width: auto !important;
 }
 
-p[style*="display:inline"] + p {
+p[style*="display:inline"] + p,
+p[style*="display:inline"] + table {
   margin-top: 1em;
 }
