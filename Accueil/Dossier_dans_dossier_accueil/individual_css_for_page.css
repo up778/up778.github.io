@@ -1,15 +1,21 @@
 html,
 body,
 .liste_tous_titres_class {
-  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/window-4390940_1920_darker.avif");
+  
+  
+  
+  background: url("Images/Images_for_backgrounds/night-7129130.jpg");
+  
 
+  
   background-position-y: -200px;
   background-position: top -540px;
   background-repeat: repeat;
   background-attachment: fixed !important;
-
+  
   background-size: 100%;
   background-color: #b90084;
+  
 }
 
 #breadcrumb > ul,
@@ -17,54 +23,72 @@ body,
 .h2_background_class_horizontal_heading,
 .h3_background_class_horizontal_heading,
 .h4_background_class_horizontal_heading {
-  background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/window-4390940_1920_darker.avif");
-
+  
+  background: url("Images/Images_for_backgrounds/window-4390940_1920_darker.jpg");
+  
   background-position-y: -200px;
   background-position: top -540px;
   background-repeat: repeat;
   background-attachment: fixed !important;
-
+  
   background-size: 100%;
   background-color: #b90084;
+
+  
 }
+
+
+
 
 div::-webkit-scrollbar {
   width: 12px;
 }
 
+
 div::-webkit-scrollbar-button {
   background: rgb(14, 13, 8);
+  
 }
+
 
 div::-webkit-scrollbar-thumb {
   background: #060060;
   border-radius: 10px;
 }
 
+
 div::-webkit-scrollbar-thumb:hover {
+  
   background: #09008a;
 }
+
 
 div::-webkit-scrollbar-track {
   background: rgb(1, 1, 1);
   border-radius: 10px;
 }
 
+
 div::-webkit-scrollbar-corner {
   background: #121;
 }
+
 
 div::-webkit-resizer {
   background: rgb(57, 161, 68);
 }
 
+
+
 .progress_bar_p {
   position: relative;
-  width: calc(100% - 40px - 120px);
-  height: 5px;
+  width: calc(
+    100% - 40px - 120px
+  ); 
+  height: 5px; 
   background-color: #432600;
-  margin-left: 40px;
-  margin-right: 120px;
+  margin-left: 40px; 
+  margin-right: 120px; 
   cursor: pointer;
 }
 
@@ -76,3 +100,4 @@ div::-webkit-resizer {
 button:hover {
   color: #cfcf00;
 }
+
