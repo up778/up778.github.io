@@ -15,7 +15,7 @@ var last_played_video = 0;
 var id_de_l_iframe_de_la_video = 0;
 var b2ackground_coquille_image;
 window.forceNextSeek = null;
-let dernier_element_lite_yt_joué = null;
+let derniers_elements_lite_yt_joues = [];
 
 class LiteYTEmbed extends HTMLElement {
   connectedCallback() {
@@ -360,10 +360,16 @@ class LiteYTEmbed extends HTMLElement {
     if (this.classList.contains("lyt-activated")) return;
     this.classList.add("lyt-activated");
 
-    dernier_element_lite_yt_joué = this;
+    if (!derniers_elements_lite_yt_joues.includes(this)) {
+      derniers_elements_lite_yt_joues.push(this);
+
+      if (derniers_elements_lite_yt_joues.length > 2) {
+        derniers_elements_lite_yt_joues.shift();
+      }
+    }
 
     document.querySelectorAll("lite-youtube").forEach((lt) => {
-      if (lt !== this) {
+      if (!derniers_elements_lite_yt_joues.includes(lt)) {
         reset_to_lite_youtube(lt);
       }
     });
@@ -385,7 +391,7 @@ function onPlayerStateChange(event) {
     const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
 
     document.querySelectorAll("lite-youtube").forEach((lt) => {
-      if (lt !== dernier_element_lite_yt_joué) {
+      if (!derniers_elements_lite_yt_joues.includes(lt)) {
         reset_to_lite_youtube(lt);
       }
     });
@@ -448,12 +454,16 @@ function onPlayerStateChange(event) {
 function play_pause_youtube_video() {
   let iframe5 = null;
 
-  if (dernier_element_lite_yt_joué) {
-    let wrapper = dernier_element_lite_yt_joué.closest(
+  if (derniers_elements_lite_yt_joues.length > 0) {
+    let dernier_element =
+      derniers_elements_lite_yt_joues[
+        derniers_elements_lite_yt_joues.length - 1
+      ];
+    let wrapper = dernier_element.closest(
       'div.div_around_iframe[id*="iframe_video_id"]',
     );
     if (!wrapper) {
-      wrapper = dernier_element_lite_yt_joué.closest(".div_around_iframe");
+      wrapper = dernier_element.closest(".div_around_iframe");
     }
     iframe5 = wrapper?.querySelector("iframe");
   }
@@ -483,12 +493,16 @@ function play_pause_youtube_video() {
 }
 
 function reach_played_youtube_video() {
-  if (dernier_element_lite_yt_joué) {
-    let wrapper = dernier_element_lite_yt_joué.closest(
+  if (derniers_elements_lite_yt_joues.length > 0) {
+    let dernier_element =
+      derniers_elements_lite_yt_joues[
+        derniers_elements_lite_yt_joues.length - 1
+      ];
+    let wrapper = dernier_element.closest(
       'div.div_around_iframe[id*="iframe_video_id"]',
     );
     if (!wrapper) {
-      wrapper = dernier_element_lite_yt_joué.closest(".div_around_iframe");
+      wrapper = dernier_element.closest(".div_around_iframe");
     }
 
     setTimeout(() => {
@@ -510,7 +524,8 @@ function reach_played_youtube_video() {
 
 function reset_to_lite_youtube(liteYT) {
   if (!liteYT) return;
-  if (liteYT === dernier_element_lite_yt_joué) return;
+
+  if (derniers_elements_lite_yt_joues.includes(liteYT)) return;
 
   const iframe = liteYT.querySelector("iframe");
   if (iframe) iframe.remove();
@@ -528,12 +543,18 @@ async function jumpToTime(videoId, containerId, timeInSeconds) {
   const liteYT = container.querySelector("lite-youtube");
   if (!liteYT) return;
 
+  if (!derniers_elements_lite_yt_joues.includes(liteYT)) {
+    derniers_elements_lite_yt_joues.push(liteYT);
+    if (derniers_elements_lite_yt_joues.length > 2) {
+      derniers_elements_lite_yt_joues.shift();
+    }
+  }
+
   if (liteYT.classList.contains("lyt-activated")) {
     try {
       const player = await liteYT.getYTPlayer();
       await waitForPlayerReady(player);
       window.forceNextSeek = timeInSeconds;
-      dernier_element_lite_yt_joué = liteYT;
       player.seekTo(timeInSeconds, true);
       player.playVideo();
     } catch (e) {
@@ -553,7 +574,6 @@ async function jumpToTime(videoId, containerId, timeInSeconds) {
       try {
         const player = await liteYT.getYTPlayer();
         window.forceNextSeek = timeInSeconds;
-        dernier_element_lite_yt_joué = liteYT;
         player.seekTo(timeInSeconds, true);
         player.playVideo();
       } catch (e) {
