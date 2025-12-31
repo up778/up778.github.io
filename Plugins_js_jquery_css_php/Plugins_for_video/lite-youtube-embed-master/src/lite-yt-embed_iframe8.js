@@ -61,33 +61,34 @@ class LiteYTEmbed extends HTMLElement {
      * TODO: Consider using webp if supported, falling back to jpg
      */
 
-    if (!this.style.backgroundImage) {
-      var poster_plus = this.getAttribute("plac");
+    var poster_plus = this.getAttribute("plac");
 
-      var i2mg_src_iframe_8;
-      if (this.getAttribute("plac") && this.getAttribute("plac") == 0) {
-        i2mg_src_iframe_8 =
-          this.getAttribute("img_src_iframe_8") ||
-          this.getAttribute("img_src_iframe");
-      } else {
-        i2mg_src_iframe_8 =
-          "../../Images/V0_Backgrounds/abbey-1160492_1920.jpg";
-      }
-
-      var background_image = 'url("' + i2mg_src_iframe_8;
-
-      if (this.getAttribute("plac") == 0) {
-        this.style.backgroundImage = background_image || poster_plus;
-      } else if (this.getAttribute("plac") == 1) {
-        this.style.backgroundImage =
-          "url('" + this.getAttribute("p_oster_evt") + "')" ||
-          "url('../../Images/V0_Backgrounds/abbey-1160492_1920.jpg')" ||
-          poster_plus ||
-          background_image;
-      } else {
-        this.style.backgroundImage = background_image;
-      }
+    var i2mg_src_iframe_8;
+    if (this.getAttribute("plac") && this.getAttribute("plac") == 0) {
+      i2mg_src_iframe_8 =
+        this.getAttribute("img_src_iframe_8") ||
+        this.getAttribute("img_src_iframe");
+    } else {
+      i2mg_src_iframe_8 = "../../Images/V0_Backgrounds/abbey-1160492_1920.jpg";
     }
+
+    const fallback_img = "../../Images/V0_Backgrounds/abbey-1160492_1920.jpg";
+
+    let final_img = null;
+
+    if (this.getAttribute("plac") == 0) {
+      final_img = i2mg_src_iframe_8;
+    } else if (this.getAttribute("plac") == 1) {
+      final_img = this.getAttribute("p_oster_evt") || fallback_img;
+    } else {
+      final_img = i2mg_src_iframe_8;
+    }
+
+    if (final_img) {
+      final_img = encodeURI(final_img);
+    }
+
+    set_safe_background_image(this, final_img, fallback_img);
 
     if (this.style.backgroundImage) {
       if (whichBrowser() == "Edge" || whichBrowser() == "Internet Explorer") {
@@ -330,23 +331,6 @@ class LiteYTEmbed extends HTMLElement {
    *
    * See https:
    */
-
-  upgradePosterImage() {
-    setTimeout(() => {
-      const webpUrl = `https://i.ytimg.com/vi_webp/${this.videoId}/sddefault.webp`;
-      const img = new Image();
-      img.fetchPriority = "low";
-      img.referrerpolicy = "origin";
-      img.src = webpUrl;
-      img.onload = (e) => {
-        const noAvailablePoster =
-          e.target.naturalHeight == 90 && e.target.naturalWidth == 120;
-        if (noAvailablePoster) return;
-
-        this.style.backgroundImage = `url("${webpUrl}")`;
-      };
-    }, 100);
-  }
 
   async display_block() {
     setTimeout(() => {
@@ -668,3 +652,126 @@ document.addEventListener("click", function (e) {
       console.warn("Échec getYTPlayer :", err);
     });
 });
+
+function set_safe_background_image(el, primary_src, fallback_src) {
+  el.style.backgroundImage = "none";
+  el.style.backgroundColor = "transparent";
+
+  function get_body_background_any() {
+    const body = document.body;
+    if (!body) return null;
+
+    if (body.style.backgroundImage && body.style.backgroundImage !== "none") {
+      return body.style.backgroundImage;
+    }
+
+    if (body.style.background && body.style.background !== "none") {
+      return body.style.background;
+    }
+
+    const computed = window.getComputedStyle(body);
+
+    if (computed.backgroundImage && computed.backgroundImage !== "none") {
+      return computed.backgroundImage;
+    }
+
+    if (computed.background && computed.background !== "none") {
+      return computed.background;
+    }
+
+    const html = document.documentElement;
+    const html_computed = window.getComputedStyle(html);
+
+    if (html_computed.backgroundImage !== "none") {
+      return html_computed.backgroundImage;
+    }
+
+    return null;
+  }
+
+  if (!primary_src) {
+    const bg = get_body_background_any();
+    if (bg) {
+      el.style.backgroundImage = bg.startsWith("url(") ? bg : `url('${bg}')`;
+    }
+    return;
+  }
+
+  const safe_primary = encodeURI(primary_src);
+  const safe_fallback = fallback_src ? encodeURI(fallback_src) : null;
+
+  const img_primary = new Image();
+
+  img_primary.onload = function () {
+    requestAnimationFrame(() => {
+      el.style.backgroundImage = 'url("' + safe_primary + '")';
+      el.style.backgroundSize = "auto 100%";
+      el.style.backgroundPosition = "center";
+      el.style.backgroundRepeat = "no-repeat";
+    });
+  };
+
+  img_primary.onerror = function () {
+    if (safe_fallback) {
+      const img_fallback = new Image();
+
+      img_fallback.onload = function () {
+        requestAnimationFrame(() => {
+          el.style.backgroundImage = 'url("' + safe_fallback + '")';
+          el.style.backgroundSize = "auto 100%";
+          el.style.backgroundPosition = "center";
+          el.style.backgroundRepeat = "no-repeat";
+        });
+      };
+
+      img_fallback.onerror = function () {
+        const img_url = extract_body_background_image_url();
+        if (!img_url) return;
+
+        requestAnimationFrame(() => {
+          el.style.backgroundImage = 'url("' + img_url + '")';
+          el.style.backgroundSize = "auto 100%";
+          el.style.backgroundPosition = "center";
+          el.style.backgroundRepeat = "no-repeat";
+        });
+      };
+
+      img_fallback.src = safe_fallback;
+    } else {
+      const bg = get_body_background_any();
+      if (bg) {
+        requestAnimationFrame(() => {
+          el.style.background = bg;
+        });
+      }
+    }
+  };
+
+  img_primary.src = safe_primary;
+}
+
+function extract_body_background_image_url() {
+  const body = document.body;
+  if (!body) return null;
+
+  let bg = body.style.backgroundImage;
+
+  if (!bg || bg === "none") {
+    bg = window.getComputedStyle(body).backgroundImage;
+  }
+
+  if (!bg || bg === "none") return null;
+
+  const match = bg.match(/url\(["']?(.*?)["']?\)/);
+  return match ? match[1] : null;
+}
+
+function apply_body_background_to_lite(el) {
+  const img_url = extract_body_background_image_url();
+  if (!img_url) return;
+
+  el.style.backgroundImage = 'url("' + img_url + '")';
+  el.style.backgroundSize = "auto 100%";
+  el.style.backgroundPosition = "center";
+  el.style.backgroundRepeat = "no-repeat";
+}
