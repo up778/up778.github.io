@@ -118,13 +118,18 @@ body {
   background: inherit !important;
 }
 
+.modal_for_wikipedia {
+  position: fixed !important;
+  z-index: 30000 !important;
+}
+
 * > span {
   font-size: 104%;
 }
 
 .modal-body {
   overflow-y: auto;
-  z-index: 18000;
+  z-index: 18000 !important;
 }
 
 .modal-dialog {
@@ -132,9 +137,6 @@ body {
 
 .modal {
   z-index: 9000 !important;
-}
-.modal-backdrop {
-  z-index: 1990 !important;
 }
 
 nav-item.dropup {
@@ -1073,10 +1075,6 @@ lite-youtube {
   top: 100px;
 }
 
-table {
-  z-index: 80 !important;
-}
-
 td {
   z-index: 20 !important;
 }
@@ -1188,7 +1186,7 @@ audio::-webkit-media-controls-timeline {
 
   width: 100%;
 
-  z-index: 100;
+  z-index: 200;
 }
 
 .top_button {
@@ -1468,16 +1466,11 @@ blockquote > p {
 
 img.image_outside_td_and_float_right,
 figure {
-  z-index: 8 !important;
 }
 
 .div_for_modal_for_link_outside_modal,
 .a_pour_not_wikipedia {
   z-index: 85 !important;
-}
-
-table.table_outside_a_table_and_outside_card {
-  z-index: 11;
 }
 
 .probable_citation_de_Dieu {
@@ -2311,7 +2304,7 @@ tbody:before {
 }
 
 figure {
-  z-index: 5 !important;
+  z-index: 190;
 }
 
 h1,
@@ -2522,10 +2515,7 @@ h6 {
 
 .deuxieme_coquille_top_button tr {
 }
-table tr:has(td:contains("2025")) {
-}
-table tr:has(td:contains("2025")) > * {
-}
+
 .deuxieme_coquille_top_button tr[data-year="2025"] td {
 }
 
@@ -2733,7 +2723,7 @@ table .trois_last_modifs_weeks {
 .modal-content {
   border: 2px dashed grey;
   max-height: 88vh !important;
-  z-index: 999 !important;
+  z-index: 9999 !important;
 }
 
 .popover-body {
