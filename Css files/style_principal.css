@@ -1435,6 +1435,8 @@ blockquote > p {
 
   margin: 1px 0 26px 0px;
   font-style: italic;
+
+  margin-bottom: 20px !important;
 }
 
 .class_citation_standard::before {
@@ -3008,6 +3010,11 @@ figure:has(audio) figcaption {
 }
 
 p[style*="display:inline"] + p,
+div[style*="display:inline"] + p,
 p[style*="display:inline"] + table {
   margin-top: 1em;
+}
+p[style*="display:inline"] + div,
+p[style*="display: inline"] + div {
+  margin-bottom: 1em !important;
 }
