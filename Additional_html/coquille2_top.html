@@ -616,8 +616,8 @@
             <div class="tab-pane fade" id="all_pages_changes_pills8" role="tabpanel" aria-labelledby="aria_reso" style="background-color: #00b5a07a !important;max-height: 66vh; overflow: auto;" data-darkreader-inline-bgcolor="" tabindex="0">
 <p class="conserve_amelios"><strong>Partie pour les endroits du site corrigés (excepté le texte), les endroits modifiés (excepté le texte rédigé sur les pages).<br>note : à partir du mercredi 31 décembre 2025, les dates indiquées devraient correspondre à la date d'upload sur internet (cette date ne correspond pas forcément la date où j'ai "codé" ou modifié la partie en question)</strong></p>
 <div style="overflow: auto; overflow-x: hidden; max-width: 100%; word-wrap: break-word; word-break: break-word; contain: layout style; position: relative;" class="max_height_coq">
-<p>mercredi 31 décembre 2025 : recodage du code pour image background des videos youtube. devrait y avoir plus fréquemment, voire toujours, un background, maintenant.</p>
-<p>mercredi 31 décembre 2025 : lors de la lecture d'une nouvelle vidéo youtube, extinction de toutes les autres vidéos youtube, sauf les 2 dernières lues, au lieu de seulement la dernière.</p>
+<p class="element_partie_modifiée_keypress_class">vendredi 2 janvier 2026 : correction css. problème de modal qui était chevauché par d'autres éléments. devrait aller maintenant, à part quelques éléments encore chevauchants.</p>
+<p>mercredi 31 décembre 2025 :<br>- recodage du code pour image background des videos youtube. devrait y avoir plus fréquemment, voire toujours, un background, maintenant.<br>- lors de la lecture d'une nouvelle vidéo youtube, extinction de toutes les autres vidéos youtube, sauf les 2 dernières lues, au lieu de seulement la dernière.</p>
 <p>vendredi 26 décembre 2025 :<br>- le bouton pour jouer/pauser l'audio&nbsp;<button class="btn pop_button mt-0 mb-1 paused_audio" role="button" id="toggle_audio" onclick="fct_toggle_audio()" style="background-color: #212122; z-index: 9000; width: 40px; height: 40px; font-size: 20px; margin-top: 20px; border: 1px solid grey; padding: auto;" alt="Images/cassette.svg" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton qui devrait afficher si un audio est lu ou non &lt;i class='bi-arrow-right'&gt; &lt;/i&gt;" data-no-popover="true" data-popover-color="red" data-popover-bg="yellow" data-max-width="400px" aria-label="play/pause audio" data-bs-original-title="play/pause audio"> <!-- height:30px;width:30px --><!-- onClick="toggleAudio();" --></button>&nbsp;devrait maintenant prendre en compte aussi les vidéos non youtube / non odysee. Et le bouton pour centrer la page sur le dernier audio lu <button class="btn bi-arrow-down-left pop_button mt-0 mb-1 bouton_pour_rejoindre_audio_playing_audio" style="background-color: #212122; z-index: 9000; width: 40px; height: 40px; font-size: 20px; margin-top: 20px; border: 1px solid grey; padding: auto; color: #ddd;" id="bouton_pour_rejoindre_audio" alt="bouton switch style" data-popover-title="Titre pour Bouton 1" data-popover-content="Bouton pour 'centrer' sur la page le dernier audio lu &lt;i class='bi-arrow-right'&gt; &lt;/i&gt;" data-no-popover="true" aria-label="bouton pour basculer style audios" data-bs-original-title="bouton pour basculer style audios"></button>, ce bouton devrait maintenant aussi prendre en compte les vidéos non youtube / non odysee.<br><br>- nouvel effet <em>pulse</em> si un lien du volet historique, pour une vidéo non youtube ou odysee est cliqué</p>
 <p>mercredi 10 décembre 2025 (mais codage aussi la veille) : nouveau "mécanisme" pour les vidéos :: extinction des vidéos si lecture d'une autre. Fera peut-être gagner en fluidité de la page.</p>
 <p style="display: inline;">décembre 2025 (et/ou fin nov 2025) : retravail des lecteurs audio : le bouton reload, non seulement devrait reload l'audio mais aussi la lecture depuis le début. Sur certains lecteurs audio, ajout d'un bouton i, pour une ou des info(s) sur le son&nbsp;</p>
@@ -1166,8 +1166,8 @@ comme quelques interrogations de logique/cohérence.
           <a class="btn icon_on_top" href="accueil.html" style="background-color: #010203;color: #ffd306;border: 1px solid #fefefe;" title="page d'accueil">Accueil <img src="Images/Favicons/house_8_2.png" style="width: 20px; height: 20px;" alt="Images/Favicons/house_8_2.png" /></a>
         </td>
         <!-- <td></td> -->
-        <td style="background-color: #010203;color: #ffd306;width:0%;text-align:center;border-radius: 10px;border: 1px solid #fefefe;" class="année_coquille_accueil.html">2025</td>
-        <td style="background-color: #010203;border-radius: 10px;border: 1px solid #fefefe;" ico="🏡" class="accueil.html">31 décembre 🌙</td>
+        <td style="background-color: #010203;color: #ffd306;width:0%;text-align:center;border-radius: 10px;border: 1px solid #fefefe;" class="année_coquille_accueil.html">2026</td>
+        <td style="background-color: #010203;border-radius: 10px;border: 1px solid #fefefe;" ico="🏡" class="accueil.html">1<sup>er</sup> janvier 18h42</td>
         <td style="background-color: #006b0c80;" class="accueil.html_dropdown_news_parts">
           <div class="dropdown dropend">
             <button data-bs-auto-close="outside" class="btn dropdown-toggle btn_new_3" trois_week_attrib="accueil.html" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" style="border: 1px solid #00ff00;background-color :#010203;;">🏡</button>
@@ -1198,8 +1198,8 @@ comme quelques interrogations de logique/cohérence.
           <a class="btn icon_on_top" href="Studium_Creaturae.html" style="background-color: #972e00; --darkreader-inline-bgcolor: #972e00;">Créatures/sujets à l'étude <img src="Images/Favicons/magnifying-glass-tilted-right.png" style="width: 20px; height: 20px;" alt="Images/Favicons/magnifying-glass-tilted-right.png" /></a>
         </td>
         <!-- <td></td> -->
-        <td style="background-color: #972e00;width:0%;text-align:center;border-radius: 10px" class="année_coquille_Studium_Creaturae.html">2025</td>
-        <td style="background-color: #972e00;border-radius: 10px;" ico="🔎" class="Studium_Creaturae.html">31 décembre 🌙</td>
+        <td style="background-color: #972e00;width:0%;text-align:center;border-radius: 10px" class="année_coquille_Studium_Creaturae.html">2026</td>
+        <td style="background-color: #972e00;border-radius: 10px;" ico="🔎" class="Studium_Creaturae.html">1<sup>er</sup> janvier 20h01</td>
         <td style="background-color: #006b0c80;" class="Studium_Creaturae.html_dropdown_news_parts">
           <div class="dropdown dropend">
             <button data-bs-auto-close="outside" class="btn dropdown-toggle btn_new_3" trois_week_attrib="Studium_Creaturae.html" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" style="border: 1px solid #00ff00;background-color : #972e00">🔎</button>
@@ -1248,8 +1248,8 @@ comme quelques interrogations de logique/cohérence.
           <a class="btn icon_on_top" href="Ufologues-extraterrestres.html" style="background-color: #5f7000; --darkreader-inline-bgcolor: #5f7000;">Ufologues/Extra-terrestres <img src="Images/Favicons/flying-saucer.png" style="width: 20px; height: 20px;" alt="Images/Favicons/flying-saucer.png" /></a>
         </td>
         <!-- <td></td> -->
-        <td style="background-color: #5f7000;width:0%;text-align:center;border-radius: 10px" class="année_coquille_Ufologues-extraterrestres.html">2025</td>
-        <td style="background-color: #5f7000;text-align:left;border-radius: 10px" ico="🛸" class="Ufologues-extraterrestres.html">31 décembre 🌙</td>
+        <td style="background-color: #5f7000;width:0%;text-align:center;border-radius: 10px" class="année_coquille_Ufologues-extraterrestres.html">2026</td>
+        <td style="background-color: #5f7000;text-align:left;border-radius: 10px" ico="🛸" class="Ufologues-extraterrestres.html">1<sup>er</sup> janvier 20h35</td>
         <td style="background-color: #006b0c80;" class="Ufologues-extraterrestres.html_dropdown_news_parts">
           <div class="dropdown dropend">
             <button data-bs-auto-close="outside" class="btn dropdown-toggle btn_new_3" trois_week_attrib="Ufologues-extraterrestres.html" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" style="border: 1px solid #00ff00;background-color : #5f7000">🛸</button>
@@ -1274,8 +1274,8 @@ comme quelques interrogations de logique/cohérence.
         </td>
         <!-- <td></td> -->
         <!-- style="border:1px solid yellow;background-color : #000000" -->
-        <td style="border-radius: 10px;background-color : #007d84;width:0%;text-align:center;border-radius: 10px" class="année_coquille_Liber_de_Creaturis__religio.html">2025</td>
-        <td style="border-radius: 10px;background-color : #007d84" ico="🦢" class="Liber_de_Creaturis__religio.html">31 décembre 🌙</td>
+        <td style="border-radius: 10px;background-color : #007d84;width:0%;text-align:center;border-radius: 10px" class="année_coquille_Liber_de_Creaturis__religio.html">2026</td>
+        <td style="border-radius: 10px;background-color : #007d84" ico="🦢" class="Liber_de_Creaturis__religio.html">2 janvier 🌙</td>
         <td style="background-color: #006b0c80;" class="Liber_de_Creaturis__religio.html_dropdown_news_parts">
           <div class="dropdown dropend">
             <button data-bs-auto-close="outside" class="btn dropdown-toggle btn_new_3" trois_week_attrib="Liber_de_Creaturis__religio.html" type="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" style="border: 1px solid #00ff00;background-color : #007d84">🦢</button>

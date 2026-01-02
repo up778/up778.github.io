@@ -1621,6 +1621,7 @@ $(document).ready(function () {
   const rules = [
     `.info_popup_p{
     border : 1px dotted grey;
+    background-color:${minus_70} !important;
  }`,
     `#controlBar_myPlayerID {
     position: fixed;
