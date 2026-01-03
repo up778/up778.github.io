@@ -116,14 +116,14 @@
   "
 >
   <button
-    class="me-1 mt-1 btn btn_primary_darkblue_footer b_bas un_des_boutons_pour_pop_infos piupi pop_button"
+    class="me-1 mt-1 btn btn_primary_darkblue_footer b_bas un_des_boutons_pour_pop_infos piupi pop_button trigger_popovers"
     type="button"
     aria-expanded="false"
     style="color: #1ecf12; background-color: #434343; font-size: 12px"
     title="bouton pour infos sur les boutons à droite du site"
     data-popover-title="Titre pour Bouton 1"
     data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher des&lt;br /&gt;bandeaux info, pour chaque bouton'
-    id="trigger_popovers"
+    data-popover-class="btn_custom_bouton_labels"
   >
     infos<br />
     boutons
@@ -420,6 +420,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   data-popover-title="Titre pour Bouton 1"
   data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les boutons youtube'
   id="trigger_popovers"
+  data-popover-class="btn_boutons_vidéos_youtube_ht_gache"
 >
   btns<br />
   ytube
@@ -427,7 +428,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   data-bs-toggle="dropdown" -->
 </button>
 <button
-  class="btn btn-sm btn-dark toggle_youtube_borders"
+  class="btn btn-sm btn-dark toggle_youtube_borders pop_button"
   style="
     background-color: #430001;
     position: fixed;
@@ -437,6 +438,13 @@ src="Images/sheep-5427870_'jaune'.jpg"
     font-size: 60%;
     color: grey;
   "
+  type="button"
+  aria-expanded="false"
+  style="color: #da0863; background-color: #430000; font-size: 12px"
+  title="bouton pour bordures vidéos youtube"
+  data-popover-title="Titre pour bordures vidéos youtube"
+  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les bordures des vidéos youtube'
+  data-popover-class="btn_custom_bordures_vidéos_youtube"
 >
   bordures<br />ytube
 </button>
@@ -511,7 +519,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   <div id="dinamicMenu"></div>
 </div>
 <div
-  style="position: fixed; top: 40vh; right: 13.8vw; z-index: 89;width: 40px;height: 120px"
+  style="position: fixed; top: 40vh; right: 13.6vw; z-index: 89;width: 40px;height: 120px"
   class="bg_for_youtube_button"
 >
   <div
@@ -587,6 +595,8 @@ alt="Images/arrows-collapse.png"
       data-popover-color="red"
       data-popover-bg="yellow"
       data-max-width="400px"
+      data-popover-class="btn_custom_pop_audio_play_or_not"
+      data-bs-placement="left"
     >
       <!-- height:30px;width:30px -->
       <!-- onClick="toggleAudio();" -->
@@ -606,6 +616,7 @@ alt="Images/arrows-collapse.png"
       data-popover-title="Titre pour Bouton 1"
       data-popover-content='Bouton pour "centrer" sur la page le dernier audio lu &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
+      data-popover-class="btn_custom_pop_center_audio"
     ></button>
     <button
       class="btn bi-brush pop_button mt-0 mb-1"
@@ -614,8 +625,9 @@ alt="Images/arrows-collapse.png"
       id="bouton_pour_basculer_style_audios"
       alt="bouton switch style"
       data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour basculer entre les styles, pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+      data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
+      data-popover-class="btn_custom_pop_style_audio"
     ></button>
   </div>
 </div>
@@ -674,7 +686,7 @@ alt="Images/arrows-collapse.png"
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="icon_dg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.25 16.25h1.5L12 17z" /><path d="M16 14v.5" /><path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309" /><path d="M8 14v.5" /><path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5" /></symbol><symbol id="icon_help" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"/><path d="M12 19l0 .01"/></symbol></svg>
 <main role="main">
 <header role="banner"></header>
-<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Occident_occidentaux_et_orient_orientaux"> Occidentaux-occident et Orientaux-orient</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Creaturae/Occidentaux-Orientaux/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#dc720140;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Orientaux__Occidentaux_h1_perma_id_dn_2024_1_tt"><h1 id="Orientaux__Occidentaux_h1_perma_id_dn_2024_1_tt">Préambule 🔆</h1>
+<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Occident_occidentaux_et_orient_orientaux"> Occidentaux-occident et Orientaux-orient</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Creaturae/Occidentaux-Orientaux/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#dc720140;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Orientaux__Occidentaux_h1_perma_id_dn_2024_1_tt"><h1 id="Orientaux__Occidentaux_h1_perma_id_dn_2024_1_tt" >Préambule 🔆</h1>
 <section class="bcLevel2" id="Orientaux__Occidentaux_titre_perma_id_dn_vendredi_3_octobre_2025_19_327"><h2 class="reload-class_une_semaine__ stop">3ème page / 3ème jour de la Création</h2><p id="Orientaux__Occidentaux_blockquote_perma_id_dn_samedi_2décembre_2025_20_270" class="probable_citation_du_Saint-Esprit reload-class_une_semaine__">Et <strong>D</strong>ieu dit: <picture><source src="Creaturae/Occidentaux-Orientaux/Images/Avif_images/6-November-2025-34-06-rand170F7C3.avif" type="image/avif"> <img src="Creaturae/Occidentaux-Orientaux/Images/6-November-2025-34-06-rand170F7C3.jpg" style="width: 20%; float: right;" class="rounded image_outside_td_and_float_right" loading="lazy" alt="Images/6-November-2025-34-06-rand170F7C3.jpg" width="1084px"></picture>Que les eaux qui sont au-dessous des cieux se rassemblent en un lieu, et que le sec paraisse. Et il fut ainsi. <br>Et <strong>D</strong>ieu appela le sec <span style="background-color: #89480d;">Terre</span>, et le rassemblement des eaux, il l'appela <span style="background-color: #3598db;">Mers</span>. <br>Dieu vit que cela était bon. Et <strong>D</strong>ieu dit: Que la terre produise l'<span style="background-color: #008800;">herbe, la plante</span> portant de la semence, l'arbre fruitier produisant du fruit selon son espèce, ayant sa semence en soi sur la terre. Et il fut ainsi. <br>Et <span style="background-color: #89480d;">la terre</span> produisit l'herbe, la plante portant de la semence selon son espèce, et l'arbre produisant du fruit ayant sa semence en soi selon son espèce. Et <strong>D</strong>ieu vit que cela était bon.</p><p style="text-align: right;">Livre de la Genèse 1. 9,10,11,12</p><p>Le troisième jour aurait été pour la création des plantes.. l'arbre fruitier, la terre.<br>Une page dédiée aux Occidentaux et Orientaux.<br>La situation géographique de Quelqu'un aurait participé à ce qu'y aurait fait plutôt Quelqu'un de mentalité occidentale ou orientale?<br>L'Occidental mental serait plutôt celui dont les ancêtres auraient vécus plutôt près des mers. Et l'Oriental mental, celui dont les ancêtres auraient plutôt vécus près des montagnes, à l'intérieur des terres.</p><p> </p><p> </p><table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 98.0005%; height: 438.733px;" id="Orientaux__Occidentaux_table_perma_id_dn_jeudi_5_septembre_2024_24_133"><colgroup><col style="width: 15.3998%;"><col style="width: 19.0603%;"><col style="width: 1.5815%;"><col style="width: 2.41387%;"><col style="width: 29.1329%;"><col style="width: 17.563%;"><col style="width: 14.8161%;"></colgroup>
 <tbody>
 <tr style="height: 95.7386px;">
@@ -3159,7 +3171,7 @@ alt="Images/arrows-collapse.png"
 </div>
 </div>
 </div>
-</div><p style="display: inline;">ou le GIGN.</p></section><section class="bcLevel4" id="Orientaux__Occidentaux_h4_perma_id_dn_lundi_15_juillet_2024_11"><h4 permalien_dn="Orientaux__Occidentaux_permalien_dn_vendredi_31_mai_2024_84" >Occident et chiens. Occidentaux et balles/ballons. Sport convivial / sport compétitif, professionnel</h4><p>Chez les Occidentaux, depuis longtemps, un culte (ou enfin un fort intérêt) pour les balles, les ballons. (Il me sembla que beaucoup de chiens aussi aimaient les balles.)</p><section class="bcLevel5" id="Orientaux__Occidentaux_titre_perma_id_dn_samedi_22_mars_2025_38_835"><h5 class="reload-class_une_semaine__">Football convivial / sport convivial</h5><p><em>Sport de ville/village, sport convivial, sport collectif</em></p><p>Je ne chercherais pas à m'en prendre au sport amateur: parfois, j'estime, divers Occidentaux essayèrent d'être sympathiques, lorsqu'ils proposèrent telle ou telle activité sportive à autrui : par exemple faire une partie de football, ou de sport de raquette, ou autre activité collective avec ballon.<br>Ce ne serait pas noble/gentil, de m'en prendre à divers Occidentaux par rapport à quand ils proposèrent du sport.<br>J'ai moi-même pu ressentir une certaine convivialité lors de certaines activités collectives.</p><p>Ce n'est pas que je souhaiterais associer le football à quelque chose de particulièrement négatif. J'estime, il put aussi y avoir quelque chose de convivial dans le football. Mais attention, il y aurait eu football et football.<br>Le football "de village" et le football dit "professionnel" et ses millions d'euros.</p></section><section class="bcLevel5" id="Orientaux__Occidentaux_titre_perma_id_dn_samedi_22_mars_2025_38_469"><h5 class="reload-class_une_semaine__">Football professionnel / sport professionnel</h5><p><em>Sport des villes, sport essentiellement compétitif</em></p><p>Par contre, le sport professionnel, ce serait autre chose. Et il aurait eut de quoi me sembler malsain : à même de faire tourner la tête à des jeunots. Les entrainer vers la drogue, des égarements sexuels. Des jeunots qui se retrouvent, souvent à moins de 25 ans, avec des dizaines de milliers d'euros ou même des centaines de milliers, ou même des millions, des voitures de sport, etc.</p><table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%;" class="reload-class_une_semaine__" id="Orientaux__Occidentaux_table_perma_id_dn_samedi_22_mars_2025_35_217" attr_une_semaine_new_timestamp="1742603747217"><colgroup><col style="width: 42.0611%;"><col style="width: 12.2759%;"><col style="width: 45.6307%;"></colgroup>
+</div><p style="display: inline;">ou le GIGN.</p></section><section class="bcLevel4" id="Orientaux__Occidentaux_h4_perma_id_dn_lundi_15_juillet_2024_11"><h4 permalien_dn="Orientaux__Occidentaux_permalien_dn_vendredi_31_mai_2024_84">Occident et chiens. Occidentaux et balles/ballons. Sport convivial / sport compétitif, professionnel</h4><p>Chez les Occidentaux, depuis longtemps, un culte (ou enfin un fort intérêt) pour les balles, les ballons. (Il me sembla que beaucoup de chiens aussi aimaient les balles.)</p><section class="bcLevel5" id="Orientaux__Occidentaux_titre_perma_id_dn_samedi_22_mars_2025_38_835"><h5 class="reload-class_une_semaine__">Football convivial / sport convivial</h5><p><em>Sport de ville/village, sport convivial, sport collectif</em></p><p>Je ne chercherais pas à m'en prendre au sport amateur: parfois, j'estime, divers Occidentaux essayèrent d'être sympathiques, lorsqu'ils proposèrent telle ou telle activité sportive à autrui : par exemple faire une partie de football, ou de sport de raquette, ou autre activité collective avec ballon.<br>Ce ne serait pas noble/gentil, de m'en prendre à divers Occidentaux par rapport à quand ils proposèrent du sport.<br>J'ai moi-même pu ressentir une certaine convivialité lors de certaines activités collectives.</p><p>Ce n'est pas que je souhaiterais associer le football à quelque chose de particulièrement négatif. J'estime, il put aussi y avoir quelque chose de convivial dans le football. Mais attention, il y aurait eu football et football.<br>Le football "de village" et le football dit "professionnel" et ses millions d'euros.</p></section><section class="bcLevel5" id="Orientaux__Occidentaux_titre_perma_id_dn_samedi_22_mars_2025_38_469"><h5 class="reload-class_une_semaine__">Football professionnel / sport professionnel</h5><p><em>Sport des villes, sport essentiellement compétitif</em></p><p>Par contre, le sport professionnel, ce serait autre chose. Et il aurait eut de quoi me sembler malsain : à même de faire tourner la tête à des jeunots. Les entrainer vers la drogue, des égarements sexuels. Des jeunots qui se retrouvent, souvent à moins de 25 ans, avec des dizaines de milliers d'euros ou même des centaines de milliers, ou même des millions, des voitures de sport, etc.</p><table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%;" class="reload-class_une_semaine__" id="Orientaux__Occidentaux_table_perma_id_dn_samedi_22_mars_2025_35_217" attr_une_semaine_new_timestamp="1742603747217"><colgroup><col style="width: 42.0611%;"><col style="width: 12.2759%;"><col style="width: 45.6307%;"></colgroup>
 <tbody>
 <tr>
 <td></td>
@@ -9157,8 +9169,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script>
-<script>
+ </script><script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
@@ -10672,10 +10683,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       popovers.set(button, popover);
       popover.disable();
     }
-    document.querySelectorAll(".pop_button").forEach(initializePopover);
-    const showAllPopoversButton = document.getElementById("trigger_popovers");
-    if (showAllPopoversButton) {
-      showAllPopoversButton.addEventListener("click", (e) => {
+    document.querySelectorAll(".trigger_popovers").forEach((trigger_btn) => {
+      trigger_btn.addEventListener("click", (e) => {
         e.stopPropagation();
         popovers.forEach((popover, btn) => {
           if (!popover._element.classList.contains("disabled")) {
@@ -10684,7 +10693,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           }
         });
       });
-    }
+    });
     // Gestion du clic sur le document (capture)
     document.body.addEventListener(
       "click",
