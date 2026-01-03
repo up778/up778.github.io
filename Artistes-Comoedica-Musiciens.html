@@ -116,14 +116,14 @@
   "
 >
   <button
-    class="me-1 mt-1 btn btn_primary_darkblue_footer b_bas un_des_boutons_pour_pop_infos piupi pop_button"
+    class="me-1 mt-1 btn btn_primary_darkblue_footer b_bas un_des_boutons_pour_pop_infos piupi pop_button trigger_popovers"
     type="button"
     aria-expanded="false"
     style="color: #1ecf12; background-color: #434343; font-size: 12px"
     title="bouton pour infos sur les boutons à droite du site"
     data-popover-title="Titre pour Bouton 1"
     data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher des&lt;br /&gt;bandeaux info, pour chaque bouton'
-    id="trigger_popovers"
+    data-popover-class="btn_custom_bouton_labels"
   >
     infos<br />
     boutons
@@ -419,6 +419,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   data-popover-title="Titre pour Bouton 1"
   data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les boutons youtube'
   id="trigger_popovers"
+  data-popover-class="btn_boutons_vidéos_youtube_ht_gache"
 >
   btns<br />
   ytube
@@ -426,7 +427,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   data-bs-toggle="dropdown" -->
 </button>
 <button
-  class="btn btn-sm btn-dark toggle_youtube_borders"
+  class="btn btn-sm btn-dark toggle_youtube_borders pop_button"
   style="
     background-color: #430001;
     position: fixed;
@@ -436,6 +437,13 @@ src="Images/sheep-5427870_'jaune'.jpg"
     font-size: 60%;
     color: grey;
   "
+  type="button"
+  aria-expanded="false"
+  style="color: #da0863; background-color: #430000; font-size: 12px"
+  title="bouton pour bordures vidéos youtube"
+  data-popover-title="Titre pour bordures vidéos youtube"
+  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les bordures des vidéos youtube'
+  data-popover-class="btn_custom_bordures_vidéos_youtube"
 >
   bordures<br />ytube
 </button>
@@ -586,6 +594,8 @@ alt="Images/arrows-collapse.png"
       data-popover-color="red"
       data-popover-bg="yellow"
       data-max-width="400px"
+      data-popover-class="btn_custom_pop_audio_play_or_not"
+      data-bs-placement="left"
     >
       <!-- height:30px;width:30px -->
       <!-- onClick="toggleAudio();" -->
@@ -605,6 +615,7 @@ alt="Images/arrows-collapse.png"
       data-popover-title="Titre pour Bouton 1"
       data-popover-content='Bouton pour "centrer" sur la page le dernier audio lu &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
+      data-popover-class="btn_custom_pop_center_audio"
     ></button>
     <button
       class="btn bi-brush pop_button mt-0 mb-1"
@@ -613,8 +624,9 @@ alt="Images/arrows-collapse.png"
       id="bouton_pour_basculer_style_audios"
       alt="bouton switch style"
       data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour basculer entre les styles, pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+      data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
+      data-popover-class="btn_custom_pop_style_audio"
     ></button>
   </div>
 </div>
@@ -2059,7 +2071,7 @@ alt="Images/arrows-collapse.png"
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> source : Bizet-Shchedrin, Carmen suite Vladimir Spivakov </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
                     <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet/Bizet-Shchedrin,_Carmen_suite_extrait_Vladimir_Spivakov.opus" type="audio/ogg; codecs=opus">
-                  </audio> </figure>
+                  </audio></figure>
 <p style="text-align: left;"><audio style="width: 100%; height: 30px;" id="audio_id8" preload="metadata" loop="loop" controls="controls" onclick="select_audio(this)">
                     <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet_Carmen_rei_02_sur_la_plac.mp3" type="audio/mpeg">
                   </audio></p>
@@ -2075,7 +2087,7 @@ alt="Images/arrows-collapse.png"
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> _pot_ </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
                     <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet/Bizet_carmen_rei_26_nous_avons.opus" type="audio/ogg; codecs=opus">
-                  </audio> </figure>
+                  </audio></figure>
 <p style="text-align: left;"><audio style="width: 100%; height: 30px;" id="audio_id11" preload="metadata" loop="loop" controls="controls" onclick="select_audio(this)">
                     <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet-extrait.wav" type="audio/wav">
                   </audio></p>
@@ -2157,19 +2169,19 @@ alt="Images/arrows-collapse.png"
 <figcaption id="audio_figcaption_21_août_2024_21_41_205">Symphonie en c d'Alexandre Bizet, partie 1, extrait 1</figcaption>
 <audio style="width: 100%; height: 30px; display: inline-block;" id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_mercredi_21_août_2024_21_211" controls="controls" loop="loop" preload="metadata" onclick="select_audio(this)">
             <source class="new_audio  class_une_semaine__" src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet_extrait_1_symphonie_en_c_part_1.wav" type="audio/wav">
-          </audio> </figure><figure style="position: relative;">
+          </audio></figure><figure style="position: relative;">
 <figcaption id="audio_figcaption_21_août_2024_21_48_426">Symphonie en c d'Alexandre Bizet, partie 1, extrait 2 </figcaption>
 <audio style="width: 100%; height: 30px; display: inline-block;" id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_mercredi_21_août_2024_21_426" controls="controls" loop="loop" preload="metadata" onclick="select_audio(this)">
             <source class="new_audio  class_une_semaine__" src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet_extrait_2_symphonie_en_c_part_1.wav" type="audio/wav">
-          </audio> </figure><figure style="position: relative;">
+          </audio></figure><figure style="position: relative;">
 <figcaption id="audio_figcaption_21_août_2024_21_53_29">Symphonie en c d'Alexandre Bizet, partie 2, extrait 1 </figcaption>
 <audio style="width: 100%; height: 30px; display: inline-block;" id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_mercredi_21_août_2024_21_29" controls="controls" loop="loop" preload="metadata" onclick="select_audio(this)">
             <source class="new_audio  class_une_semaine__" src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet_extrait_1_symphonie_en_c_part_2.wav" type="audio/wav">
-          </audio> </figure><figure style="position: relative;">
+          </audio></figure><figure style="position: relative;">
 <figcaption id="audio_figcaption_21_août_2024_22_1_396">Symphonie en c d'Alexandre Bizet partie 4, extrait 1 </figcaption>
 <audio style="width: 100%; height: 30px; display: inline-block;" id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_mercredi_21_août_2024_22_396" controls="controls" loop="loop" preload="metadata" onclick="select_audio(this)">
             <source class="new_audio  class_une_semaine__" src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Bizet_extrait_1_symphonie_en_c_part_4.wav" type="audio/wav">
-          </audio> </figure></section></section><section class="bcLevel3" id="Artistes-Comoedica-Musiciens_h3_perma_id_dn_mardi_23_juillet_2024_4"><h3 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_17">Considérations sur l'amour</h3><section class="bcLevel4" id="Artistes-Comoedica-Musiciens_h4_perma_id_dn_mardi_23_juillet_2024_4"><h4 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_18">L'amour, ''un oiseau rebelle''? qui n'a jamais? connu de loi(s)? 🐦🐤🕊️🦚</h4><p style="position: relative;">Quelle serait la validité des paroles du passage "l'amour est un oiseau rebelle", de l'opéra Carmen, de Georges Bizet, comparativement à certains passages du livre du Ciel? (un livre qui aurait été attribué à Luisa Piccarreta et pour la majeure partie de ce livre, dicté par le Fils)</p><p style="position: relative;">Pendant des années, je dus avoir comme un malaise avec le morceau "l'amour est un oiseau rebelle". Pour moi, un des pires si ce n'est le pire morceau de cet opéra.☹️Les paroles durent me sembler assez pauvres/fausses. La partie instrumentale (accompagnant ces paroles) dut alors me sembler gâtée.☹️ D'autant plus pénible que ce me sembla un des morceaux les plus connu de cet opéra.</p><div class="table_scroll_wrapper" style="max-height: 60vh; overflow-y: auto; width: 100%; display: block;">
+          </audio></figure></section></section><section class="bcLevel3" id="Artistes-Comoedica-Musiciens_h3_perma_id_dn_mardi_23_juillet_2024_4"><h3 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_17">Considérations sur l'amour</h3><section class="bcLevel4" id="Artistes-Comoedica-Musiciens_h4_perma_id_dn_mardi_23_juillet_2024_4"><h4 permalien_dn="Artistes-Comoedica-Musiciens_permalien_dn_dimanche_19_mai_2024_18">L'amour, ''un oiseau rebelle''? qui n'a jamais? connu de loi(s)? 🐦🐤🕊️🦚</h4><p style="position: relative;">Quelle serait la validité des paroles du passage "l'amour est un oiseau rebelle", de l'opéra Carmen, de Georges Bizet, comparativement à certains passages du livre du Ciel? (un livre qui aurait été attribué à Luisa Piccarreta et pour la majeure partie de ce livre, dicté par le Fils)</p><p style="position: relative;">Pendant des années, je dus avoir comme un malaise avec le morceau "l'amour est un oiseau rebelle". Pour moi, un des pires si ce n'est le pire morceau de cet opéra.☹️Les paroles durent me sembler assez pauvres/fausses. La partie instrumentale (accompagnant ces paroles) dut alors me sembler gâtée.☹️ D'autant plus pénible que ce me sembla un des morceaux les plus connu de cet opéra.</p><div class="table_scroll_wrapper" style="max-height: 60vh; overflow-y: auto; width: 100%; display: block;">
 <table id="Artistes-Comoedica-Musiciens_table_perma_id_dn_mardi_23_juillet_2024_63" class="table_outside_a_table_and_outside_card dotted_between_rows table_scrollable" style="border-style: dotted; border-color: #0000a1; border-image: initial; border-collapse: collapse; text-align: center; empty-cells: show; width: 96%; height: 1321.32px;" empty-cells="show"><colgroup><col style="width: 32.1905%;"><col style="width: 33.3581%;"><col style="width: 34.3588%;"></colgroup>
 <thead style="position: sticky; top: 0px; display: table-header-group; z-index: 10;">
 <tr style="height: 83.75px;">
@@ -2987,7 +2999,7 @@ alt="Images/arrows-collapse.png"
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> Un extrait de la chanson <em>à quoi ça sert</em>, chantée par Axelle red </div>
 <audio style="width: 100%; height: 30px; display: inline-block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
             <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Axelle_red/Axelle_red_à_quoi_ça_sert.m4a" type="audio/x-m4a">
-          </audio> Une musique avec ambiance et certaines paroles, je dirais, assez profondes. </figure><p><span style="color: #55ff56;"> <button type="button" class="btn btn-sm btn_outline_success_2 btn_audio_jump" data-audio-id="vendredi_26_dec_2025_17" data-time="33" style="margin: 0px 2px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+          </audio> Une musique avec ambiance et certaines paroles, je dirais, assez profondes.</figure><p><span style="color: #55ff56;"> <button type="button" class="btn btn-sm btn_outline_success_2 btn_audio_jump" data-audio-id="vendredi_26_dec_2025_17" data-time="33" style="margin: 0px 2px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
                 <path d="M6.5 6v4l3-2z" fill="currentColor" stroke="white" stroke-width="1"></path>
                 <path d="M8 1a6 6 0 0 0-6 6v4a2 2 0 0 0 2 2h1V8H3v-.98A5 5 0 0 1 8 3a5 5 0 0 1 5 5v1h-2v5h1a2 2 0 0 0 2-2V7a6 6 0 0 0-6-6z" fill="#ccc"></path></svg><span style="color: white;"> 0:33</span></button><button type="button" class="btn btn-sm btn-secondary btn_audio_pause" data-audio-id="vendredi_26_dec_2025_17" title="Pause audio" style="margin: 0px 2px;"> ⏸ </button> À quoi ça seeeeert? Ces sentiments profonds?</span> : un processus d'évolution.</p><p><span style="color: #55ff56;"> <button type="button" class="btn btn-sm btn_outline_success_2 btn_audio_jump" data-audio-id="vendredi_26_dec_2025_17" data-time="52" style="margin: 0px 2px;"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
                 <path d="M6.5 6v4l3-2z" fill="currentColor" stroke="white" stroke-width="1"></path>
@@ -3031,7 +3043,7 @@ alt="Images/arrows-collapse.png"
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> Axelle red / extrait de la chanson <em>le monde tourne mal</em> </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
             <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Axelle_red/Axelle_red_-_''Le monde tourne mal''-extrait.opus" type="audio/ogg; codecs=opus">
-          </audio>   </figure><table empty-cells="show" id="Artistes-Comoedica-Musiciens_table_perma_id_dn_mercredi_24_juillet_2024_56_733" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.95%; height: 138.644px;"><colgroup><col style="width: 33.1002%;"><col style="width: 1.7853%;"><col style="width: 18.694%;"><col style="width: 1.76845%;"><col style="width: 44.652%;"></colgroup>
+          </audio>  </figure><table empty-cells="show" id="Artistes-Comoedica-Musiciens_table_perma_id_dn_mercredi_24_juillet_2024_56_733" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.95%; height: 138.644px;"><colgroup><col style="width: 33.1002%;"><col style="width: 1.7853%;"><col style="width: 18.694%;"><col style="width: 1.76845%;"><col style="width: 44.652%;"></colgroup>
 <tbody>
 <tr style="height: 25.8807px;">
 <td style="background-color: #0056028a;"><span style="color: #55ff56;">Le monde tourne mal</span></td>
@@ -3062,18 +3074,18 @@ alt="Images/arrows-collapse.png"
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> Axelle red, extrait de la musique : <em>je t'attends</em> </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
             <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Axelle_red/Axelle_red_-extrait_musique_''Je_t'attends''.opus" type="audio/ogg; codecs=opus">
-          </audio>   </figure><p>Axelle red, extrait de la musique : je t'attends. (Je crois, c'est une reprise, la chanson d'origine existait avant qu'elle soit chantée par Axelle red, mais par ailleurs Axelle red chanta aussi la chanson "parce-que c'est toi").Comme pour d'autres musiques d'Axelle red, cette chanson, commence par un spleen : "<span style="color: #55ff56;">Tous ces gens qui passent autour de moi, dans la ville. Ces gens qui courent et qui marchent au pas, où vont-ils? Est-ce le vent qui les pousse...</span>"</p><p style="clear: both; break-after: always">&nbsp;</p><p> </p></section></section>
+          </audio>  </figure><p>Axelle red, extrait de la musique : je t'attends. (Je crois, c'est une reprise, la chanson d'origine existait avant qu'elle soit chantée par Axelle red, mais par ailleurs Axelle red chanta aussi la chanson "parce-que c'est toi").Comme pour d'autres musiques d'Axelle red, cette chanson, commence par un spleen : "<span style="color: #55ff56;">Tous ces gens qui passent autour de moi, dans la ville. Ces gens qui courent et qui marchent au pas, où vont-ils? Est-ce le vent qui les pousse...</span>"</p><p style="clear: both; break-after: always">&nbsp;</p><p> </p></section></section>
 <section class="bcLevel2" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_mercredi_24_juillet_2024_44_437"><h2>Austra / Katie Stelmanis</h2><p>Groupe de musique assez récent. La Chanteuse principale, Katie Stelmanis, me sembla jouer sur l'aspect décalé du monde. En faisant valoir, je dirais, dans certaines de ses paroles, mais aussi dans son style extérieur, ou certains de ses clips vidéo, que le monde était comme décalé et en jouant elle même un personnage assez "décalé".  Genre la Fille "névrosée", dans un monde plus ou moins dystopique.</p><p>De ce que je compris, elle aurait eut une formation en musique classique. Dans diverses de ses chansons, j'ai trouvé des paroles et une partie instrumentale d'un certain niveau.</p><figure style="position: relative; width: 70%; float: right;">
 <figcaption id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_jeudi_25_décembre_2025_39_982" class="reload-class_une_semaine__">extrait de la chanson <em>home</em>  </figcaption>
 <!-- 🔵 Zone optionnelle contenant l’info pour l’infobulle -->
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> extrait de <em>home</em>, de la Chanteuse Katie Stelmanis, du groupe austra </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
-            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Austra/Austra_home_extrait.opus" type="audio/ogg; codecs=opus"></audio><span style="color: #55ff56;">you know that it hurts me when...</span>   </figure><p>Austra, un extrait de la chanson intitulée "home", retranscription en musique je dirais assez pertinente / bien retranscrite, d'une sorte d'état de "névrose" féminine.<br>Update du mardi 17 décembre 2024 puis du jeudi 25 décembre 2025: j'avais rédigé névrose sans guillemets, mais enfin cet état de "névrose" ne me semblerait pas forcément un état émotionnel négatif. Alors mettre des guillemets au mot névrose permettra peut-être moins d'ambiguïtés.</p><figure style="position: relative;">
+            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Austra/Austra_home_extrait.opus" type="audio/ogg; codecs=opus"></audio><span style="color: #55ff56;">you know that it hurts me when...</span>  </figure><p>Austra, un extrait de la chanson intitulée "home", retranscription en musique je dirais assez pertinente / bien retranscrite, d'une sorte d'état de "névrose" féminine.<br>Update du mardi 17 décembre 2024 puis du jeudi 25 décembre 2025: j'avais rédigé névrose sans guillemets, mais enfin cet état de "névrose" ne me semblerait pas forcément un état émotionnel négatif. Alors mettre des guillemets au mot névrose permettra peut-être moins d'ambiguïtés.</p><figure style="position: relative;">
 <figcaption id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_jeudi_25_décembre_2025_39_745" class="reload-class_une_semaine__">extrait de <em>lose it</em>  </figcaption>
 <!-- 🔵 Zone optionnelle contenant l’info pour l’infobulle -->
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> extrait de <em>lose it</em>, de la Chanteuse Katie Stelmanis </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
-            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Austra/Austra_lose_it_extrait.opus" type="audio/ogg; codecs=opus"></audio>  <span style="color: #55ff56;">don't want loose you. Don't want loose</span> </figure><p> </p><p style="display: inline;">Austra - YouTube <a href="https://www.youtube.com/channel/UCv4RjtQbOmNrOHzPEm4bbxA" target="_blank" rel="noopener noreferrer">https://www.youtube.com/channel/UCv4RjtQbOmNrOHzPEm4bbxA</a> </p><p style="background-color: rgba(0, 0, 0, 0); display: inline;"> /</p><div class="div_for_modal_for_link_outside_modal div_for_modal_wikipedia d-inline-flex" style="background-color: rgba(0, 0, 0, 0);">   </div><div class="div_for_modal_for_link_outside_modal div_for_modal_wikipedia d-inline-flex"><a type="button" class="a_pour_wikipedia" data-bs-toggle="modal" data-bs-target="#https://fr.wikipedia.org/wiki/Austra71" style="display: inline;">  Austra - wikipedia  </a>
+            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Austra/Austra_lose_it_extrait.opus" type="audio/ogg; codecs=opus"></audio>  <span style="color: #55ff56;">don't want loose you. Don't want loose</span></figure><p> </p><p style="display: inline;">Austra - YouTube <a href="https://www.youtube.com/channel/UCv4RjtQbOmNrOHzPEm4bbxA" target="_blank" rel="noopener noreferrer">https://www.youtube.com/channel/UCv4RjtQbOmNrOHzPEm4bbxA</a> </p><p style="background-color: rgba(0, 0, 0, 0); display: inline;"> /</p><div class="div_for_modal_for_link_outside_modal div_for_modal_wikipedia d-inline-flex" style="background-color: rgba(0, 0, 0, 0);">   </div><div class="div_for_modal_for_link_outside_modal div_for_modal_wikipedia d-inline-flex"><a type="button" class="a_pour_wikipedia" data-bs-toggle="modal" data-bs-target="#https://fr.wikipedia.org/wiki/Austra71" style="display: inline;">  Austra - wikipedia  </a>
 <div class="modal fade modal_for_wikipedia" id="https://fr.wikipedia.org/wiki/Austra71" aria-labelledby="exampleModalLabel-https://fr.wikipedia.org/wiki/Austra71" style="z-index: 22000 !important;" aria-hidden="true" tabindex="-1">
 <div class="modal-dialog modal-xl modal-dialog-centered">
 <div class="modal-content">
@@ -3409,18 +3421,18 @@ alt="Images/arrows-collapse.png"
 <!-- 🔵 Zone optionnelle contenant l’info pour l’infobulle -->
 <p class="audio_info_p" style="display: inline; margin-left: 4px;"> extrait de la musique <em>tu ne me dois rien</em>. Chanteur : Stephan Eicher</p>
 <audio style="width: 100%; height: 30px; display: block;" controls="controls" loop="loop" preload="metadata" onclick="select_audio(this)">
-            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Stephan Eicher/Stephan_Eicher_le_devoir_extrait_01-12-2025_1_v2.opus" type="audio/mp3"></audio>  </figure><figure style="position: relative;">
+            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Stephan Eicher/Stephan_Eicher_le_devoir_extrait_01-12-2025_1_v2.opus" type="audio/mp3"></audio> </figure><figure style="position: relative;">
 <figcaption id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_lundi_1_décembre_2025_52_693" class="reload-class_une_semaine__">Sans vouloir te commander </figcaption>
 <!-- 🔵 Zone optionnelle contenant l’info pour l’infobulle -->
 <p class="audio_info_p" style="display: inline; margin-left: 4px;"> extrait de la musique <em>sans vouloir te commander</em>. Chanteur : Stephan Eicher </p>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
-            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Stephan Eicher/Stephan_Eicher_-_Sans_vouloir_te_commander_01-12-2025.opus" type="audio/ogg; codecs=opus"></audio>  </figure><figure style="position: relative;">
+            <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Stephan Eicher/Stephan_Eicher_-_Sans_vouloir_te_commander_01-12-2025.opus" type="audio/ogg; codecs=opus"></audio> </figure><figure style="position: relative;">
 <figcaption id="Artistes-Comoedica-Musiciens_fig_audio_perma_id_dn_samedi_27_décembre_2025_4798" class="reload-class_une_semaine__">ça n'a rien à voir avec toi et moi </figcaption>
 <!-- 🔵 Zone optionnelle contenant l’info pour l’infobulle -->
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> extrait de la musique <em>ça n'a rien à voir</em>. Chanteur : Stephan Eicher </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
             <source src="Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/Stephan Eicher/Stephan_Eicher_extrait_chanson_ça_n'a_rien_à_voir.opus" type="audio/ogg; codecs=opus">
-          </audio>   </figure><p> </p><p> </p></section></section>
+          </audio>  </figure><p> </p><p> </p></section></section>
 </article><article id="capsule_des_h1_4004" class="capsule1 capsule_des_h1_4004 capsule background_class bcLevel1" style="background-image:url('Art-Artistes/Artistes-Comoedica-Musiciens/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cube-background-2484131_1920_lumi.avif');background-size:78vw;background-position:4vw;background-color:_;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_vendredi_26_décembre_2025_9_206"><h1 class="reload-class_une_semaine__" id="Artistes-Comoedica-Musiciens_titre_perma_id_dn_vendredi_26_décembre_2025_9_206">Danse 🩰🕺</h1>
 <p> </p>
 <table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9989%; height: 319.316px;" class="reload-class_une_semaine__" id="Artistes-Comoedica-Musiciens_table_perma_id_dn_vendredi_26_décembre_2025_13_593" attr_une_semaine_new_timestamp="1766718833594"><colgroup><col style="width: 9.34374%;"><col style="width: 40.3471%;"><col style="width: 5.84015%;"><col style="width: 13.4827%;"><col style="width: 1.50653%;"><col style="width: 29.4798%;"></colgroup>
@@ -5133,10 +5145,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       popovers.set(button, popover);
       popover.disable();
     }
-    document.querySelectorAll(".pop_button").forEach(initializePopover);
-    const showAllPopoversButton = document.getElementById("trigger_popovers");
-    if (showAllPopoversButton) {
-      showAllPopoversButton.addEventListener("click", (e) => {
+    document.querySelectorAll(".trigger_popovers").forEach((trigger_btn) => {
+      trigger_btn.addEventListener("click", (e) => {
         e.stopPropagation();
         popovers.forEach((popover, btn) => {
           if (!popover._element.classList.contains("disabled")) {
@@ -5145,7 +5155,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           }
         });
       });
-    }
+    });
     // Gestion du clic sur le document (capture)
     document.body.addEventListener(
       "click",

@@ -25,6 +25,7 @@
 .btn_custom_2 {
   color: white;
   background-color: #7e0000 !important;
+  font-size: 14px;
 }
 .pop_button {
   min-height: 16px;
@@ -110,10 +111,27 @@
 .btn_custom_background_pop {
   border-radius: 1rem;
   box-shadow: 0.125rem 0.25rem 0.25rem 0.5rem oklch(0.1 0.37 315 / 0.25);
-  color: white;
+  color: #00ffff;
 }
 
 .btn_infos_g_site {
   background-color: #00006c;
   color: white;
+}
+
+.btn_boutons_vidéos_youtube_ht_gache,
+.btn_custom_bordures_vidéos_youtube {
+  color: white;
+  background-color: #560000 !important;
+}
+
+.btn_custom_pop_style_audio,
+.btn_custom_pop_center_audio,
+.btn_custom_pop_audio_play_or_not {
+  font-size: 14px;
+  background-color: #414141 !important;
+}
+
+.btn_custom_bouton_labels {
+  color: rgb(115, 255, 115);
 }
