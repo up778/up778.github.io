@@ -417,7 +417,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   style="color: #da0863; background-color: #430000; font-size: 12px"
   title="bouton pour infos sur les boutons à droite du site"
   data-popover-title="Titre pour Bouton 1"
-  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les boutons youtube'
+  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les&lt;br /&gt;boutons youtube en haut à gauche de certaines vidéos youtube'
   id="trigger_popovers"
   data-popover-class="btn_boutons_vidéos_youtube_ht_gache"
 >
@@ -522,8 +522,13 @@ src="Images/sheep-5427870_'jaune'.jpg"
   class="bg_for_youtube_button"
 >
   <div
-    class="mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center"
+    class="pop_button mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center"
     style="background-color: #c7000a45;border-radius: 10px;"
+    data-popover-title="Titre pour Bouton 0"
+    data-popover-content='Bouton pour pauser/jouer la dernière vidéo youtube lue &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+    data-no-popover="true"
+    data-popover-color="red"
+    data-popover-class="btn_custom_2"
   >
     <i
       class="bi-youtube
@@ -532,15 +537,10 @@ src="Images/sheep-5427870_'jaune'.jpg"
     ></i>
     <button
       id="b1"
-      class="btn pop_button class_btn_play_pause_youtube_video"
+      class="btn class_btn_play_pause_youtube_video"
       style="width: 40px; height: 40px"
       role="button"
       onClick="play_pause_youtube_video();"
-      data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour pauser/jouer la dernière vidéo youtube lue &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
-      data-no-popover="true"
-      data-popover-color="red"
-      data-popover-class="btn_custom_2"
     >
       <img
         class="image_without_picture"
@@ -556,7 +556,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
       onClick="reach_played_youtube_video();"
       title="reach played youtube video"
       style="border:1px solid grey"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 4"
       data-popover-content='Bouton pour rejoindre la position de la page où&lt;br /&gt;se situe la dernière vidéo youtube jouée &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-class="btn_custom_2"
@@ -571,7 +571,7 @@ alt="Images/arrows-collapse.png"
     </button>
   </div>
   <div
-    class="mt-3 d-inline-flex flex-column align-items-center audio_elements_right"
+    class="mt-3  p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center audio_elements_right  flex-column"
     style="background-color: #78797848;border-radius: 10px;"
   >
     <!-- style="border: 1px dashed grey;" -->
@@ -588,7 +588,7 @@ alt="Images/arrows-collapse.png"
       onClick="fct_toggle_audio()"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto"
       alt="Images/cassette.svg"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 2"
       data-popover-content='Bouton qui devrait afficher si un audio est lu ou non &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-color="red"
@@ -612,21 +612,26 @@ alt="Images/arrows-collapse.png"
       title="bouton pour basculer style audios"
       id="bouton_pour_rejoindre_audio"
       alt="bouton switch style"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 3"
       data-popover-content='Bouton pour "centrer" sur la page le dernier audio lu &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-class="btn_custom_pop_center_audio"
     ></button>
+  </div>
+  <div
+    class="pop_button"
+    data-popover-title="Titre pour Bouton 2"
+    data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+    data-no-popover="true"
+    data-popover-class="btn_custom_pop_style_audio"
+    data-bs-placement="left"
+  >
     <button
-      class="btn bi-brush pop_button mt-0 mb-1"
+      class="btn bi-brush mt-0 mb-1"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto;color:#ddd"
       title="bouton pour basculer style audios"
       id="bouton_pour_basculer_style_audios"
       alt="bouton switch style"
-      data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
-      data-no-popover="true"
-      data-popover-class="btn_custom_pop_style_audio"
     ></button>
   </div>
 </div>
