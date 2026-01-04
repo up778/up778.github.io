@@ -80,7 +80,7 @@
   syntax: "<angle>";
 }
 
-.btn_custom_background_pop {
+.btn_custom_bouton_7_boutons_des_7_pages {
   animation: spin 2.5s infinite linear paused;
 
   background:
@@ -108,7 +108,7 @@
   }
 }
 
-.btn_custom_background_pop {
+.btn_custom_bouton_7_boutons_des_7_pages {
   border-radius: 1rem;
   box-shadow: 0.125rem 0.25rem 0.25rem 0.5rem oklch(0.1 0.37 315 / 0.25);
   color: #00ffff;
@@ -121,6 +121,7 @@
 
 .btn_boutons_vidéos_youtube_ht_gache,
 .btn_custom_bordures_vidéos_youtube {
+  font-size: 14px;
   color: white;
   background-color: #560000 !important;
 }
@@ -128,10 +129,13 @@
 .btn_custom_pop_style_audio,
 .btn_custom_pop_center_audio,
 .btn_custom_pop_audio_play_or_not {
-  font-size: 14px;
+  font-size: 14px !important;
   background-color: #414141 !important;
 }
 
 .btn_custom_bouton_labels {
   color: rgb(115, 255, 115);
+}
+
+.btn_custom_background_pop {
 }
