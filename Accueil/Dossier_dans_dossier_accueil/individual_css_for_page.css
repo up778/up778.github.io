@@ -7,11 +7,12 @@ body,
   
   background: url("Images/Images_for_backgrounds/Images_for_backgrounds_avif/forest-5847268.avif");
   
+  
 
   
   background-position-y: -200px;
   background-position: top -540px;
-  background-repeat: repeat;
+  background-repeat: none;
   background-attachment: fixed !important;
   
   background-size: 100%;
