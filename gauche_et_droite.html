@@ -116,14 +116,14 @@
   "
 >
   <button
-    class="me-1 mt-1 btn btn_primary_darkblue_footer b_bas un_des_boutons_pour_pop_infos piupi pop_button"
+    class="me-1 mt-1 btn btn_primary_darkblue_footer b_bas un_des_boutons_pour_pop_infos piupi pop_button trigger_popovers"
     type="button"
     aria-expanded="false"
     style="color: #1ecf12; background-color: #434343; font-size: 12px"
     title="bouton pour infos sur les boutons à droite du site"
     data-popover-title="Titre pour Bouton 1"
     data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher des&lt;br /&gt;bandeaux info, pour chaque bouton'
-    id="trigger_popovers"
+    data-popover-class="btn_custom_bouton_labels"
   >
     infos<br />
     boutons
@@ -415,8 +415,9 @@ src="Images/sheep-5427870_'jaune'.jpg"
   style="color: #da0863; background-color: #430000; font-size: 12px"
   title="bouton pour infos sur les boutons à droite du site"
   data-popover-title="Titre pour Bouton 1"
-  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les boutons youtube'
+  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les&lt;br /&gt;boutons youtube en haut à gauche de certaines vidéos youtube'
   id="trigger_popovers"
+  data-popover-class="btn_boutons_vidéos_youtube_ht_gache"
 >
   btns<br />
   ytube
@@ -424,7 +425,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   data-bs-toggle="dropdown" -->
 </button>
 <button
-  class="btn btn-sm btn-dark toggle_youtube_borders"
+  class="btn btn-sm btn-dark toggle_youtube_borders pop_button"
   style="
     background-color: #430001;
     position: fixed;
@@ -434,6 +435,13 @@ src="Images/sheep-5427870_'jaune'.jpg"
     font-size: 60%;
     color: grey;
   "
+  type="button"
+  aria-expanded="false"
+  style="color: #da0863; background-color: #430000; font-size: 12px"
+  title="bouton pour bordures vidéos youtube"
+  data-popover-title="Titre pour bordures vidéos youtube"
+  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les bordures des vidéos youtube'
+  data-popover-class="btn_custom_bordures_vidéos_youtube"
 >
   bordures<br />ytube
 </button>
@@ -506,12 +514,17 @@ src="Images/sheep-5427870_'jaune'.jpg"
   <div id="dinamicMenu"></div>
 </div>
 <div
-  style="position: fixed; top: 40vh; right: 13.8vw; z-index: 89;width: 40px;height: 120px"
+  style="position: fixed; top: 40vh; right: 13.6vw; z-index: 89;width: 40px;height: 120px"
   class="bg_for_youtube_button"
 >
   <div
-    class="mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center"
+    class="pop_button mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center"
     style="background-color: #c7000a45;border-radius: 10px;"
+    data-popover-title="Titre pour Bouton 0"
+    data-popover-content='Bouton pour pauser/jouer la dernière vidéo youtube lue &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+    data-no-popover="true"
+    data-popover-color="red"
+    data-popover-class="btn_custom_2"
   >
     <i
       class="bi-youtube
@@ -520,15 +533,10 @@ src="Images/sheep-5427870_'jaune'.jpg"
     ></i>
     <button
       id="b1"
-      class="btn pop_button class_btn_play_pause_youtube_video"
+      class="btn class_btn_play_pause_youtube_video"
       style="width: 40px; height: 40px"
       role="button"
       onClick="play_pause_youtube_video();"
-      data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour pauser/jouer la dernière vidéo youtube lue &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
-      data-no-popover="true"
-      data-popover-color="red"
-      data-popover-class="btn_custom_2"
     >
       <img
         class="image_without_picture"
@@ -544,7 +552,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
       onClick="reach_played_youtube_video();"
       title="reach played youtube video"
       style="border:1px solid grey"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 4"
       data-popover-content='Bouton pour rejoindre la position de la page où&lt;br /&gt;se situe la dernière vidéo youtube jouée &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-class="btn_custom_2"
@@ -559,7 +567,7 @@ alt="Images/arrows-collapse.png"
     </button>
   </div>
   <div
-    class="mt-3 d-inline-flex flex-column align-items-center audio_elements_right"
+    class="mt-3  p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center audio_elements_right  flex-column"
     style="background-color: #78797848;border-radius: 10px;"
   >
     <!-- style="border: 1px dashed grey;" -->
@@ -576,12 +584,14 @@ alt="Images/arrows-collapse.png"
       onClick="fct_toggle_audio()"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto"
       alt="Images/cassette.svg"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 2"
       data-popover-content='Bouton qui devrait afficher si un audio est lu ou non &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-color="red"
       data-popover-bg="yellow"
       data-max-width="400px"
+      data-popover-class="btn_custom_pop_audio_play_or_not"
+      data-bs-placement="left"
     >
       <!-- height:30px;width:30px -->
       <!-- onClick="toggleAudio();" -->
@@ -598,19 +608,26 @@ alt="Images/arrows-collapse.png"
       title="bouton pour basculer style audios"
       id="bouton_pour_rejoindre_audio"
       alt="bouton switch style"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 3"
       data-popover-content='Bouton pour "centrer" sur la page le dernier audio lu &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
+      data-popover-class="btn_custom_pop_center_audio"
     ></button>
+  </div>
+  <div
+    class="pop_button"
+    data-popover-title="Titre pour Bouton 2"
+    data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+    data-no-popover="true"
+    data-popover-class="btn_custom_pop_style_audio"
+    data-bs-placement="left"
+  >
     <button
-      class="btn bi-brush pop_button mt-0 mb-1"
+      class="btn bi-brush mt-0 mb-1"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto;color:#ddd"
       title="bouton pour basculer style audios"
       id="bouton_pour_basculer_style_audios"
       alt="bouton switch style"
-      data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour basculer entre les styles, pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
-      data-no-popover="true"
     ></button>
   </div>
 </div>
@@ -2207,7 +2224,7 @@ Mais connaissez-vous le sens du mot "religion" ? <em>Cela signifie suivre <stron
 <p><a class="btn bg-primary-darkblue-colled" role="button" href="#bs_collapse_button_12_Oct_2022_9_4_631" data-bs-toggle="collapse" aria-expanded="true" aria-controls="bs_collapse_button_12_Oct_2022_9_4_631">De 8:39 à 8:50, un comportement Chrétien?<br></a></p>
 <div id="bs_collapse_button_12_Oct_2022_9_4_631" class="collapse">
 <p style="background-color: #000000;"> </p>
-<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="position: relative; width: 31vw; height: 31vh;" id="4w_e0opWrYM"><lite-youtube width="100%" height="31vh" style="height: 31vh; width: 31vw; color: #ff0000;" src="https://www.youtube.com/embed/4w_e0opWrYM?start=519&end=530" frameborder="0" loading="lazy" video_id="4w_e0opWrYM" plac="0" img_src_iframe_8="Creaturae/Droite_gauche/Images/Posters_for_images/-4w_e0opWrYM.avif" class="rounded-2" p_oster_evt="Creaturae/Droite_gauche/Images/Images_for_backgrounds/Images_for_backgrounds_avif/desert-2042738_1920_poster.avif" params="&start=519&end=530&end=530"></lite-youtube></div>
+<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="width: 31vw; height: 31vh; position: relative;" id="4w_e0opWrYM"><lite-youtube width="100%" height="31vh" style="height: 31vh; width: 31vw; color: #ff0000;" src="https://www.youtube.com/embed/4w_e0opWrYM?start=519&end=530" frameborder="0" loading="lazy" video_id="4w_e0opWrYM" plac="0" img_src_iframe_8="Creaturae/Droite_gauche/Images/Posters_for_images/-4w_e0opWrYM.avif" class="rounded-2" p_oster_evt="Creaturae/Droite_gauche/Images/Images_for_backgrounds/Images_for_backgrounds_avif/desert-2042738_1920_poster.avif" params="&start=519&end=530&end=530"></lite-youtube></div>
 <p> </p>
 </div>
 </td>
@@ -2433,7 +2450,7 @@ Mais connaissez-vous le sens du mot "religion" ? <em>Cela signifie suivre <stron
 </tr>
 </tbody>
 </table><p> </p></section></section>
-</article><article id="capsule_des_h1_4004" class="capsule1 capsule_des_h1_4004 capsule background_class bcLevel1" style="background-image:url('Creaturae/Droite_gauche/Images/Images_for_backgrounds/blason_duche_fr_savoie_v10_cross_transparency.png');background-size:10.5vw;background-position:_;background-color:_;background-repeat:repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6"><h1 permalien_dn="gauche_et_droite_permalien_dn_samedi_22_juin_2024_81" id="gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6" >''Mathieu B.'' / la chaine ''Les nouveaux francs''</h1>
+</article><article id="capsule_des_h1_4004" class="capsule1 capsule_des_h1_4004 capsule background_class bcLevel1" style="background-image:url('Creaturae/Droite_gauche/Images/Images_for_backgrounds/blason_duche_fr_savoie_v10_cross_transparency.png');background-size:10.5vw;background-position:_;background-color:_;background-repeat:repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6"><h1 permalien_dn="gauche_et_droite_permalien_dn_samedi_22_juin_2024_81" id="gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_6">''Mathieu B.'' / la chaine ''Les nouveaux francs''</h1>
 <p>''Mathieu B. / Claude / ''Le grand Monarque''👑'' (et un peu la chaine ''Les nouveaux francs'')</p>
 <section class="bcLevel2" id="gauche_et_droite_titre_perma_id_dn_dimanche_27_octobre_2024_48_716"><h2>Préambule, ''Mathieu B. / Claude / ''Le grand Monarque''👑''</h2><p><em>⚠️ Pour certaines déclarations de Mathieu B., ce ne me sembla pas conforme à diverses déclarations qui seraient venues du Fils.<br>Je ne cautionne pas du tout les actions qui seraient prises par la simple volonté humaine. En fait, ce serait s'écarter de la divine volonté. De base, il faudrait laisser faire <strong>D</strong>ieu.<br></em></p><table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9907%;" class="reload-class_une_semaine__ dotted_between_rows" id="gauche_et_droite_table_perma_id_dn_dimanche_16_mars_2025_29_65" attr_une_semaine_new_timestamp="1742124578066"><colgroup><col style="width: 47.6994%;"><col style="width: 0.999096%;"><col style="background-image: url('Additional_html/Images_addi/Images_for_backgrounds/Table_p_backgrounds/soil-5342049_v3.avif'); background-size: cover; background-repeat: no-repeat; background-position: 100% 100%; background-position-y: 35px;"></colgroup>
 <tbody>
@@ -5091,8 +5108,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script>
-<script>
+ </script><script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
@@ -6606,10 +6622,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       popovers.set(button, popover);
       popover.disable();
     }
-    document.querySelectorAll(".pop_button").forEach(initializePopover);
-    const showAllPopoversButton = document.getElementById("trigger_popovers");
-    if (showAllPopoversButton) {
-      showAllPopoversButton.addEventListener("click", (e) => {
+    document.querySelectorAll(".trigger_popovers").forEach((trigger_btn) => {
+      trigger_btn.addEventListener("click", (e) => {
         e.stopPropagation();
         popovers.forEach((popover, btn) => {
           if (!popover._element.classList.contains("disabled")) {
@@ -6618,7 +6632,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           }
         });
       });
-    }
+    });
     // Gestion du clic sur le document (capture)
     document.body.addEventListener(
       "click",
