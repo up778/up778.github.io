@@ -2977,6 +2977,7 @@ canvas:active {
 }
 
 .table_scroll_wrapper {
+  border: 1px dashed grey;
   border-radius: 2px;
 }
 
