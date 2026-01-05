@@ -15,7 +15,10 @@ var last_played_video = 0;
 var id_de_l_iframe_de_la_video = 0;
 var b2ackground_coquille_image;
 window.forceNextSeek = null;
-let derniers_elements_lite_yt_joues = [];
+let dernier_element_lite_yt_joué = null;
+let lite_yt_visibles = new Set();
+let observer_lite_yt = null;
+let lock_reset_during_jump = false;
 
 class LiteYTEmbed extends HTMLElement {
   connectedCallback() {
@@ -344,19 +347,7 @@ class LiteYTEmbed extends HTMLElement {
     if (this.classList.contains("lyt-activated")) return;
     this.classList.add("lyt-activated");
 
-    if (!derniers_elements_lite_yt_joues.includes(this)) {
-      derniers_elements_lite_yt_joues.push(this);
-
-      if (derniers_elements_lite_yt_joues.length > 2) {
-        derniers_elements_lite_yt_joues.shift();
-      }
-    }
-
-    document.querySelectorAll("lite-youtube").forEach((lt) => {
-      if (!derniers_elements_lite_yt_joues.includes(lt)) {
-        reset_to_lite_youtube_if_all_paused(lt);
-      }
-    });
+    dernier_element_lite_yt_joué = this;
 
     const params = new URLSearchParams(this.getAttribute("params") || []);
     params.append("autoplay", "1");
@@ -372,13 +363,9 @@ function onPlayerStateChange(event) {
     dernier_element_lite_yt_joué =
       event.target.g?.closest("lite-youtube") || null;
 
-    const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
+    handle_reset_if_single_visible();
 
-    document.querySelectorAll("lite-youtube").forEach((lt) => {
-      if (!derniers_elements_lite_yt_joues.includes(lt)) {
-        reset_to_lite_youtube_if_all_paused(lt);
-      }
-    });
+    const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
 
     el.forEach((button) => {
       button.style.setProperty("background-color", "#be000061");
@@ -388,11 +375,9 @@ function onPlayerStateChange(event) {
 
     // ------------------ ICI ------------------
     // Ajouter la remise à poster pour toutes les autres vidéos
-    document.querySelectorAll("lite-youtube").forEach((lt) => {
-      if (lt !== dernier_element_lite_yt_joué) {
-        reset_to_lite_youtube_if_all_paused(lt);
-      }
-    });
+
+    // -----------------------------------------
+    // console.log("playing");
 
     if (last_played_video != 0) {
     }
@@ -438,16 +423,12 @@ function onPlayerStateChange(event) {
 function play_pause_youtube_video() {
   let iframe5 = null;
 
-  if (derniers_elements_lite_yt_joues.length > 0) {
-    let dernier_element =
-      derniers_elements_lite_yt_joues[
-        derniers_elements_lite_yt_joues.length - 1
-      ];
-    let wrapper = dernier_element.closest(
+  if (dernier_element_lite_yt_joué) {
+    let wrapper = dernier_element_lite_yt_joué.closest(
       'div.div_around_iframe[id*="iframe_video_id"]',
     );
     if (!wrapper) {
-      wrapper = dernier_element.closest(".div_around_iframe");
+      wrapper = dernier_element_lite_yt_joué.closest(".div_around_iframe");
     }
     iframe5 = wrapper?.querySelector("iframe");
   }
@@ -477,16 +458,12 @@ function play_pause_youtube_video() {
 }
 
 function reach_played_youtube_video() {
-  if (derniers_elements_lite_yt_joues.length > 0) {
-    let dernier_element =
-      derniers_elements_lite_yt_joues[
-        derniers_elements_lite_yt_joues.length - 1
-      ];
-    let wrapper = dernier_element.closest(
+  if (dernier_element_lite_yt_joué) {
+    let wrapper = dernier_element_lite_yt_joué.closest(
       'div.div_around_iframe[id*="iframe_video_id"]',
     );
     if (!wrapper) {
-      wrapper = dernier_element.closest(".div_around_iframe");
+      wrapper = dernier_element_lite_yt_joué.closest(".div_around_iframe");
     }
 
     setTimeout(() => {
@@ -506,10 +483,9 @@ function reach_played_youtube_video() {
   }
 }
 
-function reset_to_lite_youtube_if_all_paused(liteYT) {
+function reset_to_lite_youtube(liteYT) {
   if (!liteYT) return;
-
-  if (derniers_elements_lite_yt_joues.includes(liteYT)) return;
+  if (liteYT === dernier_element_lite_yt_joué) return;
 
   const iframe = liteYT.querySelector("iframe");
   if (iframe) iframe.remove();
@@ -527,19 +503,16 @@ async function jumpToTime(videoId, containerId, timeInSeconds) {
   const liteYT = container.querySelector("lite-youtube");
   if (!liteYT) return;
 
-  if (!derniers_elements_lite_yt_joues.includes(liteYT)) {
-    derniers_elements_lite_yt_joues.push(liteYT);
-    if (derniers_elements_lite_yt_joues.length > 2) {
-      derniers_elements_lite_yt_joues.shift();
-    }
-  }
-
   if (liteYT.classList.contains("lyt-activated")) {
     try {
       const player = await liteYT.getYTPlayer();
       await waitForPlayerReady(player);
       window.forceNextSeek = timeInSeconds;
+      dernier_element_lite_yt_joué = liteYT;
       player.seekTo(timeInSeconds, true);
+      setTimeout(() => {
+        lock_reset_during_jump = false;
+      }, 500);
       player.playVideo();
     } catch (e) {
       console.warn("Erreur avec getYTPlayer:", e);
@@ -549,25 +522,39 @@ async function jumpToTime(videoId, containerId, timeInSeconds) {
 
   const playButton = liteYT.querySelector(".lty-playbtn, .lty-playbtn2");
   if (playButton) {
+    lock_reset_during_jump = true;
     playButton.click();
 
-    const observer = new MutationObserver(async (mutations, obs) => {
-      const iframe = liteYT.querySelector("iframe");
-      if (!iframe) return;
+    const waitForIframeAndPlayer = async () => {
+      const maxWait = 4000;
+      const interval = 100;
+      let waited = 0;
 
-      try {
-        const player = await liteYT.getYTPlayer();
-        window.forceNextSeek = timeInSeconds;
-        player.seekTo(timeInSeconds, true);
-        player.playVideo();
-      } catch (e) {
-        console.warn("Erreur après activation:", e);
-      } finally {
-        obs.disconnect();
+      while (waited < maxWait) {
+        const iframe = liteYT.querySelector("iframe");
+        if (iframe) {
+          try {
+            const player = await liteYT.getYTPlayer();
+            window.forceNextSeek = timeInSeconds;
+            dernier_element_lite_yt_joué = liteYT;
+            player.seekTo(timeInSeconds, true);
+            setTimeout(() => {
+              lock_reset_during_jump = false;
+            }, 500);
+            player.playVideo();
+            return;
+          } catch (e) {
+            console.warn("Erreur après activation:", e);
+          }
+        }
+        await new Promise((r) => setTimeout(r, interval));
+        waited += interval;
       }
-    });
 
-    observer.observe(liteYT, { childList: true, subtree: true });
+      console.warn("iframe ou player non prêt après 4 secondes pour", liteYT);
+    };
+
+    waitForIframeAndPlayer();
   } else {
     console.warn("Bouton lecture introuvable dans lite-youtube");
   }
@@ -590,6 +577,8 @@ function waitForPlayerReady(player, timeout = 4000) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+  init_lite_yt_visibility_observer();
+
   document.addEventListener("click", function (e) {
     const btn = e.target.closest(".btn_yt_video_jump");
     if (!btn) return;
@@ -618,15 +607,17 @@ document.addEventListener("click", function (e) {
     return;
   }
 
-  const lite_yt = container.querySelector("lite-youtube");
-  if (!lite_yt) {
+  const liteYT = container.querySelector(
+    `lite-youtube[video_id="${video_id}"]`,
+  );
+  if (!liteYT) {
     console.warn("Élément lite-youtube non trouvé dans :", container_id);
     return;
   }
 
-  dernier_element_lite_yt_joué = lite_yt;
+  dernier_element_lite_yt_joué = liteYT;
 
-  lite_yt
+  liteYT
     .getYTPlayer?.()
     .then(async (player) => {
       if (!player) {
@@ -692,6 +683,7 @@ function set_safe_background_image(el, primary_src, fallback_src) {
   if (!primary_src) {
     const bg = get_body_background_any();
     if (bg) el.style.background = bg;
+
     return;
   }
 
@@ -774,24 +766,74 @@ function apply_body_background_to_lite(el) {
   el.style.backgroundRepeat = "no-repeat";
 }
 
-function all_videos_paused() {
-  const players = document.querySelectorAll("lite-youtube");
-  for (const liteYT of players) {
-    const iframe = liteYT.querySelector("iframe");
-    if (iframe && iframe.classList.contains("is_actualy_playing")) {
-      return false; // au moins une vidéo est en cours
+function init_lite_yt_visibility_observer() {
+  if (observer_lite_yt) return;
+
+  observer_lite_yt = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const el = entry.target;
+
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.6) {
+          lite_yt_visibles.add(el);
+        } else {
+          lite_yt_visibles.delete(el);
+        }
+      });
+
+      handle_reset_if_single_visible();
+    },
+    {
+      root: null,
+      threshold: [0.6],
+    },
+  );
+
+  document.querySelectorAll("lite-youtube").forEach((lt) => {
+    observer_lite_yt.observe(lt);
+  });
+}
+function handle_reset_if_single_visible() {
+  if (lock_reset_during_jump) return;
+  if (!dernier_element_lite_yt_joué) return;
+  if (!lite_yt_visibles.has(dernier_element_lite_yt_joué)) return;
+  if (!dernier_element_lite_yt_joué) return;
+
+  if (lite_yt_visibles.size !== 1) return;
+
+  const seul_visible = [...lite_yt_visibles][0];
+
+  document.querySelectorAll("lite-youtube").forEach((lt) => {
+    if (lt !== seul_visible) {
+      reset_to_lite_youtube(lt);
     }
-  }
-  return true; // toutes les vidéos sont en pause ou n'ont pas été lancées
+  });
 }
+const reloadEvents = ["turbo:load", "pjax:end", "htmx:afterSwap"];
+reloadEvents.forEach((ev) => {
+  document.addEventListener(ev, () => {
+    // Ré-initialiser les nouveaux LiteYT
+    document
+      .querySelectorAll("lite-youtube:not(.lyt-activated)")
+      .forEach((yt) => {
+        yt.connectedCallback?.();
+      });
 
-function reset_to_lite_youtube_if_all_paused(liteYT) {
-  if (!liteYT) return;
-  if (!all_videos_paused()) return;
+    // Ré-observer tous les lite-youtube pour la visibilité
+    if (observer_lite_yt) {
+      document.querySelectorAll("lite-youtube").forEach((lt) => {
+        observer_lite_yt.observe(lt);
+      });
+    }
 
-  const iframe = liteYT.querySelector("iframe");
-  if (iframe) iframe.remove();
+    // Si l'élément précédemment joué n'existe plus dans le DOM, reset la référence
+    if (
+      dernier_element_lite_yt_joué &&
+      !document.body.contains(dernier_element_lite_yt_joué)
+    ) {
+      dernier_element_lite_yt_joué = null;
+    }
 
-  liteYT.classList.remove("lyt-activated");
-  liteYT.style.display = "block";
-}
+    handle_reset_if_single_visible();
+  });
+});
