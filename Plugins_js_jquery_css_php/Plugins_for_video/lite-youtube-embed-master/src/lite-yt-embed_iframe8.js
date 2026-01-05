@@ -354,7 +354,7 @@ class LiteYTEmbed extends HTMLElement {
 
     document.querySelectorAll("lite-youtube").forEach((lt) => {
       if (!derniers_elements_lite_yt_joues.includes(lt)) {
-        reset_to_lite_youtube(lt);
+        reset_to_lite_youtube_if_all_paused(lt);
       }
     });
 
@@ -376,7 +376,7 @@ function onPlayerStateChange(event) {
 
     document.querySelectorAll("lite-youtube").forEach((lt) => {
       if (!derniers_elements_lite_yt_joues.includes(lt)) {
-        reset_to_lite_youtube(lt);
+        reset_to_lite_youtube_if_all_paused(lt);
       }
     });
 
@@ -390,7 +390,7 @@ function onPlayerStateChange(event) {
     // Ajouter la remise à poster pour toutes les autres vidéos
     document.querySelectorAll("lite-youtube").forEach((lt) => {
       if (lt !== dernier_element_lite_yt_joué) {
-        reset_to_lite_youtube(lt);
+        reset_to_lite_youtube_if_all_paused(lt);
       }
     });
 
@@ -506,7 +506,7 @@ function reach_played_youtube_video() {
   }
 }
 
-function reset_to_lite_youtube(liteYT) {
+function reset_to_lite_youtube_if_all_paused(liteYT) {
   if (!liteYT) return;
 
   if (derniers_elements_lite_yt_joues.includes(liteYT)) return;
@@ -691,9 +691,7 @@ function set_safe_background_image(el, primary_src, fallback_src) {
 
   if (!primary_src) {
     const bg = get_body_background_any();
-    if (bg) {
-      el.style.backgroundImage = bg.startsWith("url(") ? bg : `url('${bg}')`;
-    }
+    if (bg) el.style.background = bg;
     return;
   }
 
@@ -774,4 +772,26 @@ function apply_body_background_to_lite(el) {
   el.style.backgroundSize = "auto 100%";
   el.style.backgroundPosition = "center";
   el.style.backgroundRepeat = "no-repeat";
+}
+
+function all_videos_paused() {
+  const players = document.querySelectorAll("lite-youtube");
+  for (const liteYT of players) {
+    const iframe = liteYT.querySelector("iframe");
+    if (iframe && iframe.classList.contains("is_actualy_playing")) {
+      return false; // au moins une vidéo est en cours
+    }
+  }
+  return true; // toutes les vidéos sont en pause ou n'ont pas été lancées
+}
+
+function reset_to_lite_youtube_if_all_paused(liteYT) {
+  if (!liteYT) return;
+  if (!all_videos_paused()) return;
+
+  const iframe = liteYT.querySelector("iframe");
+  if (iframe) iframe.remove();
+
+  liteYT.classList.remove("lyt-activated");
+  liteYT.style.display = "block";
 }

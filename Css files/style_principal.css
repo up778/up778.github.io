@@ -3011,11 +3011,9 @@ figure:has(audio) figcaption {
 }
 
 p[style*="display:inline"] + p,
-div[style*="display:inline"] + p,
 p[style*="display:inline"] + table {
   margin-top: 1em;
 }
-p[style*="display:inline"] + div,
-p[style*="display: inline"] + div {
+p[style*="display:inline"] + div {
   margin-bottom: 1em !important;
 }
