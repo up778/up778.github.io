@@ -3017,3 +3017,7 @@ p[style*="display:inline"] + table {
 p[style*="display:inline"] + div {
   margin-bottom: 1em !important;
 }
+
+p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
+  margin-top: 1em !important;
+}
