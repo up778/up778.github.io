@@ -417,7 +417,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
   style="color: #da0863; background-color: #430000; font-size: 12px"
   title="bouton pour infos sur les boutons à droite du site"
   data-popover-title="Titre pour Bouton 1"
-  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les boutons youtube'
+  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les&lt;br /&gt;boutons spéciaux en haut à gauche de certaines vidéos youtube'
   id="trigger_popovers"
   data-popover-class="btn_boutons_vidéos_youtube_ht_gache"
 >
@@ -520,8 +520,13 @@ src="Images/sheep-5427870_'jaune'.jpg"
   class="bg_for_youtube_button"
 >
   <div
-    class="mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center"
+    class="pop_button mt-0 p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center"
     style="background-color: #c7000a45;border-radius: 10px;"
+    data-popover-title="Titre pour Bouton 0"
+    data-popover-content='Bouton pour pauser/jouer la dernière vidéo youtube lue &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+    data-no-popover="true"
+    data-popover-color="red"
+    data-popover-class="btn_custom_2"
   >
     <i
       class="bi-youtube
@@ -530,15 +535,10 @@ src="Images/sheep-5427870_'jaune'.jpg"
     ></i>
     <button
       id="b1"
-      class="btn pop_button class_btn_play_pause_youtube_video"
+      class="btn class_btn_play_pause_youtube_video"
       style="width: 40px; height: 40px"
       role="button"
       onClick="play_pause_youtube_video();"
-      data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour pauser/jouer la dernière vidéo youtube lue &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
-      data-no-popover="true"
-      data-popover-color="red"
-      data-popover-class="btn_custom_2"
     >
       <img
         class="image_without_picture"
@@ -554,7 +554,7 @@ src="Images/sheep-5427870_'jaune'.jpg"
       onClick="reach_played_youtube_video();"
       title="reach played youtube video"
       style="border:1px solid grey"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 4"
       data-popover-content='Bouton pour rejoindre la position de la page où&lt;br /&gt;se situe la dernière vidéo youtube jouée &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-class="btn_custom_2"
@@ -569,7 +569,7 @@ alt="Images/arrows-collapse.png"
     </button>
   </div>
   <div
-    class="mt-3 d-inline-flex flex-column align-items-center audio_elements_right"
+    class="mt-3  p-0 ml-0 mr-0 mb-1 d-inline-flex flex-column align-items-center audio_elements_right  flex-column"
     style="background-color: #78797848;border-radius: 10px;"
   >
     <!-- style="border: 1px dashed grey;" -->
@@ -586,7 +586,7 @@ alt="Images/arrows-collapse.png"
       onClick="fct_toggle_audio()"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto"
       alt="Images/cassette.svg"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 2"
       data-popover-content='Bouton qui devrait afficher si un audio est lu ou non &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-color="red"
@@ -610,21 +610,26 @@ alt="Images/arrows-collapse.png"
       title="bouton pour basculer style audios"
       id="bouton_pour_rejoindre_audio"
       alt="bouton switch style"
-      data-popover-title="Titre pour Bouton 1"
+      data-popover-title="Titre pour Bouton 3"
       data-popover-content='Bouton pour "centrer" sur la page le dernier audio lu &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-class="btn_custom_pop_center_audio"
     ></button>
+  </div>
+  <div
+    class="pop_button"
+    data-popover-title="Titre pour Bouton 2"
+    data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+    data-no-popover="true"
+    data-popover-class="btn_custom_pop_style_audio"
+    data-bs-placement="left"
+  >
     <button
-      class="btn bi-brush pop_button mt-0 mb-1"
+      class="btn bi-brush mt-0 mb-1"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto;color:#ddd"
       title="bouton pour basculer style audios"
       id="bouton_pour_basculer_style_audios"
       alt="bouton switch style"
-      data-popover-title="Titre pour Bouton 1"
-      data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
-      data-no-popover="true"
-      data-popover-class="btn_custom_pop_style_audio"
     ></button>
   </div>
 </div>
@@ -683,7 +688,7 @@ alt="Images/arrows-collapse.png"
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="icon_dg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.25 16.25h1.5L12 17z" /><path d="M16 14v.5" /><path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309" /><path d="M8 14v.5" /><path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5" /></symbol><symbol id="icon_help" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"/><path d="M12 19l0 .01"/></symbol></svg>
 <main role="main">
 <header role="banner"></header>
-<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Extra_terrestres___Ufologues"> Ufologues, <span style="color: #55ff56;">Extra-terrestres</span>👽👾<br>🌌Âme et phénomènes Extra-terrestres, spéculations 🛸</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#80960140;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1"><h1 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_1" id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1" >Préambule</h1>
+<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Extra_terrestres___Ufologues"> Ufologues, <span style="color: #55ff56;">Extra-terrestres</span>👽👾<br>🌌Âme et phénomènes Extra-terrestres, spéculations 🛸</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#80960140;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1"><h1 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_1" id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1">Préambule</h1>
 <section class="bcLevel2" id="Ufologues-extraterrestres_titre_perma_id_dn_samedi_3août_2025_25_21"><h2 class="reload-class_une_semaine__">Cette page Extraterrestres, ufologie, Âme et phénomènes Extra-terrestres.  <span style="font-size: 30px;">4</span>ème page du site.</h2><p>Au 4ème jour <picture><source srcset="Creaturae/Extra-terrestres_et_Ufologues/Images/Avif_images/3-September-2025-06-15-rand122F83.avif" type="image/avif"></picture>de la Création, il y aurait eut création des étoiles : <strong>D</strong>ieu crée le soleil, la lune, <picture><source srcset="Creaturae/Extra-terrestres_et_Ufologues/Images/Avif_images/3-September-2025-06-15-rand122F83.avif" type="image/avif"> </picture>et les étoiles. Pour séparer le jour de la nuit et marquer les saisons, jours et années.</p><table empty-cells="show" style="border: 0px solid grey; border-collapse: collapse; text-align: center; empty-cells: show; width: 97.9995%; height: 381.633px;" class="reload-class_une_semaine__ dotted_between_rows" id="Ufologues-extraterrestres_table_perma_id_dn_dimanche_19_octobre_2025_44_827" attr_une_semaine_new_timestamp="1760831043827"><colgroup><col style="width: 10.2124%;"><col style="width: 1.42096%;"><col style="width: 49.2641%;"><col style="width: 0.843246%;"><col style="width: 38.2593%;"></colgroup>
 <tbody>
 <tr style="height: 139.441px;">
@@ -774,7 +779,7 @@ alt="Images/arrows-collapse.png"
 </tbody>
 </table><p> </p></section>
 <section class="bcLevel2" id="Ufologues-extraterrestres_h2_perma_id_dn_mercredi_24_juillet_2024_3"><h2 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_4" class="background_class">Les Extraterrestres - Une certaine ouverture d'esprit</h2><p>Qu'il existe ou non des Extraterrestres, particulièrement en l'état actuel du monde (quand j'image les répercussions que pourrait avoir l'existence d'énergie libre, d'antigravité), déjà l'intérêt que porterait Quelqu'un(e) aux Extraterrestres, l'intérêt qu'il(elle) porterait à ces technologies, pourrait déjà permettre de montrer qu'il(elle) aurait une certaine ouverture d'esprit, une curiosité pour le monde.</p></section>
-</article><article id="capsule_des_h1_4002" class="capsule1 capsule_des_h1_4002 capsule bcLevel1" perma_id_of_this_article_from_perma_id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_2"><h1 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_5" id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_2">Extraterrestres et religion/Âme/Théologie</h1>
+</article><article id="capsule_des_h1_4002" class="capsule1 capsule_des_h1_4002 capsule bcLevel1" perma_id_of_this_article_from_perma_id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_2"><h1 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_5" id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_2" >Extraterrestres et religion/Âme/Théologie</h1>
 <p> </p>
 <section class="bcLevel2" id="Ufologues-extraterrestres_h2_perma_id_dn_mercredi_24_juillet_2024_4"><h2 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_6">Extraterrestres ou non, toujours la même épreuve? : l'Âme</h2><p><em>Les Extra-terrestres auraient-ils été et seraient-ils encore maintenant ce qui serait le plus important sur terre, par rapport à l'Âme.</em></p><table style="width: 42vw; height: 34vh;" class="table_float_end float-end table_outside_a_table_and_outside_card margin_left_2">
 <tbody>
@@ -788,7 +793,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr style="height: 25.1875px;">
 <td style="height: 100%;">
-<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="width: 41vw; height: 38vh; position: relative;" id="1De5qtRfKbk"><lite-youtube width="" height="38vh" style="height: 38vh; width: 100%;" frameborder="0" src="https://www.youtube.com/embed/1De5qtRfKbk?clip=Ugkxymx5xDg-8I7u0aG1pr0GbebJlJaLfbHn&clipt=EM-SBxiRhQg" loading="lazy" video_id="1De5qtRfKbk?clip=Ugkxymx5xDg-8I7u0aG1pr0GbebJlJaLfbHn&clipt=EM-SBxiRhQg&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/Every Star Wars Movie Start in Space (Opening Shots) (HD)-1De5qtRfKbk.avif" title_from_internet="Every Star Wars Movie Start in Space (Opening Shots) (HD)." plac="0" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="width: 41vw; height: 38vh; position: relative;" id="1De5qtRfKbk"><lite-youtube width="" height="38vh" style="height: 38vh; width: 100%;" frameborder="0" src="https://www.youtube.com/embed/1De5qtRfKbk?clip=Ugkxymx5xDg-8I7u0aG1pr0GbebJlJaLfbHn&clipt=EM-SBxiRhQg" loading="lazy" video_id="1De5qtRfKbk?clip=Ugkxymx5xDg-8I7u0aG1pr0GbebJlJaLfbHn&clipt=EM-SBxiRhQg&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/Every Star Wars Movie Start in Space (Opening Shots) (HD)-1De5qtRfKbk.avif" title_from_internet="Every Star Wars Movie Start in Space (Opening Shots) (HD)." plac="0" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 <p> </p>
 </td>
 </tr>
@@ -797,7 +802,7 @@ alt="Images/arrows-collapse.png"
 <figcaption id="audio_figcaption_29_Aug_2023_35_23_66">cet extrait du livre du Ciel (normalement visible plus haut), prononcé en italien</figcaption>
 <audio style="width: 32vw; height: 30px;" preload="metadata" loop="loop" controls="controls" id="Ufologues-extraterrestres_audio_perma_id_dn_mercredi_24_juillet_2024_1" onclick="select_audio(this)">
             <source src="Creaturae/Extra-terrestres_et_Ufologues/Audio_s/Libro di Cielo vol.04 cap.093 - 14 ottobre 1901.wav" type="audio/wav">
-          </audio> </figure><p style="clear: both; break-after: always">&nbsp;</p><p>Divers Ufologues purent ainsi me sembler assez cultivés, certains anciens ingénieurs, d'autres spécialistes en physique ou autres domaines scientifiques, mais même s'ils ont l'air assez pros, comme Alfred Lambremont Webre (qui sait parler plusieurs langues, je crois), qu'est-ce que ces connaissances vaudraient par rapport à l'Âme, en fait? Que vaudrait vraiment l'évolution de Quelqu'un(e) s'il en sait beaucoup sur les Extra-terrestres, si dans le même temps, sur <strong>D</strong>ieu, sa Théologie serait plus ou moins "bancale"?</p><table style="width: 90%; height: 361.401px; border-collapse: collapse; text-align: center; empty-cells: show;" class="table_outside_a_table_and_outside_card margin_left_2" empty-cells="show" border="0">
+          </audio></figure><p style="clear: both; break-after: always">&nbsp;</p><p>Divers Ufologues purent ainsi me sembler assez cultivés, certains anciens ingénieurs, d'autres spécialistes en physique ou autres domaines scientifiques, mais même s'ils ont l'air assez pros, comme Alfred Lambremont Webre (qui sait parler plusieurs langues, je crois), qu'est-ce que ces connaissances vaudraient par rapport à l'Âme, en fait? Que vaudrait vraiment l'évolution de Quelqu'un(e) s'il en sait beaucoup sur les Extra-terrestres, si dans le même temps, sur <strong>D</strong>ieu, sa Théologie serait plus ou moins "bancale"?</p><table style="width: 90%; height: 361.401px; border-collapse: collapse; text-align: center; empty-cells: show;" class="table_outside_a_table_and_outside_card margin_left_2" empty-cells="show" border="0">
 <tbody>
 <tr style="height: 10px;">
 <td style="width: 100%; background-color: rgba(0, 204, 0, 0.21);">Star wars, paysages spatiaux<br>(ou prétendument spatiaux? car certains me semblèrent prétendre que la terre serait plate. Si elle était plate, alors j'estime l'espace ne ressemblerait pas à ce qui peut être vu dans star wars, puisque par moment je vis des sortes de planètes rondes, dans star wars. M'enfin si la terre serait plate est-ce que les autres planètes aussi? toutes? les autres planètes? seulement certaines?)</td>
@@ -822,7 +827,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="height: 100%;">
-<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_7_juin_2025_7_933" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float reload-class_une_semaine__ border_for_video" style="width: 32vw; height: 28vh; position: relative;"><lite-youtube width="100%" height="100%" src="https://www.youtube.com/embed/9W2XysIxnmU?si=_D1ziqg0w9bNwFn8&clip=UgkxvRE1DR20v_S9k7AdFaq7CAbokSP-uxD1&clipt=ELLUZhin4Wc" style="width: 100%; height: 100%; border-style: none;" allowfullscreen="allowfullscreen" frameborder="0" plac="0" video_id="9W2XysIxnmU?si=_D1ziqg0w9bNwFn8&clip=UgkxvRE1DR20v_S9k7AdFaq7CAbokSP-uxD1&clipt=ELLUZhin4Wc&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Avraham Ifrah, extrait à propos de la lune 🌘 (11/08/21)" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_7_juin_2025_7_933" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float reload-class_une_semaine__ border_for_video" style="width: 32vw; height: 28vh; position: relative;"><lite-youtube width="100%" height="100%" src="https://www.youtube.com/embed/9W2XysIxnmU?si=_D1ziqg0w9bNwFn8&clip=UgkxvRE1DR20v_S9k7AdFaq7CAbokSP-uxD1&clipt=ELLUZhin4Wc" style="width: 100%; height: 100%; border-style: none;" allowfullscreen="allowfullscreen" frameborder="0" plac="0" video_id="9W2XysIxnmU?si=_D1ziqg0w9bNwFn8&clip=UgkxvRE1DR20v_S9k7AdFaq7CAbokSP-uxD1&clipt=ELLUZhin4Wc&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Avraham Ifrah, extrait à propos de la lune 🌘 (11/08/21)" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -987,7 +992,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="height: 100%;">
-<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_3août_2025_7_439" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float reload-class_une_semaine__ border_for_video" style="width: 32vw; height: 28vh; position: relative;"><lite-youtube width="100%" height="100%" src="https://www.youtube.com/embed/Plz4goTr4Bs?si=keoiOFa2ePWiMv_T&clip=UgkxDhu_wwDfLVjzxjiq_hwP47fuoHaMaswu&clipt=EN-DBBj0xgY" style="width: 100%; height: 100%; border-style: none;" allowfullscreen="allowfullscreen" frameborder="0" plac="0" video_id="Plz4goTr4Bs?si=keoiOFa2ePWiMv_T&clip=UgkxDhu_wwDfLVjzxjiq_hwP47fuoHaMaswu&clipt=EN-DBBj0xgY&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/David Bowie - Life on Mars  lyrics-Plz4goTr4Bs.avif" title_from_internet="David Bowie - Life on Mars? // lyrics" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_3août_2025_7_439" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float reload-class_une_semaine__ border_for_video" style="width: 32vw; height: 28vh; position: relative;"><lite-youtube width="100%" height="100%" src="https://www.youtube.com/embed/Plz4goTr4Bs?si=keoiOFa2ePWiMv_T&clip=UgkxDhu_wwDfLVjzxjiq_hwP47fuoHaMaswu&clipt=EN-DBBj0xgY" style="width: 100%; height: 100%; border-style: none;" allowfullscreen="allowfullscreen" frameborder="0" plac="0" video_id="Plz4goTr4Bs?si=keoiOFa2ePWiMv_T&clip=UgkxDhu_wwDfLVjzxjiq_hwP47fuoHaMaswu&clipt=EN-DBBj0xgY&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/David Bowie - Life on Mars  lyrics-Plz4goTr4Bs.avif" title_from_internet="David Bowie - Life on Mars? // lyrics" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -1029,7 +1034,7 @@ alt="Images/arrows-collapse.png"
 <figcaption id="Ufologues-extraterrestres_fig_audio_perma_id_dn_vendredi_25_octobre_2024_32_416" class="class_une_semaine__">Laura Eisenhower dit (en anglais) qu'en 2006, elle a été recrutée pour aller en dehors de la terre, sur la planète mars.. 😐🚀🪐</figcaption>
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> (source de la vidéo : <a href="https://youtu.be/YtI_4A3HHBc" target="_blank" rel="noopener noreferrer">https://youtu.be/YtI_4A3HHBc</a> dans cette vidéo, elle a les manches retroussées,<br>alors je ne dus pas me sentir de mettre l'extrait vidéo youtube, mais plutôt un extrait audio, simplement.)  </div>
 <audio style="width: 36%; height: 30px; display: inline-block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
-            <source src="https://gilded-dolphin-b8a105.netlify.app/Creaturae/Extra-terrestres_et_Ufologues/Audio_s/25octobre2024_Laura_Eisenhower_mars__.wav" type="audio/wav"></audio> <br>   </figure><p style="clear: both; break-after: always">&nbsp;</p></section><section class="bcLevel3" id="Ufologues-extraterrestres_h3_perma_id_dn_mercredi_24_juillet_2024_2"><h3 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_14">Alfred Lambremont Webre</h3><blockquote id="Ufologues-extraterrestres_blockquote_perma_id_dn_mercredi_24_juillet_2024_4" class="probable_non_citation_de_Dieu">
+            <source src="https://gilded-dolphin-b8a105.netlify.app/Creaturae/Extra-terrestres_et_Ufologues/Audio_s/25octobre2024_Laura_Eisenhower_mars__.wav" type="audio/wav"></audio> <br>  </figure><p style="clear: both; break-after: always">&nbsp;</p></section><section class="bcLevel3" id="Ufologues-extraterrestres_h3_perma_id_dn_mercredi_24_juillet_2024_2"><h3 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_14">Alfred Lambremont Webre</h3><blockquote id="Ufologues-extraterrestres_blockquote_perma_id_dn_mercredi_24_juillet_2024_4" class="probable_non_citation_de_Dieu">
 <p style="display: inline;">Alfred Lambremont Webre | Official Publisher Page | Simon & Schuster</p>
 <div class="div_for_modal_for_link_outside_modal div_for_modal_not_wikipedia d-inline-flex"> <a type="button" class="a_pour_not_wikipedia" data-bs-toggle="modal" data-bs-target="#https://www.simonandschuster.com/authors/Alfred-Lambremont-Webre/51920905524" style="display: inline;">  https://www.simonandschuster.com/authors/Alfred-Lambremont-Webre/519209055  </a>
 <div class="modal fade modal_for_not_wikipedia" id="https://www.simonandschuster.com/authors/Alfred-Lambremont-Webre/51920905524" aria-labelledby="exampleModalLabel-https://www.simonandschuster.com/authors/Alfred-Lambremont-Webre/51920905524" style="z-index: 22000 !important;" aria-hidden="true" tabindex="-1">
@@ -1621,7 +1626,7 @@ alt="Images/arrows-collapse.png"
                     <path d="M10 12.057a1.9 1.9 0 0 0 .614 .743c1.06 .713 2.472 .112 3.043 -.919c.839 -1.513 -.022 -3.368 -1.525 -4.08c-2 -.95 -4.371 .154 -5.24 2.086c-1.095 2.432 .29 5.248 2.71 6.246c2.931 1.208 6.283 -.418 7.438 -3.255c1.36 -3.343 -.557 -7.134 -3.896 -8.41c-3.855 -1.474 -8.2 .68 -9.636 4.422c-1.63 4.253 .823 9.024 5.082 10.576c4.778 1.74 10.118 -.941 11.833 -5.59a9.354 9.354 0 0 0 .577 -2.813" stroke="#3598DB"></path></svg></span> ?<br>Aurait-il été implanté?<br>Ces vaisseaux qu'il aurait vus, ces vaisseaux seraient-ils issus de véritables Extra-terrestres pacifiques, ou ces vaisseaux seraient-ils liés à une opération blue beam?</td>
 </tr>
 </tbody>
-</table><p>L'histoire dont parle Sylvain-Pierre Durif dans la vidéo normalement située ci-contre (url: <a href="https://youtu.be/zCUG5eicBC4" target="_blank" rel="noopener noreferrer">https://youtu.be/zCUG5eicBC4</a>), cette histoire me fit penser à l'histoire de raël et il dut me sembler assez adapté de placer cette partie concernant Sylvain-Pierre Durif, de placer cette partie Sylvain-Pierre Durif juste après la partie concernant raël.<br>Est-ce que comme raël, Sylvain-Pierre Durif, aurait été trompé par ceux qui l'auraient contacté? Et Sylvain-Pierre Durif, aurait cru, comme raël, à tort, qu'il vit de grands personnages (dans le cas de Sylvain-Pierre Durif, entres autres personnages qu'il aurait vu, selon certains de ses propos, il dit avoir vu la vierge Marie)</p><p>Son nom d'Âme "Oriana", serait relié à l'énergie de l'homme vert. (selon lui, il serait aussi le grand Monarque).</p><p>Selon ce qu'il dit dans cette vidéo, à l'âge de 5 ans, aurait vu sur son lit danser des serpents et des singes. Il dit aussi lui-même qu'il aurait été abducté par un des vaisseaux de la vierge Marie. Puis aurait eu des expériences paranormales où il rêvait à l'avance d'événements.<br>Il dit que c'est lui le grand Monarque. Et il dit que ce n'est pas lui <span style="color: #55ff56;"> <picture><source srcset="Creaturae/Extra-terrestres_et_Ufologues/Images/Avif_images/27-October-2024-44-02-rand2762671.avif" type="image/avif"> <img src="Creaturae/Extra-terrestres_et_Ufologues/Images/27-October-2024-44-02-rand2762671.jpg" style="width: 16%; height: auto; float: left;" class="rounded image_outside_td_and_float_left" loading="lazy" alt="Images/27-October-2024-44-02-rand2762671.jpg" width="1280px" height="720px"></picture></span>Jé*us.</p><p style="display: inline;">vers 1min37secs, dans cette vidéo, Sylvain-Pierre Durif dit : <span style="color: #55ff56;">Le Christ étant l'enseignant de Jésus, celui qu'on appele </span></p><div class="div_for_modal_for_link_outside_modal div_for_modal_wikipedia d-inline-flex"> <a type="button" class="a_pour_wikipedia" data-bs-toggle="modal" data-bs-target="#https://fr.wikipedia.org/wiki/Melchis%C3%A9dech105" style="display: inline;">  Melchisadoch  </a>
+</table><p>L'histoire dont parle Sylvain-Pierre Durif dans la vidéo normalement située ci-contre (url: <a href="https://youtu.be/zCUG5eicBC4" target="_blank" rel="noopener noreferrer">https://youtu.be/zCUG5eicBC4</a>), cette histoire me fit penser à l'histoire de raël et il dut me sembler assez adapté de placer cette partie concernant Sylvain-Pierre Durif, de placer cette partie Sylvain-Pierre Durif juste après la partie concernant raël.<br>Est-ce que comme raël, Sylvain-Pierre Durif, aurait été trompé par ceux qui l'auraient contacté? Et Sylvain-Pierre Durif, aurait cru, comme raël, à tort, qu'il vit de grands personnages (dans le cas de Sylvain-Pierre Durif, entres autres personnages qu'il aurait vu, selon certains de ses propos, il dit avoir vu la vierge Marie)</p><p>Son nom d'Âme : "Oriana", serait relié à l'énergie de l'homme vert. (selon lui, il serait aussi le grand Monarque).</p><p>Selon ce qu'il dit dans cette vidéo, à l'âge de 5 ans, aurait vu sur son lit danser des serpents et des singes. Il dit aussi lui-même qu'il aurait été abducté par un des vaisseaux de la vierge Marie. Puis aurait eu des expériences paranormales où il rêvait à l'avance d'événements.<br>Il dit que c'est lui le grand Monarque. Et il dit que ce n'est pas lui <span style="color: #55ff56;"> <picture><source srcset="Creaturae/Extra-terrestres_et_Ufologues/Images/Avif_images/27-October-2024-44-02-rand2762671.avif" type="image/avif"> <img src="Creaturae/Extra-terrestres_et_Ufologues/Images/27-October-2024-44-02-rand2762671.jpg" style="width: 16%; height: auto; float: left;" class="rounded image_outside_td_and_float_left" loading="lazy" alt="Images/27-October-2024-44-02-rand2762671.jpg" width="1280px" height="720px"></picture></span>Jé*us.</p><p style="display: inline;">vers 1min37secs, dans cette vidéo, Sylvain-Pierre Durif dit : <span style="color: #55ff56;">Le Christ étant l'enseignant de Jésus, celui qu'on appele </span></p><div class="div_for_modal_for_link_outside_modal div_for_modal_wikipedia d-inline-flex"> <a type="button" class="a_pour_wikipedia" data-bs-toggle="modal" data-bs-target="#https://fr.wikipedia.org/wiki/Melchis%C3%A9dech105" style="display: inline;">  Melchisadoch  </a>
 <div class="modal fade modal_for_wikipedia" id="https://fr.wikipedia.org/wiki/Melchis%C3%A9dech105" aria-labelledby="exampleModalLabel-https://fr.wikipedia.org/wiki/Melchis%C3%A9dech105" style="z-index: 22000 !important;" aria-hidden="true" tabindex="-1">
 <div class="modal-dialog modal-xl modal-dialog-centered">
 <div class="modal-content">
@@ -1843,7 +1848,7 @@ alt="Images/arrows-collapse.png"
 </tr>
 <tr>
 <td style="width: 100%; height: 100%;">
-<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_14_septembre_2024_38_522_2" class="div_around_iframe class_une_semaine__ rounded-5 border_for_video" style="width: 100%; height: 30vh; position: relative;"><lite-youtube style="height: 30vh; width: 100%; color: #ff0000;" loading="lazy" src="https://www.youtube.com/embed/kwBOBrF4ukg?si=-gDSI3OpseciR1a4&clip=UgkxAC_mipV2-AJJrSMIRG0bRTDEaUr2t3AC&clipt=ELj1AhiYygY" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="kwBOBrF4ukg?si=-gDSI3OpseciR1a4&clip=UgkxAC_mipV2-AJJrSMIRG0bRTDEaUr2t3AC&clipt=ELj1AhiYygY&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/L'age de cristal ( Logan's Run ).avi-kwBOBrF4ukg.avif" title_from_internet="L'age de cristal ( Logan's Run ).avi" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_14_septembre_2024_38_522_2" class="div_around_iframe class_une_semaine__ rounded-5 border_for_video" style="width: 100%; height: 30vh; position: relative;"><lite-youtube style="height: 30vh; width: 100%; color: #ff0000;" loading="lazy" src="https://www.youtube.com/embed/kwBOBrF4ukg?si=-gDSI3OpseciR1a4&clip=UgkxAC_mipV2-AJJrSMIRG0bRTDEaUr2t3AC&clipt=ELj1AhiYygY" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="kwBOBrF4ukg?si=-gDSI3OpseciR1a4&clip=UgkxAC_mipV2-AJJrSMIRG0bRTDEaUr2t3AC&clipt=ELj1AhiYygY&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/L'age de cristal ( Logan's Run ).avi-kwBOBrF4ukg.avif" title_from_internet="L'age de cristal ( Logan's Run ).avi" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -1856,7 +1861,7 @@ alt="Images/arrows-collapse.png"
 </tr>
 <tr>
 <td style="width: 100%; height: 100%;">
-<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_14_septembre_2024_35_568" class="div_around_iframe class_une_semaine__ rounded-5 border_for_video" style="width: 100.102%; height: 30vh; position: relative;"><lite-youtube style="height: 100%; width: 100%;" loading="lazy" src="https://www.youtube.com/embed/kwBOBrF4ukg?si=mQneNYc7fVMqEPzq&clip=Ugkx6N59zkizWpPoG27PHDZVB-Ow8Bl_C8ir&clipt=ENDfChiwtA4" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="kwBOBrF4ukg?si=mQneNYc7fVMqEPzq&clip=Ugkx6N59zkizWpPoG27PHDZVB-Ow8Bl_C8ir&clipt=ENDfChiwtA4&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/L'age de cristal ( Logan's Run ).avi-kwBOBrF4ukg.avif" title_from_internet="L'age de cristal ( Logan's Run ).avi" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div id="Ufologues-extraterrestres_iframe_video_id_dn_samedi_14_septembre_2024_35_568" class="div_around_iframe class_une_semaine__ rounded-5 border_for_video" style="width: 100.102%; height: 30vh; position: relative;"><lite-youtube style="height: 100%; width: 100%;" loading="lazy" src="https://www.youtube.com/embed/kwBOBrF4ukg?si=mQneNYc7fVMqEPzq&clip=Ugkx6N59zkizWpPoG27PHDZVB-Ow8Bl_C8ir&clipt=ENDfChiwtA4" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="kwBOBrF4ukg?si=mQneNYc7fVMqEPzq&clip=Ugkx6N59zkizWpPoG27PHDZVB-Ow8Bl_C8ir&clipt=ENDfChiwtA4&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Extra-terrestres_et_Ufologues/Images/Posters_for_images/L'age de cristal ( Logan's Run ).avi-kwBOBrF4ukg.avif" title_from_internet="L'age de cristal ( Logan's Run ).avi" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -2409,7 +2414,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td>
-<div class="div_around_iframe rounded-5 border_for_video" id="https://www.dailymotion.com/embed/video/x23pniy" style="width: 90%; height: 40vh; position: relative;"> <iframe style="height: 40vh; width: 90%;" loading="lazy" src="https://www.dailymotion.com/embed/video/x23pniy" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="1" video_id="https://www.dailymotion.com/embed/video/x23pniy" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif"> </iframe></div>
+<div class="div_around_iframe rounded-5 border_for_video" id="https://www.dailymotion.com/embed/video/x23pniy" style="width: 90%; height: 40vh; position: relative;"> <iframe style="height: 40vh; width: 90%;" loading="lazy" src="https://www.dailymotion.com/embed/video/x23pniy" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="1" video_id="https://www.dailymotion.com/embed/video/x23pniy" class="rounded-2" p_oster_evt="Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/Avif_images/polar-lights-7016856_poster.avif"></iframe></div>
 </td>
 </tr>
 </tbody>
