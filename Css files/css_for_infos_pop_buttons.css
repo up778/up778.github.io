@@ -33,10 +33,12 @@
 .btn_custom_bread_pop {
   color: #9d00ff;
   border-right: 0px solid black !important;
+  background-color: #333335;
 }
 .btn_custom_pop_menu_droite {
   color: #ff0000;
   border-right: 0px solid black !important;
+  background-color: #333335;
 }
 .btn_custom_source {
   color: #ffffff;
@@ -74,46 +76,6 @@
   color: #8452cf !important;
 }
 
-@property --bg-angle {
-  inherits: false;
-  initial-value: 0deg;
-  syntax: "<angle>";
-}
-
-.btn_custom_bouton_7_boutons_des_7_pages {
-  animation: spin 2.5s infinite linear paused;
-
-  background:
-    linear-gradient(
-        to bottom,
-        oklch(0.1 0.2 240 / 0.95),
-        oklch(0.1 0.2 240 / 0.95)
-      )
-      padding-box,
-    conic-gradient(
-        from var(--bg-angle) in oklch longer hue,
-        oklch(0.85 0.37 0) 0 0
-      )
-      border-box;
-
-  border: 2px solid transparent;
-
-  &:hover {
-    animation-play-state: running;
-  }
-}
-@keyframes spin {
-  to {
-    --bg-angle: 360deg;
-  }
-}
-
-.btn_custom_bouton_7_boutons_des_7_pages {
-  border-radius: 1rem;
-  box-shadow: 0.125rem 0.25rem 0.25rem 0.5rem oklch(0.1 0.37 315 / 0.25);
-  color: #00ffff;
-}
-
 .btn_infos_g_site {
   background-color: #00006c;
   color: white;
@@ -130,12 +92,51 @@
 .btn_custom_pop_center_audio,
 .btn_custom_pop_audio_play_or_not {
   font-size: 14px !important;
-  background-color: #414141 !important;
+  background-color: #171717 !important;
 }
 
 .btn_custom_bouton_labels {
   color: rgb(115, 255, 115);
+  background-color: #434343;
 }
 
 .btn_custom_background_pop {
+  background-color: #333335;
+}
+
+.btn_custom_bouton_7_boutons_des_7_pages {
+  position: relative;
+  border-radius: 1rem;
+
+  color: #ffffff;
+  cursor: pointer;
+
+  border: 0px solid #00ffff;
+
+  background-image: linear-gradient(
+    90deg,
+    #280024,
+    #a72e00,
+    #944f00,
+    #809600,
+    #009a8d,
+    #520079,
+    #a90098
+  );
+
+  background-size: 200% 100%;
+  background-position: 0 0;
+
+  animation: bg_flow 12s linear infinite;
+  animation-play-state: paused;
+}
+
+.btn_custom_bouton_7_boutons_des_7_pages:hover {
+  animation-play-state: running;
+}
+
+@keyframes bg_flow {
+  to {
+    background-position: 200% 0;
+  }
 }
