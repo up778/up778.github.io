@@ -580,18 +580,14 @@ alt="Images/arrows-collapse.png"
       class="btn bi-cassette pop_button mt-0 mb-1"
       role="button"
       id="toggle_audio"
+      onclick="fct_toggle_audio()"
       title="play/pause audio"
-      onClick="fct_toggle_audio()"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto"
       alt="Images/cassette.svg"
       data-popover-title="Titre pour Bouton 2"
       data-popover-content='Bouton qui devrait afficher si un audio est lu ou non &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
-      data-popover-color="red"
-      data-popover-bg="yellow"
-      data-max-width="400px"
       data-popover-class="btn_custom_pop_audio_play_or_not"
-      data-bs-placement="left"
     >
       <!-- height:30px;width:30px -->
       <!-- onClick="toggleAudio();" -->
@@ -603,31 +599,28 @@ alt="Images/arrows-collapse.png"
     /> -->
     </button>
     <button
+      role="button"
       class="btn bi-arrow-down-left pop_button  mt-0 mb-1"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto;color:#ddd"
-      title="bouton pour basculer style audios"
+      title="bouton pour rejoindre position audio"
       id="bouton_pour_rejoindre_audio"
-      alt="bouton switch style"
+      alt="bouton rejoindre audio "
       data-popover-title="Titre pour Bouton 3"
       data-popover-content='Bouton pour "centrer" sur la page le dernier audio lu &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
       data-no-popover="true"
       data-popover-class="btn_custom_pop_center_audio"
     ></button>
-  </div>
-  <div
-    class="pop_button"
-    data-popover-title="Titre pour Bouton 2"
-    data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
-    data-no-popover="true"
-    data-popover-class="btn_custom_pop_style_audio"
-    data-bs-placement="left"
-  >
     <button
-      class="btn bi-brush mt-0 mb-1"
+      role="button"
+      class="btn bi-brush pop_button mt-0 mb-1"
       style="background-color: #212122;z-index: 9000;width: 40px; height: 40px; font-size: 20px;margin-top:20px;border:1px solid grey;padding:auto;color:#ddd"
       title="bouton pour basculer style audios"
       id="bouton_pour_basculer_style_audios"
       alt="bouton switch style"
+      data-popover-title="Titre pour Bouton 1"
+      data-popover-content='Bouton pour basculer entre les styles,&lt;br /&gt;pour tous les lecteurs audio de la page &lt;i class="bi-arrow-right"&gt; &lt;/i&gt;'
+      data-no-popover="true"
+      data-popover-class="btn_custom_pop_style_audio"
     ></button>
   </div>
 </div>
@@ -908,7 +901,7 @@ alt="Images/arrows-collapse.png"
 <figcaption id="Liber_de_Creaturis__religio_fig_audio_perma_id_dn_lundi_17_novembre_2025_12_391" class="reload-class_une_semaine__"> </figcaption>
 <audio style="width: 50vw; height: 30px; display: inline;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
                     <source src="Creaturae/Religion/Audio_s/Stephan Eicher - Oh Ironie version piano_v2.opus" type="audio/ogg; codecs=opus">
-                  </audio> <br>  </figure>
+                  </audio> <br> </figure>
 </div>
 </div>
 <span style="background-color: rgba(0, 0, 0, 0); font-size: 16px;">   </span></figcaption>
@@ -1183,7 +1176,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="height: 100%;">
-<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_lundi_16_décembre_2024_38_787" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video" style="width: 42vw; height: 34vh; position: relative;"><lite-youtube style="height: 34vh; width: 100%;" src="https://www.youtube.com/embed/Dba-FPUz5SU?si=x6QEXpAI-rfnKA-R&clip=Ugkx0Q4gLOeqerLzAxtHuTjEGVjq11lXAO1d&clipt=ENTHBxi3-wc" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="1" video_id="Dba-FPUz5SU?si=x6QEXpAI-rfnKA-R&clip=Ugkx0Q4gLOeqerLzAxtHuTjEGVjq11lXAO1d&clipt=ENTHBxi3-wc&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Obi-Wan Explains the Force and the Jedi to Luke - Star Wars: A New Hope [4K UltraHD]" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_lundi_16_décembre_2024_38_787" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video" style="width: 42vw; height: 34vh; position: relative;"><lite-youtube style="height: 34vh; width: 100%;" src="https://www.youtube.com/embed/Dba-FPUz5SU?si=x6QEXpAI-rfnKA-R&clip=Ugkx0Q4gLOeqerLzAxtHuTjEGVjq11lXAO1d&clipt=ENTHBxi3-wc" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="1" video_id="Dba-FPUz5SU?si=x6QEXpAI-rfnKA-R&clip=Ugkx0Q4gLOeqerLzAxtHuTjEGVjq11lXAO1d&clipt=ENTHBxi3-wc&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Obi-Wan Explains the Force and the Jedi to Luke - Star Wars: A New Hope [4K UltraHD]" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -2625,7 +2618,7 @@ alt="Images/arrows-collapse.png"
 </td>
 <td style="width: 49%; height: 100%; vertical-align: top;">
 <p> </p>
-<div class="div_around_iframe rounded-5 border_for_video" style="width: 98%; height: 460.156px; position: relative;" id="yCZ27pP0q0E"><lite-youtube width="" height="" style="height: 460.156px; width: 98%;" title="YouTube video player" src="https://www.youtube.com/embed/yCZ27pP0q0E?clip=UgkxgEH3IaBWyVDNExr92fBhcwtISpEx9dK5&clipt=EJSYHhj1iSE" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="yCZ27pP0q0E?clip=UgkxgEH3IaBWyVDNExr92fBhcwtISpEx9dK5&clipt=EJSYHhj1iSE&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Religion/Images/Posters_for_images/Tout ce que la Vierge Marie a annoncé à Garabandal (1961-1965)-yCZ27pP0q0E.avif" title_from_internet="Tout ce que la Vierge Marie a annoncé à Garabandal (1961-1965)" plac="0" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div class="div_around_iframe rounded-5 border_for_video" style="width: 98%; height: 460.156px; position: relative;" id="yCZ27pP0q0E"><lite-youtube width="" height="" style="height: 460.156px; width: 98%;" title="YouTube video player" src="https://www.youtube.com/embed/yCZ27pP0q0E?clip=UgkxgEH3IaBWyVDNExr92fBhcwtISpEx9dK5&clipt=EJSYHhj1iSE" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="yCZ27pP0q0E?clip=UgkxgEH3IaBWyVDNExr92fBhcwtISpEx9dK5&clipt=EJSYHhj1iSE&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Religion/Images/Posters_for_images/Tout ce que la Vierge Marie a annoncé à Garabandal (1961-1965)-yCZ27pP0q0E.avif" title_from_internet="Tout ce que la Vierge Marie a annoncé à Garabandal (1961-1965)" plac="0" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 <p> </p>
 </td>
 </tr>
@@ -2678,7 +2671,7 @@ alt="Images/arrows-collapse.png"
 <td style="width: 49%;">
 <div class="table2">
 <p> </p>
-<div class="div_around_iframe rounded-5 border_for_video" style="width: 98%; height: 460.156px; position: relative;" id="xHF7TaJxwAE"><lite-youtube width="" height="" style="height: 460.156px; width: 98%;" title="YouTube video player" src="https://www.youtube.com/embed/xHF7TaJxwAE?si=_JKrk-HSi2WKEG-l&clip=UgkxRJyAsfMZsqeGgBNHlDFjJ8oNGn1ynjor&clipt=EP2yThiKw1A" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="xHF7TaJxwAE?si=_JKrk-HSi2WKEG-l&clip=UgkxRJyAsfMZsqeGgBNHlDFjJ8oNGn1ynjor&clipt=EP2yThiKw1A&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Combien d'entre NOUS attendent VRAIMENT le Machia'h ? ET VOUS ? Rav Ron CHAYA" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div class="div_around_iframe rounded-5 border_for_video" style="width: 98%; height: 460.156px; position: relative;" id="xHF7TaJxwAE"><lite-youtube width="" height="" style="height: 460.156px; width: 98%;" title="YouTube video player" src="https://www.youtube.com/embed/xHF7TaJxwAE?si=_JKrk-HSi2WKEG-l&clip=UgkxRJyAsfMZsqeGgBNHlDFjJ8oNGn1ynjor&clipt=EP2yThiKw1A" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="xHF7TaJxwAE?si=_JKrk-HSi2WKEG-l&clip=UgkxRJyAsfMZsqeGgBNHlDFjJ8oNGn1ynjor&clipt=EP2yThiKw1A&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Combien d'entre NOUS attendent VRAIMENT le Machia'h ? ET VOUS ? Rav Ron CHAYA" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </div>
 <p> </p>
 </td>
@@ -3087,7 +3080,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="width: 100%; height: 100%;">
-<div class="div_around_iframe rounded-5 border_for_video" style="width: 90%; height: 30vh; position: relative;" id="7dUW43-JvFc"><lite-youtube width="" height="" style="height: 30vh; width: 90%;" title="YouTube video player" src="https://www.youtube.com/embed/7dUW43-JvFc?si=hVuIxSIRWqia5aLv&clip=UgkxqBvxcMNbDdYR2i5rXV767FXZFHpU1QVn&clipt=EIbKIBirvSE" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="7dUW43-JvFc?si=hVuIxSIRWqia5aLv&clip=UgkxqBvxcMNbDdYR2i5rXV767FXZFHpU1QVn&clipt=EIbKIBirvSE&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="ELOUL ❤️‍🩹 UN MOIS DE 'SUBLIME RÉPARATION'" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div class="div_around_iframe rounded-5 border_for_video" style="width: 90%; height: 30vh; position: relative;" id="7dUW43-JvFc"><lite-youtube width="" height="" style="height: 30vh; width: 90%;" title="YouTube video player" src="https://www.youtube.com/embed/7dUW43-JvFc?si=hVuIxSIRWqia5aLv&clip=UgkxqBvxcMNbDdYR2i5rXV767FXZFHpU1QVn&clipt=EIbKIBirvSE" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="7dUW43-JvFc?si=hVuIxSIRWqia5aLv&clip=UgkxqBvxcMNbDdYR2i5rXV767FXZFHpU1QVn&clipt=EIbKIBirvSE&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="ELOUL ❤️‍🩹 UN MOIS DE 'SUBLIME RÉPARATION'" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -3114,7 +3107,7 @@ alt="Images/arrows-collapse.png"
 </div>
 </div>
 </div><p> </p></section></section>
-</article><article id="capsule_des_h1_4006" class="capsule1 capsule_des_h1_4006 capsule background_class bcLevel1" style="background-image:url('Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/jordan_mosaic_-4124565_1920_lumi.avif');background-size:42vw;background-position:left;background-color:_;background-repeat:repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Liber_de_Creaturis__religio_h1_perma_id_dn_lundi_15_juillet_2024_4"><h1 permalien_dn="Liber_de_Creaturis__religio_permalien_dn_samedi_1_juin_2024_24" id="Liber_de_Creaturis__religio_h1_perma_id_dn_lundi_15_juillet_2024_4" >Christianisme 🎄</h1>
+</article><article id="capsule_des_h1_4006" class="capsule1 capsule_des_h1_4006 capsule background_class bcLevel1" style="background-image:url('Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/jordan_mosaic_-4124565_1920_lumi.avif');background-size:42vw;background-position:left;background-color:_;background-repeat:repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Liber_de_Creaturis__religio_h1_perma_id_dn_lundi_15_juillet_2024_4"><h1 permalien_dn="Liber_de_Creaturis__religio_permalien_dn_samedi_1_juin_2024_24" id="Liber_de_Creaturis__religio_h1_perma_id_dn_lundi_15_juillet_2024_4">Christianisme 🎄</h1>
 <p> </p>
 <p> </p>
 <section class="bcLevel2" id="Liber_de_Creaturis__religio_h2_perma_id_dn_lundi_15_juillet_2024_4"><h2 permalien_dn="Liber_de_Creaturis__religio_permalien_dn_samedi_1_juin_2024_22">Maria Valtorta </h2><section class="bcLevel3" id="Liber_de_Creaturis__religio_titre_perma_id_dn_jeudi_14_août_2025_48_984"><h3 class="reload-class_une_semaine__">Préambule Maria Valtorta, mon avis général, quelques considérations</h3><p>En plus de Luisa Piccarreta, sur ce site up778.github.io, j'ai assez souvent cité des textes qui aurait été dictés à Maria Valtorta. S'il se trouve qu'elle rédigea sans rature une grande partie de son œuvre, – que ce soit l'Évangile tel qu'il m'a été révélé ou ses cahiers de 1945 à 1950 –, ceci serait vraiment impressionnant.</p><p>Serais-je sûr que toute l'oeuvre de Maria Valtorta soit vraie? : Ce serait plutôt pour moi une démarche d'enquête / une démarche expérimentale, plutôt qu'une conviction, par rapport à son oeuvre. Au moins deux sujets me semblèrent m'interroger peut-être davantage que d'autres, au moins deux sujets durent me laisser perplexe : un passage sur les Extra-terrestres, et divers passages sur l'enfer.</p><p>Par ailleurs, ceux qui me semblèrent rejeter assez fortement son oeuvre, ma sensation, au samedi 13 décembre 2025, et déjà durant des mois avant, serait que ce me sembla plutôt pas sérieux, un tel rejet. Que l'on doute, ok – et peut-être même tant mieux –, mais que l'on rejette vivement l'ensemble...</p></section><section class="bcLevel3" id="Liber_de_Creaturis__religio_titre_perma_id_dn_samedi_13_décembre_2025_31_820" style="background-image: url('_');"><h3 class="reload-class_une_semaine__">Perplexité par rapport à quelques passages de M. Valtorta : les extraterrestres. L'enfer</h3><div id="Les_extra-terrestres_/_M._Valtorta_/_perplexite_section" class="capsule capsule_dun_h4 rounded background_class" style="background-image: url('Creaturae/Religion/Images/Images_for_backgrounds/background_image_transparent.png'); background-size: auto; background-position: 4vw; background-color: #00880177; background-repeat: no-repeat; background-attachment: scroll;">
@@ -4056,7 +4049,7 @@ alt="Images/arrows-collapse.png"
 </div><p> </p><section class="bcLevel3" id="Liber_de_Creaturis__religio_titre_perma_id_dn_mercredi_21_mai_2025_47_367"><h3 class="reload-class_une_semaine__">''Jean Rémi'' / Analyse, d'une partie de sa vidéo ''les prophéties apocalyptiques d internet''</h3><section class="bcLevel4" id="Liber_de_Creaturis__religio_titre_perma_id_dn_mercredi_21_mai_2025_12_373"><h4 class="reload-class_une_semaine__">Dans cette vidéo, ''Jean Rémi'' me sembla avoir dit des choses pas mal sur les complots:</h4><figure style="position: relative;">
 <figcaption id="Liber_de_Creaturis__religio_fig_audio_perma_id_dn_vendredi_2juin_2025_44_821" class="reload-class_une_semaine__">Citation de la vidéo <a href="https://www.youtube.com/watch?v=IA-ZvlQFI2I" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=IA-ZvlQFI2I</a> "les prophéties apocalyptiques d internet, discernement" </figcaption>
 <audio style="width: 100%; height: 30px; display: inline;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
-            <source src="Creaturae/Religion/Audio_s/''Jean Rémi''/extrait sur les complots ''Jean Rémi''.mp3" type="audio/mp3"></audio>vers 25:30<span style="color: #55ff56;"> "Mais faut pas, en faire une grande théorie du complot. Méfiante envers tout le monde. Oui y a tel secret qui a été caché, qui a été b*lancé au fin fond de je ne sais quoi. Et si le Seigneur voulait révéler un secret caché, Il le fait instantanément. Il nous envoie un prophète qui va te b*l*ncer ça avec des signes. Il nous envoie un Élie. Un Élie. Et il nous révèle des signes incroyables et il nous révèle quelque chose s'il faut vraiment le révéler. C'est ça <strong>D</strong>ieu. Il y a pas des des complots humains qui peuvent en gros, euh couper la la le plan de <strong>D</strong>ieu. Mais </span><span style="color: #55ff56;">c'est des co**er*es ça c'est.. tout complot humain qui il est permis par <strong>D</strong>ieu. Mais <strong>D</strong>ieu s'en sert, de tous ces malins, </span><span style="color: #55ff56;">qui complotent, pour les retourner au bon moment."</span> </figure><p> </p></section><section class="bcLevel4" id="Liber_de_Creaturis__religio_titre_perma_id_dn_mercredi_21_mai_2025_12_359"><h4 class="reload-class_une_semaine__">L'illumination des consciences / garabandal. Pourquoi une telle conviction que ce ne puisse arriver</h4><p style="display: inline;">Pas compris pourquoi "Jean Rémi" me sembla si convaincu qu'il n'y aurait pas de garabandal / "illumination des consciences". De mémoire, si je ne fait pas erreur, au moins une fois, il y a moins de 5 ans, moins de 5 ans précédants le mercredi 21 mai 2025,</p><div class="div_for_modal_for_link_outside_modal div_for_modal_not_wikipedia d-inline-flex"> <a type="button" class="a_pour_not_wikipedia" data-bs-toggle="modal" data-bs-target="#https://up778.github.io/gauche_et_droite.html_hash_gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_455" style="display: inline;">  Pierre-Marie P.  </a>
+            <source src="Creaturae/Religion/Audio_s/''Jean Rémi''/extrait sur les complots ''Jean Rémi''.mp3" type="audio/mp3"></audio>vers 25:30<span style="color: #55ff56;"> "Mais faut pas, en faire une grande théorie du complot. Méfiante envers tout le monde. Oui y a tel secret qui a été caché, qui a été b*lancé au fin fond de je ne sais quoi. Et si le Seigneur voulait révéler un secret caché, Il le fait instantanément. Il nous envoie un prophète qui va te b*l*ncer ça avec des signes. Il nous envoie un Élie. Un Élie. Et il nous révèle des signes incroyables et il nous révèle quelque chose s'il faut vraiment le révéler. C'est ça <strong>D</strong>ieu. Il y a pas des des complots humains qui peuvent en gros, euh couper la la le plan de <strong>D</strong>ieu. Mais </span><span style="color: #55ff56;">c'est des co**er*es ça c'est.. tout complot humain qui il est permis par <strong>D</strong>ieu. Mais <strong>D</strong>ieu s'en sert, de tous ces malins, </span><span style="color: #55ff56;">qui complotent, pour les retourner au bon moment."</span></figure><p> </p></section><section class="bcLevel4" id="Liber_de_Creaturis__religio_titre_perma_id_dn_mercredi_21_mai_2025_12_359"><h4 class="reload-class_une_semaine__">L'illumination des consciences / garabandal. Pourquoi une telle conviction que ce ne puisse arriver</h4><p style="display: inline;">Pas compris pourquoi "Jean Rémi" me sembla si convaincu qu'il n'y aurait pas de garabandal / "illumination des consciences". De mémoire, si je ne fait pas erreur, au moins une fois, il y a moins de 5 ans, moins de 5 ans précédants le mercredi 21 mai 2025,</p><div class="div_for_modal_for_link_outside_modal div_for_modal_not_wikipedia d-inline-flex"> <a type="button" class="a_pour_not_wikipedia" data-bs-toggle="modal" data-bs-target="#https://up778.github.io/gauche_et_droite.html_hash_gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_455" style="display: inline;">  Pierre-Marie P.  </a>
 <div class="modal fade modal_for_not_wikipedia" id="https://up778.github.io/gauche_et_droite.html_hash_gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_455" aria-labelledby="exampleModalLabel-https://up778.github.io/gauche_et_droite.html#gauche_et_droite_h1_perma_id_dn_lundi_15_juillet_2024_455" style="z-index: 22000 !important;" aria-hidden="true" tabindex="-1">
 <div class="modal-dialog modal-xl modal-dialog-centered">
 <div class="modal-content">
@@ -5173,7 +5166,7 @@ alt="Images/arrows-collapse.png"
 <div class="audio_info_p" style="display: inline; margin-left: 4px;"> extrait musical de <em>sans vouloir te commander</em>. Chanté par Stephan Eicher </div>
 <audio style="width: 100%; height: 30px; display: block;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
             <source src="Creaturae/Religion/Audio_s/Stephan_Eicher/Stephan_Eicher._Extrait_musique_sans_vouloir_te_commander.opus" type="audio/ogg; codecs=opus">
-          </audio>   </figure><p style="clear: both; break-after: always">&nbsp;</p></section><section class="bcLevel5" id="Liber_de_Creaturis__religio_titre_perma_id_dn_mardi_15_juillet_2025_46_792"><h5 class="reload-class_une_semaine__">Origine, chez <em>Col<svg class="icon_dg" width="12" height="12" viewBox="0 0 24 24"><use href="#icon_dg"></use></svg><svg  class="icon_help_class" width="12" height="12"><use href="#icon_help"></use></svg>mbine</em> de s'exprimer souvent à l'impératif, à J*sus</h5><ul>
+          </audio>  </figure><p style="clear: both; break-after: always">&nbsp;</p></section><section class="bcLevel5" id="Liber_de_Creaturis__religio_titre_perma_id_dn_mardi_15_juillet_2025_46_792"><h5 class="reload-class_une_semaine__">Origine, chez <em>Col<svg class="icon_dg" width="12" height="12" viewBox="0 0 24 24"><use href="#icon_dg"></use></svg><svg  class="icon_help_class" width="12" height="12"><use href="#icon_help"></use></svg>mbine</em> de s'exprimer souvent à l'impératif, à J*sus</h5><ul>
 <li>Cette manière de parler souvent à l'impératif, provint-elle, chez <em>Col<svg class="icon_dg" width="12" height="12" viewBox="0 0 24 24"><use href="#icon_dg"></use></svg><svg  class="icon_help_class" width="12" height="12"><use href="#icon_help"></use></svg>mbine</em>, d'une origine occidentale? Puisque divers Occidentaux me semblèrent vraiment aimer les chiens, et que le chien me sembla un animal fétiche de l'occident (l'occident qui me sembla avoir comme un culte/une obnubilation pour les balles/les ballons, comme les chiens), certains Occidentaux/Occidentales firent-ils une sorte de transfert dans leur manière de s'addresser à <strong>D</strong>ieu? Genre divers Occidentaux aimeraient qu'on leur parle "comme" a des chiens? (le chien m'ayant semblé l'animal fétiche de l'occident) et donc des Occidentaux parlèrent ensuite à <strong>D</strong>ieu "comme" à un chien? Croyant bien faire? Il lui parlèrent comme à eux ils aimeraient qu'on leur parle? Et même sans se rendre compte, que peut-être, <strong>D</strong>ieu n'était justement pas un chien. <br>(Après, chacun(e) fait bien ce qu'il/elle veut, dit bien ce qu'elle veut (il y aurait le principe du libre arbitre, sur cette planète), je donne juste ma sensation sur l'effet que me firent, en général, ces nombreuses phrases à l'impératif.)</li>
 </ul><ul>
 <li>Parce que <em>Col<svg class="icon_dg" width="12" height="12" viewBox="0 0 24 24"><use href="#icon_dg"></use></svg><svg  class="icon_help_class" width="12" height="12"><use href="#icon_help"></use></svg>mbine</em> aurait eu des enfants, assez récemment. J'imagine que quand on a eut récemment des Enfants, on est amener souvent à leur dire fais ceci, fais cela. On est amené à les diriger, ne serait-ce qu'un minimum. Alors peut-être cette situation avec des Enfants influença <em>Col<svg class="icon_dg" width="12" height="12" viewBox="0 0 24 24"><use href="#icon_dg"></use></svg><svg  class="icon_help_class" width="12" height="12"><use href="#icon_help"></use></svg>mbine</em>, ensuite, dans sa manière de parler à J*sus, dans ses vidéos de ces dernières années (depuis 2022, au moins). (Si une grande partie de la journée, elle eut l'habitude de dire à tel ou tel de ses Enfants : fais ceci, fais cela, au bout d'un moment elle prit naturellement l'habitude de donner des ordres, elle prit l'habitude de parler à l'impératif. Ainis, je ne ne porte pas forcément de mauvaises intentions à <em>Col<svg class="icon_dg" width="12" height="12" viewBox="0 0 24 24"><use href="#icon_dg"></use></svg><svg  class="icon_help_class" width="12" height="12"><use href="#icon_help"></use></svg>mbine</em> dans cette manière de s'être souvent adressée à l'impératif à J*sus. Peut-être cette manière de parler fut liée, en partie, à une situation familiale.</li>
@@ -5311,7 +5304,7 @@ alt="Images/arrows-collapse.png"
 <figure style="position: relative;">
 <figcaption id="Liber_de_Creaturis__religio_fig_audio_perma_id_dn_dimanche_15_juin_2025_58_553" class="reload-class_une_semaine__"><span style="color: #55ff56;">"J*sus. Je me plonge <span style="text-decoration: underline;">complétement</span> dans ta "divine volonté", je m'imerge <span style="text-decoration: underline;">complétement</span> dans <span style="text-decoration: underline;">tout</span> c'que Tu es "</span></figcaption>
 <audio style="width: 100%; height: 30px; display: inline;" preload="metadata" controls="controls" loop="loop" onclick="select_audio(this)">
-                    <source src="Creaturae/Religion/Audio_s/''Colombine''/J_sus je me plonge complétement dans ta 'divine volonté'.mp3" type="audio/mp3"></audio><a href="https://youtu.be/CtQTrnY7UOA?list=PLLnQ3Om9rQE2xykarlsFhCIuSpMvzuu_-&t=17" target="_blank" rel="noopener noreferrer">https://youtu.be/CtQTrnY7UOA?list=PLLnQ3Om9rQE2xykarlsFhCIuSpMvzuu_-&t=17</a> </figure>
+                    <source src="Creaturae/Religion/Audio_s/''Colombine''/J_sus je me plonge complétement dans ta 'divine volonté'.mp3" type="audio/mp3"></audio><a href="https://youtu.be/CtQTrnY7UOA?list=PLLnQ3Om9rQE2xykarlsFhCIuSpMvzuu_-&t=17" target="_blank" rel="noopener noreferrer">https://youtu.be/CtQTrnY7UOA?list=PLLnQ3Om9rQE2xykarlsFhCIuSpMvzuu_-&t=17</a></figure>
 </td>
 <td style="background-color: #0000018a;"></td>
 <td style="vertical-align: top; background-color: #0056028a;"><br>
@@ -5544,7 +5537,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="width: 100%; height: 30%;">
-<div class="div_around_iframe rounded-5 border_for_video" style="width: 38vw; height: 40vh; position: relative;" id="https://www.dailymotion.com/embed/video/x84g1ab?start=2530"><iframe width="" height="" style="height: 100%; width: 100%;" title="YouTube video player" src="https://www.dailymotion.com/embed/video/x84g1ab?start=2530" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="https://www.dailymotion.com/embed/video/x84g1ab?start=2530" plac="0" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif"> </iframe></div>
+<div class="div_around_iframe rounded-5 border_for_video" style="width: 38vw; height: 40vh; position: relative;" id="https://www.dailymotion.com/embed/video/x84g1ab?start=2530"><iframe width="" height="" style="height: 100%; width: 100%;" title="YouTube video player" src="https://www.dailymotion.com/embed/video/x84g1ab?start=2530" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="https://www.dailymotion.com/embed/video/x84g1ab?start=2530" plac="0" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif"></iframe></div>
 </td>
 </tr>
 </tbody>
@@ -5573,7 +5566,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="width: 100.038%; height: 100%;">
-<div class="div_around_iframe rounded-5 border_for_video" style="width: 52vw; height: 41vh; position: relative;" id="https://www.dailymotion.com/embed/video/x8e516b"><iframe width="" height="" style="height: 100%; width: 100%;" title="YouTube video player" src="https://www.dailymotion.com/embed/video/x8e516b" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="https://www.dailymotion.com/embed/video/x8e516b" plac="0" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif"> </iframe></div>
+<div class="div_around_iframe rounded-5 border_for_video" style="width: 52vw; height: 41vh; position: relative;" id="https://www.dailymotion.com/embed/video/x8e516b"><iframe width="" height="" style="height: 100%; width: 100%;" title="YouTube video player" src="https://www.dailymotion.com/embed/video/x8e516b" frameborder="0" allowfullscreen="allowfullscreen" loading="lazy" video_id="https://www.dailymotion.com/embed/video/x8e516b" plac="0" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif"></iframe></div>
 </td>
 </tr>
 </tbody>
@@ -5634,7 +5627,7 @@ alt="Images/arrows-collapse.png"
 </tr>
 <tr>
 <td style="height: 100%;">
-<div class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float rounded-5 border_for_video" id="F7GLKdGCNRk" style="width: 41vw; height: 31vh; position: relative;"> <lite-youtube style="height: 31vh; width: 41vw;" loading="lazy" frameborder="0" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=Ugkxb_wbInBgdxAPSmsxdqecZLtP_Rcw5Abu&clipt=EOODGhjL4xo" plac="1" video_id="F7GLKdGCNRk?clip=Ugkxb_wbInBgdxAPSmsxdqecZLtP_Rcw5Abu&clipt=EOODGhjL4xo&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" title2="Françoise Breynaert - Le règne de la Divine Volonté - présentation en paroisse" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1" height="31vh" width="41vw"> </lite-youtube></div>
+<div class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float rounded-5 border_for_video" id="F7GLKdGCNRk" style="width: 41vw; height: 31vh; position: relative;"> <lite-youtube style="height: 31vh; width: 41vw;" loading="lazy" frameborder="0" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=Ugkxb_wbInBgdxAPSmsxdqecZLtP_Rcw5Abu&clipt=EOODGhjL4xo" plac="1" video_id="F7GLKdGCNRk?clip=Ugkxb_wbInBgdxAPSmsxdqecZLtP_Rcw5Abu&clipt=EOODGhjL4xo&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" title2="Françoise Breynaert - Le règne de la Divine Volonté - présentation en paroisse" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1" height="31vh" width="41vw"></lite-youtube></div>
 </td>
 </tr>
 <tr>
@@ -5675,7 +5668,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="height: 100%;">
-<div class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float rounded-5 border_for_video" id="RCTQEp2F_Wk" style="width: 41vw; height: 31vh; position: relative;"><lite-youtube loading="lazy" frameborder="0" src="https://www.youtube.com/embed/RCTQEp2F_Wk?clip=Ugkxvl9yZbbfPK4f8q90vFTLxeJ6TFXzmHjS&clipt=ELDjLRjxni8" style="height: 100%; width: 100%;" plac="0" video_id="RCTQEp2F_Wk?clip=Ugkxvl9yZbbfPK4f8q90vFTLxeJ6TFXzmHjS&clipt=ELDjLRjxni8&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Religion/Images/Posters_for_images/Tous ensemble vers où  La Venue glorieuse  enjeu pour toute l'humanité-RCTQEp2F_Wk.avif" title_from_internet="Tous ensemble vers où ? La Venue glorieuse / enjeu pour toute l'humanité" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float rounded-5 border_for_video" id="RCTQEp2F_Wk" style="width: 41vw; height: 31vh; position: relative;"><lite-youtube loading="lazy" frameborder="0" src="https://www.youtube.com/embed/RCTQEp2F_Wk?clip=Ugkxvl9yZbbfPK4f8q90vFTLxeJ6TFXzmHjS&clipt=ELDjLRjxni8" style="height: 100%; width: 100%;" plac="0" video_id="RCTQEp2F_Wk?clip=Ugkxvl9yZbbfPK4f8q90vFTLxeJ6TFXzmHjS&clipt=ELDjLRjxni8&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Religion/Images/Posters_for_images/Tous ensemble vers où  La Venue glorieuse  enjeu pour toute l'humanité-RCTQEp2F_Wk.avif" title_from_internet="Tous ensemble vers où ? La Venue glorieuse / enjeu pour toute l'humanité" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -5718,7 +5711,7 @@ alt="Images/arrows-collapse.png"
 <tr style="height: 25.1875px;">
 <td style="height: 100%;">
 <p style="position: relative;"> </p>
-<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="width: 31vw; height: 31vh; position: relative;" id="o623dW9aA5o"><lite-youtube width="" height="31vh" style="height: 31vh; width: 100%;" src="https://www.youtube.com/embed/o623dW9aA5o?clip=Ugkxw1C62FwPsb2hvXj5fB8htfcRddBsk_9j&clipt=ELHNDhjNpg8" frameborder="0" loading="lazy" video_id="o623dW9aA5o?clip=Ugkxw1C62FwPsb2hvXj5fB8htfcRddBsk_9j&clipt=ELHNDhjNpg8&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="L'Evangile a t-il prédit la fin du monde proche ? (contre les rationalistes)" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="width: 31vw; height: 31vh; position: relative;" id="o623dW9aA5o"><lite-youtube width="" height="31vh" style="height: 31vh; width: 100%;" src="https://www.youtube.com/embed/o623dW9aA5o?clip=Ugkxw1C62FwPsb2hvXj5fB8htfcRddBsk_9j&clipt=ELHNDhjNpg8" frameborder="0" loading="lazy" video_id="o623dW9aA5o?clip=Ugkxw1C62FwPsb2hvXj5fB8htfcRddBsk_9j&clipt=ELHNDhjNpg8&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="L'Evangile a t-il prédit la fin du monde proche ? (contre les rationalistes)" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 <p> </p>
 </td>
 </tr>
@@ -5766,7 +5759,7 @@ alt="Images/arrows-collapse.png"
 <tr style="height: 25.1875px;">
 <td style="height: 100%;">
 <p style="position: relative;"> </p>
-<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="width: 31vw; height: 31vh; position: relative;" id="F7GLKdGCNRk"> <lite-youtube style="height: 31vh; width: 100%;" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=UgkxrrwPqRV0ddrTjVm1BvQ0ic3zCez7jbPr&clipt=EMKiNxjQujk" frameborder="0" loading="lazy" video_id="F7GLKdGCNRk?clip=UgkxrrwPqRV0ddrTjVm1BvQ0ic3zCez7jbPr&clipt=EMKiNxjQujk&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Religion/Images/Posters_for_images/Le règne de la Divine Volonté - présentation en paroisse-F7GLKdGCNRk.avif" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1" height="31vh"> </lite-youtube></div>
+<div class="div_around_iframe div_around_iframe_table_float rounded-5 border_for_video" style="width: 31vw; height: 31vh; position: relative;" id="F7GLKdGCNRk"> <lite-youtube style="height: 31vh; width: 100%;" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=UgkxrrwPqRV0ddrTjVm1BvQ0ic3zCez7jbPr&clipt=EMKiNxjQujk" frameborder="0" loading="lazy" video_id="F7GLKdGCNRk?clip=UgkxrrwPqRV0ddrTjVm1BvQ0ic3zCez7jbPr&clipt=EMKiNxjQujk&enablejsapi=1&autoplay=1" img_src_iframe_8="Creaturae/Religion/Images/Posters_for_images/Le règne de la Divine Volonté - présentation en paroisse-F7GLKdGCNRk.avif" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" plac="1" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1" height="31vh"></lite-youtube></div>
 <p> </p>
 </td>
 </tr>
@@ -5794,7 +5787,7 @@ alt="Images/arrows-collapse.png"
 </tr>
 <tr>
 <td style="height: 100%;">
-<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_vendredi_6_décembre_2024_57_787" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video" style="width: 38vw; height: 28vh; position: relative;"><lite-youtube style="height: 28vh; width: 38vw; color: rgb(255, 0, 0);" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1" height="28vh" width="38vw"> </lite-youtube></div>
+<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_vendredi_6_décembre_2024_57_787" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video" style="width: 38vw; height: 28vh; position: relative;"><lite-youtube style="height: 28vh; width: 38vw; color: rgb(255, 0, 0);" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1" height="28vh" width="38vw"></lite-youtube></div>
 </td>
 </tr>
 <tr>
@@ -5805,7 +5798,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="height: 100%;">
-<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_vendredi_6_décembre_2024_4_136" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video" style="width: 38vw; height: 28vh; position: relative;"><lite-youtube style="height: 100%; width: 100%; color: #ff0000;" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_vendredi_6_décembre_2024_4_136" class="div_around_iframe iframe_float_boot_right div_around_iframe_table_float class_une_semaine__ rounded-5 border_for_video" style="width: 38vw; height: 28vh; position: relative;"><lite-youtube style="height: 100%; width: 100%; color: #ff0000;" src="https://www.youtube.com/embed/F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo" loading="lazy" title="float youtube video" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="F7GLKdGCNRk?clip=UgkxxSdJxoL25OW9OPQpB_MX-ABZOPYKsMkL&clipt=EKGWORi_qjo&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="Le règne de la Divine Volonté - présentation en paroisse" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
@@ -6117,7 +6110,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="width: 100%; height: 100%;">
-<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_lundi_16_décembre_2024_40_183" class="div_around_iframe class_une_semaine__ rounded-5 border_for_video" style="width: 90%; height: 30vh; position: relative;"><lite-youtube style="height: 100%; width: 100%;" loading="lazy" src="https://www.youtube.com/embed/F32gDNDyQxM?clip=UgkxlQYfXOBlB5qJf0A8-BrVr3577CHhg733&clipt=EKD_ERieyRI" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="F32gDNDyQxM?clip=UgkxlQYfXOBlB5qJf0A8-BrVr3577CHhg733&clipt=EKD_ERieyRI&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="1 Juillet 1943 : A – 𝐏𝐞𝐫𝐬𝐢𝐬𝐭𝐚𝐧𝐜𝐞 𝐝𝐞 𝐥𝐚 𝐭𝐞𝐧𝐭𝐚𝐭𝐢𝐨𝐧. | Les Cahiers de 1943 – Maria Valtorta" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"> </lite-youtube></div>
+<div id="Liber_de_Creaturis__religio_iframe_video_id_dn_lundi_16_décembre_2024_40_183" class="div_around_iframe class_une_semaine__ rounded-5 border_for_video" style="width: 90%; height: 30vh; position: relative;"><lite-youtube style="height: 100%; width: 100%;" loading="lazy" src="https://www.youtube.com/embed/F32gDNDyQxM?clip=UgkxlQYfXOBlB5qJf0A8-BrVr3577CHhg733&clipt=EKD_ERieyRI" title="YouTube video player" frameborder="0" allowfullscreen="allowfullscreen" plac="0" video_id="F32gDNDyQxM?clip=UgkxlQYfXOBlB5qJf0A8-BrVr3577CHhg733&clipt=EKD_ERieyRI&enablejsapi=1&autoplay=1" img_src_iframe_8="" title_from_internet="1 Juillet 1943 : A – 𝐏𝐞𝐫𝐬𝐢𝐬𝐭𝐚𝐧𝐜𝐞 𝐝𝐞 𝐥𝐚 𝐭𝐞𝐧𝐭𝐚𝐭𝐢𝐨𝐧. | Les Cahiers de 1943 – Maria Valtorta" class="rounded-2" p_oster_evt="Creaturae/Religion/Images/Images_for_backgrounds/Images_for_backgrounds_avif/cercle_diff%C3%A9rentes_religions_v2_poster.avif" params="&enablejsapi=1"></lite-youtube></div>
 </td>
 </tr>
 </tbody>
