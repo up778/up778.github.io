@@ -1233,6 +1233,7 @@ audio::-webkit-media-controls-timeline {
 }
 
 #breadcrumb {
+  background-color: #ffffff03;
   background-image: radial-gradient(
     circle,
     rgba(255, 255, 255, 0.12) 10%,
@@ -1256,7 +1257,7 @@ audio::-webkit-media-controls-timeline {
 }
 
 #breadcrumb > ul {
-  max-width: 80px;
+  max-width: 1px;
 }
 
 .lt-comp-card-base {
