@@ -82,7 +82,10 @@ class LiteYTEmbed extends HTMLElement {
     if (this.getAttribute("plac") == 0) {
       final_img = i2mg_src_iframe_8;
     } else if (this.getAttribute("plac") == 1) {
-      final_img = this.getAttribute("p_oster_evt") || fallback_img;
+      final_img =
+        this.getAttribute("p_oster_evt") ||
+        this.getAttribute("img_src_iframe_8") ||
+        fallback_img;
     } else {
       final_img = i2mg_src_iframe_8;
     }
@@ -687,7 +690,7 @@ function set_safe_background_image(el, primary_src, fallback_src) {
     return;
   }
 
-  const safe_primary = encodeURI(primary_src);
+  const safe_primary = encodeURI(decodeURIComponent(primary_src));
   const safe_fallback = fallback_src ? encodeURI(fallback_src) : null;
 
   const img_primary = new Image();
