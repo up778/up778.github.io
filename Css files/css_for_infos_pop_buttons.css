@@ -53,6 +53,8 @@
 }
 .btn_custom_pop_tous_titres {
   color: #8452cf;
+
+  margin-top: -40px;
 }
 .btn_custom_volet_histo_pop {
   background-color: #4c1c20;
