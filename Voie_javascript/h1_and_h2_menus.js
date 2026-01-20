@@ -972,6 +972,81 @@ function cleanup_animate_classes($root) {
   });
 }
 
+function toggle_font_i(effect_class = "animate__flash") {
+  var existing = document.getElementById("font_i_toggle_style");
+  var elements = document.querySelectorAll(
+    '[class^="font_i"], [class*=" font_i"]',
+  );
+
+  function isVisible(el) {
+    const rect = el.getBoundingClientRect();
+    return rect.bottom >= 0 && rect.top <= window.innerHeight;
+  }
+
+  function animate_for_fonts(el) {
+    if (!el) return false;
+    if (!isVisible(el)) return false;
+
+    el.style.display = "inline-block";
+    el.classList.remove("animate__animated", effect_class);
+    void el.offsetWidth;
+    el.style.setProperty("--animate-duration", "1.5s");
+    el.classList.add("animate__animated", effect_class);
+
+    setTimeout(() => {
+      el.classList.remove("animate__animated", effect_class);
+      el.style.removeProperty("--animate-duration");
+    }, 1600);
+
+    return true;
+  }
+
+  let countAnimated = 0;
+
+  if (existing) {
+    existing.parentNode.removeChild(existing);
+
+    elements.forEach((el) => {
+      if (animate_for_fonts(el)) countAnimated++;
+    });
+  } else {
+    var style = document.createElement("style");
+    style.id = "font_i_toggle_style";
+    style.textContent = `
+      [class^="font_i"],
+      [class*=" font_i"] {
+        font-family: initial !important;
+        font-size: inherit !important;
+        display: inline-block !important;
+      }
+    `;
+    document.head.appendChild(style);
+
+    elements.forEach((el) => {
+      if (animate_for_fonts(el)) countAnimated++;
+    });
+  }
+}
+
+const effects = ["animate__heartbeat"];
+
+function test_font_i_animations(effects, delay = 2000) {
+  let index = 0;
+
+  function nextEffect() {
+    if (index >= effects.length) return;
+    const effect = effects[index];
+    console.log("Application de l'effet :", effect);
+
+    toggle_font_i(effect);
+
+    index++;
+    setTimeout(nextEffect, delay);
+  }
+
+  nextEffect();
+}
+
 var reduced_body_size = 0;
 function reduce_body_size_from_offcanva(param) {
   $("body").attr("style", "width: 70vw !important");
