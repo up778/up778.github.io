@@ -1,0 +1,360 @@
+@font-face {
+    font-family: 'dog-mom.regular';
+    src: url("../Fonts/./dog-mom.regular.woff2") format('woff2'),
+         url("../Fonts/./dog-mom.regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'old_europe';
+    src: url("../Fonts/./old_europe.woff2") format('woff2'),
+         url("../Fonts/./old_europe.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ramallah.regular';
+    src: url("../Fonts/./ramallah.regular.woff2") format('woff2'),
+         url("../Fonts/./ramallah.regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AlienMoon-3zrYX';
+    src: url("../Fonts/alien-moon-font/AlienMoon-3zrYX.woff2") format('woff2'),
+         url("../Fonts/alien-moon-font/AlienMoon-3zrYX.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AlienMoonItalic-OVPlO';
+    src: url("../Fonts/alien-moon-font/AlienMoonItalic-OVPlO.woff2") format('woff2'),
+         url("../Fonts/alien-moon-font/AlienMoonItalic-OVPlO.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'anirb___';
+    src: url("../Fonts/aniron/anirb___.woff2") format('woff2'),
+         url("../Fonts/aniron/anirb___.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'anirm___';
+    src: url("../Fonts/aniron/anirm___.woff2") format('woff2'),
+         url("../Fonts/aniron/anirm___.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AURISTELA';
+    src: url("../Fonts/auristela/AURISTELA.woff2") format('woff2'),
+         url("../Fonts/auristela/AURISTELA.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'bobogie_groovy';
+    src: url("../Fonts/bobogie-groovy/bobogie_groovy.woff2") format('woff2'),
+         url("../Fonts/bobogie-groovy/bobogie_groovy.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Celtica-Bold';
+    src: url("../Fonts/celtica/Celtica-Bold.woff2") format('woff2'),
+         url("../Fonts/celtica/Celtica-Bold.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Celtica-BoldOblique';
+    src: url("../Fonts/celtica/Celtica-BoldOblique.woff2") format('woff2'),
+         url("../Fonts/celtica/Celtica-BoldOblique.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Celtica-Book';
+    src: url("../Fonts/celtica/Celtica-Book.woff2") format('woff2'),
+         url("../Fonts/celtica/Celtica-Book.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Celtica-BookOblique';
+    src: url("../Fonts/celtica/Celtica-BookOblique.woff2") format('woff2'),
+         url("../Fonts/celtica/Celtica-BookOblique.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Christmas_carol_personal_regular';
+    src: url("../Fonts/Christmas-carol-font/Christmas_carol_personal_regular.woff2") format('woff2'),
+         url("../Fonts/Christmas-carol-font/Christmas_carol_personal_regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'devil_story';
+    src: url("../Fonts/devil-story/devil_story.woff2") format('woff2'),
+         url("../Fonts/devil-story/devil_story.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Dogbangy';
+    src: url("../Fonts/dogbangy/Dogbangy.woff2") format('woff2'),
+         url("../Fonts/dogbangy/Dogbangy.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'doggie';
+    src: url("../Fonts/doggie/doggie.woff2") format('woff2'),
+         url("../Fonts/doggie/doggie.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'empire_of_persia';
+    src: url("../Fonts/empire-of-persia/empire_of_persia.woff2") format('woff2'),
+         url("../Fonts/empire-of-persia/empire_of_persia.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'galactic_memesbruh03';
+    src: url("../Fonts/galactic_2/galactic_memesbruh03.woff2") format('woff2'),
+         url("../Fonts/galactic_2/galactic_memesbruh03.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'horny_devils';
+    src: url("../Fonts/horny-devils-bv-font/horny_devils.woff2") format('woff2'),
+         url("../Fonts/horny-devils-bv-font/horny_devils.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'khodijahfree-OVELp';
+    src: url("../Fonts/khodijah-font/khodijahfree-OVELp.woff2") format('woff2'),
+         url("../Fonts/khodijah-font/khodijahfree-OVELp.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'khodijahfree-ZVJZz';
+    src: url("../Fonts/khodijah-font/khodijahfree-ZVJZz.woff2") format('woff2'),
+         url("../Fonts/khodijah-font/khodijahfree-ZVJZz.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LastChristmas';
+    src: url("../Fonts/last_Christmas/LastChristmas.woff2") format('woff2'),
+         url("../Fonts/last_Christmas/LastChristmas.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'LastChristmas_symbols';
+    src: url("../Fonts/last_Christmas/LastChristmas_symbols.woff2") format('woff2'),
+         url("../Fonts/last_Christmas/LastChristmas_symbols.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'lazydog';
+    src: url("../Fonts/lazydog_2/lazydog.woff2") format('woff2'),
+         url("../Fonts/lazydog_2/lazydog.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'mortified';
+    src: url("../Fonts/mortified/mortified.woff2") format('woff2'),
+         url("../Fonts/mortified/mortified.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeonRave-z82z4';
+    src: url("../Fonts/neon-rave-font/NeonRave-z82z4.woff2") format('woff2'),
+         url("../Fonts/neon-rave-font/NeonRave-z82z4.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NeonRaveItalic-GOD2g';
+    src: url("../Fonts/neon-rave-font/NeonRaveItalic-GOD2g.woff2") format('woff2'),
+         url("../Fonts/neon-rave-font/NeonRaveItalic-GOD2g.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NONFICTION';
+    src: url("../Fonts/nonfiction/NONFICTION.woff2") format('woff2'),
+         url("../Fonts/nonfiction/NONFICTION.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Persian Personal Used';
+    src: url("../Fonts/persian/Persian Personal Used.woff2") format('woff2'),
+         url("../Fonts/persian/Persian Personal Used.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'PRINP___';
+    src: url("../Fonts/princeofpersia/PRINP___.woff2") format('woff2'),
+         url("../Fonts/princeofpersia/PRINP___.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'red_devil';
+    src: url("../Fonts/red_devil/red_devil.woff2") format('woff2'),
+         url("../Fonts/red_devil/red_devil.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Rochester-Regular';
+    src: url("../Fonts/rochester/Rochester-Regular.woff2") format('woff2'),
+         url("../Fonts/rochester/Rochester-Regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Saxterun';
+    src: url("../Fonts/saxterun/Saxterun.woff2") format('woff2'),
+         url("../Fonts/saxterun/Saxterun.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Spyced-vyaD';
+    src: url("../Fonts/spyced-font/Spyced-vyaD.woff2") format('woff2'),
+         url("../Fonts/spyced-font/Spyced-vyaD.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Starjedi';
+    src: url("../Fonts/starjedi/Starjedi.woff2") format('woff2'),
+         url("../Fonts/starjedi/Starjedi.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Starjhol';
+    src: url("../Fonts/starjedi/Starjhol.woff2") format('woff2'),
+         url("../Fonts/starjedi/Starjhol.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wolgast Two Bold Cyr';
+    src: url("../Fonts/wolgast-two/Wolgast Two Bold Cyr.woff2") format('woff2'),
+         url("../Fonts/wolgast-two/Wolgast Two Bold Cyr.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Wolgast Two Normal Cyr';
+    src: url("../Fonts/wolgast-two/Wolgast Two Normal Cyr.woff2") format('woff2'),
+         url("../Fonts/wolgast-two/Wolgast Two Normal Cyr.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Zanzabar-0wK9';
+    src: url("../Fonts/zanzabar-font/Zanzabar-0wK9.woff2") format('woff2'),
+         url("../Fonts/zanzabar-font/Zanzabar-0wK9.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
