@@ -31,6 +31,8 @@
 
 !/Fonts/
 !/Fonts/**
+!/Css_files/
+!/Css_files/fonts.css
 
 !/Perspectives/Perspectives
 !/Perspectives/Perspectives/** */
