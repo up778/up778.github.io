@@ -224,6 +224,24 @@
 }
 
 @font-face {
+    font-family: 'Leafing-BWLZV';
+    src: url("../Fonts/leafing-font/Leafing-BWLZV.woff2") format('woff2'),
+         url("../Fonts/leafing-font/Leafing-BWLZV.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'leafing';
+    src: url("../Fonts/leafing-font/leafing.woff2") format('woff2'),
+         url("../Fonts/leafing-font/leafing.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'mortified';
     src: url("../Fonts/mortified/mortified.woff2") format('woff2'),
          url("../Fonts/mortified/mortified.woff") format('woff');
@@ -254,6 +272,15 @@
     font-family: 'NONFICTION';
     src: url("../Fonts/nonfiction/NONFICTION.woff2") format('woff2'),
          url("../Fonts/nonfiction/NONFICTION.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'pawlukzibra';
+    src: url("../Fonts/pawluk-zibra-font/pawlukzibra.woff2") format('woff2'),
+         url("../Fonts/pawluk-zibra-font/pawlukzibra.woff") format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -299,6 +326,24 @@
     font-family: 'Saxterun';
     src: url("../Fonts/saxterun/Saxterun.woff2") format('woff2'),
          url("../Fonts/saxterun/Saxterun.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'see_regular';
+    src: url("../Fonts/see-font/see_regular.woff2") format('woff2'),
+         url("../Fonts/see-font/see_regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SmokingTequila-nvZY';
+    src: url("../Fonts/smoking-tequila-font/SmokingTequila-nvZY.woff2") format('woff2'),
+         url("../Fonts/smoking-tequila-font/SmokingTequila-nvZY.woff") format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
