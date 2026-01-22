@@ -30,19 +30,19 @@ function appliquer_apparence_lettres() {
 
       // 🌟 Orient / Occident
       [
-        /(?<![_"#])\bOccidentaux(?!_)\b/giu,
+        /(?<![_"#])Occidentaux(?![_"#])/gu,
         '<span class="font_i_maj_Occidentaux">O</span><span class="font_i_ccidentaux">ccidentaux</span>',
       ],
       [
-        /(?<![_"#])\bOrientaux(?!_)\b/giu,
+        /(?<![_"#])Orientaux(?![_"#])/gu,
         '<span class="font_i_maj_Orientaux">O</span><span class="font_i_rientaux">rientaux</span>',
       ],
       [
-        /(?<![_"#])\b([oO])rient(?!at)(?!é|ée|és|ées)([al]?[\w]*)(?!_)/giu,
+        /(?<![_"#])([oO])rient(?!at|é|ée|és|ées)([al]?[\w]*)(?![_"#])/giu,
         '<span class="font_i_orient">$1rient$2</span>',
       ],
       [
-        /(?<![_"#])\b([oO])ccident([al]?[\w]*)(?!_)/giu,
+        /(?<![_"#])([oO])ccident([al]?[\w]*)(?![_"#])/giu,
         '<span class="font_i_occident">$1ccident$2</span>',
       ],
       [
