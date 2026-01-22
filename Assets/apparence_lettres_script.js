@@ -34,15 +34,15 @@ function appliquer_apparence_lettres() {
         '<span class="font_i_maj_Occidentaux">O</span><span class="font_i_ccidentaux">ccidentaux</span>',
       ],
       [
-        /(?<![_"#])Orientaux(?![_"#])/gu,
+        /(?<![/_"#])Orientaux(?![_"#])/gu,
         '<span class="font_i_maj_Orientaux">O</span><span class="font_i_rientaux">rientaux</span>',
       ],
       [
-        /(?<![_"#])([oO])rient(?!at|é|ée|és|ées)([al]?[\w]*)(?![_"#])/giu,
+        /(?<![/_"#])([oO])rient(?!at|é|ée|és|ées)([al]?[\p{L}]*)(?![_"#])/giu,
         '<span class="font_i_orient">$1rient$2</span>',
       ],
       [
-        /(?<![_"#])([oO])ccident([al]?[\w]*)(?![_"#])/giu,
+        /(?<![_"#])([oO])ccident([al]?[\p{L}]*)(?![_"#])/giu,
         '<span class="font_i_occident">$1ccident$2</span>',
       ],
       [
@@ -104,20 +104,20 @@ function appliquer_apparence_lettres() {
       [/\bLeïla\b/gi, '<span class="font_i_star_wars">Leïla</span>'],
 
       [
-        /(?<![_#])\b([Ee])xtra-?terrestre([\w]*)\b(?!_)/giu,
+        /(?<![-_#])([Ee])xtra-?terrestre([\w]*)(?![_#])/giu,
         '<span class="font_i_Extra_terrestres_min">$1xtra-terrestre$2</span>',
       ],
       [
-        /(?<![_#])\bDavid Vincent\b(?!_)/giu,
+        /(?<![_#])David Vincent(?![_#])/giu,
         '<span class="font_i_Extra_terrestres_min">David Vincent</span>',
       ],
       [
-        /(?<![_#])\bLes Envahisseurs\b(?!_)/giu,
+        /(?<![_#])Les Envahisseurs(?![_#])/giu,
         '<span class="font_i_fume">Les Envahisseurs</span>',
       ],
 
       [
-        /(?<![_">#])\b([Uu])folog([\w]*)\b(?!_)/giu,
+        /(?<![/_">#])([Uu])folog([\w]*)\b(?!_)/giu,
         '<span class="font_i_Extra_terrestres_min">$1folog$2</span>',
       ],
 
