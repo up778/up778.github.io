@@ -1,13 +1,6 @@
 function appliquer_apparence_lettres() {
   setTimeout(() => {
     const patterns_replacements = [
-      [/<strong>([DC])<\/strong>(ieu|hrist)/g, "<strong>$1</strong>$2"],
-      [
-        /\bChien([s]*)([.,;:]?)/g,
-        '<span class="font_i_chien_Majuscule">C</span><span class="font_i_chien">hien$1</span>$2',
-      ],
-      [/\bchien([s]*)\b/g, '<span class="font_i_chien">chien$1</span>'],
-
       [
         /<strong>D<\/strong>ieu/gi,
         '<span class="font_i_3"><strong>Dieu</strong></span>',
@@ -94,6 +87,13 @@ function appliquer_apparence_lettres() {
         '<span class="font_i_orient">$1hat$2</span>',
       ],
       [/\b([fF])éli([\w]*)\b/giu, '<span class="font_i_orient">$1éli$2</span>'],
+
+      [/<strong>([DC])<\/strong>(ieu|hrist)/g, "<strong>$1</strong>$2"],
+      [
+        /\bChien([s]*)([.,;:]?)/g,
+        '<span class="font_i_chien_Majuscule">C</span><span class="font_i_chien">hien$1</span>$2',
+      ],
+      [/\bchien([s]*)\b/g, '<span class="font_i_chien">chien$1</span>'],
 
       [
         /\bPierre-Marie( P\.?)?\b/gu,
