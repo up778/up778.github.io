@@ -1018,6 +1018,7 @@ function toggle_font_i(effect_class = "animate__flash") {
         font-family: initial !important;
         font-size: inherit !important;
         display: inline-block !important;
+        font-weight: inherit;
       }
     `;
     document.head.appendChild(style);

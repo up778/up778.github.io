@@ -3085,7 +3085,7 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
 } */
 .font_i_chien {
   font-family: Dogbangy;
-  font-size: 60%;
+  font-size: 70%;
 }
 
 .font_i_chien_Majuscule {
@@ -3123,6 +3123,7 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
   /* font-family: AlienMoon-3zrYX; */
   /* font-family: galactic_memesbruh03; */
   font-family: pawlukzibra;
+
   font-size: 100%;
   /* margin: -5px;
   padding: -10px; */
@@ -3130,7 +3131,6 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
 }
 
 .font_i_Extra_terrestres_maj {
-  /* font-family: AlienMoon-3zrYX; */
   font-family: pawlukzibra;
   font-size: 100%;
   line-height: 1;
@@ -3154,10 +3154,17 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
   font-family: leafing;
   font-size: 140%;
   line-height: 1;
+  font-weight: bold;
 }
 
 .font_i_fume {
   font-family: see_regular;
   font-size: 100%;
+  line-height: 1;
+}
+
+.font_i_blue_beam {
+  font-family: at_the_midday_demo_bv9g;
+  font-size: 90%;
   line-height: 1;
 }

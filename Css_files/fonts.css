@@ -62,6 +62,15 @@
 }
 
 @font-face {
+    font-family: 'at_the_midday_demo_bv9g';
+    src: url("../Fonts/at-the-midday-demo-font/at_the_midday_demo_bv9g.woff2") format('woff2'),
+         url("../Fonts/at-the-midday-demo-font/at_the_midday_demo_bv9g.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'AURISTELA';
     src: url("../Fonts/auristela/AURISTELA.woff2") format('woff2'),
          url("../Fonts/auristela/AURISTELA.woff") format('woff');
@@ -74,6 +83,15 @@
     font-family: 'bobogie_groovy';
     src: url("../Fonts/bobogie-groovy/bobogie_groovy.woff2") format('woff2'),
          url("../Fonts/bobogie-groovy/bobogie_groovy.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'BrazierFlame';
+    src: url("../Fonts/brazier_flame/BrazierFlame.woff2") format('woff2'),
+         url("../Fonts/brazier_flame/BrazierFlame.woff") format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
