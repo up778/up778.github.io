@@ -441,9 +441,9 @@ src="Images/sheep-5427870_'jaune'.jpg"
   type="button"
   aria-expanded="false"
   style="color: #da0863; background-color: #430000; font-size: 12px"
-  title="bouton pour infos sur les boutons à _droite du site"
+  title="bouton pour infos sur les boutons à droite du site"
   data-popover-title="Titre pour Bouton 1"
-  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les&lt;br /&gt;boutons spéciaux en haut à _gauche de certaines vidéos youtube'
+  data-popover-content=' &lt;i class="bi-arrow-left"&gt; &lt;/i&gt;Bouton pour afficher ou non les&lt;br /&gt;boutons spéciaux en haut à gauche de certaines vidéos youtube'
   id="trigger_popovers"
   data-popover-class="btn_boutons_vidéos_youtube_ht_gache"
 >
@@ -776,7 +776,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr style="height: 217.225px;">
 <td style="text-align: center; border-width: 0px; border-color: #3598db;"><picture><source srcset="Creaturae/Occidentaux-Orientaux/Images/Avif_images/26-September-2024-51-35-rand282image.avif" type="image/avif"> <img src="Creaturae/Occidentaux-Orientaux/Images/26-September-2024-51-35-rand282image.png" style="width: 70%; height: auto;" class="rounded" loading="lazy" alt="Images/26-September-2024-51-35-rand282image.png" width="547px" height="434px"></picture></td>
-<td style="text-align: center; border-width: 0px; border-color: #3598db;">Par exemple les états-unis: Se pourrait-il qu'ils aient en eux toute une part d'équilibre, de <strong>C</strong>hristianisme, qui serait la couleur blanche,<br>une part d'<span class="font_i_occident">occident</span>: la couleur bleue, et <br>une part d'<span class="font_i_orient">orient</span> : la couleur rouge?<br>(Certains américains me semblèrent d'ailleurs plutôt démocrates/communistes, de "gauche", d'autre plutôt <span class="font_i_occident">Républicains</span>, de "droite"...)</td>
+<td style="text-align: center; border-width: 0px; border-color: #3598db;">Par exemple les états-unis: Se pourrait-il qu'ils aient en eux toute une part d'équilibre, de <strong>C</strong>hristianisme, qui serait la couleur blanche,<br>une part d'<span class="font_i_occident">occident</span>: la couleur bleue, et <br>une part d'<span class="font_i_orient">orient</span> : la couleur rouge?<br>(Certains américains me semblèrent d'ailleurs plutôt démocrates/communistes, de "<span class="font_i_occident">gauche</span>", d'autre plutôt <span class="font_i_occident">Républicains</span>, de "<span class="font_i_orient">droite</span>"...)</td>
 <td style="vertical-align: middle; border-width: 0px; border-color: #3598db;"><picture><source srcset="Creaturae/Occidentaux-Orientaux/Images/Avif_images/mceclip16.avif" type="image/avif"> <img style="display: block; margin-left: auto; margin-right: auto; width: 50%; height: auto;" class="rounded" src="Creaturae/Occidentaux-Orientaux/Images/mceclip16.png" width="800px" loading="lazy" alt="Images/mceclip16.png" height="421px"></picture></td>
 </tr>
 <tr style="height: 305.312px; border-color: #e03e2d; border-style: solid;">
@@ -961,9 +961,9 @@ alt="Images/arrows-collapse.png"
 <td colspan="4" style="background-color: #853fa280; line-height: 1; text-align: center; border: 0px none rgb(0, 0, 1);"><span style="font-size: 20px;"><span class="font_i_orient">Félidés</span></span></td>
 </tr>
 <tr style="height: 22.5947px;">
-<td colspan="4" style="line-height: 1; background-color: #16917a8a; text-align: center; vertical-align: middle; border: 0px none rgb(0, 0, 1);"><span style="font-size: 20px;">Gauche (dans le sens <span class="font_i_dém">maladroitesse</span>)</span></td>
+<td colspan="4" style="line-height: 1; background-color: #16917a8a; text-align: center; vertical-align: middle; border: 0px none rgb(0, 0, 1);"><span style="font-size: 20px;"><span class="font_i_occident">Gauche</span> (dans le sens <span class="font_i_dém">maladroitesse</span>)</span></td>
 <td style="text-align: center; background-color: #0000fe8a; line-height: 1; border: 0px none rgb(0, 0, 1);"></td>
-<td colspan="4" style="background-color: #853fa280; line-height: 1; text-align: center; border: 0px none rgb(0, 0, 1);"><span style="font-size: 20px;">Gauche sociale / <span class="font_i_orient">Droite</span> excessive<br></span></td>
+<td colspan="4" style="background-color: #853fa280; line-height: 1; text-align: center; border: 0px none rgb(0, 0, 1);"><span style="font-size: 20px;"><span class="font_i_occident">Gauche</span> sociale / <span class="font_i_orient">Droite</span> excessive<br></span></td>
 </tr>
 <tr style="height: 22.5947px;">
 <td style="line-height: 1; background-color: #16917a8a; text-align: center; vertical-align: middle; border: 0px none rgb(0, 0, 1);" colspan="4"><span style="font-size: 20px;">Pantoufles</span></td>
@@ -9168,8 +9168,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script>
-<script>
+ </script><script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
