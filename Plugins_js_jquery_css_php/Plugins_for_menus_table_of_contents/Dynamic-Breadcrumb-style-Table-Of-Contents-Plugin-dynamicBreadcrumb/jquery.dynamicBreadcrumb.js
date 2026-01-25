@@ -106,10 +106,20 @@ let freeze_refresh = false;
           .find("> li:nth-child(" + (cssLevel + 1) + ")")
           .empty();
 
-        const heading = currentContainer
+        let heading = currentContainer
           .find("h" + cssLevel)
           .first()
-          .text();
+          .html();
+
+        if (
+          typeof heading === "undefined" ||
+          heading === null ||
+          heading.trim() === "" ||
+          heading.trim().toLowerCase() === "undefined"
+        ) {
+          li.hide();
+          continue;
+        }
         const siblings = currentContainer
           .parent()
           .children("." + settings.levelClassPrefix + level);
@@ -124,16 +134,26 @@ let freeze_refresh = false;
           const subMenu = $('<ul class="yyyy">').appendTo(
             $("<div>").appendTo(li),
           );
+          let has_valid_items = false;
           siblings.each(function () {
-            const siblingHeading = $(this)
+            let siblingHeading = $(this)
               .find("h" + cssLevel)
               .first()
-              .text();
+              .html();
             const siblingId = $(this).attr("id");
             const currentId = currentContainer.attr("id");
 
-            const isCurrent = siblingId === currentId;
+            if (
+              typeof siblingHeading === "undefined" ||
+              siblingHeading === null ||
+              siblingHeading.trim() === "" ||
+              siblingHeading.trim().toLowerCase() === "undefined"
+            ) {
+              return;
+            }
 
+            const isCurrent = siblingId === currentId;
+            has_valid_items = true;
             subMenu.append(
               '<li><a class="Jacques2" href="#' +
                 siblingId +
@@ -151,6 +171,10 @@ let freeze_refresh = false;
                 "</a></li>",
             );
           });
+          if (!has_valid_items) {
+            li.hide();
+            continue;
+          }
         } else {
           // cas seul → pas de dropdown
           $(
