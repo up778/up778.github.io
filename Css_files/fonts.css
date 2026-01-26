@@ -8,6 +8,24 @@
 }
 
 @font-face {
+    font-family: 'oldaniaadfstd-regular';
+    src: url("../Fonts/./oldaniaadfstd-regular.woff2") format('woff2'),
+         url("../Fonts/./oldaniaadfstd-regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'oldaniaadfstd_regular';
+    src: url("../Fonts/./oldaniaadfstd_regular.woff2") format('woff2'),
+         url("../Fonts/./oldaniaadfstd_regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'old_europe';
     src: url("../Fonts/./old_europe.woff2") format('woff2'),
          url("../Fonts/./old_europe.woff") format('woff');
