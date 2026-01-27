@@ -2103,3 +2103,10 @@ function animate_background_title_jquery_ui($h1, border_color) {
   void $h1[0].offsetWidth;
   $h1.addClass("h1_flash_animation");
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const grand_titre_el = document.querySelector(".grand_titre");
+  if (grand_titre_el) {
+    document.title = grand_titre_el.innerText;
+  }
+});
