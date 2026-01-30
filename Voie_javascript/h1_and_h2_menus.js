@@ -1089,31 +1089,20 @@ $(document).ready(function () {
 // console.log("hhhhhhhhh");
 $(document).ready(function () {
   var filename = location.pathname.match(/[^\/]+$/)[0];
-  // var filename0 = filename;
-  var filename_histo = decodeURI(filename);
-  // console.log(filename_histo, `filename_histo`);
 
-  // console.log("ggggmmmm");
+  var filename_histo = decodeURI(filename);
+
   setTimeout(() => {
     $(".icon_on_top").each(function () {
-      // element == this
-      // console.log(index, `index`);
-      // console.log($(this)[0].outerHTML);
-      // const content = element.outerHTML;, `$(this).html()`);
       if ($(this)[0].outerHTML.indexOf(filename_histo) > 0) {
-        // console.log("rrrrrrrrrrrrrrrrrrrrrr");
-        // $(this).find("picture").css("border", "1px solid #ff00f0");
-        // $(this).css("border", "1px solid #ff00f0");
         $(this).parent().css("border", "2px solid #ff006a");
-        // $(this).find("picture").css("border-radius", "10%");
+
         $(this).parent().css("border-radius", "10%");
         $(this).parent().addClass("selected_border");
       }
     });
   }, 2000);
 });
-
-// const myModalEl = document.getElementById('https:
 
 $("body").on(
   "show.bs.modal",
@@ -1334,28 +1323,17 @@ $("body").on("dblclick", "img", function () {
 
 const onClickOutside = (e) => {
   if (!e.target.className.includes("zoomist-image")) {
-    // console.log(e.target, `e.target`);
-    // show = false;
-    // console.log("fffffvvv");
-    // console.log(e.target.tagName, `e.target.tagName`);
-    // window.removeEventListener("click", onClickOutside);
     if (
       e.target.tagName != "IMG" &&
       !e.target.className.includes("zoomist-zoomer") &&
       !e.target.className.includes("zoomist-slider") &&
       !e.target.className.includes("zoomist-wrapper")
     ) {
-      // console.log("fffffggsss");
       $(".img_zoomed").each(function () {
         $(this).removeClass("img_zoomed");
         $(this).unwrap(".zoomist-image");
         $(this).unwrap(".zoomist-wrapper");
         $(this).unwrap(".zoomist-container");
-
-        // element == this
-        // zoomist.zoom(3);
-        // zoomist.destroy();
-        // zoomist.destroyModules();
       });
       $(".zoomist-slider, .zoomist-zoomer").each(function () {
         $(this).remove();
@@ -1364,10 +1342,6 @@ const onClickOutside = (e) => {
     }
   }
 };
-
-// }, 2000);
-
-// new Zoomist('#zoomist')
 
 var Albert = 0;
 $(document).ready(function () {
