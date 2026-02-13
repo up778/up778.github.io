@@ -310,18 +310,15 @@ function add_ytmb(url1, url2, url3) {
 
     $(".background_class_horizontal_heading").css("background-color", "black");
 
-    const $elements = $(".bcLevel2, article, .bclevel3, .bclevel4");
+    const $elements = $(
+      ".bcLevel2, article, .bcLevel3, .bcLevel4, .bcLevel5, .bcLevel6",
+    );
     window._original_styles_for_video_background = [];
 
     $elements.each(function () {
       window._original_styles_for_video_background.push({
         element: this,
         style: this.getAttribute("style"),
-      });
-      $(this).addClass("video_bg_transparent");
-      $(this).css({
-        "background-color": "transparent",
-        opacity: "1",
       });
     });
 
@@ -333,20 +330,38 @@ function add_ytmb(url1, url2, url3) {
       "background: #00000000 !important;",
     );
 
-    const videos = [url1, url2, url3].map((url) => ({
-      videoURL: url,
-      containment: "#wrapper_myPlayerID",
-      autoPlay: true,
-      mute: true,
-      startAt: 0,
-      opacity: 0.6,
-      loop: true,
-      ratio: "4/3",
-      addRaster: false,
-      coverImage:
-        "../../Images mosaïques pour arrière plan web/bird-6812884_1920.jpg",
-      gaTrack: "false",
-    }));
+    const videos = [url1, url2, url3].map((url) => {
+      if (url.includes("Cj0Ax2p8")) {
+        return {
+          videoURL: url,
+          containment: "#wrapper_myPlayerID",
+          autoPlay: true,
+          mute: true,
+          startAt: 71,
+          stopAt: 97,
+          opacity: 1,
+          loop: true,
+          ratio: "4/3",
+          addRaster: false,
+
+          gaTrack: "false",
+        };
+      } else {
+        return {
+          videoURL: url,
+          containment: "#wrapper_myPlayerID",
+          autoPlay: true,
+          mute: true,
+          startAt: 0,
+          opacity: 0.6,
+          loop: true,
+          ratio: "4/3",
+          addRaster: false,
+
+          gaTrack: "false",
+        };
+      }
+    });
 
     const myPlayListPlayer = $(playerId).YTPlaylist(videos, false, () => {
       setTimeout(() => {
