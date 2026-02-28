@@ -287,6 +287,15 @@
 }
 
 @font-face {
+    font-family: '4170-font';
+    src: url("../Fonts/Mozart_font/4170-font.woff2") format('woff2'),
+         url("../Fonts/Mozart_font/4170-font.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'NeonRave-z82z4';
     src: url("../Fonts/neon-rave-font/NeonRave-z82z4.woff2") format('woff2'),
          url("../Fonts/neon-rave-font/NeonRave-z82z4.woff") format('woff');

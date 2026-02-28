@@ -337,8 +337,22 @@ function add_ytmb(url1, url2, url3) {
           containment: "#wrapper_myPlayerID",
           autoPlay: true,
           mute: true,
-          startAt: 71,
+          startAt: 88,
           stopAt: 97,
+          opacity: 1,
+          loop: true,
+          ratio: "4/3",
+          addRaster: false,
+
+          gaTrack: "false",
+        };
+      } else if (url.includes("2UOB9AfHrPY")) {
+        return {
+          videoURL: url,
+          containment: "#wrapper_myPlayerID",
+          autoPlay: true,
+          mute: true,
+
           opacity: 1,
           loop: true,
           ratio: "4/3",
