@@ -215,6 +215,24 @@
 }
 
 @font-face {
+    font-family: 'instrumentserif-italic';
+    src: url("../Fonts/instrument-serif/instrumentserif-italic.woff2") format('woff2'),
+         url("../Fonts/instrument-serif/instrumentserif-italic.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'instrumentserif-regular';
+    src: url("../Fonts/instrument-serif/instrumentserif-regular.woff2") format('woff2'),
+         url("../Fonts/instrument-serif/instrumentserif-regular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'khodijahfree-OVELp';
     src: url("../Fonts/khodijah-font/khodijahfree-OVELp.woff2") format('woff2'),
          url("../Fonts/khodijah-font/khodijahfree-OVELp.woff") format('woff');
@@ -416,6 +434,15 @@
     font-family: 'Starjhol';
     src: url("../Fonts/starjedi/Starjhol.woff2") format('woff2'),
          url("../Fonts/starjedi/Starjhol.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'The Queen';
+    src: url("../Fonts/The_Queen_3/The Queen.woff2") format('woff2'),
+         url("../Fonts/The_Queen_3/The Queen.woff") format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

@@ -3024,6 +3024,12 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
   margin-top: 1em !important;
 }
 
+.font_i_Marie {
+  font-family: "The Queen";
+  font-size: 130%;
+  line-height: 1;
+}
+
 .font_i_persia {
   font-family: "PRINP___";
   font-size: 80%;
