@@ -2113,3 +2113,36 @@ document.addEventListener("DOMContentLoaded", () => {
     document.title = grand_titre_el.innerText;
   }
 });
+
+document.addEventListener("click", function (e) {
+  const playBtn = e.target.closest(".btn_yt_video_jump");
+  if (playBtn) {
+    const videoId = playBtn.dataset.videoId;
+    const time = parseInt(playBtn.dataset.time || "0", 10);
+
+    const video = document.getElementById(videoId);
+
+    if (video) {
+      video.currentTime = time;
+      video.play();
+    } else {
+      console.warn("Vidéo HTML introuvable pour ID:", videoId);
+    }
+
+    return;
+  }
+
+  const pauseBtn = e.target.closest(".class_btn_pause_yt_video");
+  if (pauseBtn) {
+    const videoId = pauseBtn.dataset.videoId;
+    const video = document.getElementById(videoId);
+
+    if (video) {
+      video.pause();
+    } else {
+      console.warn("Vidéo HTML introuvable pour pause:", videoId);
+    }
+
+    return;
+  }
+});

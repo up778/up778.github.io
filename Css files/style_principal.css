@@ -2948,6 +2948,24 @@ button.btn_yt_video_jump:hover {
   border-color: #990000;
 }
 
+button.btn_for_play_video_at_a_time {
+  background-color: #c9cc0000;
+  color: #c9cc00;
+  border-color: #c9cc00;
+}
+
+button.btn_for_play_video_at_a_time:hover {
+  background-color: #c9cc0044;
+  color: #c9cc00;
+  border-color: #c9cc00;
+}
+
+button.class_btn_pause_yt_video {
+  background-color: #000dff26;
+  color: grey;
+  border: 1px solid grey;
+}
+
 button.class_btn_pause_yt_video {
   background-color: #000dff26 !important;
   color: grey !important;
