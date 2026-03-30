@@ -2467,7 +2467,7 @@ alt="Images/arrows-collapse.png"
 </tr>
 </tbody>
 </table><p style="clear: both; text-align: left;"> </p></section>
-</article><article id="capsule_des_h1_4003" class="capsule1 capsule_des_h1_4003 capsule bcLevel1" perma_id_of_this_article_from_perma_id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_2"><h1 id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_2" >Hypothèses / Questionnements / Avenir</h1>
+</article><article id="capsule_des_h1_4003" class="capsule1 capsule_des_h1_4003 capsule bcLevel1" perma_id_of_this_article_from_perma_id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_2"><h1 id="accueil_h1_perma_id_dn_lundi_22_juillet_2024_2">Hypothèses / Questionnements / Avenir</h1>
 <p> </p>
 <section class="bcLevel2" id="accueil_titre_perma_id_dn_mardi_15_juillet_2025_5552"><h2 class="reload-class_une_semaine__">Que pourrait-il arriver, dans ce monde?</h2><p>Dans toute cette ambiance, (au "milieu" de tant de Créatures qui seraient égarées) que pourrait-il advenir? <br>À se demander si sans <span class="font_i_3"><strong>Dieu</strong></span>, ce monde pourra/it tenir.</p><table style="width: 32vw; height: 28vh;" class="table_float_end float-end">
 <tbody>
@@ -5014,7 +5014,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         if (audio.paused) {
           audioElements.forEach((otherAudio) => {
             if (otherAudio !== audio) {
-              otherAudio.pause();
+              // otherAudio.pause();
               const otherPlayerContainer =
                 otherAudio.parentElement.querySelector(
                   ".custom_audio_player_p",
@@ -5059,7 +5059,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       reloadButton.addEventListener("click", () => {
         audioElements.forEach((otherAudio) => {
           if (otherAudio !== audio) {
-            otherAudio.pause();
+            // otherAudio.pause();
             const otherPlayer = otherAudio.parentElement.querySelector(
               ".custom_audio_player_p",
             );
@@ -5227,7 +5227,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       if (!audio) return;
       document.querySelectorAll("audio").forEach((a) => {
         if (a !== audio) {
-          a.pause();
+          // a.pause();
           const btn = a
             .closest("figure, div")
             ?.querySelector(".play_pause_p_p");
@@ -5281,7 +5281,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         if (audio.paused) {
           document.querySelectorAll("audio").forEach((a) => {
             if (a !== audio) {
-              a.pause();
+              // a.pause();
               const otherBtnPP = a
                 .closest("figure, div")
                 ?.querySelector(".play_pause_p_p");
@@ -5323,7 +5323,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     const current = e.detail;
     document.querySelectorAll("audio").forEach((a) => {
       if (a !== current) {
-        a.pause();
+        // a.pause();
         a.closest(".html_test_plus_audio_perma_id")
           ?.querySelector(".playpause_button")
           ?.classList.remove("playing");

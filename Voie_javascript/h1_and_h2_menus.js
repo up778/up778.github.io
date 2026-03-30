@@ -1533,9 +1533,6 @@ function toggle_falling_leaves(param) {
 let currentAudio = null;
 
 function select_audio(audio) {
-  if (currentAudio && currentAudio !== audio) {
-    currentAudio.pause();
-  }
   currentAudio = audio;
   updateButtonStyle(currentAudio);
 }
@@ -1611,7 +1608,10 @@ document.addEventListener(
   function (e) {
     const media = e.target.closest("audio, video");
     if (!media) return;
-    select_audio(media);
+
+    currentAudio = media;
+
+    updateButtonStyle(media);
   },
   true,
 );

@@ -3295,7 +3295,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         if (audio.paused) {
           audioElements.forEach((otherAudio) => {
             if (otherAudio !== audio) {
-              otherAudio.pause();
+              // otherAudio.pause();
               const otherPlayerContainer =
                 otherAudio.parentElement.querySelector(
                   ".custom_audio_player_p",
@@ -3340,7 +3340,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       reloadButton.addEventListener("click", () => {
         audioElements.forEach((otherAudio) => {
           if (otherAudio !== audio) {
-            otherAudio.pause();
+            // otherAudio.pause();
             const otherPlayer = otherAudio.parentElement.querySelector(
               ".custom_audio_player_p",
             );
@@ -3508,7 +3508,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       if (!audio) return;
       document.querySelectorAll("audio").forEach((a) => {
         if (a !== audio) {
-          a.pause();
+          // a.pause();
           const btn = a
             .closest("figure, div")
             ?.querySelector(".play_pause_p_p");
@@ -3562,7 +3562,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         if (audio.paused) {
           document.querySelectorAll("audio").forEach((a) => {
             if (a !== audio) {
-              a.pause();
+              // a.pause();
               const otherBtnPP = a
                 .closest("figure, div")
                 ?.querySelector(".play_pause_p_p");
@@ -3604,7 +3604,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     const current = e.detail;
     document.querySelectorAll("audio").forEach((a) => {
       if (a !== current) {
-        a.pause();
+        // a.pause();
         a.closest(".html_test_plus_audio_perma_id")
           ?.querySelector(".playpause_button")
           ?.classList.remove("playing");
