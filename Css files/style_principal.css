@@ -113,7 +113,7 @@ body {
 
   top: 100px;
 
-  z-index: auto !important;
+  z-index: 20 !important;
 
   background: inherit !important;
 }
