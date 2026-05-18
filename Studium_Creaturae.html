@@ -757,7 +757,7 @@ alt="Images/arrows-collapse.png"
 </td>
 <td></td>
 <td style="vertical-align: bottom; position: relative;"><button class="btn p-1 reload_button_video btn-sm bi-arrow-clockwise" style="position: absolute; top: 10px; left: 10px; z-index: 10; border: 0px solid grey; background-color: transparent; color: #eeeeee; font-size: 18px; cursor: pointer; display: block;"></button><video width="" height="" style="width: 100%; height: 100%;" id="Studium_Creaturae_mp4_video_perma_id_dn_lundi_14_avril_2025_32_620" loading="lazy" frameborder="0" loop="loop" controls="controls" class="new_mp4_video  reload-class_une_semaine__ mp4_video_class" preload="metadata" poster="" mp4_size_in_octets_last_calculated="4332846">
-                  <source src="Creaturae/Divers__/Film_s/Blaise_Pascal_v3.mp4" type="video/mp4">
+                  <source src="medias/Creaturae/Divers__/Film_s/Blaise_Pascal_v3.mp4" type="video/mp4">
                 </video></td>
 </tr>
 </tbody>
@@ -3087,7 +3087,7 @@ alt="Images/arrows-collapse.png"
 </div>
 </div>
 </div><p style="display: inline;"> </p><p id="Studium_Creaturae_blockquote_perma_id_dn_dimanche_1_septembre_2024_35_893" class="class_une_semaine__ class_citation_standard">wikipedia au dimanche 1er septembre 2024 : "La génération Z, souvent appelée les zoomers, regroupe les personnes nées entre la fin des années 1990 et le début des années 2010, généralement entre 1997 et 2012. Elle succède à la génération Y et précède la génération Alpha. Elle est définie comme une génération née alors que les communications numériques étaient déjà bien installées dans la société."</p></section>
-</article><article id="capsule_des_h1_4009" class="capsule1 capsule_des_h1_4009 capsule bcLevel1" perma_id_of_this_article_from_perma_id="Studium_Creaturae_h1_perma_id_dn_lundi_22_juillet_2024_9"><h1 id="Studium_Creaturae_h1_perma_id_dn_lundi_22_juillet_2024_9">Nvv / ''Hildegarde''</h1>
+</article><article id="capsule_des_h1_4009" class="capsule1 capsule_des_h1_4009 capsule bcLevel1" perma_id_of_this_article_from_perma_id="Studium_Creaturae_h1_perma_id_dn_lundi_22_juillet_2024_9"><h1 id="Studium_Creaturae_h1_perma_id_dn_lundi_22_juillet_2024_9" >Nvv / ''Hildegarde''</h1>
 <section class="bcLevel2" id="Studium_Creaturae_h2_perma_id_dn_lundi_22_juillet_2024_25" style="background-image: url('Creaturae/Divers__/Images/Images_for_backgrounds/background_image_transparent.png');"><h2>Préambule - ''nvv'' et les gilets jaunes</h2><p>Quelqu'un que j'avais commencé suivre, de mémoire, peut-être, au début des gilets jaunes. (Il fit des vidéos gilets jaunes avec musique religieuse, assez stylées, je dus trouver.) À l'intonation de voix, au caractère assez vivant, énergique.</p><table style="width: 90%; height: 64vh; border-collapse: collapse; text-align: center; empty-cells: show;" class="table_outside_a_table_and_outside_card margin_left_2" empty-cells="show" border="0">
 <tbody>
 <tr>
@@ -4189,7 +4189,7 @@ alt="Images/arrows-collapse.png"
 <tbody>
 <tr>
 <td style="width: 100%; position: relative;"><button class="btn p-1 reload_button_video btn-sm bi-arrow-clockwise" style="position: absolute; top: 10px; left: 10px; z-index: 10; border: 0px solid grey; background-color: transparent; color: #eeeeee; font-size: 18px; cursor: pointer; display: block;"></button><video width="" height="" style="width: 100%; height: 100%; display: table; margin-left: auto; margin-right: auto;" id="Studium_Creaturae_mp4_video_perma_id_dn_jeudi_13_mars_2025_46_418" loading="lazy" frameborder="0" loop="loop" controls="controls" class="new_mp4_video  reload-class_une_semaine__ mp4_video_class" preload="metadata" poster="" mp4_size_in_octets_last_calculated="869351">
-                          <source src="Creaturae/Divers__/Film_s/vidéo_Laïbi_1_site_internet.mp4" type="video/mp4">
+                          <source src="medias/Creaturae/Divers__/Film_s/vidéo_Laïbi_1_site_internet.mp4" type="video/mp4">
                         </video></td>
 </tr>
 </tbody>
@@ -5151,8 +5151,7 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     $(deferred.resolve);   }) ).done(function () {
   //place your code here, the scripts are all loaded
  });
- </script>
-<script>
+ </script><script>
   $("body").on("click", `a[href^="#"]`, function (event) {
     // console.log("object");
     if (!$(this).hasClass("btn") && this.id.indexOf("list") < 0) {
@@ -6847,6 +6846,39 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       e.preventDefault(); // empêche la fermeture
       e.stopImmediatePropagation(); // bloque toute propagation interne Bootstrap
     }
+  });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const is_localhost = window.location.hostname.includes("localhost");
+    if (!is_localhost) return;
+    const replacements = [
+      { from: "medias/Accueil", to: "Accueil" },
+      { from: "medias/Creaturae", to: "Creaturae" },
+    ];
+    document.querySelectorAll("[src]").forEach(function (el) {
+      let src = el.getAttribute("src");
+      if (!src) return;
+      const old_src = src;
+      replacements.forEach(function (rule) {
+        if (src.includes(rule.from)) {
+          src = src.replace(rule.from, rule.to);
+        }
+      });
+      if (src !== old_src) {
+        el.setAttribute("src", src);
+        // recharge video/audio si nécessaire
+        const media =
+          el.parentElement &&
+          (el.parentElement.tagName === "VIDEO" ||
+            el.parentElement.tagName === "AUDIO")
+            ? el.parentElement
+            : null;
+        if (media) {
+          media.load();
+        }
+      }
+    });
   });
 </script>
 <script>
