@@ -16,7 +16,6 @@
 
 !/Accueil/
 !/Accueil/**
-Accueil/Dossier_dans_dossier_accueil/Film_s/
 !/Art-Artistes/
 !/Art-Artistes/**
 !/Assets
@@ -29,6 +28,14 @@ Accueil/Dossier_dans_dossier_accueil/Film_s/
 !Voie_javascript/**
 !/Audio_s/
 !/Audio_s/**
+
+Accueil/Dossier_dans_dossier_accueil/Film_s/
+Art-Artistes/Artistes-Comoedica-Musiciens/Film_s/
+Creaturae/Divers__/Film_s/
+Creaturae/Occidentaux-Orientaux/Film_s/
+Creaturae/Religion/Film_s/
+Creaturae/Droite_gauche/Film_s/
+Creaturae/Extra-terrestres_et_Ufologues/Film_s/
 
 !/Fonts/
 !/Fonts/**
