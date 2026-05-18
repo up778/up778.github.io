@@ -6355,6 +6355,24 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
   });
 </script>
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const is_localhost = window.location.hostname.includes("localhost");
+    if (!is_localhost) return;
+    document.querySelectorAll("video source").forEach(function (source) {
+      let src = source.getAttribute("src");
+      if (!src) return;
+      if (src.includes("medias/Accueil")) {
+        src = src.replace("medias/Accueil", "Accueil");
+        source.setAttribute("src", src);
+        const video = source.closest("video");
+        if (video) {
+          video.load(); // 🔴 essentiel pour relancer la vidéo
+        }
+      }
+    });
+  });
+</script>
+<script>
   $("video").each(function (index, elem) {
     // console.log(i, "tf");
     $(this).prop("volume", 0.5);
