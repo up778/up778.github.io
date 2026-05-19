@@ -98,6 +98,7 @@ Voie_javascript/check_which_browser.js
 # /Pages_pour_historique_site/html_test_plus_historique_t2.html
 
 *.ffs*
+*.lnk*
 /Accueil/Brouillons
 Creaturae/Certaines ''puissances''
 !/Animation_s/
