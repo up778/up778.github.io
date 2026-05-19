@@ -6969,8 +6969,8 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     }
   });
 </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
+<script class="script_for_medias_paths">
+  function update_medias_paths(parent = document) {
     const is_localhost = window.location.hostname.includes("localhost");
     if (!is_localhost) return;
     const replacements = [
@@ -6984,6 +6984,10 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
       {
         from: "Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s",
         to: "../../Site_github_page_audios/Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s",
+      },
+      {
+        from: "Audios/Art-Artistes/Artistes-Comoedica-Musiciens/",
+        to: "",
       },
       {
         from: "Creaturae/Divers__/Audio_s",
@@ -7006,9 +7010,11 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         to: "../../Site_github_page_audios/Creaturae/Religion/Audio_s",
       },
     ];
-    document.querySelectorAll("[src]").forEach(function (el) {
+    parent.querySelectorAll("[src]").forEach(function (el) {
       let src = el.getAttribute("src");
       if (!src) return;
+      // évite de retraiter plusieurs fois le même élément
+      if (el.dataset.medias_paths_done) return;
       const old_src = src;
       replacements.forEach(function (rule) {
         if (src.includes(rule.from)) {
@@ -7028,6 +7034,30 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           media.load();
         }
       }
+      el.dataset.medias_paths_done = "1";
+    });
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    update_medias_paths();
+    // surveille les nouveaux éléments ajoutés au DOM
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType !== 1) return;
+          // si le nœud lui-même a un src
+          if (node.hasAttribute && node.hasAttribute("src")) {
+            update_medias_paths(node.parentElement || node);
+          }
+          // si le nœud contient des éléments avec src
+          if (node.querySelectorAll) {
+            update_medias_paths(node);
+          }
+        });
+      });
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
     });
   });
 </script>
