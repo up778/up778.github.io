@@ -3243,6 +3243,10 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
   font-style: normal;
 }
 
+.font_i_inherit {
+  font-family: inherit;
+}
+
 .popover thead {
   position: sticky;
   top: 0px !important;
