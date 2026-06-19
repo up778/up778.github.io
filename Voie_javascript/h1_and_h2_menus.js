@@ -1044,7 +1044,8 @@ function toggle_font_i(effect_class = "animate__flash") {
     style.textContent = `
       [class^="font_i"],
       [class*=" font_i"] {
-        font-family: initial !important;
+        // font-family: initial !important;
+        font-family: inherit !important;
         font-size: inherit !important;
         display: inline-block !important;
         font-weight: inherit;
