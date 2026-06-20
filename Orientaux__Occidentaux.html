@@ -10885,14 +10885,16 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         container: "body",
         customClass: customClass,
         html: true,
+        sanitize: false,
       });
       popovers.set(button, popover);
       popover.disable();
     }
     document.querySelectorAll(".trigger_popovers").forEach((trigger_btn) => {
       trigger_btn.addEventListener("click", (e) => {
+        // log_debug("trigger_popovers clicked");
         e.stopPropagation();
-        popovers.forEach((popover, btn) => {
+        popovers.forEach((popover) => {
           if (!popover._element.classList.contains("disabled")) {
             popover.enable();
             popover.show();
@@ -10904,107 +10906,70 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     document.body.addEventListener(
       "click",
       (e) => {
+        // log_debug("CLICK EVENT FIRED", e.target);
         const target = e.target;
-        // Clic sur un élément éditable pour popover
-        if (target.classList.contains("popover_editable")) {
+        const trigger = target.closest(".popover_editable");
+        // log_debug("closest result =", trigger);
+        if (trigger) {
+          // log_debug("POP TRIGGER DETECTED", trigger);
+          e.preventDefault();
           e.stopPropagation();
-          if (activeSinglePopover && activeSinglePopover.btn === target) {
+          if (activeSinglePopover && activeSinglePopover.btn === trigger) {
+            // log_debug("same popover -> close");
             activeSinglePopover.popover.hide();
             activeSinglePopover.popover.dispose();
             activeSinglePopover = null;
             return;
           }
           if (activeSinglePopover) {
+            // log_debug("closing previous popover");
             activeSinglePopover.popover.hide();
             activeSinglePopover.popover.dispose();
             activeSinglePopover = null;
           }
           const title =
-            target.getAttribute("title") ||
-            target.getAttribute("data-popover-title") ||
+            trigger.getAttribute("title") ||
+            trigger.getAttribute("data-popover-title") ||
             "";
           let content = document.createElement("div");
-          const wrapper = target.closest(".popover_wrapper");
-          const rect = target.getBoundingClientRect();
+          const wrapper = trigger.closest(".popover_wrapper");
+          // log_debug("wrapper found =", wrapper);
+          if (wrapper) {
+            const contentDiv = wrapper.querySelector(".popover_content");
+            if (contentDiv) {
+              const clonedContent = contentDiv.cloneNode(true);
+              // rendre les id uniques
+              clonedContent.querySelectorAll("[id]").forEach((el) => {
+                el.id = el.id + "_popover_" + Date.now();
+              });
+              clonedContent.style.display = "block";
+              content.appendChild(clonedContent);
+            }
+          }
+          const rect = trigger.getBoundingClientRect();
           const viewportWidth = window.innerWidth;
           const viewportHeight = window.innerHeight;
           const spaceTop = rect.top;
           const spaceBottom = viewportHeight - rect.bottom;
           const spaceLeft = rect.left;
           const spaceRight = viewportWidth - rect.right;
-          const rightThreshold = viewportWidth * 0.4;
-          let minWidthVW = null;
-          if (wrapper) {
-            const contentDiv = wrapper.querySelector(".popover_content");
-            if (contentDiv) {
-              const clonedContent = contentDiv.cloneNode(true);
-              // ajouter cette boucle pour rendre les id uniques
-              clonedContent.querySelectorAll("[id]").forEach((el) => {
-                el.id = el.id + "_popover_" + Date.now();
-              });
-              // mettre à jour les data-container-id sur les boutons clonés
-              clonedContent
-                .querySelectorAll(
-                  ".btn_yt_video_jump, .class_btn_pause_yt_video",
-                )
-                .forEach((btn) => {
-                  btn.dataset.containerId =
-                    btn.closest(".div_around_iframe, .popover_content").id ||
-                    btn.dataset.containerId;
-                });
-              clonedContent.style.display = "block";
-              const div_around_iframe =
-                clonedContent.querySelector(".div_around_iframe");
-              const not_video = clonedContent.querySelector(
-                ".avoid_iframe_pour_iframe_wiki_etc",
-              );
-              if (div_around_iframe && !not_video) {
-                const table = div_around_iframe.closest("table");
-                if (table) {
-                  const vwMatch = table.style.width.match(/([\d.]+)vw/);
-                  if (vwMatch) minWidthVW = parseFloat(vwMatch[1]);
-                  else
-                    minWidthVW =
-                      (table.getBoundingClientRect().width /
-                        window.innerWidth) *
-                      100;
-                  clonedContent.style.minWidth = `${minWidthVW}vw`;
-                  const heightStyle = table.style.height;
-                  if (heightStyle && heightStyle.endsWith("vh"))
-                    div_around_iframe.style.height = heightStyle;
-                  else
-                    div_around_iframe.style.height = `${table.getBoundingClientRect().height}px`;
-                }
-              }
-              if (minWidthVW !== null) {
-                const minPixelsWidth = (minWidthVW / 100) * window.innerWidth;
-                clonedContent.style.minWidth = `${minPixelsWidth}px`;
-                clonedContent.style.width = `${Math.max(minPixelsWidth, 150)}px`;
-              }
-              content.appendChild(clonedContent);
-            }
-          }
-          let placement;
-          if (spaceRight < rightThreshold)
-            placement = spaceTop > spaceBottom ? "top" : "bottom";
-          else {
-            const maxSpace = Math.max(
-              spaceTop,
-              spaceBottom,
-              spaceLeft,
-              spaceRight,
-            );
-            if (maxSpace === spaceTop) placement = "top";
-            else if (maxSpace === spaceBottom) placement = "bottom";
-            else if (maxSpace === spaceLeft) placement = "left";
-            else placement = "right";
-          }
-          const existingInstance = bootstrap.Popover.getInstance(target);
+          let placement = "bottom";
+          const maxSpace = Math.max(
+            spaceTop,
+            spaceBottom,
+            spaceLeft,
+            spaceRight,
+          );
+          if (maxSpace === spaceTop) placement = "top";
+          else if (maxSpace === spaceBottom) placement = "bottom";
+          else if (maxSpace === spaceLeft) placement = "left";
+          else placement = "right";
+          // log_debug("placement =", placement);
+          const existingInstance = bootstrap.Popover.getInstance(trigger);
           if (existingInstance) existingInstance.dispose();
-          const popover = new bootstrap.Popover(target, {
+          const popover = new bootstrap.Popover(trigger, {
             trigger: "manual",
             placement: placement,
-            fallbackPlacements: ["bottom", "left", "top"],
             title: title,
             content: () => content,
             container: "body",
@@ -11012,34 +10977,30 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             sanitize: false,
           });
           popover.show();
-          const popoverElement = document.querySelector(".popover.show");
-          if (placement === "right" && popoverElement) {
-            const maxWidth = window.innerWidth - rect.right - 100;
-            const contentElement =
-              popoverElement.querySelector(".popover_content");
-            if (contentElement) contentElement.style.maxWidth = maxWidth + "px";
-          }
-          activeSinglePopover = { btn: target, popover: popover };
+          // log_debug("popover shown");
+          activeSinglePopover = { btn: trigger, popover: popover };
           return;
         }
-        // ✅ Protection absolue : ne jamais fermer popover si clic dans popover ou ses boutons
+        // log_debug("NO POP TRIGGER FOUND");
         if (activeSinglePopover) {
           const popEl = document.querySelector(".popover.show");
           if (
             popEl &&
             (popEl.contains(e.target) || e.target.closest(".popover.show"))
-          )
+          ) {
+            // log_debug("click inside popover -> ignore close");
             return;
+          }
         }
-        // Sinon, fermer le popover actif
         if (activeSinglePopover) {
+          // log_debug("closing popover (outside click)");
           activeSinglePopover.popover.hide();
           activeSinglePopover.popover.dispose();
           activeSinglePopover = null;
         }
         popovers.forEach((popover) => popover.hide());
       },
-      true, // capture
+      true,
     );
     const observer = new MutationObserver(() => {
       document.querySelectorAll(".pop_button").forEach((button) => {
@@ -11048,7 +11009,10 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     });
     observer.observe(document.body, { childList: true, subtree: true });
     document.body.addEventListener("shown.bs.popover", () => {
-      if (typeof initAudioPlayers === "function") initAudioPlayers();
+      // log_debug("shown.bs.popover fired");
+      if (typeof initAudioPlayers === "function") {
+        initAudioPlayers();
+      }
     });
   });
 </script>

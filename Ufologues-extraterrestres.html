@@ -706,7 +706,7 @@ alt="Images/arrows-collapse.png"
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none"><symbol id="icon_dg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11.25 16.25h1.5L12 17z" /><path d="M16 14v.5" /><path d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444a11.702 11.702 0 0 0-.493-3.309" /><path d="M8 14v.5" /><path d="M8.5 8.5c-.384 1.05-1.083 2.028-2.344 2.5-1.931.722-3.576-.297-3.656-1-.113-.994 1.177-6.53 4-7 1.923-.321 3.651.845 3.651 2.235A7.497 7.497 0 0 1 14 5.277c0-1.39 1.844-2.598 3.767-2.277 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5" /></symbol><symbol id="icon_help" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8a3.5 3 0 0 1 3.5 -3h1a3.5 3 0 0 1 3.5 3a3 3 0 0 1 -2 3a3 4 0 0 0 -2 4"/><path d="M12 19l0 .01"/></symbol></svg>
 <main role="main">
 <header role="banner"></header>
-<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Extra_terrestres___Ufologues"> Ufologues, <span style="color: #55ff56;"><span class="font_i_Extra_terrestres_min">Extra-terrestres</span></span>👽👾<br>🌌Âme et phénomènes <span class="font_i_Extra_terrestres_min">Extra-terrestres</span>, spéculations 🛸</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#80960140;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1"><h1 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_1" id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1">Préambule</h1>
+<div id="section0" class="form" style="position: relative;"><p><br data-mce-bogus="1"></p></div><article id="section_h7_1" class="class_around_h7 bcLevel1" style="left: 0vw; width: 100%; margin-bottom: 80px; z-index: 99 !important; font-size: 40px !important; max-height: 12px !important; position: relative;"><div class="grand_titre" id="Extra_terrestres___Ufologues"> Ufologues, <span style="color: #55ff56;"><span class="font_i_Extra_terrestres_min">Extra-terrestres</span></span>👽👾<br>🌌Âme et phénomènes <span class="font_i_Extra_terrestres_min">Extra-terrestres</span>, spéculations 🛸</div></article><div style="padding-top:50px;margin-bottom:10px"></div><article id="capsule_des_h1_4001" class="capsule1 capsule_des_h1_4001 capsule background_class bcLevel1" style="background-image:url('Creaturae/Extra-terrestres_et_Ufologues/Images/Images_for_backgrounds/background_image_transparent.png');background-size:78vw;background-position:4vw;background-color:#80960140;background-repeat:no-repeat;background-attachment:fixed" perma_id_of_this_article_from_perma_id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1"><h1 permalien_dn="Ufologues-extraterrestres_permalien_dn_samedi_22_juin_2024_1" id="Ufologues-extraterrestres_h1_perma_id_dn_mercredi_24_juillet_2024_1" class="winnie">Préambule</h1>
 <p> </p>
 <section class="bcLevel2" id="Ufologues-extraterrestres_titre_perma_id_dn_samedi_3août_2025_25_21"><h2>Cette page <span class="font_i_Extra_terrestres_min">Extra-terrestres</span>, ufologie, Âme et phénomènes <span class="font_i_Extra_terrestres_min">Extra-terrestres</span>:  <span style="font-size: 30px;">4</span>ème page du site.</h2><table style="width: 39.9997%; height: 24vh; border-collapse: collapse; text-align: center; empty-cells: show;" class="table_float_end float-end" empty-cells="show" border="0">
 <tbody>
@@ -4505,14 +4505,16 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
         container: "body",
         customClass: customClass,
         html: true,
+        sanitize: false,
       });
       popovers.set(button, popover);
       popover.disable();
     }
     document.querySelectorAll(".trigger_popovers").forEach((trigger_btn) => {
       trigger_btn.addEventListener("click", (e) => {
+        // log_debug("trigger_popovers clicked");
         e.stopPropagation();
-        popovers.forEach((popover, btn) => {
+        popovers.forEach((popover) => {
           if (!popover._element.classList.contains("disabled")) {
             popover.enable();
             popover.show();
@@ -4524,107 +4526,70 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     document.body.addEventListener(
       "click",
       (e) => {
+        // log_debug("CLICK EVENT FIRED", e.target);
         const target = e.target;
-        // Clic sur un élément éditable pour popover
-        if (target.classList.contains("popover_editable")) {
+        const trigger = target.closest(".popover_editable");
+        // log_debug("closest result =", trigger);
+        if (trigger) {
+          // log_debug("POP TRIGGER DETECTED", trigger);
+          e.preventDefault();
           e.stopPropagation();
-          if (activeSinglePopover && activeSinglePopover.btn === target) {
+          if (activeSinglePopover && activeSinglePopover.btn === trigger) {
+            // log_debug("same popover -> close");
             activeSinglePopover.popover.hide();
             activeSinglePopover.popover.dispose();
             activeSinglePopover = null;
             return;
           }
           if (activeSinglePopover) {
+            // log_debug("closing previous popover");
             activeSinglePopover.popover.hide();
             activeSinglePopover.popover.dispose();
             activeSinglePopover = null;
           }
           const title =
-            target.getAttribute("title") ||
-            target.getAttribute("data-popover-title") ||
+            trigger.getAttribute("title") ||
+            trigger.getAttribute("data-popover-title") ||
             "";
           let content = document.createElement("div");
-          const wrapper = target.closest(".popover_wrapper");
-          const rect = target.getBoundingClientRect();
+          const wrapper = trigger.closest(".popover_wrapper");
+          // log_debug("wrapper found =", wrapper);
+          if (wrapper) {
+            const contentDiv = wrapper.querySelector(".popover_content");
+            if (contentDiv) {
+              const clonedContent = contentDiv.cloneNode(true);
+              // rendre les id uniques
+              clonedContent.querySelectorAll("[id]").forEach((el) => {
+                el.id = el.id + "_popover_" + Date.now();
+              });
+              clonedContent.style.display = "block";
+              content.appendChild(clonedContent);
+            }
+          }
+          const rect = trigger.getBoundingClientRect();
           const viewportWidth = window.innerWidth;
           const viewportHeight = window.innerHeight;
           const spaceTop = rect.top;
           const spaceBottom = viewportHeight - rect.bottom;
           const spaceLeft = rect.left;
           const spaceRight = viewportWidth - rect.right;
-          const rightThreshold = viewportWidth * 0.4;
-          let minWidthVW = null;
-          if (wrapper) {
-            const contentDiv = wrapper.querySelector(".popover_content");
-            if (contentDiv) {
-              const clonedContent = contentDiv.cloneNode(true);
-              // ajouter cette boucle pour rendre les id uniques
-              clonedContent.querySelectorAll("[id]").forEach((el) => {
-                el.id = el.id + "_popover_" + Date.now();
-              });
-              // mettre à jour les data-container-id sur les boutons clonés
-              clonedContent
-                .querySelectorAll(
-                  ".btn_yt_video_jump, .class_btn_pause_yt_video",
-                )
-                .forEach((btn) => {
-                  btn.dataset.containerId =
-                    btn.closest(".div_around_iframe, .popover_content").id ||
-                    btn.dataset.containerId;
-                });
-              clonedContent.style.display = "block";
-              const div_around_iframe =
-                clonedContent.querySelector(".div_around_iframe");
-              const not_video = clonedContent.querySelector(
-                ".avoid_iframe_pour_iframe_wiki_etc",
-              );
-              if (div_around_iframe && !not_video) {
-                const table = div_around_iframe.closest("table");
-                if (table) {
-                  const vwMatch = table.style.width.match(/([\d.]+)vw/);
-                  if (vwMatch) minWidthVW = parseFloat(vwMatch[1]);
-                  else
-                    minWidthVW =
-                      (table.getBoundingClientRect().width /
-                        window.innerWidth) *
-                      100;
-                  clonedContent.style.minWidth = `${minWidthVW}vw`;
-                  const heightStyle = table.style.height;
-                  if (heightStyle && heightStyle.endsWith("vh"))
-                    div_around_iframe.style.height = heightStyle;
-                  else
-                    div_around_iframe.style.height = `${table.getBoundingClientRect().height}px`;
-                }
-              }
-              if (minWidthVW !== null) {
-                const minPixelsWidth = (minWidthVW / 100) * window.innerWidth;
-                clonedContent.style.minWidth = `${minPixelsWidth}px`;
-                clonedContent.style.width = `${Math.max(minPixelsWidth, 150)}px`;
-              }
-              content.appendChild(clonedContent);
-            }
-          }
-          let placement;
-          if (spaceRight < rightThreshold)
-            placement = spaceTop > spaceBottom ? "top" : "bottom";
-          else {
-            const maxSpace = Math.max(
-              spaceTop,
-              spaceBottom,
-              spaceLeft,
-              spaceRight,
-            );
-            if (maxSpace === spaceTop) placement = "top";
-            else if (maxSpace === spaceBottom) placement = "bottom";
-            else if (maxSpace === spaceLeft) placement = "left";
-            else placement = "right";
-          }
-          const existingInstance = bootstrap.Popover.getInstance(target);
+          let placement = "bottom";
+          const maxSpace = Math.max(
+            spaceTop,
+            spaceBottom,
+            spaceLeft,
+            spaceRight,
+          );
+          if (maxSpace === spaceTop) placement = "top";
+          else if (maxSpace === spaceBottom) placement = "bottom";
+          else if (maxSpace === spaceLeft) placement = "left";
+          else placement = "right";
+          // log_debug("placement =", placement);
+          const existingInstance = bootstrap.Popover.getInstance(trigger);
           if (existingInstance) existingInstance.dispose();
-          const popover = new bootstrap.Popover(target, {
+          const popover = new bootstrap.Popover(trigger, {
             trigger: "manual",
             placement: placement,
-            fallbackPlacements: ["bottom", "left", "top"],
             title: title,
             content: () => content,
             container: "body",
@@ -4632,34 +4597,30 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             sanitize: false,
           });
           popover.show();
-          const popoverElement = document.querySelector(".popover.show");
-          if (placement === "right" && popoverElement) {
-            const maxWidth = window.innerWidth - rect.right - 100;
-            const contentElement =
-              popoverElement.querySelector(".popover_content");
-            if (contentElement) contentElement.style.maxWidth = maxWidth + "px";
-          }
-          activeSinglePopover = { btn: target, popover: popover };
+          // log_debug("popover shown");
+          activeSinglePopover = { btn: trigger, popover: popover };
           return;
         }
-        // ✅ Protection absolue : ne jamais fermer popover si clic dans popover ou ses boutons
+        // log_debug("NO POP TRIGGER FOUND");
         if (activeSinglePopover) {
           const popEl = document.querySelector(".popover.show");
           if (
             popEl &&
             (popEl.contains(e.target) || e.target.closest(".popover.show"))
-          )
+          ) {
+            // log_debug("click inside popover -> ignore close");
             return;
+          }
         }
-        // Sinon, fermer le popover actif
         if (activeSinglePopover) {
+          // log_debug("closing popover (outside click)");
           activeSinglePopover.popover.hide();
           activeSinglePopover.popover.dispose();
           activeSinglePopover = null;
         }
         popovers.forEach((popover) => popover.hide());
       },
-      true, // capture
+      true,
     );
     const observer = new MutationObserver(() => {
       document.querySelectorAll(".pop_button").forEach((button) => {
@@ -4668,7 +4629,10 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
     });
     observer.observe(document.body, { childList: true, subtree: true });
     document.body.addEventListener("shown.bs.popover", () => {
-      if (typeof initAudioPlayers === "function") initAudioPlayers();
+      // log_debug("shown.bs.popover fired");
+      if (typeof initAudioPlayers === "function") {
+        initAudioPlayers();
+      }
     });
   });
 </script>
