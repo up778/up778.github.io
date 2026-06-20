@@ -9026,18 +9026,21 @@ alt="Images/arrows-collapse.png"
         });
       });
 
-      // Gestion du clic sur le document (capture)
       document.body.addEventListener(
         "click",
         (e) => {
           const target = e.target;
 
-          // Clic sur un élément éditable pour popover
+          // ✅ CLIC POPUP MÊME SI SPAN / ENFANT
           const trigger = target.closest(".popover_editable");
 
           if (trigger) {
             e.preventDefault();
             e.stopPropagation();
+
+            // 🔥 FIX CRITIQUE : casser l'état Bootstrap natif
+            trigger.removeAttribute("data-bs-toggle");
+            trigger.removeAttribute("aria-describedby");
 
             if (activeSinglePopover && activeSinglePopover.btn === trigger) {
               activeSinglePopover.popover.hide();
@@ -9160,21 +9163,17 @@ alt="Images/arrows-collapse.png"
               else placement = "right";
             }
 
-            // ❌ IMPORTANT : suppression du dispose systématique
-            let popover = bootstrap.Popover.getInstance(trigger);
-
-            if (!popover) {
-              popover = new bootstrap.Popover(trigger, {
-                trigger: "manual",
-                placement: placement,
-                fallbackPlacements: ["bottom", "left", "top"],
-                title: title,
-                content: () => content,
-                container: "body",
-                html: true,
-                sanitize: false,
-              });
-            }
+            // ✅ IMPORTANT : instance unique propre
+            let popover = bootstrap.Popover.getOrCreateInstance(trigger, {
+              trigger: "manual",
+              placement: placement,
+              fallbackPlacements: ["bottom", "left", "top"],
+              title: title,
+              content: () => content,
+              container: "body",
+              html: true,
+              sanitize: false,
+            });
 
             popover.show();
 
@@ -9196,7 +9195,7 @@ alt="Images/arrows-collapse.png"
             return;
           }
 
-          // Protection clic interne popover
+          // 🔒 clic interne popover
           if (activeSinglePopover) {
             const popEl = document.querySelector(".popover.show");
 
@@ -9209,7 +9208,7 @@ alt="Images/arrows-collapse.png"
             }
           }
 
-          // Fermeture popover actif
+          // ❌ fermeture popover
           if (activeSinglePopover) {
             activeSinglePopover.popover.hide();
             activeSinglePopover.popover.dispose();
