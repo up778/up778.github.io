@@ -262,44 +262,30 @@ class LiteYTEmbed extends HTMLElement {
     }
 
     this.playerPromise = new Promise((resolve) => {
-
       let player = new YT.Player(videoPlaceholderEl, {
-
         width: "100%",
 
         videoId: this.videoId,
-
         playerVars: {
           ...paramsObj,
 
-          // ✔ IMPORTANT : garantir que la playlist est bien prise dès init
-          list: paramsObj.list || undefined
+          list: paramsObj.list || undefined,
         },
-
         events: {
-
           onReady: (event) => {
-
             const player = event.target;
 
             console.log("YT PLAYER READY (stable mode)");
 
             player.playVideo();
 
-            // ❌ IMPORTANT : ne PAS appeler loadPlaylist ici
-            // (cause écran noir + reset renderer)
-
             resolve(player);
           },
-
           onStateChange: (eventi) => {
             onPlayerStateChange(eventi);
-          }
-
-        }
-
+          },
+        },
       });
-
     });
 
     return this.display_block();
