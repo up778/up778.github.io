@@ -271,28 +271,9 @@ class LiteYTEmbed extends HTMLElement {
         },
         events: {
           onReady: (event) => {
-
-            const player = event.target;
-
-            console.log("PLAYER READY → disabling lite-youtube wrapper");
-
-            const lite_youtube = event.target.getIframe?.()?.closest?.("lite-youtube");
-
-            if (lite_youtube) {
-
-              // 🔥 ON FIGE le wrapper
-              lite_youtube.style.display = "block";
-              lite_youtube.classList.remove("lyt-activated");
-
-              // 🔥 ON EMPÊCHE toute logique de remplacement
-              lite_youtube.dataset.locked = "1";
-
-            }
-
-            player.playVideo();
-
+            event.target.playVideo();
             resolve(player);
-          }
+          },
           onStateChange: (eventi) => {
             onPlayerStateChange(eventi);
           },
