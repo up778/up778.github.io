@@ -8990,8 +8990,13 @@ alt="Images/arrows-collapse.png"
   </script>
   <script class="popover_class_script_10">
     document.addEventListener("DOMContentLoaded", () => {
+
       const popovers = new Map();
       let activeSinglePopover = null;
+
+      function log_debug(...args) {
+        console.log("[popover_debug]", ...args);
+      }
 
       function initializePopover(button) {
         const title = button.getAttribute("data-popover-title");
@@ -9015,9 +9020,11 @@ alt="Images/arrows-collapse.png"
 
       document.querySelectorAll(".trigger_popovers").forEach((trigger_btn) => {
         trigger_btn.addEventListener("click", (e) => {
+          log_debug("trigger_popovers clicked");
+
           e.stopPropagation();
 
-          popovers.forEach((popover, btn) => {
+          popovers.forEach((popover) => {
             if (!popover._element.classList.contains("disabled")) {
               popover.enable();
               popover.show();
@@ -9029,20 +9036,33 @@ alt="Images/arrows-collapse.png"
       document.body.addEventListener(
         "click",
         (e) => {
+
+          log_debug("CLICK EVENT FIRED", e.target);
+
           const target = e.target;
 
-          // ✅ CLIC POPUP MÊME SI SPAN / ENFANT
           const trigger = target.closest(".popover_editable");
 
+          log_debug("closest result =", trigger);
+
           if (trigger) {
+
+            log_debug("POP TRIGGER DETECTED", trigger);
+
             e.preventDefault();
             e.stopPropagation();
 
-            // 🔥 FIX CRITIQUE : casser l'état Bootstrap natif
+            // debug état bootstrap
+            log_debug("attributes before clean",
+              trigger.getAttribute("data-bs-toggle"),
+              trigger.getAttribute("aria-describedby")
+            );
+
             trigger.removeAttribute("data-bs-toggle");
             trigger.removeAttribute("aria-describedby");
 
             if (activeSinglePopover && activeSinglePopover.btn === trigger) {
+              log_debug("same popover -> close");
               activeSinglePopover.popover.hide();
               activeSinglePopover.popover.dispose();
               activeSinglePopover = null;
@@ -9050,6 +9070,7 @@ alt="Images/arrows-collapse.png"
             }
 
             if (activeSinglePopover) {
+              log_debug("closing previous popover");
               activeSinglePopover.popover.hide();
               activeSinglePopover.popover.dispose();
               activeSinglePopover = null;
@@ -9064,7 +9085,12 @@ alt="Images/arrows-collapse.png"
 
             const wrapper = trigger.closest(".popover_wrapper");
 
+            log_debug("wrapper found =", wrapper);
+
             const rect = trigger.getBoundingClientRect();
+
+            log_debug("rect =", rect);
+
             const viewportWidth = window.innerWidth;
             const viewportHeight = window.innerHeight;
 
@@ -9073,101 +9099,20 @@ alt="Images/arrows-collapse.png"
             const spaceLeft = rect.left;
             const spaceRight = viewportWidth - rect.right;
 
-            const rightThreshold = viewportWidth * 0.4;
+            let placement = "bottom";
 
-            let minWidthVW = null;
+            const maxSpace = Math.max(spaceTop, spaceBottom, spaceLeft, spaceRight);
 
-            if (wrapper) {
-              const contentDiv = wrapper.querySelector(".popover_content");
+            if (maxSpace === spaceTop) placement = "top";
+            else if (maxSpace === spaceBottom) placement = "bottom";
+            else if (maxSpace === spaceLeft) placement = "left";
+            else placement = "right";
 
-              if (contentDiv) {
-                const clonedContent = contentDiv.cloneNode(true);
+            log_debug("placement =", placement);
 
-                clonedContent.querySelectorAll("[id]").forEach((el) => {
-                  el.id = el.id + "_popover_" + Date.now();
-                });
-
-                clonedContent
-                  .querySelectorAll(
-                    ".btn_yt_video_jump, .class_btn_pause_yt_video"
-                  )
-                  .forEach((btn) => {
-                    btn.dataset.containerId =
-                      btn.closest(".div_around_iframe, .popover_content").id ||
-                      btn.dataset.containerId;
-                  });
-
-                clonedContent.style.display = "block";
-
-                const div_around_iframe =
-                  clonedContent.querySelector(".div_around_iframe");
-
-                const not_video = clonedContent.querySelector(
-                  ".avoid_iframe_pour_iframe_wiki_etc"
-                );
-
-                if (div_around_iframe && !not_video) {
-                  const table = div_around_iframe.closest("table");
-
-                  if (table) {
-                    const vwMatch = table.style.width.match(/([\d.]+)vw/);
-
-                    if (vwMatch) {
-                      minWidthVW = parseFloat(vwMatch[1]);
-                    } else {
-                      minWidthVW =
-                        (table.getBoundingClientRect().width /
-                          window.innerWidth) *
-                        100;
-                    }
-
-                    clonedContent.style.minWidth = `${minWidthVW}vw`;
-
-                    const heightStyle = table.style.height;
-
-                    if (heightStyle && heightStyle.endsWith("vh")) {
-                      div_around_iframe.style.height = heightStyle;
-                    } else {
-                      div_around_iframe.style.height =
-                        `${table.getBoundingClientRect().height}px`;
-                    }
-                  }
-                }
-
-                if (minWidthVW !== null) {
-                  const minPixelsWidth = (minWidthVW / 100) * window.innerWidth;
-
-                  clonedContent.style.minWidth = `${minPixelsWidth}px`;
-                  clonedContent.style.width = `${Math.max(minPixelsWidth, 150)}px`;
-                }
-
-                content.appendChild(clonedContent);
-              }
-            }
-
-            let placement;
-
-            if (spaceRight < rightThreshold) {
-              placement = spaceTop > spaceBottom ? "top" : "bottom";
-            } else {
-              const maxSpace = Math.max(
-                spaceTop,
-                spaceBottom,
-                spaceLeft,
-                spaceRight
-              );
-
-              if (maxSpace === spaceTop) placement = "top";
-              else if (maxSpace === spaceBottom) placement = "bottom";
-              else if (maxSpace === spaceLeft) placement = "left";
-              else placement = "right";
-            }
-
-            // ✅ IMPORTANT : instance unique propre
             let popover = bootstrap.Popover.getOrCreateInstance(trigger, {
               trigger: "manual",
               placement: placement,
-              fallbackPlacements: ["bottom", "left", "top"],
               title: title,
               content: () => content,
               container: "body",
@@ -9175,27 +9120,19 @@ alt="Images/arrows-collapse.png"
               sanitize: false,
             });
 
+            log_debug("popover instance =", popover);
+
             popover.show();
 
-            const popoverElement = document.querySelector(".popover.show");
-
-            if (placement === "right" && popoverElement) {
-              const maxWidth = window.innerWidth - rect.right - 100;
-
-              const contentElement =
-                popoverElement.querySelector(".popover_content");
-
-              if (contentElement) {
-                contentElement.style.maxWidth = maxWidth + "px";
-              }
-            }
+            log_debug("popover shown");
 
             activeSinglePopover = { btn: trigger, popover: popover };
 
             return;
           }
 
-          // 🔒 clic interne popover
+          log_debug("NO POP TRIGGER FOUND");
+
           if (activeSinglePopover) {
             const popEl = document.querySelector(".popover.show");
 
@@ -9204,12 +9141,14 @@ alt="Images/arrows-collapse.png"
               (popEl.contains(e.target) ||
                 e.target.closest(".popover.show"))
             ) {
+              log_debug("click inside popover -> ignore close");
               return;
             }
           }
 
-          // ❌ fermeture popover
           if (activeSinglePopover) {
+            log_debug("closing popover (outside click)");
+
             activeSinglePopover.popover.hide();
             activeSinglePopover.popover.dispose();
             activeSinglePopover = null;
@@ -9229,8 +9168,13 @@ alt="Images/arrows-collapse.png"
       observer.observe(document.body, { childList: true, subtree: true });
 
       document.body.addEventListener("shown.bs.popover", () => {
-        if (typeof initAudioPlayers === "function") initAudioPlayers();
+        log_debug("shown.bs.popover fired");
+
+        if (typeof initAudioPlayers === "function") {
+          initAudioPlayers();
+        }
       });
+
     });
   </script>
   <script class="avoid_close_dropdown_if_clic_popover_10">
