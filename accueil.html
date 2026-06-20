@@ -9029,7 +9029,7 @@ alt="Images/arrows-collapse.png"
               const trigger = target.closest(".popover_editable");
     if (trigger) {
                 e.stopPropagation();
-                if (activeSinglePopover && activeSinglePopover.btn === target) {
+                if (activeSinglePopover && activeSinglePopover.btn === trigger) {
                   activeSinglePopover.popover.hide();
                   activeSinglePopover.popover.dispose();
                   activeSinglePopover = null;
@@ -9041,12 +9041,12 @@ alt="Images/arrows-collapse.png"
                   activeSinglePopover = null;
                 }
                 const title =
-                  target.getAttribute("title") ||
-                  target.getAttribute("data-popover-title") ||
+                  trigger.getAttribute("title") ||
+                  trigger.getAttribute("data-popover-title") ||
                   "";
                 let content = document.createElement("div");
-                const wrapper = target.closest(".popover_wrapper");
-                const rect = target.getBoundingClientRect();
+                const wrapper = trigger.closest(".popover_wrapper");
+                const rect = trigger.getBoundingClientRect();
                 const viewportWidth = window.innerWidth;
                 const viewportHeight = window.innerHeight;
                 const spaceTop = rect.top;
@@ -9120,9 +9120,9 @@ alt="Images/arrows-collapse.png"
                   else if (maxSpace === spaceLeft) placement = "left";
                   else placement = "right";
                 }
-                const existingInstance = bootstrap.Popover.getInstance(target);
+                const existingInstance = bootstrap.Popover.getInstance(trigger);
                 if (existingInstance) existingInstance.dispose();
-                const popover = new bootstrap.Popover(target, {
+                const popover = new bootstrap.Popover(trigger, {
                   trigger: "manual",
                   placement: placement,
                   fallbackPlacements: ["bottom", "left", "top"],
@@ -9140,7 +9140,7 @@ alt="Images/arrows-collapse.png"
                     popoverElement.querySelector(".popover_content");
                   if (contentElement) contentElement.style.maxWidth = maxWidth + "px";
                 }
-                activeSinglePopover = { btn: target, popover: popover };
+                activeSinglePopover = { btn: trigger, popover: popover };
                 return;
               }
               // ✅ Protection absolue : ne jamais fermer popover si clic dans popover ou ses boutons
