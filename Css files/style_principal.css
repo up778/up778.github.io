@@ -1811,6 +1811,10 @@ article,
   word-break: break-all;
 }
 
+[class^="p_de_modif"] {
+  cursor: pointer;
+}
+
 .deuxieme_coquille_top_button [class^="modified_parts"] {
   width: 50vw;
   max-width: 62vw !important;
