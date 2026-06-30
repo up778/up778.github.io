@@ -10917,14 +10917,14 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
           if (activeSinglePopover && activeSinglePopover.btn === trigger) {
             // log_debug("same popover -> close");
             activeSinglePopover.popover.hide();
-            activeSinglePopover.popover.dispose();
+            // activeSinglePopover.popover.dispose();
             activeSinglePopover = null;
             return;
           }
           if (activeSinglePopover) {
             // log_debug("closing previous popover");
             activeSinglePopover.popover.hide();
-            activeSinglePopover.popover.dispose();
+            // activeSinglePopover.popover.dispose();
             activeSinglePopover = null;
           }
           const title =
@@ -10933,7 +10933,15 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             "";
           let content = document.createElement("div");
           const wrapper = trigger.closest(".popover_wrapper");
-          // log_debug("wrapper found =", wrapper);
+          const rect = trigger.getBoundingClientRect();
+          const viewportWidth = window.innerWidth;
+          const viewportHeight = window.innerHeight;
+          const spaceTop = rect.top;
+          const spaceBottom = viewportHeight - rect.bottom;
+          const spaceLeft = rect.left;
+          const spaceRight = viewportWidth - rect.right;
+          const rightThreshold = viewportWidth * 0.4;
+          let minWidthVW = null;
           if (wrapper) {
             const contentDiv = wrapper.querySelector(".popover_content");
             if (contentDiv) {
@@ -10942,34 +10950,69 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
               clonedContent.querySelectorAll("[id]").forEach((el) => {
                 el.id = el.id + "_popover_" + Date.now();
               });
+              // mettre à jour les data-container-id sur les boutons clonés
+              clonedContent
+                .querySelectorAll(
+                  ".btn_yt_video_jump, .class_btn_pause_yt_video",
+                )
+                .forEach((btn) => {
+                  btn.dataset.containerId =
+                    btn.closest(".div_around_iframe, .popover_content").id ||
+                    btn.dataset.containerId;
+                });
               clonedContent.style.display = "block";
+              const div_around_iframe =
+                clonedContent.querySelector(".div_around_iframe");
+              const not_video = clonedContent.querySelector(
+                ".avoid_iframe_pour_iframe_wiki_etc",
+              );
+              if (div_around_iframe && !not_video) {
+                const table = div_around_iframe.closest("table");
+                if (table) {
+                  const vwMatch = table.style.width.match(/([\d.]+)vw/);
+                  if (vwMatch) minWidthVW = parseFloat(vwMatch[1]);
+                  else
+                    minWidthVW =
+                      (table.getBoundingClientRect().width /
+                        window.innerWidth) *
+                      100;
+                  clonedContent.style.minWidth = `${minWidthVW}vw`;
+                  const heightStyle = table.style.height;
+                  if (heightStyle && heightStyle.endsWith("vh"))
+                    div_around_iframe.style.height = heightStyle;
+                  else
+                    div_around_iframe.style.height = `${table.getBoundingClientRect().height}px`;
+                }
+              }
+              if (minWidthVW !== null) {
+                const minPixelsWidth = (minWidthVW / 100) * window.innerWidth;
+                clonedContent.style.minWidth = `${minPixelsWidth}px`;
+                clonedContent.style.width = `${Math.max(minPixelsWidth, 150)}px`;
+              }
               content.appendChild(clonedContent);
             }
           }
-          const rect = trigger.getBoundingClientRect();
-          const viewportWidth = window.innerWidth;
-          const viewportHeight = window.innerHeight;
-          const spaceTop = rect.top;
-          const spaceBottom = viewportHeight - rect.bottom;
-          const spaceLeft = rect.left;
-          const spaceRight = viewportWidth - rect.right;
-          let placement = "bottom";
-          const maxSpace = Math.max(
-            spaceTop,
-            spaceBottom,
-            spaceLeft,
-            spaceRight,
-          );
-          if (maxSpace === spaceTop) placement = "top";
-          else if (maxSpace === spaceBottom) placement = "bottom";
-          else if (maxSpace === spaceLeft) placement = "left";
-          else placement = "right";
-          // log_debug("placement =", placement);
+          let placement;
+          if (spaceRight < rightThreshold)
+            placement = spaceTop > spaceBottom ? "top" : "bottom";
+          else {
+            const maxSpace = Math.max(
+              spaceTop,
+              spaceBottom,
+              spaceLeft,
+              spaceRight,
+            );
+            if (maxSpace === spaceTop) placement = "top";
+            else if (maxSpace === spaceBottom) placement = "bottom";
+            else if (maxSpace === spaceLeft) placement = "left";
+            else placement = "right";
+          }
           const existingInstance = bootstrap.Popover.getInstance(trigger);
           if (existingInstance) existingInstance.dispose();
           const popover = new bootstrap.Popover(trigger, {
             trigger: "manual",
             placement: placement,
+            fallbackPlacements: ["bottom", "left", "top"],
             title: title,
             content: () => content,
             container: "body",
@@ -10977,30 +11020,38 @@ $.when(   $.getScript("Voie_javascript/panzoom_script.js"),
             sanitize: false,
           });
           popover.show();
-          // log_debug("popover shown");
+          const popoverElement = document.querySelector(".popover.show");
+          if (placement === "right" && popoverElement) {
+            const maxWidth = window.innerWidth - rect.right - 100;
+            const contentElement =
+              popoverElement.querySelector(".popover_content");
+            if (contentElement) contentElement.style.maxWidth = maxWidth + "px";
+          }
           activeSinglePopover = { btn: trigger, popover: popover };
           return;
         }
-        // log_debug("NO POP TRIGGER FOUND");
+        // pas fermer popover si clic dans popover ou ses boutons
         if (activeSinglePopover) {
           const popEl = document.querySelector(".popover.show");
+          const target = e.target;
           if (
             popEl &&
-            (popEl.contains(e.target) || e.target.closest(".popover.show"))
+            target &&
+            (popEl.contains(target) || target.closest(".popover.show"))
           ) {
-            // log_debug("click inside popover -> ignore close");
             return;
           }
         }
+        // Sinon, fermer le popover actif
         if (activeSinglePopover) {
           // log_debug("closing popover (outside click)");
           activeSinglePopover.popover.hide();
-          activeSinglePopover.popover.dispose();
+          // activeSinglePopover.popover.dispose();
           activeSinglePopover = null;
         }
         popovers.forEach((popover) => popover.hide());
       },
-      true,
+      true, // capture
     );
     const observer = new MutationObserver(() => {
       document.querySelectorAll(".pop_button").forEach((button) => {
