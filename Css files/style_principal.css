@@ -3168,6 +3168,14 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
   font-size: 100%;
   line-height: 1;
 }
+.font_i_3_90perc {
+  font-family: Christmas_carol_personal_regular;
+  /* font-size: 140%; */
+  /* line-height: 1; */
+  font-family: LastChristmas;
+  font-size: 90%;
+  line-height: 1;
+}
 .font_i_dém {
   /* font-family: red_devil; */
   font-family: mortified;
