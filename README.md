@@ -16,10 +16,11 @@
 </style> -->
 <!-- <script src="bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script> -->
 
-<p>Cette page présente certains fichiers et dossiers pour le site internet à l'adresse https://up778.github.io</p>
-<p> Ce site internet "tourne"🔃 surtout sur la théologie mais aussi sur la psychologie, la philosophie.
-(Pas trop un site de mathématiques🧮 ou physique.)</p>
-<p>Le site internet à l'adresse https://up778.github.io a des extraits musicaux, audios, vidéos.</p>
+
+<p>up778.github.io : Un site internet essentiellement de Théologie mais aussi de psychologie, la philosophie.</p>
+<p>Site avec extraits musicaux, audios, vidéos.</p>
+<p>(Pas trop un site de mathématiques🧮 ou physique.)</p>
+
 <p>Voici une description sommaire des 7 pages du site https://up778.github.io :</p>
     <ul style="width:70%;list-style-type: none; padding: 0;">
       <li>une page d'accueil 🏠,</li>
@@ -32,6 +33,7 @@
     </ul>
       <img class="rounded" style="width:20%;border-radius: 20%; max-width: 200px;float:right" src="https://up778.github.io/Images/3-October-2024-48-28-rand269A74A.jpg" alt="Image"/>
 
+<p>(Cette page actuelle n'est pas la page d'accueil du site mais présente certains fichiers et dossiers pour le site internet à l'adresse https://up778.github.io)</p>
    
   <!-- Div pour les éléments de liste -->
   <!-- <div style="width:78%;float:left"> -->
