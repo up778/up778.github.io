@@ -1429,8 +1429,10 @@ blockquote > p {
 }
 
 .class_citation_standard {
+  position: relative;
+  background: #55ff5530;
   color: #55ff55;
-  border-left: 1px solid rgb(85, 255, 85) !important;
+
   padding-left: 10px;
 
   border-radius: 10px;
@@ -1449,6 +1451,10 @@ blockquote > p {
   font-size: 1.5em;
   line-height: 1;
   z-index: -10;
+
+  background: #55ff5530;
+  color: #55ff55;
+  border-radius: 10px;
 }
 
 .class_citation_standard::after {
@@ -1464,8 +1470,15 @@ blockquote > p {
   border-width: 15px 15px 0 0;
   border-color: #55ff5530 transparent transparent #55ff5530;
 
-  z-index: -5;
+  z-index: 0;
   margin: 0px 0px 0px 0px;
+}
+
+p.class_citation_standard {
+  outline: 1px dashed #44ff44;
+  color: #44ff44;
+  width: fit-content;
+  max-width: 100%;
 }
 
 img.image_outside_td_and_float_right,
