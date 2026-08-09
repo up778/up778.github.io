@@ -28,6 +28,11 @@
 !Voie_javascript/**
 !/Audio_s/
 !/Audio_s/**
+*.wav
+*.mp3
+*.mp4
+*.opus
+*.m4a
 
 Accueil/Dossier_dans_dossier_accueil/Film_s/
 Art-Artistes/Artistes-Comoedica-Musiciens/Film_s/
