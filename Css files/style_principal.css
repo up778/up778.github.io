@@ -1079,10 +1079,6 @@ td {
   z-index: 20 !important;
 }
 
-thead > tr > td {
-  padding-top: 10px;
-}
-
 thead:not(.dropdown_menu thead):not(.modal_body thead) {
   line-height: 1;
   position: sticky;
@@ -1094,7 +1090,7 @@ thead:not(.dropdown_menu thead):not(.modal_body thead) {
 
   font-weight: 550;
 
-  z-index: 92;
+  z-index: 170;
 }
 
 .dropdown-menu thead {
@@ -1998,6 +1994,7 @@ article + article {
 .p_histo_info:nth-child(2n + 1) {
   background-color: rgba(58, 58, 58, 0.454) !important;
 }
+
 .p_ttes_pages:nth-child(2n),
 .p_this_page:nth-child(2n),
 .p_histo_info:nth-child(2n) {
@@ -2258,13 +2255,6 @@ video {
   z-index: 310 !important;
 }
 
-tbody:before {
-  content: "@";
-  display: block;
-  line-height: 4px;
-  text-indent: -99999px;
-}
-
 .table_outside_a_table_and_outside_card margin_left_2 {
   margin-top: 200px;
   z-index: 300 !important;
@@ -2325,7 +2315,7 @@ tbody:before {
 }
 
 figure {
-  z-index: 190;
+  z-index: 169;
 }
 
 h1,
@@ -3275,4 +3265,30 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
 .popover thead {
   position: sticky;
   top: 0px !important;
+}
+
+table {
+  border-collapse: separate !important;
+  border-spacing: 0;
+  border-radius: 10px;
+}
+table thead tr:first-child td:first-child {
+  border-top-left-radius: 10px;
+}
+
+table thead tr:first-child td:last-child {
+  border-top-right-radius: 10px;
+}
+
+table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 10px;
+}
+
+.table1_page_Artistes {
+  margin-left: 10px;
+  margin-right: 10px;
 }
