@@ -3059,6 +3059,10 @@ p[style*="display:inline"] + div:not(.div_for_modal_for_link_outside_modal) {
   font-family: "PRINP___";
   font-size: 80%;
 }
+.font_i_persia_90 {
+  font-family: "PRINP___";
+  font-size: 90%;
+}
 .font_i_arabella {
   font-family: "Arabella";
 
