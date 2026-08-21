@@ -410,7 +410,12 @@ function onPlayerStateChange(event) {
     } else {
       last_played_video = event.target.playerInfo.videoData.video_id;
     }
-    id_de_l_iframe_de_la_video = event.target.g.id;
+    const iframe = event.target.getIframe();
+    id_de_l_iframe_de_la_video = iframe?.id || "";
+    console.log(id_de_l_iframe_de_la_video, `id_de_l_iframe_de_la_video`);
+    // console.log(event.target.g.id, `event.target.g.id`);
+    // console.log(last_played_video, `last_played_video0`);
+    // event.target.addClass("toto");
 
     event.target.g.classList.add("is_actualy_playing");
   } else if (event.data === YT.PlayerState.PAUSED) {
