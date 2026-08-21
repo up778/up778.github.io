@@ -370,12 +370,8 @@ class LiteYTEmbed extends HTMLElement {
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING) {
-    // dernier_element_lite_yt_joué =
-    //   event.target.g?.closest("lite-youtube") || null;
-
-
-    // var iframe = event.target.getIframe();
-    dernier_element_lite_yt_joué = event.target.getIframe()?.closest("lite-youtube") || null;
+    dernier_element_lite_yt_joué =
+      event.target.getIframe()?.closest("lite-youtube") || null;
 
     handle_reset_if_single_visible();
 
@@ -416,13 +412,10 @@ function onPlayerStateChange(event) {
     }
     const iframe = event.target.getIframe();
     id_de_l_iframe_de_la_video = iframe?.id || "";
-    console.log(id_de_l_iframe_de_la_video, `id_de_l_iframe_de_la_video`);
     // console.log(event.target.g.id, `event.target.g.id`);
     // console.log(last_played_video, `last_played_video0`);
     // event.target.addClass("toto");
 
-    // event.target.g.classList.add("is_actualy_playing");
-    // const iframe = event.target.getIframe();
     iframe?.classList.add("is_actualy_playing");
   } else if (event.data === YT.PlayerState.PAUSED) {
     const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
@@ -847,7 +840,7 @@ reloadEvents.forEach((ev) => {
       });
     }
 
-    //   Si l'élément précédemment joué n'existe plus dans le DOM, reset la référence
+    // Si l'élément précédemment joué n'existe plus dans le DOM, reset la référence
     if (
       dernier_element_lite_yt_joué &&
       !document.body.contains(dernier_element_lite_yt_joué)
