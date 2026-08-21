@@ -370,8 +370,10 @@ class LiteYTEmbed extends HTMLElement {
 
 function onPlayerStateChange(event) {
   if (event.data == YT.PlayerState.PLAYING) {
-    dernier_element_lite_yt_joué =
-      event.target.g?.closest("lite-youtube") || null;
+    dernier_element_lite_yt_joué =;
+      // event.target.g?.closest("lite-youtube") || null;
+      const iframe = event.target.getIframe();
+    dernier_element_lite_yt_joué = iframe?.closest("lite-youtube") || null;
 
     handle_reset_if_single_visible();
 
