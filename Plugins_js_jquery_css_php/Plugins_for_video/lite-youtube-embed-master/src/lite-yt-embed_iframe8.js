@@ -847,7 +847,7 @@ reloadEvents.forEach((ev) => {
       });
     }
 
-    // Si l'élément précédemment joué n'existe plus dans le DOM, reset la référence
+    //   Si l'élément précédemment joué n'existe plus dans le DOM, reset la référence
     if (
       dernier_element_lite_yt_joué &&
       !document.body.contains(dernier_element_lite_yt_joué)
