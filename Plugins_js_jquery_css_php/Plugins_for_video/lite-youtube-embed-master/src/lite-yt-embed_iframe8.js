@@ -421,7 +421,9 @@ function onPlayerStateChange(event) {
     // console.log(last_played_video, `last_played_video0`);
     // event.target.addClass("toto");
 
-    event.target.g.classList.add("is_actualy_playing");
+    // event.target.g.classList.add("is_actualy_playing");
+    // const iframe = event.target.getIframe();
+    iframe?.classList.add("is_actualy_playing");
   } else if (event.data === YT.PlayerState.PAUSED) {
     const el = document.querySelectorAll(".class_btn_play_pause_youtube_video");
 
