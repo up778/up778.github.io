@@ -374,8 +374,8 @@ function onPlayerStateChange(event) {
     //   event.target.g?.closest("lite-youtube") || null;
 
 
-    var iframe = event.target.getIframe();
-    dernier_element_lite_yt_joué = iframe?.closest("lite-youtube") || null;
+    // var iframe = event.target.getIframe();
+    dernier_element_lite_yt_joué = event.target.getIframe()?.closest("lite-youtube") || null;
 
     handle_reset_if_single_visible();
 
