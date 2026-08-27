@@ -3293,3 +3293,21 @@ table tbody tr:last-child td:last-child {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+*:has(> .audio_label_à_gche_pour_div) {
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  height: 20px;
+}
+
+.audio_label_à_gche_pour_div {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 14px);
+  font-size: 10px;
+  line-height: 10px;
+  white-space: nowrap;
+  z-index: 1000;
+  color: #33dda2;
+}
