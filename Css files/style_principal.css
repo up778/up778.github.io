@@ -633,9 +633,9 @@ figure.image.align-right {
 
 figure.align-right > figcaption,
 figure.image.align-right > figcaption {
-  margin-left: 25px;
+  margin-left: 10px;
   font-size: 90%;
-  margin-right: -15px;
+  margin-right: 10px;
 }
 
 figure.align-left,
@@ -1215,7 +1215,7 @@ audio::-webkit-media-controls-timeline {
 
 .image_outside_td_and_float_right,
 .image_outside_td_and_float_left {
-  margin: 20px;
+  margin-right: 20px;
   margin-bottom: 0px;
   margin-top: 10px;
 }
@@ -1425,7 +1425,7 @@ blockquote > p {
 }
 
 .class_citation_standard {
-  position: relative;
+  position: relative !important;
   background: #55ff5530;
   color: #55ff55;
 
@@ -2316,6 +2316,7 @@ video {
 
 figure {
   z-index: 169;
+  position: relative;
 }
 
 h1,
