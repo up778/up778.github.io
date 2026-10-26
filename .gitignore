@@ -28,6 +28,7 @@
 !Voie_javascript/**
 !/Audio_s/
 !/Audio_s/**
+!/*/*Audio_s/**
 *.wav
 *.mp3
 *.mp4
@@ -41,6 +42,15 @@ Creaturae/Occidentaux-Orientaux/Film_s/
 Creaturae/Religion/Film_s/
 Creaturae/Droite_gauche/Film_s/
 Creaturae/Extra-terrestres_et_Ufologues/Film_s/
+
+Accueil/Dossier_dans_dossier_accueil/Audio_s/
+Art-Artistes/Artistes-Comoedica-Musiciens/Audio_s/
+Creaturae/Divers__/Audio_s/
+Creaturae/Occidentaux-Orientaux/Audio_s/
+Creaturae/Religion/Audio_s/
+Creaturae/Droite_gauche/Audio_s/
+Creaturae/Extra-terrestres_et_Ufologues/Audio_s/
+
 
 !/Fonts/
 !/Fonts/**
