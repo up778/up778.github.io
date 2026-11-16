@@ -22,6 +22,7 @@
 !/Assets/**
 !/Additional_html/
 !/Additional_html/**
+!/Audio_s/**
 !/Images
 !/Images/**é
 !Voie_javascript/
@@ -35,6 +36,7 @@
 *.opus
 *.m4a
 
+!/Audio_s/*.*
 Accueil/Dossier_dans_dossier_accueil/Film_s/
 Art-Artistes/Artistes-Comoedica-Musiciens/Film_s/
 Creaturae/Divers__/Film_s/
